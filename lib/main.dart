@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
 import 'package:vertical_tabs_flutter/vertical_tabs.dart';
 
 void main() {
@@ -19,21 +20,19 @@ class MyApp extends StatelessWidget {
       appBar: AppBar(
             title: const Text('Tinkoff Helper'),
           ),
-        body: SafeArea(
-          child: VerticalTabs(
-            direction: TextDirection.ltr,
-            selectedTabBackgroundColor: Colors.yellow,
-            indicatorColor: Colors.black,
-            tabsWidth: 59,
-            tabs: const [
-              Tab(icon: Icon(Icons.home)),
-              Tab(icon: Icon(Icons.settings)),
-            ],
-            contents: const [
-              MyHomePage(title: 'Home Page'),
-              MyHomePage(title: 'Settings Page'),
-            ],
-          ),
+        body: VerticalTabs(
+          direction: TextDirection.ltr,
+          selectedTabBackgroundColor: Colors.yellow,
+          indicatorColor: Colors.black,
+          tabsWidth: 59,
+          tabs: const [
+            Tab(icon: Icon(Icons.home)),
+            Tab(icon: Icon(Icons.settings)),
+          ],
+          contents: const [
+            MyHomePage(title: 'Home Page'),
+            SettingsScreen(),
+          ],
         ),
       ),
     );
