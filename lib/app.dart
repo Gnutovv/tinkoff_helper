@@ -19,7 +19,9 @@ class App extends StatelessWidget {
         body: VerticalTabs(
           direction: TextDirection.ltr,
           selectedTabBackgroundColor: Colors.yellow,
-          indicatorColor: Colors.black,
+          tabBackgroundColor: const Color(0xFFb5b50b),
+          tabsShadowColor: Colors.yellow,
+          indicatorWidth: 0,
           tabsWidth: 59,
           tabs: const [
             Tab(icon: Icon(Icons.home)),
