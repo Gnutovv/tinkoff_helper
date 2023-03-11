@@ -9,14 +9,12 @@ class ApiKeyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     if (status == ApiButtonStatuses.readyToCheck) {
       return IconButton(onPressed: () => callback, icon: const Icon(Icons.refresh, color: Colors.blue));
-    }
-    else if (status == ApiButtonStatuses.failed){
+    } else if (status == ApiButtonStatuses.failed) {
       return IconButton(onPressed: () => callback, icon: const Icon(Icons.close, color: Colors.red));
-    }
-    else {
-      return IconButton(onPressed: (){}, icon: const Icon(Icons.check, color: Colors.green));
+    } else {
+      return IconButton(onPressed: () {}, icon: const Icon(Icons.check, color: Colors.green));
     }
   }
 }
 
-enum ApiButtonStatuses{ readyToCheck, ok, failed}
+enum ApiButtonStatuses { readyToCheck, ok, failed }
