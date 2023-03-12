@@ -36,7 +36,7 @@ class TinkoffApiService {
   void updateCallOptions() {
     _callOptions = CallOptions(metadata: {'Authorization': 'Bearer $apiKeyGlobal'});
     _channel = ClientChannel(
-      TinkoffHosts.sandbox,
+      TinkoffHosts.prod,
       port: TinkoffHosts.port,
     );
   }

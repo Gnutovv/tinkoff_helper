@@ -32,7 +32,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
           orElse: () => loaderController.stopLoading(),
         );
         state.mapOrNull(
-          error: (state) => print(state.errorMessage),
+          error: (state) => showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Error'),
+                content: Text(state.message),
+                actions: <Widget>[
+                  ElevatedButton(
+                    child: const Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          ), //print(state.message),
         );
       },
       builder: (context, state) => Padding(

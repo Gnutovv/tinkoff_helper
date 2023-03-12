@@ -53,6 +53,7 @@ class SettingsState with _$SettingsState {
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   final tinkoffApiService = getIt<TinkoffApiService>();
+
   SettingsBloc({required String apiKey}) : super(SettingsState.initialized(apiKey: apiKey)) {
     on<SettingsEvent>(
       (event, emitter) => event.map(checkApiKey: (event) => _checkApiKey(event, emitter)),
@@ -66,23 +67,20 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     apiKeyGlobal = newApiKey;
     getIt<TinkoffApiService>().updateCallOptions();
 
-    print('Начинаю проверку $newApiKey');
     emitter(SettingsState.inProgress(apiKey: newApiKey));
     try {
-      //await Future.delayed(Duration(seconds: 2));
       final request = GetAccountsRequest();
-      print(request.toString());
-      print(tinkoffApiService.sandboxServiceClient.toString());
-      final res = await tinkoffApiService.sandboxServiceClient
-          .getSandboxAccounts(request, options: tinkoffApiService.callOptions);
-      print('Проверка прошла: $res');
+      final res = await tinkoffApiService.sandboxServiceClient.getSandboxAccounts(
+        request,
+        options: tinkoffApiService.callOptions,
+      );
+      print(res.toString());
       await getIt<SharedPreferences>().setString('apiKey', apiKeyGlobal!);
       emitter(SettingsState.initialized(apiKey: newApiKey, checkStatus: CheckApiKeyStatuses.ok));
     } catch (error) {
       apiKeyGlobal = oldApiKey;
       getIt<TinkoffApiService>().updateCallOptions();
       emitter(SettingsState.error(message: error.toString(), apiKey: oldApiKey));
-      print('Проверка не прошла, ошибка: ${state.errorMessage}');
       emitter(SettingsState.initialized(apiKey: oldApiKey, checkStatus: CheckApiKeyStatuses.failed));
     }
   }
