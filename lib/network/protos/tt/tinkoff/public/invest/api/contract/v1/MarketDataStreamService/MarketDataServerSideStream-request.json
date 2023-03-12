@@ -1,0 +1,72 @@
+{
+  "subscribeCandlesRequest": {
+    "subscriptionAction": "SUBSCRIPTION_ACTION_UNSUBSCRIBE",
+    "instruments": [
+      {
+        "figi": "Assurance index",
+        "interval": "SUBSCRIPTION_INTERVAL_FIVE_MINUTES",
+        "instrumentId": "{{ faker.random.uuid }}"
+      },
+      {
+        "figi": "Assurance index",
+        "interval": "SUBSCRIPTION_INTERVAL_UNSPECIFIED",
+        "instrumentId": "{{ faker.random.uuid }}"
+      }
+    ],
+    "waitingClose": true
+  },
+  "subscribeOrderBookRequest": {
+    "subscriptionAction": "SUBSCRIPTION_ACTION_UNSUBSCRIBE",
+    "instruments": [
+      {
+        "figi": "Assurance index",
+        "depth": 153,
+        "instrumentId": "{{ faker.random.uuid }}"
+      },
+      {
+        "figi": "Assurance index",
+        "depth": 836,
+        "instrumentId": "{{ faker.random.uuid }}"
+      }
+    ]
+  },
+  "subscribeTradesRequest": {
+    "subscriptionAction": "SUBSCRIPTION_ACTION_UNSUBSCRIBE",
+    "instruments": [
+      {
+        "figi": "Assurance index",
+        "instrumentId": "{{ faker.random.uuid }}"
+      },
+      {
+        "figi": "Assurance index",
+        "instrumentId": "{{ faker.random.uuid }}"
+      }
+    ]
+  },
+  "subscribeInfoRequest": {
+    "subscriptionAction": "SUBSCRIPTION_ACTION_UNSUBSCRIBE",
+    "instruments": [
+      {
+        "figi": "Assurance index",
+        "instrumentId": "{{ faker.random.uuid }}"
+      },
+      {
+        "figi": "Assurance index",
+        "instrumentId": "{{ faker.random.uuid }}"
+      }
+    ]
+  },
+  "subscribeLastPriceRequest": {
+    "subscriptionAction": "SUBSCRIPTION_ACTION_SUBSCRIBE",
+    "instruments": [
+      {
+        "figi": "Assurance index",
+        "instrumentId": "{{ faker.random.uuid }}"
+      },
+      {
+        "figi": "Assurance index",
+        "instrumentId": "{{ faker.random.uuid }}"
+      }
+    ]
+  }
+}

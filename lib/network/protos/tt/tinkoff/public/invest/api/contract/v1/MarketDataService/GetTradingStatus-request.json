@@ -1,0 +1,4 @@
+{
+  "figi": "Assurance index",
+  "instrumentId": "{{ faker.random.uuid }}"
+}

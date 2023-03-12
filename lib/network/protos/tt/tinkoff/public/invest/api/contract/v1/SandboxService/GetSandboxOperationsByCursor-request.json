@@ -1,0 +1,16 @@
+{
+  "accountId": "{{ faker.random.uuid }}",
+  "instrumentId": "{{ faker.random.uuid }}",
+  "from": "1970-01-01T00:12:54.000000029Z",
+  "to": "1970-01-01T00:08:07.000000314Z",
+  "cursor": "Customer Delaware",
+  "limit": 605,
+  "operationTypes": [
+    "OPERATION_TYPE_WRITING_OFF_VARMARGIN",
+    "OPERATION_TYPE_TRANS_IIS_BS"
+  ],
+  "state": "OPERATION_STATE_PROGRESS",
+  "withoutCommissions": false,
+  "withoutTrades": true,
+  "withoutOvernights": false
+}

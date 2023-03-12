@@ -1,0 +1,11 @@
+{
+  "accountId": "{{ faker.random.uuid }}",
+  "orderId": "{{ faker.random.uuid }}",
+  "idempotencyKey": "Auto Loan Account Norwegian Krone Uganda",
+  "quantity": "379",
+  "price": {
+    "units": "154",
+    "nano": 684
+  },
+  "priceType": "PRICE_TYPE_CURRENCY"
+}

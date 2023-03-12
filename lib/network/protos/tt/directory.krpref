@@ -1,0 +1,20 @@
+{
+  "settings": [
+    {
+      "options": {
+        "grpc": {
+          "endpoint": "https://sandbox-invest-public-api.tinkoff.ru:443",
+          "metadata": [
+            {
+              "key": "Authorization",
+              "value": "Bearer t.HLnnN2cZkgN-Z9izj6WfYdQUExyRWHVTusrv-kljXX735BcOirTL8aqn24BWX3ypnhhFNNz2x8blA1d2hOvR9g"
+            }
+          ]
+        },
+        "rest": {
+          "pathParams": []
+        }
+      }
+    }
+  ]
+}

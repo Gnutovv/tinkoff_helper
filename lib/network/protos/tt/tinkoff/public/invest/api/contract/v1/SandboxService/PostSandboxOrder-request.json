@@ -1,0 +1,13 @@
+{
+  "figi": "Assurance index",
+  "quantity": "982",
+  "price": {
+    "units": "111",
+    "nano": 335
+  },
+  "direction": "ORDER_DIRECTION_BUY",
+  "accountId": "{{ faker.random.uuid }}",
+  "orderType": "ORDER_TYPE_MARKET",
+  "orderId": "{{ faker.random.uuid }}",
+  "instrumentId": "{{ faker.random.uuid }}"
+}

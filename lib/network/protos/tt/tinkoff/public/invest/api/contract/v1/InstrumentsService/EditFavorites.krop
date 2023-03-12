@@ -1,0 +1,13 @@
+{
+  "details": {
+    "methodFqn": "tinkoff.public.invest.api.contract.v1.InstrumentsService.EditFavorites"
+  },
+  "requests": [
+    {
+      "location": "EditFavorites-request.json"
+    }
+  ],
+  "operationType": "unary",
+  "invokerName": "grpc",
+  "importStreamId": "b2653741-1272-4704-a91b-a0a43759b265"
+}
