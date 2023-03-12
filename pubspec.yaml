@@ -19,6 +19,7 @@ dependencies:
   freezed: ^2.3.2
   freezed_annotation: ^2.2.0
   protobuf: ^2.1.0
+  lottie: ^2.2.0
 
 dev_dependencies:
   flutter_test:

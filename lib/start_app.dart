@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/di/di.dart';
+import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
 import 'package:tinkoff_helper/presentation/bloc/utils/app_bloc_observer.dart';
 
 import 'app.dart';
@@ -15,6 +16,7 @@ void startApp() {
   runZonedGuarded<void>(() async {
     WidgetsFlutterBinding.ensureInitialized();
     await initLocatorService();
+    getIt<TinkoffApiService>().init();
     runApp(const App());
   }, (error, stackTrace) {
     if (kDebugMode) print('error: $error\n $stackTrace');
