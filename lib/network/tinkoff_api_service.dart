@@ -1,4 +1,5 @@
 import 'package:grpc/grpc.dart';
+import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/network/generated/instruments.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/marketdata.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/operations.pbgrpc.dart';
@@ -9,9 +10,8 @@ import 'package:tinkoff_helper/network/generated/users.pbgrpc.dart';
 import 'package:tinkoff_helper/network/hosts.dart';
 
 class TinkoffApiService {
-  final String _baseUrl = TinkoffHosts.sandbox;
-  final int _port = TinkoffHosts.port;
-  final CallOptions callOptions = CallOptions(metadata: {'Authorization': 'Bearer '});
+  late ClientChannel _channel;
+  late CallOptions _callOptions;
   late final InstrumentsServiceClient instrumentsServiceClient;
   late final MarketDataServiceClient marketDataServiceClient;
   late final OperationsServiceClient operationsServiceClient;
@@ -20,21 +20,24 @@ class TinkoffApiService {
   late final StopOrdersServiceClient stopOrdersServiceClient;
   late final UsersServiceClient usersServiceClient;
 
+  CallOptions get callOptions => _callOptions;
+
   void init() {
-    final channel = ClientChannel(
-      _baseUrl,
-      port: _port,
-      options: ChannelOptions(
-        credentials: const ChannelCredentials.insecure(),
-        codecRegistry: CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
-      ),
+    updateCallOptions();
+    instrumentsServiceClient = InstrumentsServiceClient(_channel);
+    marketDataServiceClient = MarketDataServiceClient(_channel);
+    operationsServiceClient = OperationsServiceClient(_channel);
+    ordersServiceClient = OrdersServiceClient(_channel);
+    sandboxServiceClient = SandboxServiceClient(_channel);
+    stopOrdersServiceClient = StopOrdersServiceClient(_channel);
+    usersServiceClient = UsersServiceClient(_channel);
+  }
+
+  void updateCallOptions() {
+    _callOptions = CallOptions(metadata: {'Authorization': 'Bearer $apiKeyGlobal'});
+    _channel = ClientChannel(
+      TinkoffHosts.sandbox,
+      port: TinkoffHosts.port,
     );
-    instrumentsServiceClient = InstrumentsServiceClient(channel);
-    marketDataServiceClient = MarketDataServiceClient(channel);
-    operationsServiceClient = OperationsServiceClient(channel);
-    ordersServiceClient = OrdersServiceClient(channel);
-    sandboxServiceClient = SandboxServiceClient(channel);
-    stopOrdersServiceClient = StopOrdersServiceClient(channel);
-    usersServiceClient = UsersServiceClient(channel);
   }
 }

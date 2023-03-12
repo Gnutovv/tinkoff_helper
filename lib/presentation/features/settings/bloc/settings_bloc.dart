@@ -1,4 +1,9 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tinkoff_helper/di/di.dart';
+import 'package:tinkoff_helper/network/generated/users.pb.dart';
+import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
 import 'package:tinkoff_helper/presentation/features/settings/widgets/api_key_button.dart';
 
 part 'settings_bloc.freezed.dart';
@@ -31,17 +36,54 @@ class SettingsState with _$SettingsState {
 
   factory SettingsState.initialized({
     required String apiKey,
-    @Default(ApiButtonStatuses.readyToCheck) ApiButtonStatuses checkStatus,
+    @Default(CheckApiKeyStatuses.readyToCheck) CheckApiKeyStatuses checkStatus,
   }) = _InitializedSettingsState;
 
   factory SettingsState.inProgress({
     required String apiKey,
-    @Default(ApiButtonStatuses.readyToCheck) ApiButtonStatuses checkStatus,
+    @Default(CheckApiKeyStatuses.readyToCheck) CheckApiKeyStatuses checkStatus,
   }) = _InProgressSettingsState;
 
   factory SettingsState.error({
     required String message,
     required String apiKey,
-    @Default(ApiButtonStatuses.failed) ApiButtonStatuses checkStatus,
+    @Default(CheckApiKeyStatuses.failed) CheckApiKeyStatuses checkStatus,
   }) = _ErrorSettingsState;
+}
+
+class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
+  final tinkoffApiService = getIt<TinkoffApiService>();
+  SettingsBloc({required String apiKey}) : super(SettingsState.initialized(apiKey: apiKey)) {
+    on<SettingsEvent>(
+      (event, emitter) => event.map(checkApiKey: (event) => _checkApiKey(event, emitter)),
+    );
+  }
+
+  Future<void> _checkApiKey(_CheckApiKeySettingsEvent event, Emitter<SettingsState> emitter) async {
+    final newApiKey = event.apiKey;
+    final oldApiKey = state.apiKey;
+
+    apiKeyGlobal = newApiKey;
+    getIt<TinkoffApiService>().updateCallOptions();
+
+    print('Начинаю проверку $newApiKey');
+    emitter(SettingsState.inProgress(apiKey: newApiKey));
+    try {
+      //await Future.delayed(Duration(seconds: 2));
+      final request = GetAccountsRequest();
+      print(request.toString());
+      print(tinkoffApiService.sandboxServiceClient.toString());
+      final res = await tinkoffApiService.sandboxServiceClient
+          .getSandboxAccounts(request, options: tinkoffApiService.callOptions);
+      print('Проверка прошла: $res');
+      await getIt<SharedPreferences>().setString('apiKey', apiKeyGlobal!);
+      emitter(SettingsState.initialized(apiKey: newApiKey, checkStatus: CheckApiKeyStatuses.ok));
+    } catch (error) {
+      apiKeyGlobal = oldApiKey;
+      getIt<TinkoffApiService>().updateCallOptions();
+      emitter(SettingsState.error(message: error.toString(), apiKey: oldApiKey));
+      print('Проверка не прошла, ошибка: ${state.errorMessage}');
+      emitter(SettingsState.initialized(apiKey: oldApiKey, checkStatus: CheckApiKeyStatuses.failed));
+    }
+  }
 }

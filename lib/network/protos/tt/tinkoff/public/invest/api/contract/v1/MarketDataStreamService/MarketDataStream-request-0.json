@@ -1,0 +1,18 @@
+{
+  "subscribeCandlesRequest": {
+    "subscriptionAction": "SUBSCRIPTION_ACTION_SUBSCRIBE",
+    "instruments": [
+      {
+        "figi": "Assurance index",
+        "interval": "SUBSCRIPTION_INTERVAL_UNSPECIFIED",
+        "instrumentId": "{{ faker.random.uuid }}"
+      },
+      {
+        "figi": "Assurance index",
+        "interval": "SUBSCRIPTION_INTERVAL_UNSPECIFIED",
+        "instrumentId": "{{ faker.random.uuid }}"
+      }
+    ],
+    "waitingClose": false
+  }
+}

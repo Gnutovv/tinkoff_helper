@@ -1,0 +1,5 @@
+{
+  "idType": "INSTRUMENT_ID_TYPE_FIGI",
+  "classCode": "Multi-lateral",
+  "id": "{{ faker.random.uuid }}"
+}

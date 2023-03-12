@@ -1,0 +1,7 @@
+{
+  "figi": "Assurance index",
+  "from": "1970-01-01T00:11:36.000000695Z",
+  "to": "1970-01-01T00:02:32.000000976Z",
+  "interval": "CANDLE_INTERVAL_DAY",
+  "instrumentId": "{{ faker.random.uuid }}"
+}

@@ -1,0 +1,5 @@
+{
+  "figi": "Assurance index",
+  "depth": 134,
+  "instrumentId": "{{ faker.random.uuid }}"
+}

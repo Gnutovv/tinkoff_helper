@@ -6,8 +6,10 @@ import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
 final GetIt getIt = GetIt.instance;
 
 Future<void> initLocatorService() async {
+  getIt.registerSingleton<LoaderController>(LoaderController());
   final prefs = await SharedPreferences.getInstance();
   getIt.registerSingleton<SharedPreferences>(prefs);
   getIt.registerSingleton<TinkoffApiService>(TinkoffApiService());
-  getIt.registerSingleton<LoaderController>(LoaderController());
 }
+
+String? apiKeyGlobal;
