@@ -11,7 +11,7 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    l.vvvv('${bloc.runtimeType}() ====\ncurrent: ${change.currentState}\nnext: ${change.nextState}');
+    l.vvvv('${bloc.runtimeType}(): ${change.currentState} ==> ${change.nextState}');
   }
 
   @override
