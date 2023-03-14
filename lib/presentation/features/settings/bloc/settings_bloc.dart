@@ -76,6 +76,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       );
       print(res.toString());
       await getIt<SharedPreferences>().setString('apiKey', apiKeyGlobal!);
+      apiKeyChecked = true;
       emitter(SettingsState.initialized(apiKey: newApiKey, checkStatus: CheckApiKeyStatuses.ok));
     } catch (error) {
       apiKeyGlobal = oldApiKey;

@@ -13,3 +13,4 @@ Future<void> initLocatorService() async {
 }
 
 String? apiKeyGlobal;
+bool apiKeyChecked = false;

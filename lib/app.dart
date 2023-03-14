@@ -5,6 +5,7 @@ import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/debug/bloc/debug_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/debug/screens/debug_screen.dart';
+import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
 import 'package:tinkoff_helper/presentation/features/main/screens/main_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
@@ -36,6 +37,8 @@ class App extends StatelessWidget {
           body: Stack(children: [
             VerticalTabs(
               direction: TextDirection.ltr,
+              contentScrollAxis: Axis.vertical,
+              initialIndex: 2,
               selectedTabBackgroundColor: Colors.yellow,
               tabBackgroundColor: const Color(0xFFb5b50b),
               tabsShadowColor: Colors.yellow,
@@ -49,7 +52,7 @@ class App extends StatelessWidget {
               ],
               contents: const [
                 HomeScreen(),
-                Center(),
+                ExpertScreen(),
                 SettingsScreen(),
                 DebugScreen(),
               ],
