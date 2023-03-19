@@ -87,19 +87,30 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       final userAccount = UserAccount.newUser(
         accountId: accResponse.accounts.first.id,
         accountName: accResponse.accounts.first.name,
-        totalBalance: portfolioResponse.totalAmountPortfolio.units.toInt() +
-            nanoToUnit(portfolioResponse.totalAmountPortfolio.nano),
+        totalBalance: unitNanoToDouble(
+          portfolioResponse.totalAmountPortfolio.units,
+          portfolioResponse.totalAmountPortfolio.nano,
+        ),
         tradeBalance: getIt<HiveStorage>().tradeBalance,
-        freeBalance: withdrawResponse.money.first.units.toInt() + nanoToUnit(withdrawResponse.money.first.nano),
+        freeBalance: unitNanoToDouble(
+          withdrawResponse.money.first.units,
+          withdrawResponse.money.first.nano,
+        ),
       );
       await getIt<HiveStorage>().setApiKey(newApiKey);
-      emitter(
-          SettingsState.initialized(userAccount: userAccount, apiKey: newApiKey, checkStatus: CheckApiKeyStatuses.ok));
+      emitter(SettingsState.initialized(
+        userAccount: userAccount,
+        apiKey: newApiKey,
+        checkStatus: CheckApiKeyStatuses.ok,
+      ));
     } catch (error) {
       getIt<TinkoffApiService>().updateCallOptions(oldApiKey);
       emitter(SettingsState.error(message: error.toString(), apiKey: newApiKey));
-      emitter(
-          SettingsState.initialized(userAccount: null, apiKey: state.apiKey, checkStatus: CheckApiKeyStatuses.failed));
+      emitter(SettingsState.initialized(
+        userAccount: null,
+        apiKey: state.apiKey,
+        checkStatus: CheckApiKeyStatuses.failed,
+      ));
     }
   }
 }

@@ -1,21 +1,27 @@
-class StepsBalancer {
-  final List<int> stepRateList;
-  final double tradeBalance;
-  final int stocksAmount;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 
-  StepsBalancer({
-    required this.stepRateList,
-    required this.tradeBalance,
-    required this.stocksAmount,
-  });
+part 'steps_balancer.freezed.dart';
+part 'steps_balancer.g.dart';
+
+@freezed
+abstract class StepsBalancer with _$StepsBalancer {
+  @HiveType(typeId: 0, adapterName: 'StepsBalancerAdapter')
+  const factory StepsBalancer.create({
+    @HiveField(0) required List<int> stepRateList,
+    @HiveField(1) required double tradeBalance,
+    @HiveField(2) required int stocksAmount,
+  }) = _StepBalancer;
+
+  const StepsBalancer._();
 
   // Сила ступени
   int getStepAmount(int step) => stepRateList[step];
 
   // Процент ступени
-  int getStepPercent(int step) => getStepsPercent()[step];
+  int getStepPercent(int step) => stepsPercent[step];
 
-  List<int> getStepsPercent() {
+  List<int> get stepsPercent {
     int sum = 0;
     for (int s in stepRateList) {
       sum += s;
@@ -28,7 +34,7 @@ class StepsBalancer {
   }
 
   // Денег на одну акцию
-  double get oneStockMoneyVolume => tradeBalance / stocksAmount;
+  double get oneStockMoneyVolume => (tradeBalance / stocksAmount).floorToDouble();
 
   // Денег на ступень
   double getStepMoneyVolume(int step) => ((oneStockMoneyVolume * getStepPercent(step)) / 100).floorToDouble();

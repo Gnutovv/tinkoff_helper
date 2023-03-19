@@ -21,6 +21,7 @@ mixin _$ExpertEvent {
     required TResult Function(UserAccount userAccount) init,
     required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
     required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() updateTotalBalance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$ExpertEvent {
     TResult? Function(UserAccount userAccount)? init,
     TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
     TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? updateTotalBalance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$ExpertEvent {
     TResult Function(UserAccount userAccount)? init,
     TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
     TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? updateTotalBalance,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$ExpertEvent {
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$ExpertEvent {
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$ExpertEvent {
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -152,6 +158,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     required TResult Function(UserAccount userAccount) init,
     required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
     required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() updateTotalBalance,
   }) {
     return init(userAccount);
   }
@@ -162,6 +169,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     TResult? Function(UserAccount userAccount)? init,
     TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
     TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? updateTotalBalance,
   }) {
     return init?.call(userAccount);
   }
@@ -172,6 +180,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     TResult Function(UserAccount userAccount)? init,
     TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
     TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? updateTotalBalance,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -186,6 +195,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
   }) {
     return init(this);
   }
@@ -196,6 +206,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
   }) {
     return init?.call(this);
   }
@@ -206,6 +217,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -309,6 +321,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     required TResult Function(UserAccount userAccount) init,
     required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
     required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() updateTotalBalance,
   }) {
     return updateBalancer(stepsRateList, stocksAmount);
   }
@@ -319,6 +332,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     TResult? Function(UserAccount userAccount)? init,
     TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
     TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? updateTotalBalance,
   }) {
     return updateBalancer?.call(stepsRateList, stocksAmount);
   }
@@ -329,6 +343,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     TResult Function(UserAccount userAccount)? init,
     TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
     TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? updateTotalBalance,
     required TResult orElse(),
   }) {
     if (updateBalancer != null) {
@@ -343,6 +358,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
   }) {
     return updateBalancer(this);
   }
@@ -353,6 +369,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
   }) {
     return updateBalancer?.call(this);
   }
@@ -363,6 +380,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
     required TResult orElse(),
   }) {
     if (updateBalancer != null) {
@@ -451,6 +469,7 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
     required TResult Function(UserAccount userAccount) init,
     required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
     required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() updateTotalBalance,
   }) {
     return updateTradeBalance(newBalance);
   }
@@ -461,6 +480,7 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
     TResult? Function(UserAccount userAccount)? init,
     TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
     TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? updateTotalBalance,
   }) {
     return updateTradeBalance?.call(newBalance);
   }
@@ -471,6 +491,7 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
     TResult Function(UserAccount userAccount)? init,
     TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
     TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? updateTotalBalance,
     required TResult orElse(),
   }) {
     if (updateTradeBalance != null) {
@@ -485,6 +506,7 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
   }) {
     return updateTradeBalance(this);
   }
@@ -495,6 +517,7 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
   }) {
     return updateTradeBalance?.call(this);
   }
@@ -505,6 +528,7 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
     required TResult orElse(),
   }) {
     if (updateTradeBalance != null) {
@@ -522,6 +546,120 @@ abstract class _UpdateTradeBalanceExpertEvent extends ExpertEvent {
   @JsonKey(ignore: true)
   _$$_UpdateTradeBalanceExpertEventCopyWith<_$_UpdateTradeBalanceExpertEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateTotalBalanceExpertEventCopyWith<$Res> {
+  factory _$$_UpdateTotalBalanceExpertEventCopyWith(
+          _$_UpdateTotalBalanceExpertEvent value, $Res Function(_$_UpdateTotalBalanceExpertEvent) then) =
+      __$$_UpdateTotalBalanceExpertEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UpdateTotalBalanceExpertEventCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$_UpdateTotalBalanceExpertEvent>
+    implements _$$_UpdateTotalBalanceExpertEventCopyWith<$Res> {
+  __$$_UpdateTotalBalanceExpertEventCopyWithImpl(
+      _$_UpdateTotalBalanceExpertEvent _value, $Res Function(_$_UpdateTotalBalanceExpertEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UpdateTotalBalanceExpertEvent extends _UpdateTotalBalanceExpertEvent {
+  const _$_UpdateTotalBalanceExpertEvent() : super._();
+
+  @override
+  String toString() {
+    return 'ExpertEvent.updateTotalBalance()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UpdateTotalBalanceExpertEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserAccount userAccount) init,
+    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
+    required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() updateTotalBalance,
+  }) {
+    return updateTotalBalance();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UserAccount userAccount)? init,
+    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
+    TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? updateTotalBalance,
+  }) {
+    return updateTotalBalance?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserAccount userAccount)? init,
+    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
+    TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? updateTotalBalance,
+    required TResult orElse(),
+  }) {
+    if (updateTotalBalance != null) {
+      return updateTotalBalance();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitExpertEvent value) init,
+    required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
+    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
+  }) {
+    return updateTotalBalance(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitExpertEvent value)? init,
+    TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
+  }) {
+    return updateTotalBalance?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitExpertEvent value)? init,
+    TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
+    required TResult orElse(),
+  }) {
+    if (updateTotalBalance != null) {
+      return updateTotalBalance(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateTotalBalanceExpertEvent extends ExpertEvent {
+  const factory _UpdateTotalBalanceExpertEvent() = _$_UpdateTotalBalanceExpertEvent;
+  const _UpdateTotalBalanceExpertEvent._() : super._();
 }
 
 /// @nodoc
@@ -584,6 +722,7 @@ abstract class $ExpertStateCopyWith<$Res> {
   @useResult
   $Res call({StepsBalancer balancer, UserAccount? account});
 
+  $StepsBalancerCopyWith<$Res> get balancer;
   $UserAccountCopyWith<$Res>? get account;
 }
 
@@ -616,6 +755,14 @@ class _$ExpertStateCopyWithImpl<$Res, $Val extends ExpertState> implements $Expe
 
   @override
   @pragma('vm:prefer-inline')
+  $StepsBalancerCopyWith<$Res> get balancer {
+    return $StepsBalancerCopyWith<$Res>(_value.balancer, (value) {
+      return _then(_value.copyWith(balancer: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $UserAccountCopyWith<$Res>? get account {
     if (_value.account == null) {
       return null;
@@ -636,6 +783,8 @@ abstract class _$$_InitializedExpertStateCopyWith<$Res> implements $ExpertStateC
   @useResult
   $Res call({StepsBalancer balancer, UserAccount? account});
 
+  @override
+  $StepsBalancerCopyWith<$Res> get balancer;
   @override
   $UserAccountCopyWith<$Res>? get account;
 }
@@ -792,6 +941,8 @@ abstract class _$$_InProgressExpertStateCopyWith<$Res> implements $ExpertStateCo
   $Res call({StepsBalancer balancer, UserAccount? account});
 
   @override
+  $StepsBalancerCopyWith<$Res> get balancer;
+  @override
   $UserAccountCopyWith<$Res>? get account;
 }
 
@@ -944,6 +1095,8 @@ abstract class _$$_ErrorExpertStateCopyWith<$Res> implements $ExpertStateCopyWit
   @useResult
   $Res call({StepsBalancer balancer, UserAccount? account, String message});
 
+  @override
+  $StepsBalancerCopyWith<$Res> get balancer;
   @override
   $UserAccountCopyWith<$Res>? get account;
 }

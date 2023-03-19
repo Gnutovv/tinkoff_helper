@@ -1,16 +1,18 @@
 extension StringExtension on String {
   String get toMoneyFormat {
-    if (length == 7) {
+    final lenAfterDot = split('.').last.length;
+
+    if (length == lenAfterDot + 5) {
       return '${substring(0, 1)} ${substring(1)} ₽';
     }
-    if (length == 8) {
+    if (length == lenAfterDot + 6) {
       return '${substring(0, 2)} ${substring(2)} ₽';
     }
-    if (length == 9) {
+    if (length == lenAfterDot + 7) {
       return '${substring(0, 3)} ${substring(3)} ₽';
     }
-    if (length == 10) {
-      return '${substring(0, 1)} ${substring(1, 3)} ${substring(3)} ₽';
+    if (length == lenAfterDot + 8) {
+      return '${substring(0, 1)} ${substring(1, 4)} ${substring(4)} ₽';
     }
     return ('$this ₽');
   }
@@ -43,6 +45,10 @@ String intToOrderStepName(int i) {
   }
 }
 
-double nanoToUnit(int nano) {
+double _nanoToUnit(int nano) {
   return nano / 1000000;
+}
+
+double unitNanoToDouble(dynamic unit, int nano) {
+  return unit.toInt() + _nanoToUnit(nano);
 }

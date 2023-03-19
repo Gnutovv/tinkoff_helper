@@ -61,6 +61,16 @@ class _ExpertScreenState extends State<ExpertScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      const Text('Счет: '),
+                      Text(
+                        state.account!.accountName,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                       const Text('Всего: '),
                       Text(
                         state.account!.totalBalance.toString().toMoneyFormat,
@@ -94,7 +104,7 @@ class _ExpertScreenState extends State<ExpertScreen> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          //context.read<ExpertBloc>().add(const ExpertEvent.updateBalancer());
+                          context.read<ExpertBloc>().add(const ExpertEvent.updateTotalBalance());
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.amber, // Background color

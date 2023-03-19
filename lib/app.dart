@@ -6,7 +6,6 @@ import 'package:tinkoff_helper/presentation/features/debug/bloc/debug_bloc.dart'
 import 'package:tinkoff_helper/presentation/features/debug/screens/debug_screen.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
-import 'package:tinkoff_helper/presentation/features/main/screens/main_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/widgets/need_authorize_placeholder.dart';
@@ -44,21 +43,23 @@ class App extends StatelessWidget {
               return VerticalTabs(
                 direction: TextDirection.ltr,
                 contentScrollAxis: Axis.vertical,
-                initialIndex: 2,
+                initialIndex: 3,
                 selectedTabBackgroundColor: Colors.yellow,
                 tabBackgroundColor: const Color(0xFFb5b50b),
                 tabsShadowColor: Colors.yellow,
                 indicatorWidth: 0,
                 tabsWidth: 59,
                 tabs: const [
-                  Tab(icon: Icon(Icons.home)),
+                  Tab(icon: Icon(Icons.cases_rounded)),
                   Tab(icon: Icon(Icons.science_rounded)),
+                  Tab(icon: Icon(Icons.search_sharp)),
                   Tab(icon: Icon(Icons.settings)),
                   Tab(icon: Icon(Icons.developer_board_rounded)),
                 ],
                 contents: [
-                  state.hasUserAccount ? const HomeScreen() : const NeedAuthorizePlaceholder(),
+                  state.hasUserAccount ? const Center() : const NeedAuthorizePlaceholder(),
                   state.hasUserAccount ? const ExpertScreen() : const NeedAuthorizePlaceholder(),
+                  state.hasUserAccount ? const Center() : const NeedAuthorizePlaceholder(),
                   const SettingsScreen(),
                   state.hasUserAccount ? const DebugScreen() : const NeedAuthorizePlaceholder(),
                 ],
