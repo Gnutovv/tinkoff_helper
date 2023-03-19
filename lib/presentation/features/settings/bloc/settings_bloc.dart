@@ -1,10 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tinkoff_helper/common/format.dart';
 import 'package:tinkoff_helper/di/di.dart';
+import 'package:tinkoff_helper/domain/expert/user_account.dart';
+import 'package:tinkoff_helper/network/generated/operations.pb.dart';
 import 'package:tinkoff_helper/network/generated/users.pb.dart';
 import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
 import 'package:tinkoff_helper/presentation/features/settings/widgets/api_key_button.dart';
+import 'package:tinkoff_helper/storage/hive_storage.dart';
 
 part 'settings_bloc.freezed.dart';
 
@@ -22,20 +25,20 @@ class SettingsState with _$SettingsState {
         inProgress: (state) => true,
       );
 
-  bool get hasError => maybeMap<bool>(
+  bool get hasUserAccount => maybeMap(
         orElse: () => false,
-        error: (state) => true,
+        initialized: (state) => state.userAccount != null,
       );
 
-  String? get errorMessage => maybeMap<String?>(
-        orElse: () => null,
-        error: (state) => state.message,
+  UserAccount? get userAccount => mapOrNull<UserAccount?>(
+        initialized: (state) => state.userAccount,
       );
 
   const SettingsState._();
 
   factory SettingsState.initialized({
     required String apiKey,
+    required UserAccount? userAccount,
     @Default(CheckApiKeyStatuses.readyToCheck) CheckApiKeyStatuses checkStatus,
   }) = _InitializedSettingsState;
 
@@ -53,7 +56,8 @@ class SettingsState with _$SettingsState {
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   final tinkoffApiService = getIt<TinkoffApiService>();
-  SettingsBloc({required String apiKey}) : super(SettingsState.initialized(apiKey: apiKey)) {
+
+  SettingsBloc({required String apiKey}) : super(SettingsState.initialized(userAccount: null, apiKey: apiKey)) {
     on<SettingsEvent>(
       (event, emitter) => event.map(checkApiKey: (event) => _checkApiKey(event, emitter)),
     );
@@ -63,27 +67,39 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     final newApiKey = event.apiKey;
     final oldApiKey = state.apiKey;
 
-    apiKeyGlobal = newApiKey;
-    getIt<TinkoffApiService>().updateCallOptions();
+    getIt<TinkoffApiService>().updateCallOptions(newApiKey);
 
-    print('Начинаю проверку $newApiKey');
     emitter(SettingsState.inProgress(apiKey: newApiKey));
     try {
-      //await Future.delayed(Duration(seconds: 2));
-      final request = GetAccountsRequest();
-      print(request.toString());
-      print(tinkoffApiService.sandboxServiceClient.toString());
-      final res = await tinkoffApiService.sandboxServiceClient
-          .getSandboxAccounts(request, options: tinkoffApiService.callOptions);
-      print('Проверка прошла: $res');
-      await getIt<SharedPreferences>().setString('apiKey', apiKeyGlobal!);
-      emitter(SettingsState.initialized(apiKey: newApiKey, checkStatus: CheckApiKeyStatuses.ok));
+      final accResponse = await tinkoffApiService.usersServiceClient
+          .getAccounts(GetAccountsRequest(), options: tinkoffApiService.callOptions);
+      final portfolioResponse = await tinkoffApiService.operationsServiceClient.getPortfolio(
+        PortfolioRequest(
+          accountId: accResponse.accounts.first.id,
+          currency: PortfolioRequest_CurrencyRequest.RUB,
+        ),
+        options: tinkoffApiService.callOptions,
+      );
+      final withdrawResponse = await tinkoffApiService.operationsServiceClient.getWithdrawLimits(
+        WithdrawLimitsRequest(accountId: accResponse.accounts.first.id),
+        options: tinkoffApiService.callOptions,
+      );
+      final userAccount = UserAccount.newUser(
+        accountId: accResponse.accounts.first.id,
+        accountName: accResponse.accounts.first.name,
+        totalBalance: portfolioResponse.totalAmountPortfolio.units.toInt() +
+            nanoToUnit(portfolioResponse.totalAmountPortfolio.nano),
+        tradeBalance: getIt<HiveStorage>().tradeBalance,
+        freeBalance: withdrawResponse.money.first.units.toInt() + nanoToUnit(withdrawResponse.money.first.nano),
+      );
+      await getIt<HiveStorage>().setApiKey(newApiKey);
+      emitter(
+          SettingsState.initialized(userAccount: userAccount, apiKey: newApiKey, checkStatus: CheckApiKeyStatuses.ok));
     } catch (error) {
-      apiKeyGlobal = oldApiKey;
-      getIt<TinkoffApiService>().updateCallOptions();
-      emitter(SettingsState.error(message: error.toString(), apiKey: oldApiKey));
-      print('Проверка не прошла, ошибка: ${state.errorMessage}');
-      emitter(SettingsState.initialized(apiKey: oldApiKey, checkStatus: CheckApiKeyStatuses.failed));
+      getIt<TinkoffApiService>().updateCallOptions(oldApiKey);
+      emitter(SettingsState.error(message: error.toString(), apiKey: newApiKey));
+      emitter(
+          SettingsState.initialized(userAccount: null, apiKey: state.apiKey, checkStatus: CheckApiKeyStatuses.failed));
     }
   }
 }

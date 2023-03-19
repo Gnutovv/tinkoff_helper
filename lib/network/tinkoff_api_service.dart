@@ -8,6 +8,7 @@ import 'package:tinkoff_helper/network/generated/sandbox.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/stoporders.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/users.pbgrpc.dart';
 import 'package:tinkoff_helper/network/hosts.dart';
+import 'package:tinkoff_helper/storage/hive_storage.dart';
 
 class TinkoffApiService {
   late ClientChannel _channel;
@@ -23,7 +24,7 @@ class TinkoffApiService {
   CallOptions get callOptions => _callOptions;
 
   void init() {
-    updateCallOptions();
+    updateCallOptions(getIt<HiveStorage>().apiKey);
     instrumentsServiceClient = InstrumentsServiceClient(_channel);
     marketDataServiceClient = MarketDataServiceClient(_channel);
     operationsServiceClient = OperationsServiceClient(_channel);
@@ -33,10 +34,10 @@ class TinkoffApiService {
     usersServiceClient = UsersServiceClient(_channel);
   }
 
-  void updateCallOptions() {
-    _callOptions = CallOptions(metadata: {'Authorization': 'Bearer $apiKeyGlobal'});
+  void updateCallOptions(String apiKey) {
+    _callOptions = CallOptions(metadata: {'Authorization': 'Bearer $apiKey'});
     _channel = ClientChannel(
-      TinkoffHosts.sandbox,
+      TinkoffHosts.prod,
       port: TinkoffHosts.port,
     );
   }

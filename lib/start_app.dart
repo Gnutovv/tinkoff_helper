@@ -4,10 +4,10 @@ import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
 import 'package:tinkoff_helper/presentation/bloc/utils/app_bloc_observer.dart';
+import 'package:tinkoff_helper/storage/hive_storage.dart';
 
 import 'app.dart';
 
@@ -16,8 +16,8 @@ void startApp() {
   Bloc.transformer = bloc_concurrency.sequential<Object?>();
   runZonedGuarded<void>(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    await initLocatorService();
-    apiKeyGlobal = getIt<SharedPreferences>().getString('apiKey');
+    initLocatorService();
+    await getIt<HiveStorage>().init();
     getIt<TinkoffApiService>().init();
     runApp(const App());
   }, (error, stackTrace) {
