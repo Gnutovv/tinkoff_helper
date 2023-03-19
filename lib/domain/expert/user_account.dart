@@ -1,15 +1,16 @@
-class UserAccount {
-  final String accountId;
-  final String accountName;
-  final double totalBalance;
-  final double tradeBalance;
-  final double freeBalance;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  const UserAccount({
-    required this.accountId,
-    required this.accountName,
-    required this.totalBalance,
-    required this.tradeBalance,
-    required this.freeBalance,
-  });
+part 'user_account.freezed.dart';
+
+@freezed
+class UserAccount with _$UserAccount {
+  const factory UserAccount.newUser({
+    required String accountId,
+    required String accountName,
+    required double totalBalance,
+    required double tradeBalance,
+    required double freeBalance,
+  }) = _NewUserAccount;
+
+  const UserAccount._();
 }

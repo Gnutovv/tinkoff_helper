@@ -13,23 +13,27 @@ class HiveStorage {
     _stepBalancer = await Hive.openBox('balancer');
   }
 
+  //API KEY
   String get apiKey => _pref.get('api_key') ?? '';
-
   Future<void> setApiKey(String apiKey) async {
     await _pref.put('api_key', apiKey);
   }
 
+  //TRADE BALANCE
   double get tradeBalance => _pref.get('trade_balance') ?? 0.00;
-
   Future<void> setTradeBalance(double balance) async {
     await _pref.put('trade_balance', balance);
   }
 
-  StepsBalancer get stepsBalancer =>
-      _stepBalancer.get('step_balancer') ??
-      StepsBalancer(
-        stepRateList: [1, 1, 1, 1, 1],
+  //STEPS BALANCER
+  StepsBalancer get stepsBalancer => StepsBalancer(
+        stepRateList: _stepBalancer.get('steps_rate') ?? [1, 1, 1, 1, 1],
         tradeBalance: tradeBalance,
-        stocksAmount: 25,
+        stocksAmount: _stepBalancer.get('stocks_amount') ?? 25,
       );
+
+  Future<void> setStepsBalancer(StepsBalancer balancer) async {
+    await _stepBalancer.put('steps_rate', balancer.stepRateList);
+    await _stepBalancer.put('stocks_amount', balancer.stocksAmount);
+  }
 }

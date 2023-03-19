@@ -25,10 +25,6 @@ class SettingsState with _$SettingsState {
         inProgress: (state) => true,
       );
 
-  String? get errorMessage => mapOrNull<String?>(
-        error: (state) => state.message,
-      );
-
   bool get hasUserAccount => maybeMap(
         orElse: () => false,
         initialized: (state) => state.userAccount != null,
@@ -88,7 +84,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         WithdrawLimitsRequest(accountId: accResponse.accounts.first.id),
         options: tinkoffApiService.callOptions,
       );
-      final userAccount = UserAccount(
+      final userAccount = UserAccount.newUser(
         accountId: accResponse.accounts.first.id,
         accountName: accResponse.accounts.first.name,
         totalBalance: portfolioResponse.totalAmountPortfolio.units.toInt() +

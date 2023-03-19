@@ -23,6 +23,7 @@ class CardItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(8),
       width: width,
       height: height,
       decoration: BoxDecoration(

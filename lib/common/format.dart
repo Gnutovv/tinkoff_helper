@@ -12,7 +12,7 @@ extension StringExtension on String {
     if (length == 10) {
       return '${substring(0, 1)} ${substring(1, 3)} ${substring(3)} ₽';
     }
-    return this;
+    return ('$this ₽');
   }
 }
 

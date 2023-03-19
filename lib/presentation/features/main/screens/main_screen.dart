@@ -4,7 +4,7 @@ import 'package:tinkoff_helper/domain/stock_instrument.dart';
 import 'package:tinkoff_helper/network/generated/instruments.pb.dart';
 import 'package:tinkoff_helper/network/generated/marketdata.pb.dart';
 import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
-import 'package:tinkoff_helper/presentation/common/widgets/card_item.dart';
+import 'package:tinkoff_helper/presentation/common/widgets/card_item_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

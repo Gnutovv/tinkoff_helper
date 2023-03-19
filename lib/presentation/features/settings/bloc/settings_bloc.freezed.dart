@@ -312,6 +312,8 @@ abstract class _$$_InitializedSettingsStateCopyWith<$Res> implements $SettingsSt
   @override
   @useResult
   $Res call({String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus});
+
+  $UserAccountCopyWith<$Res>? get userAccount;
 }
 
 /// @nodoc
@@ -343,6 +345,18 @@ class __$$_InitializedSettingsStateCopyWithImpl<$Res>
           : checkStatus // ignore: cast_nullable_to_non_nullable
               as CheckApiKeyStatuses,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserAccountCopyWith<$Res>? get userAccount {
+    if (_value.userAccount == null) {
+      return null;
+    }
+
+    return $UserAccountCopyWith<$Res>(_value.userAccount!, (value) {
+      return _then(_value.copyWith(userAccount: value));
+    });
   }
 }
 

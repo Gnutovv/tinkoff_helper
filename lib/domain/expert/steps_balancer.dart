@@ -1,14 +1,6 @@
-import 'package:hive/hive.dart';
-
-@HiveType(typeId: 0)
 class StepsBalancer {
-  @HiveField(0)
   final List<int> stepRateList;
-
-  @HiveField(1)
   final double tradeBalance;
-
-  @HiveField(2)
   final int stocksAmount;
 
   StepsBalancer({
@@ -17,9 +9,11 @@ class StepsBalancer {
     required this.stocksAmount,
   });
 
-  int getStepAmount(int step) => stepRateList[step - 1];
+  // Сила ступени
+  int getStepAmount(int step) => stepRateList[step];
 
-  int getStepPercent(int step) => getStepsPercent()[step - 1];
+  // Процент ступени
+  int getStepPercent(int step) => getStepsPercent()[step];
 
   List<int> getStepsPercent() {
     int sum = 0;
@@ -33,8 +27,10 @@ class StepsBalancer {
     return stepsPercent;
   }
 
+  // Денег на одну акцию
   double get oneStockMoneyVolume => tradeBalance / stocksAmount;
 
+  // Денег на ступень
   double getStepMoneyVolume(int step) => ((oneStockMoneyVolume * getStepPercent(step)) / 100).floorToDouble();
 
   List<double> get stepsMoneyVolume {
