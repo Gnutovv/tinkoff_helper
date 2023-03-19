@@ -1,6 +1,14 @@
+import 'package:hive/hive.dart';
+
+@HiveType(typeId: 0)
 class StepsBalancer {
+  @HiveField(0)
   final List<int> stepRateList;
+
+  @HiveField(1)
   final double tradeBalance;
+
+  @HiveField(2)
   final int stocksAmount;
 
   StepsBalancer({

@@ -17,8 +17,8 @@ void startApp() {
   runZonedGuarded<void>(() async {
     WidgetsFlutterBinding.ensureInitialized();
     initLocatorService();
-    getIt<TinkoffApiService>().init();
     await getIt<HiveStorage>().init();
+    getIt<TinkoffApiService>().init();
     runApp(const App());
   }, (error, stackTrace) {
     if (kDebugMode) print('error: $error\n $stackTrace');

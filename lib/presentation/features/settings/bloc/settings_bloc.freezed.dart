@@ -221,21 +221,21 @@ mixin _$SettingsState {
   CheckApiKeyStatuses get checkStatus => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) initialized,
+    required TResult Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus) initialized,
     required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) inProgress,
     required TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
+    TResult? Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus)? initialized,
     TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
     TResult? Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
+    TResult Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus)? initialized,
     TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
     TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
     required TResult orElse(),
@@ -311,7 +311,7 @@ abstract class _$$_InitializedSettingsStateCopyWith<$Res> implements $SettingsSt
       __$$_InitializedSettingsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String apiKey, CheckApiKeyStatuses checkStatus});
+  $Res call({String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus});
 }
 
 /// @nodoc
@@ -326,6 +326,7 @@ class __$$_InitializedSettingsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? apiKey = null,
+    Object? userAccount = freezed,
     Object? checkStatus = null,
   }) {
     return _then(_$_InitializedSettingsState(
@@ -333,6 +334,10 @@ class __$$_InitializedSettingsStateCopyWithImpl<$Res>
           ? _value.apiKey
           : apiKey // ignore: cast_nullable_to_non_nullable
               as String,
+      userAccount: freezed == userAccount
+          ? _value.userAccount
+          : userAccount // ignore: cast_nullable_to_non_nullable
+              as UserAccount?,
       checkStatus: null == checkStatus
           ? _value.checkStatus
           : checkStatus // ignore: cast_nullable_to_non_nullable
@@ -344,17 +349,21 @@ class __$$_InitializedSettingsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_InitializedSettingsState extends _InitializedSettingsState {
-  _$_InitializedSettingsState({required this.apiKey, this.checkStatus = CheckApiKeyStatuses.readyToCheck}) : super._();
+  _$_InitializedSettingsState(
+      {required this.apiKey, required this.userAccount, this.checkStatus = CheckApiKeyStatuses.readyToCheck})
+      : super._();
 
   @override
   final String apiKey;
+  @override
+  final UserAccount? userAccount;
   @override
   @JsonKey()
   final CheckApiKeyStatuses checkStatus;
 
   @override
   String toString() {
-    return 'SettingsState.initialized(apiKey: $apiKey, checkStatus: $checkStatus)';
+    return 'SettingsState.initialized(apiKey: $apiKey, userAccount: $userAccount, checkStatus: $checkStatus)';
   }
 
   @override
@@ -363,11 +372,12 @@ class _$_InitializedSettingsState extends _InitializedSettingsState {
         (other.runtimeType == runtimeType &&
             other is _$_InitializedSettingsState &&
             (identical(other.apiKey, apiKey) || other.apiKey == apiKey) &&
+            (identical(other.userAccount, userAccount) || other.userAccount == userAccount) &&
             (identical(other.checkStatus, checkStatus) || other.checkStatus == checkStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, apiKey, checkStatus);
+  int get hashCode => Object.hash(runtimeType, apiKey, userAccount, checkStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -378,33 +388,33 @@ class _$_InitializedSettingsState extends _InitializedSettingsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) initialized,
+    required TResult Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus) initialized,
     required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) inProgress,
     required TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus) error,
   }) {
-    return initialized(apiKey, checkStatus);
+    return initialized(apiKey, userAccount, checkStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
+    TResult? Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus)? initialized,
     TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
     TResult? Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
   }) {
-    return initialized?.call(apiKey, checkStatus);
+    return initialized?.call(apiKey, userAccount, checkStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
+    TResult Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus)? initialized,
     TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
     TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(apiKey, checkStatus);
+      return initialized(apiKey, userAccount, checkStatus);
     }
     return orElse();
   }
@@ -445,12 +455,15 @@ class _$_InitializedSettingsState extends _InitializedSettingsState {
 }
 
 abstract class _InitializedSettingsState extends SettingsState {
-  factory _InitializedSettingsState({required final String apiKey, final CheckApiKeyStatuses checkStatus}) =
-      _$_InitializedSettingsState;
+  factory _InitializedSettingsState(
+      {required final String apiKey,
+      required final UserAccount? userAccount,
+      final CheckApiKeyStatuses checkStatus}) = _$_InitializedSettingsState;
   _InitializedSettingsState._() : super._();
 
   @override
   String get apiKey;
+  UserAccount? get userAccount;
   @override
   CheckApiKeyStatuses get checkStatus;
   @override
@@ -532,7 +545,7 @@ class _$_InProgressSettingsState extends _InProgressSettingsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) initialized,
+    required TResult Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus) initialized,
     required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) inProgress,
     required TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus) error,
   }) {
@@ -542,7 +555,7 @@ class _$_InProgressSettingsState extends _InProgressSettingsState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
+    TResult? Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus)? initialized,
     TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
     TResult? Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
   }) {
@@ -552,7 +565,7 @@ class _$_InProgressSettingsState extends _InProgressSettingsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
+    TResult Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus)? initialized,
     TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
     TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
     required TResult orElse(),
@@ -692,7 +705,7 @@ class _$_ErrorSettingsState extends _ErrorSettingsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) initialized,
+    required TResult Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus) initialized,
     required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) inProgress,
     required TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus) error,
   }) {
@@ -702,7 +715,7 @@ class _$_ErrorSettingsState extends _ErrorSettingsState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
+    TResult? Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus)? initialized,
     TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
     TResult? Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
   }) {
@@ -712,7 +725,7 @@ class _$_ErrorSettingsState extends _ErrorSettingsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
+    TResult Function(String apiKey, UserAccount? userAccount, CheckApiKeyStatuses checkStatus)? initialized,
     TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
     TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
     required TResult orElse(),

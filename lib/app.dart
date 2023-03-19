@@ -4,10 +4,12 @@ import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/debug/bloc/debug_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/debug/screens/debug_screen.dart';
+import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
 import 'package:tinkoff_helper/presentation/features/main/screens/main_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
+import 'package:tinkoff_helper/presentation/features/settings/widgets/need_authorize_placeholder.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
 import 'package:vertical_tabs_flutter/vertical_tabs.dart';
 
@@ -24,6 +26,9 @@ class App extends StatelessWidget {
         BlocProvider<SettingsBloc>(
           create: (context) => SettingsBloc(apiKey: getIt<HiveStorage>().apiKey),
         ),
+        BlocProvider<ExpertBloc>(
+          create: (context) => ExpertBloc(balancer: getIt<HiveStorage>().stepsBalancer),
+        ),
       ],
       child: MaterialApp(
         title: 'Tinkoff Helper',
@@ -35,28 +40,30 @@ class App extends StatelessWidget {
             title: const Text('Tinkoff Helper'),
           ),
           body: Stack(children: [
-            VerticalTabs(
-              direction: TextDirection.ltr,
-              contentScrollAxis: Axis.vertical,
-              initialIndex: 2,
-              selectedTabBackgroundColor: Colors.yellow,
-              tabBackgroundColor: const Color(0xFFb5b50b),
-              tabsShadowColor: Colors.yellow,
-              indicatorWidth: 0,
-              tabsWidth: 59,
-              tabs: const [
-                Tab(icon: Icon(Icons.home)),
-                Tab(icon: Icon(Icons.science_rounded)),
-                Tab(icon: Icon(Icons.settings)),
-                Tab(icon: Icon(Icons.developer_board_rounded)),
-              ],
-              contents: const [
-                HomeScreen(),
-                ExpertScreen(),
-                SettingsScreen(),
-                DebugScreen(),
-              ],
-            ),
+            BlocBuilder<SettingsBloc, SettingsState>(builder: (context, state) {
+              return VerticalTabs(
+                direction: TextDirection.ltr,
+                contentScrollAxis: Axis.vertical,
+                initialIndex: 2,
+                selectedTabBackgroundColor: Colors.yellow,
+                tabBackgroundColor: const Color(0xFFb5b50b),
+                tabsShadowColor: Colors.yellow,
+                indicatorWidth: 0,
+                tabsWidth: 59,
+                tabs: const [
+                  Tab(icon: Icon(Icons.home)),
+                  Tab(icon: Icon(Icons.science_rounded)),
+                  Tab(icon: Icon(Icons.settings)),
+                  Tab(icon: Icon(Icons.developer_board_rounded)),
+                ],
+                contents: [
+                  state.hasUserAccount ? const HomeScreen() : const NeedAuthorizePlaceholder(),
+                  state.hasUserAccount ? const ExpertScreen() : const NeedAuthorizePlaceholder(),
+                  const SettingsScreen(),
+                  state.hasUserAccount ? const DebugScreen() : const NeedAuthorizePlaceholder(),
+                ],
+              );
+            }),
             Positioned.fill(child: LoaderWidget(controller: getIt<LoaderController>())),
           ]),
         ),

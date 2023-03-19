@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
+import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/widgets/api_key_button.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
@@ -36,6 +37,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           orElse: () => loaderController.stopLoading(),
         );
         state.mapOrNull(
+          initialized: (state) {
+            if (state.hasUserAccount) context.read<ExpertBloc>().add(ExpertEvent.init(userAccount: state.userAccount!));
+          },
           error: (state) => showDialog(
             context: context,
             builder: (BuildContext context) {

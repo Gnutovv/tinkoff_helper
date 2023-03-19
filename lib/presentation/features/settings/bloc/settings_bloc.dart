@@ -29,6 +29,11 @@ class SettingsState with _$SettingsState {
         error: (state) => state.message,
       );
 
+  bool get hasUserAccount => maybeMap(
+        orElse: () => false,
+        initialized: (state) => state.userAccount != null,
+      );
+
   UserAccount? get userAccount => mapOrNull<UserAccount?>(
         initialized: (state) => state.userAccount,
       );
@@ -37,6 +42,7 @@ class SettingsState with _$SettingsState {
 
   factory SettingsState.initialized({
     required String apiKey,
+    required UserAccount? userAccount,
     @Default(CheckApiKeyStatuses.readyToCheck) CheckApiKeyStatuses checkStatus,
   }) = _InitializedSettingsState;
 
@@ -55,7 +61,7 @@ class SettingsState with _$SettingsState {
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   final tinkoffApiService = getIt<TinkoffApiService>();
 
-  SettingsBloc({required String apiKey}) : super(SettingsState.initialized(apiKey: apiKey)) {
+  SettingsBloc({required String apiKey}) : super(SettingsState.initialized(userAccount: null, apiKey: apiKey)) {
     on<SettingsEvent>(
       (event, emitter) => event.map(checkApiKey: (event) => _checkApiKey(event, emitter)),
     );
@@ -82,7 +88,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         WithdrawLimitsRequest(accountId: accResponse.accounts.first.id),
         options: tinkoffApiService.callOptions,
       );
-      userAccount = UserAccount(
+      final userAccount = UserAccount(
         accountId: accResponse.accounts.first.id,
         accountName: accResponse.accounts.first.name,
         totalBalance: portfolioResponse.totalAmountPortfolio.units.toInt() +
@@ -91,11 +97,13 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         freeBalance: withdrawResponse.money.first.units.toInt() + nanoToUnit(withdrawResponse.money.first.nano),
       );
       await getIt<HiveStorage>().setApiKey(newApiKey);
-      emitter(SettingsState.initialized(apiKey: newApiKey, checkStatus: CheckApiKeyStatuses.ok));
+      emitter(
+          SettingsState.initialized(userAccount: userAccount, apiKey: newApiKey, checkStatus: CheckApiKeyStatuses.ok));
     } catch (error) {
       getIt<TinkoffApiService>().updateCallOptions(oldApiKey);
       emitter(SettingsState.error(message: error.toString(), apiKey: newApiKey));
-      emitter(SettingsState.initialized(apiKey: state.apiKey, checkStatus: CheckApiKeyStatuses.failed));
+      emitter(
+          SettingsState.initialized(userAccount: null, apiKey: state.apiKey, checkStatus: CheckApiKeyStatuses.failed));
     }
   }
 }
