@@ -1,15 +1,11 @@
 class StepsBalancer {
   final List<int> stepRateList;
   final double tradeBalance;
-  final double generalBalance;
-  final double freeBalance;
   final int stocksAmount;
 
   StepsBalancer({
     required this.stepRateList,
     required this.tradeBalance,
-    required this.generalBalance,
-    required this.freeBalance,
     required this.stocksAmount,
   });
 

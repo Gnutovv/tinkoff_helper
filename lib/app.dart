@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/debug/bloc/debug_bloc.dart';
@@ -9,6 +8,7 @@ import 'package:tinkoff_helper/presentation/features/expert/screens/expert_scree
 import 'package:tinkoff_helper/presentation/features/main/screens/main_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
+import 'package:tinkoff_helper/storage/hive_storage.dart';
 import 'package:vertical_tabs_flutter/vertical_tabs.dart';
 
 import 'common/loader/loader_widget.dart';
@@ -22,7 +22,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<DebugBloc>(create: (context) => DebugBloc()),
         BlocProvider<SettingsBloc>(
-          create: (context) => SettingsBloc(apiKey: getIt<SharedPreferences>().getString('apiKey') ?? ''),
+          create: (context) => SettingsBloc(apiKey: getIt<HiveStorage>().apiKey),
         ),
       ],
       child: MaterialApp(

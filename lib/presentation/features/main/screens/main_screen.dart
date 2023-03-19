@@ -81,14 +81,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         ElevatedButton(
-          ///TODO: заменить функционал
+
+            ///TODO: заменить функционал
             onPressed: () async {
               final api = getIt<TinkoffApiService>();
               final request = InstrumentsRequest();
-              final res = await api.instrumentsServiceClient
-                  .shares(request, options: api.callOptions);
-              final vtbr = res.instruments
-                  .firstWhere((element) => element.ticker == 'ALRS');
+              final res = await api.instrumentsServiceClient.shares(request, options: api.callOptions);
+              final vtbr = res.instruments.firstWhere((element) => element.ticker == 'ALRS');
 
               final StockInstrument instr = StockInstrument(
                 ticker: vtbr.ticker,
@@ -99,13 +98,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 country: vtbr.countryOfRisk,
               );
 
-              final getpricemoexrequest =
-                  GetLastPricesRequest(instrumentId: [vtbr.figi]);
-              final resa = await api.marketDataServiceClient
-                  .getLastPrices(getpricemoexrequest, options: api.callOptions);
+              final getpricemoexrequest = GetLastPricesRequest(instrumentId: [vtbr.figi]);
+              final resa =
+                  await api.marketDataServiceClient.getLastPrices(getpricemoexrequest, options: api.callOptions);
               print(resa.lastPrices.toString());
-              instr.setLastPrice(resa.lastPrices.first.price.units.toInt(),
-                  resa.lastPrices.first.price.nano);
+              instr.setLastPrice(resa.lastPrices.first.price.units.toInt(), resa.lastPrices.first.price.nano);
               print(instr.toString());
             },
             child: const Text('Обновить')),

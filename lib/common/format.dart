@@ -17,17 +17,32 @@ extension StringExtension on String {
 }
 
 String intToOrderStepName(int i) {
-  switch (i){
-    case 0: return 'Первая';
-    case 1: return 'Вторая';
-    case 2: return 'Третья';
-    case 3: return 'Четвертая';
-    case 4: return 'Пятая';
-    case 5: return 'Шестая';
-    case 6: return 'Седьмая';
-    case 7: return 'Восьмая';
-    case 8: return 'Девятая';
-    case 9: return 'Десятая';
-    default: return '$i-ая';
+  switch (i) {
+    case 0:
+      return 'Первая';
+    case 1:
+      return 'Вторая';
+    case 2:
+      return 'Третья';
+    case 3:
+      return 'Четвертая';
+    case 4:
+      return 'Пятая';
+    case 5:
+      return 'Шестая';
+    case 6:
+      return 'Седьмая';
+    case 7:
+      return 'Восьмая';
+    case 8:
+      return 'Девятая';
+    case 9:
+      return 'Десятая';
+    default:
+      return '$i-ая';
   }
+}
+
+double nanoToUnit(int nano) {
+  return nano / 1000000;
 }

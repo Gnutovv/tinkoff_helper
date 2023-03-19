@@ -5,6 +5,7 @@ import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/widgets/api_key_button.dart';
+import 'package:tinkoff_helper/storage/hive_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    apiKeyController.text = apiKeyGlobal ?? '';
+    apiKeyController.text = getIt<HiveStorage>().apiKey;
   }
 
   @override
@@ -113,21 +114,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   width: 50,
                   child: apiKeyController.text.isEmpty
                       ? const SizedBox()
-                      : bloc.state.checkStatus ==
-                                  CheckApiKeyStatuses.readyToCheck ||
+                      : bloc.state.checkStatus == CheckApiKeyStatuses.readyToCheck ||
                               apiKeyController.text != state.apiKey
                           ? ApiKeyButton(
-                              callback: () => bloc.add(
-                                  SettingsEvent.checkApiKey(
-                                      apiKey: apiKeyController.text)),
+                              callback: () => bloc.add(SettingsEvent.checkApiKey(apiKey: apiKeyController.text)),
                               status: CheckApiKeyStatuses.readyToCheck)
                           : state.checkStatus == CheckApiKeyStatuses.failed
-                              ? ApiKeyButton(
-                                  callback: () {},
-                                  status: CheckApiKeyStatuses.failed)
-                              : ApiKeyButton(
-                                  callback: () {},
-                                  status: CheckApiKeyStatuses.ok),
+                              ? ApiKeyButton(callback: () {}, status: CheckApiKeyStatuses.failed)
+                              : ApiKeyButton(callback: () {}, status: CheckApiKeyStatuses.ok),
                 ),
               ],
             ),
