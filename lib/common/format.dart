@@ -1,3 +1,5 @@
+import 'package:tinkoff_helper/network/generated/common.pb.dart';
+
 extension StringExtension on String {
   String get toMoneyFormat {
     final lenAfterDot = split('.').last.length;
@@ -15,6 +17,20 @@ extension StringExtension on String {
       return '${substring(0, 1)} ${substring(1, 4)} ${substring(4)} ₽';
     }
     return ('$this ₽');
+  }
+}
+
+extension MoneyValueExtension on MoneyValue {
+  double get toDouble {
+    final str = '${units.toString()}.${nano.toString()}';
+    return double.parse(str);
+  }
+}
+
+extension QuotationExtension on Quotation {
+  double get toDouble {
+    final str = '${units.toString()}.${nano.toString()}';
+    return double.parse(str);
   }
 }
 

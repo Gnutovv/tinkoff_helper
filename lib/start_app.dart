@@ -16,7 +16,7 @@ void startApp() {
   Bloc.transformer = bloc_concurrency.sequential<Object?>();
   runZonedGuarded<void>(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    initLocatorService();
+    initDIService();
     await getIt<HiveStorage>().init();
     getIt<TinkoffApiService>().init();
     runApp(const App());

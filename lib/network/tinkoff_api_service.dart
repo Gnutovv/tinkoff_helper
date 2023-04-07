@@ -7,7 +7,6 @@ import 'package:tinkoff_helper/network/generated/orders.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/sandbox.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/stoporders.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/users.pbgrpc.dart';
-import 'package:tinkoff_helper/network/hosts.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
 
 class TinkoffApiService {
@@ -41,4 +40,10 @@ class TinkoffApiService {
       port: TinkoffHosts.port,
     );
   }
+}
+
+class TinkoffHosts {
+  static const sandbox = 'sandbox-invest-public-api.tinkoff.ru';
+  static const prod = 'invest-public-api.tinkoff.ru';
+  static const port = 443;
 }

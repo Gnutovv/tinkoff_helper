@@ -5,7 +5,7 @@ part 'steps_balancer.freezed.dart';
 part 'steps_balancer.g.dart';
 
 @freezed
-abstract class StepsBalancer with _$StepsBalancer {
+class StepsBalancer with _$StepsBalancer {
   @HiveType(typeId: 0, adapterName: 'StepsBalancerAdapter')
   const factory StepsBalancer.create({
     @HiveField(0) required List<int> stepRateList,

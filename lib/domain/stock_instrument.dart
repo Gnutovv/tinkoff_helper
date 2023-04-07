@@ -6,7 +6,6 @@ class StockInstrument {
   final String name;
   final String country;
   late final double lastPrice;
-  //late final List<>
 
   StockInstrument({
     required this.ticker,

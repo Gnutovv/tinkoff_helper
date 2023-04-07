@@ -18,26 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ExpertEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
-    required TResult Function() updateTotalBalance,
+    required TResult Function(StepsBalancer balancer) init,
+    required TResult Function(List<int>? stepsRateList, int? stocksAmount, double? balance) updateBalancer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
-    TResult? Function()? updateTotalBalance,
+    TResult? Function(StepsBalancer balancer)? init,
+    TResult? Function(List<int>? stepsRateList, int? stocksAmount, double? balance)? updateBalancer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
-    TResult Function()? updateTotalBalance,
+    TResult Function(StepsBalancer balancer)? init,
+    TResult Function(List<int>? stepsRateList, int? stocksAmount, double? balance)? updateBalancer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +39,18 @@ mixin _$ExpertEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
-    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,9 +77,9 @@ abstract class _$$_InitExpertEventCopyWith<$Res> {
   factory _$$_InitExpertEventCopyWith(_$_InitExpertEvent value, $Res Function(_$_InitExpertEvent) then) =
       __$$_InitExpertEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserAccount userAccount});
+  $Res call({StepsBalancer balancer});
 
-  $UserAccountCopyWith<$Res> get userAccount;
+  $StepsBalancerCopyWith<$Res> get balancer;
 }
 
 /// @nodoc
@@ -103,21 +91,21 @@ class __$$_InitExpertEventCopyWithImpl<$Res> extends _$ExpertEventCopyWithImpl<$
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userAccount = null,
+    Object? balancer = null,
   }) {
     return _then(_$_InitExpertEvent(
-      userAccount: null == userAccount
-          ? _value.userAccount
-          : userAccount // ignore: cast_nullable_to_non_nullable
-              as UserAccount,
+      balancer: null == balancer
+          ? _value.balancer
+          : balancer // ignore: cast_nullable_to_non_nullable
+              as StepsBalancer,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserAccountCopyWith<$Res> get userAccount {
-    return $UserAccountCopyWith<$Res>(_value.userAccount, (value) {
-      return _then(_value.copyWith(userAccount: value));
+  $StepsBalancerCopyWith<$Res> get balancer {
+    return $StepsBalancerCopyWith<$Res>(_value.balancer, (value) {
+      return _then(_value.copyWith(balancer: value));
     });
   }
 }
@@ -125,14 +113,14 @@ class __$$_InitExpertEventCopyWithImpl<$Res> extends _$ExpertEventCopyWithImpl<$
 /// @nodoc
 
 class _$_InitExpertEvent extends _InitExpertEvent {
-  const _$_InitExpertEvent({required this.userAccount}) : super._();
+  const _$_InitExpertEvent({required this.balancer}) : super._();
 
   @override
-  final UserAccount userAccount;
+  final StepsBalancer balancer;
 
   @override
   String toString() {
-    return 'ExpertEvent.init(userAccount: $userAccount)';
+    return 'ExpertEvent.init(balancer: $balancer)';
   }
 
   @override
@@ -140,11 +128,11 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InitExpertEvent &&
-            (identical(other.userAccount, userAccount) || other.userAccount == userAccount));
+            (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userAccount);
+  int get hashCode => Object.hash(runtimeType, balancer);
 
   @JsonKey(ignore: true)
   @override
@@ -155,36 +143,30 @@ class _$_InitExpertEvent extends _InitExpertEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
-    required TResult Function() updateTotalBalance,
+    required TResult Function(StepsBalancer balancer) init,
+    required TResult Function(List<int>? stepsRateList, int? stocksAmount, double? balance) updateBalancer,
   }) {
-    return init(userAccount);
+    return init(balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
-    TResult? Function()? updateTotalBalance,
+    TResult? Function(StepsBalancer balancer)? init,
+    TResult? Function(List<int>? stepsRateList, int? stocksAmount, double? balance)? updateBalancer,
   }) {
-    return init?.call(userAccount);
+    return init?.call(balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
-    TResult Function()? updateTotalBalance,
+    TResult Function(StepsBalancer balancer)? init,
+    TResult Function(List<int>? stepsRateList, int? stocksAmount, double? balance)? updateBalancer,
     required TResult orElse(),
   }) {
     if (init != null) {
-      return init(userAccount);
+      return init(balancer);
     }
     return orElse();
   }
@@ -194,8 +176,6 @@ class _$_InitExpertEvent extends _InitExpertEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
-    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
   }) {
     return init(this);
   }
@@ -205,8 +185,6 @@ class _$_InitExpertEvent extends _InitExpertEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
   }) {
     return init?.call(this);
   }
@@ -216,8 +194,6 @@ class _$_InitExpertEvent extends _InitExpertEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -228,10 +204,10 @@ class _$_InitExpertEvent extends _InitExpertEvent {
 }
 
 abstract class _InitExpertEvent extends ExpertEvent {
-  const factory _InitExpertEvent({required final UserAccount userAccount}) = _$_InitExpertEvent;
+  const factory _InitExpertEvent({required final StepsBalancer balancer}) = _$_InitExpertEvent;
   const _InitExpertEvent._() : super._();
 
-  UserAccount get userAccount;
+  StepsBalancer get balancer;
   @JsonKey(ignore: true)
   _$$_InitExpertEventCopyWith<_$_InitExpertEvent> get copyWith => throw _privateConstructorUsedError;
 }
@@ -242,7 +218,7 @@ abstract class _$$_UpdateBalancerExpertEventCopyWith<$Res> {
           _$_UpdateBalancerExpertEvent value, $Res Function(_$_UpdateBalancerExpertEvent) then) =
       __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<int>? stepsRateList, int? stocksAmount});
+  $Res call({List<int>? stepsRateList, int? stocksAmount, double? balance});
 }
 
 /// @nodoc
@@ -258,6 +234,7 @@ class __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>
   $Res call({
     Object? stepsRateList = freezed,
     Object? stocksAmount = freezed,
+    Object? balance = freezed,
   }) {
     return _then(_$_UpdateBalancerExpertEvent(
       stepsRateList: freezed == stepsRateList
@@ -268,6 +245,10 @@ class __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>
           ? _value.stocksAmount
           : stocksAmount // ignore: cast_nullable_to_non_nullable
               as int?,
+      balance: freezed == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -275,7 +256,7 @@ class __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
-  const _$_UpdateBalancerExpertEvent({final List<int>? stepsRateList, this.stocksAmount})
+  const _$_UpdateBalancerExpertEvent({final List<int>? stepsRateList, this.stocksAmount, this.balance})
       : _stepsRateList = stepsRateList,
         super._();
 
@@ -291,10 +272,12 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
 
   @override
   final int? stocksAmount;
+  @override
+  final double? balance;
 
   @override
   String toString() {
-    return 'ExpertEvent.updateBalancer(stepsRateList: $stepsRateList, stocksAmount: $stocksAmount)';
+    return 'ExpertEvent.updateBalancer(stepsRateList: $stepsRateList, stocksAmount: $stocksAmount, balance: $balance)';
   }
 
   @override
@@ -303,11 +286,13 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
         (other.runtimeType == runtimeType &&
             other is _$_UpdateBalancerExpertEvent &&
             const DeepCollectionEquality().equals(other._stepsRateList, _stepsRateList) &&
-            (identical(other.stocksAmount, stocksAmount) || other.stocksAmount == stocksAmount));
+            (identical(other.stocksAmount, stocksAmount) || other.stocksAmount == stocksAmount) &&
+            (identical(other.balance, balance) || other.balance == balance));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_stepsRateList), stocksAmount);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_stepsRateList), stocksAmount, balance);
 
   @JsonKey(ignore: true)
   @override
@@ -318,36 +303,30 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
-    required TResult Function() updateTotalBalance,
+    required TResult Function(StepsBalancer balancer) init,
+    required TResult Function(List<int>? stepsRateList, int? stocksAmount, double? balance) updateBalancer,
   }) {
-    return updateBalancer(stepsRateList, stocksAmount);
+    return updateBalancer(stepsRateList, stocksAmount, balance);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
-    TResult? Function()? updateTotalBalance,
+    TResult? Function(StepsBalancer balancer)? init,
+    TResult? Function(List<int>? stepsRateList, int? stocksAmount, double? balance)? updateBalancer,
   }) {
-    return updateBalancer?.call(stepsRateList, stocksAmount);
+    return updateBalancer?.call(stepsRateList, stocksAmount, balance);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
-    TResult Function()? updateTotalBalance,
+    TResult Function(StepsBalancer balancer)? init,
+    TResult Function(List<int>? stepsRateList, int? stocksAmount, double? balance)? updateBalancer,
     required TResult orElse(),
   }) {
     if (updateBalancer != null) {
-      return updateBalancer(stepsRateList, stocksAmount);
+      return updateBalancer(stepsRateList, stocksAmount, balance);
     }
     return orElse();
   }
@@ -357,8 +336,6 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
-    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
   }) {
     return updateBalancer(this);
   }
@@ -368,8 +345,6 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
   }) {
     return updateBalancer?.call(this);
   }
@@ -379,8 +354,6 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
     required TResult orElse(),
   }) {
     if (updateBalancer != null) {
@@ -391,300 +364,40 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
 }
 
 abstract class _UpdateBalancerExpertEvent extends ExpertEvent {
-  const factory _UpdateBalancerExpertEvent({final List<int>? stepsRateList, final int? stocksAmount}) =
-      _$_UpdateBalancerExpertEvent;
+  const factory _UpdateBalancerExpertEvent(
+      {final List<int>? stepsRateList, final int? stocksAmount, final double? balance}) = _$_UpdateBalancerExpertEvent;
   const _UpdateBalancerExpertEvent._() : super._();
 
   List<int>? get stepsRateList;
   int? get stocksAmount;
+  double? get balance;
   @JsonKey(ignore: true)
   _$$_UpdateBalancerExpertEventCopyWith<_$_UpdateBalancerExpertEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateTradeBalanceExpertEventCopyWith<$Res> {
-  factory _$$_UpdateTradeBalanceExpertEventCopyWith(
-          _$_UpdateTradeBalanceExpertEvent value, $Res Function(_$_UpdateTradeBalanceExpertEvent) then) =
-      __$$_UpdateTradeBalanceExpertEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({double newBalance});
-}
-
-/// @nodoc
-class __$$_UpdateTradeBalanceExpertEventCopyWithImpl<$Res>
-    extends _$ExpertEventCopyWithImpl<$Res, _$_UpdateTradeBalanceExpertEvent>
-    implements _$$_UpdateTradeBalanceExpertEventCopyWith<$Res> {
-  __$$_UpdateTradeBalanceExpertEventCopyWithImpl(
-      _$_UpdateTradeBalanceExpertEvent _value, $Res Function(_$_UpdateTradeBalanceExpertEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? newBalance = null,
-  }) {
-    return _then(_$_UpdateTradeBalanceExpertEvent(
-      newBalance: null == newBalance
-          ? _value.newBalance
-          : newBalance // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
-  const _$_UpdateTradeBalanceExpertEvent({required this.newBalance}) : super._();
-
-  @override
-  final double newBalance;
-
-  @override
-  String toString() {
-    return 'ExpertEvent.updateTradeBalance(newBalance: $newBalance)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UpdateTradeBalanceExpertEvent &&
-            (identical(other.newBalance, newBalance) || other.newBalance == newBalance));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, newBalance);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UpdateTradeBalanceExpertEventCopyWith<_$_UpdateTradeBalanceExpertEvent> get copyWith =>
-      __$$_UpdateTradeBalanceExpertEventCopyWithImpl<_$_UpdateTradeBalanceExpertEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
-    required TResult Function() updateTotalBalance,
-  }) {
-    return updateTradeBalance(newBalance);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
-    TResult? Function()? updateTotalBalance,
-  }) {
-    return updateTradeBalance?.call(newBalance);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
-    TResult Function()? updateTotalBalance,
-    required TResult orElse(),
-  }) {
-    if (updateTradeBalance != null) {
-      return updateTradeBalance(newBalance);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitExpertEvent value) init,
-    required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
-    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
-  }) {
-    return updateTradeBalance(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitExpertEvent value)? init,
-    TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
-  }) {
-    return updateTradeBalance?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitExpertEvent value)? init,
-    TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
-    required TResult orElse(),
-  }) {
-    if (updateTradeBalance != null) {
-      return updateTradeBalance(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateTradeBalanceExpertEvent extends ExpertEvent {
-  const factory _UpdateTradeBalanceExpertEvent({required final double newBalance}) = _$_UpdateTradeBalanceExpertEvent;
-  const _UpdateTradeBalanceExpertEvent._() : super._();
-
-  double get newBalance;
-  @JsonKey(ignore: true)
-  _$$_UpdateTradeBalanceExpertEventCopyWith<_$_UpdateTradeBalanceExpertEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_UpdateTotalBalanceExpertEventCopyWith<$Res> {
-  factory _$$_UpdateTotalBalanceExpertEventCopyWith(
-          _$_UpdateTotalBalanceExpertEvent value, $Res Function(_$_UpdateTotalBalanceExpertEvent) then) =
-      __$$_UpdateTotalBalanceExpertEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_UpdateTotalBalanceExpertEventCopyWithImpl<$Res>
-    extends _$ExpertEventCopyWithImpl<$Res, _$_UpdateTotalBalanceExpertEvent>
-    implements _$$_UpdateTotalBalanceExpertEventCopyWith<$Res> {
-  __$$_UpdateTotalBalanceExpertEventCopyWithImpl(
-      _$_UpdateTotalBalanceExpertEvent _value, $Res Function(_$_UpdateTotalBalanceExpertEvent) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_UpdateTotalBalanceExpertEvent extends _UpdateTotalBalanceExpertEvent {
-  const _$_UpdateTotalBalanceExpertEvent() : super._();
-
-  @override
-  String toString() {
-    return 'ExpertEvent.updateTotalBalance()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UpdateTotalBalanceExpertEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
-    required TResult Function() updateTotalBalance,
-  }) {
-    return updateTotalBalance();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
-    TResult? Function()? updateTotalBalance,
-  }) {
-    return updateTotalBalance?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
-    TResult Function()? updateTotalBalance,
-    required TResult orElse(),
-  }) {
-    if (updateTotalBalance != null) {
-      return updateTotalBalance();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitExpertEvent value) init,
-    required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
-    required TResult Function(_UpdateTotalBalanceExpertEvent value) updateTotalBalance,
-  }) {
-    return updateTotalBalance(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitExpertEvent value)? init,
-    TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult? Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
-  }) {
-    return updateTotalBalance?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitExpertEvent value)? init,
-    TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
-    TResult Function(_UpdateTotalBalanceExpertEvent value)? updateTotalBalance,
-    required TResult orElse(),
-  }) {
-    if (updateTotalBalance != null) {
-      return updateTotalBalance(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateTotalBalanceExpertEvent extends ExpertEvent {
-  const factory _UpdateTotalBalanceExpertEvent() = _$_UpdateTotalBalanceExpertEvent;
-  const _UpdateTotalBalanceExpertEvent._() : super._();
-}
-
-/// @nodoc
 mixin _$ExpertState {
   StepsBalancer get balancer => throw _privateConstructorUsedError;
-  UserAccount? get account => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StepsBalancer balancer, UserAccount? account) initialized,
-    required TResult Function(StepsBalancer balancer, UserAccount? account) inProgress,
-    required TResult Function(StepsBalancer balancer, UserAccount? account, String message) error,
+    required TResult Function(StepsBalancer balancer) initialized,
+    required TResult Function(StepsBalancer balancer) inProgress,
+    required TResult Function(StepsBalancer balancer, String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult? Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult? Function(StepsBalancer balancer)? initialized,
+    TResult? Function(StepsBalancer balancer)? inProgress,
+    TResult? Function(StepsBalancer balancer, String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult Function(StepsBalancer balancer)? initialized,
+    TResult Function(StepsBalancer balancer)? inProgress,
+    TResult Function(StepsBalancer balancer, String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -720,10 +433,9 @@ abstract class $ExpertStateCopyWith<$Res> {
   factory $ExpertStateCopyWith(ExpertState value, $Res Function(ExpertState) then) =
       _$ExpertStateCopyWithImpl<$Res, ExpertState>;
   @useResult
-  $Res call({StepsBalancer balancer, UserAccount? account});
+  $Res call({StepsBalancer balancer});
 
   $StepsBalancerCopyWith<$Res> get balancer;
-  $UserAccountCopyWith<$Res>? get account;
 }
 
 /// @nodoc
@@ -739,17 +451,12 @@ class _$ExpertStateCopyWithImpl<$Res, $Val extends ExpertState> implements $Expe
   @override
   $Res call({
     Object? balancer = null,
-    Object? account = freezed,
   }) {
     return _then(_value.copyWith(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
               as StepsBalancer,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as UserAccount?,
     ) as $Val);
   }
 
@@ -758,18 +465,6 @@ class _$ExpertStateCopyWithImpl<$Res, $Val extends ExpertState> implements $Expe
   $StepsBalancerCopyWith<$Res> get balancer {
     return $StepsBalancerCopyWith<$Res>(_value.balancer, (value) {
       return _then(_value.copyWith(balancer: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserAccountCopyWith<$Res>? get account {
-    if (_value.account == null) {
-      return null;
-    }
-
-    return $UserAccountCopyWith<$Res>(_value.account!, (value) {
-      return _then(_value.copyWith(account: value) as $Val);
     });
   }
 }
@@ -781,12 +476,10 @@ abstract class _$$_InitializedExpertStateCopyWith<$Res> implements $ExpertStateC
       __$$_InitializedExpertStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StepsBalancer balancer, UserAccount? account});
+  $Res call({StepsBalancer balancer});
 
   @override
   $StepsBalancerCopyWith<$Res> get balancer;
-  @override
-  $UserAccountCopyWith<$Res>? get account;
 }
 
 /// @nodoc
@@ -800,17 +493,12 @@ class __$$_InitializedExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWit
   @override
   $Res call({
     Object? balancer = null,
-    Object? account = freezed,
   }) {
     return _then(_$_InitializedExpertState(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
               as StepsBalancer,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as UserAccount?,
     ));
   }
 }
@@ -818,16 +506,14 @@ class __$$_InitializedExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWit
 /// @nodoc
 
 class _$_InitializedExpertState extends _InitializedExpertState {
-  _$_InitializedExpertState({required this.balancer, this.account}) : super._();
+  _$_InitializedExpertState({required this.balancer}) : super._();
 
   @override
   final StepsBalancer balancer;
-  @override
-  final UserAccount? account;
 
   @override
   String toString() {
-    return 'ExpertState.initialized(balancer: $balancer, account: $account)';
+    return 'ExpertState.initialized(balancer: $balancer)';
   }
 
   @override
@@ -835,12 +521,11 @@ class _$_InitializedExpertState extends _InitializedExpertState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InitializedExpertState &&
-            (identical(other.balancer, balancer) || other.balancer == balancer) &&
-            (identical(other.account, account) || other.account == account));
+            (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, balancer, account);
+  int get hashCode => Object.hash(runtimeType, balancer);
 
   @JsonKey(ignore: true)
   @override
@@ -851,33 +536,33 @@ class _$_InitializedExpertState extends _InitializedExpertState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StepsBalancer balancer, UserAccount? account) initialized,
-    required TResult Function(StepsBalancer balancer, UserAccount? account) inProgress,
-    required TResult Function(StepsBalancer balancer, UserAccount? account, String message) error,
+    required TResult Function(StepsBalancer balancer) initialized,
+    required TResult Function(StepsBalancer balancer) inProgress,
+    required TResult Function(StepsBalancer balancer, String message) error,
   }) {
-    return initialized(balancer, account);
+    return initialized(balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult? Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult? Function(StepsBalancer balancer)? initialized,
+    TResult? Function(StepsBalancer balancer)? inProgress,
+    TResult? Function(StepsBalancer balancer, String message)? error,
   }) {
-    return initialized?.call(balancer, account);
+    return initialized?.call(balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult Function(StepsBalancer balancer)? initialized,
+    TResult Function(StepsBalancer balancer)? inProgress,
+    TResult Function(StepsBalancer balancer, String message)? error,
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(balancer, account);
+      return initialized(balancer);
     }
     return orElse();
   }
@@ -918,14 +603,11 @@ class _$_InitializedExpertState extends _InitializedExpertState {
 }
 
 abstract class _InitializedExpertState extends ExpertState {
-  factory _InitializedExpertState({required final StepsBalancer balancer, final UserAccount? account}) =
-      _$_InitializedExpertState;
+  factory _InitializedExpertState({required final StepsBalancer balancer}) = _$_InitializedExpertState;
   _InitializedExpertState._() : super._();
 
   @override
   StepsBalancer get balancer;
-  @override
-  UserAccount? get account;
   @override
   @JsonKey(ignore: true)
   _$$_InitializedExpertStateCopyWith<_$_InitializedExpertState> get copyWith => throw _privateConstructorUsedError;
@@ -938,12 +620,10 @@ abstract class _$$_InProgressExpertStateCopyWith<$Res> implements $ExpertStateCo
       __$$_InProgressExpertStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StepsBalancer balancer, UserAccount? account});
+  $Res call({StepsBalancer balancer});
 
   @override
   $StepsBalancerCopyWith<$Res> get balancer;
-  @override
-  $UserAccountCopyWith<$Res>? get account;
 }
 
 /// @nodoc
@@ -956,17 +636,12 @@ class __$$_InProgressExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWith
   @override
   $Res call({
     Object? balancer = null,
-    Object? account = freezed,
   }) {
     return _then(_$_InProgressExpertState(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
               as StepsBalancer,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as UserAccount?,
     ));
   }
 }
@@ -974,16 +649,14 @@ class __$$_InProgressExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWith
 /// @nodoc
 
 class _$_InProgressExpertState extends _InProgressExpertState {
-  _$_InProgressExpertState({required this.balancer, this.account}) : super._();
+  _$_InProgressExpertState({required this.balancer}) : super._();
 
   @override
   final StepsBalancer balancer;
-  @override
-  final UserAccount? account;
 
   @override
   String toString() {
-    return 'ExpertState.inProgress(balancer: $balancer, account: $account)';
+    return 'ExpertState.inProgress(balancer: $balancer)';
   }
 
   @override
@@ -991,12 +664,11 @@ class _$_InProgressExpertState extends _InProgressExpertState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InProgressExpertState &&
-            (identical(other.balancer, balancer) || other.balancer == balancer) &&
-            (identical(other.account, account) || other.account == account));
+            (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, balancer, account);
+  int get hashCode => Object.hash(runtimeType, balancer);
 
   @JsonKey(ignore: true)
   @override
@@ -1007,33 +679,33 @@ class _$_InProgressExpertState extends _InProgressExpertState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StepsBalancer balancer, UserAccount? account) initialized,
-    required TResult Function(StepsBalancer balancer, UserAccount? account) inProgress,
-    required TResult Function(StepsBalancer balancer, UserAccount? account, String message) error,
+    required TResult Function(StepsBalancer balancer) initialized,
+    required TResult Function(StepsBalancer balancer) inProgress,
+    required TResult Function(StepsBalancer balancer, String message) error,
   }) {
-    return inProgress(balancer, account);
+    return inProgress(balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult? Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult? Function(StepsBalancer balancer)? initialized,
+    TResult? Function(StepsBalancer balancer)? inProgress,
+    TResult? Function(StepsBalancer balancer, String message)? error,
   }) {
-    return inProgress?.call(balancer, account);
+    return inProgress?.call(balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult Function(StepsBalancer balancer)? initialized,
+    TResult Function(StepsBalancer balancer)? inProgress,
+    TResult Function(StepsBalancer balancer, String message)? error,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
-      return inProgress(balancer, account);
+      return inProgress(balancer);
     }
     return orElse();
   }
@@ -1074,14 +746,11 @@ class _$_InProgressExpertState extends _InProgressExpertState {
 }
 
 abstract class _InProgressExpertState extends ExpertState {
-  factory _InProgressExpertState({required final StepsBalancer balancer, final UserAccount? account}) =
-      _$_InProgressExpertState;
+  factory _InProgressExpertState({required final StepsBalancer balancer}) = _$_InProgressExpertState;
   _InProgressExpertState._() : super._();
 
   @override
   StepsBalancer get balancer;
-  @override
-  UserAccount? get account;
   @override
   @JsonKey(ignore: true)
   _$$_InProgressExpertStateCopyWith<_$_InProgressExpertState> get copyWith => throw _privateConstructorUsedError;
@@ -1093,12 +762,10 @@ abstract class _$$_ErrorExpertStateCopyWith<$Res> implements $ExpertStateCopyWit
       __$$_ErrorExpertStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StepsBalancer balancer, UserAccount? account, String message});
+  $Res call({StepsBalancer balancer, String message});
 
   @override
   $StepsBalancerCopyWith<$Res> get balancer;
-  @override
-  $UserAccountCopyWith<$Res>? get account;
 }
 
 /// @nodoc
@@ -1111,7 +778,6 @@ class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<
   @override
   $Res call({
     Object? balancer = null,
-    Object? account = freezed,
     Object? message = null,
   }) {
     return _then(_$_ErrorExpertState(
@@ -1119,10 +785,6 @@ class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
               as StepsBalancer,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as UserAccount?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1134,18 +796,16 @@ class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<
 /// @nodoc
 
 class _$_ErrorExpertState extends _ErrorExpertState {
-  _$_ErrorExpertState({required this.balancer, this.account, required this.message}) : super._();
+  _$_ErrorExpertState({required this.balancer, required this.message}) : super._();
 
   @override
   final StepsBalancer balancer;
-  @override
-  final UserAccount? account;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'ExpertState.error(balancer: $balancer, account: $account, message: $message)';
+    return 'ExpertState.error(balancer: $balancer, message: $message)';
   }
 
   @override
@@ -1154,12 +814,11 @@ class _$_ErrorExpertState extends _ErrorExpertState {
         (other.runtimeType == runtimeType &&
             other is _$_ErrorExpertState &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
-            (identical(other.account, account) || other.account == account) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, balancer, account, message);
+  int get hashCode => Object.hash(runtimeType, balancer, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1170,33 +829,33 @@ class _$_ErrorExpertState extends _ErrorExpertState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StepsBalancer balancer, UserAccount? account) initialized,
-    required TResult Function(StepsBalancer balancer, UserAccount? account) inProgress,
-    required TResult Function(StepsBalancer balancer, UserAccount? account, String message) error,
+    required TResult Function(StepsBalancer balancer) initialized,
+    required TResult Function(StepsBalancer balancer) inProgress,
+    required TResult Function(StepsBalancer balancer, String message) error,
   }) {
-    return error(balancer, account, message);
+    return error(balancer, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult? Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult? Function(StepsBalancer balancer)? initialized,
+    TResult? Function(StepsBalancer balancer)? inProgress,
+    TResult? Function(StepsBalancer balancer, String message)? error,
   }) {
-    return error?.call(balancer, account, message);
+    return error?.call(balancer, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult Function(StepsBalancer balancer)? initialized,
+    TResult Function(StepsBalancer balancer)? inProgress,
+    TResult Function(StepsBalancer balancer, String message)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(balancer, account, message);
+      return error(balancer, message);
     }
     return orElse();
   }
@@ -1237,16 +896,12 @@ class _$_ErrorExpertState extends _ErrorExpertState {
 }
 
 abstract class _ErrorExpertState extends ExpertState {
-  factory _ErrorExpertState(
-      {required final StepsBalancer balancer,
-      final UserAccount? account,
-      required final String message}) = _$_ErrorExpertState;
+  factory _ErrorExpertState({required final StepsBalancer balancer, required final String message}) =
+      _$_ErrorExpertState;
   _ErrorExpertState._() : super._();
 
   @override
   StepsBalancer get balancer;
-  @override
-  UserAccount? get account;
   String get message;
   @override
   @JsonKey(ignore: true)
