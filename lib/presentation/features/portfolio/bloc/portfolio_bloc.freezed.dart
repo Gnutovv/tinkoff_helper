@@ -18,38 +18,32 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PortfolioEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() init,
     required TResult Function() update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
     TResult? Function()? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
     TResult Function()? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitPortfolioEvent value) init,
     required TResult Function(_UpdatePortfolioEvent value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitPortfolioEvent value)? init,
     TResult? Function(_UpdatePortfolioEvent value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitPortfolioEvent value)? init,
     TResult Function(_UpdatePortfolioEvent value)? update,
     required TResult orElse(),
   }) =>
@@ -70,105 +64,6 @@ class _$PortfolioEventCopyWithImpl<$Res, $Val extends PortfolioEvent> implements
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_InitPortfolioEventCopyWith<$Res> {
-  factory _$$_InitPortfolioEventCopyWith(_$_InitPortfolioEvent value, $Res Function(_$_InitPortfolioEvent) then) =
-      __$$_InitPortfolioEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitPortfolioEventCopyWithImpl<$Res> extends _$PortfolioEventCopyWithImpl<$Res, _$_InitPortfolioEvent>
-    implements _$$_InitPortfolioEventCopyWith<$Res> {
-  __$$_InitPortfolioEventCopyWithImpl(_$_InitPortfolioEvent _value, $Res Function(_$_InitPortfolioEvent) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_InitPortfolioEvent extends _InitPortfolioEvent {
-  const _$_InitPortfolioEvent() : super._();
-
-  @override
-  String toString() {
-    return 'PortfolioEvent.init()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitPortfolioEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function() update,
-  }) {
-    return init();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function()? update,
-  }) {
-    return init?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function()? update,
-    required TResult orElse(),
-  }) {
-    if (init != null) {
-      return init();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitPortfolioEvent value) init,
-    required TResult Function(_UpdatePortfolioEvent value) update,
-  }) {
-    return init(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitPortfolioEvent value)? init,
-    TResult? Function(_UpdatePortfolioEvent value)? update,
-  }) {
-    return init?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitPortfolioEvent value)? init,
-    TResult Function(_UpdatePortfolioEvent value)? update,
-    required TResult orElse(),
-  }) {
-    if (init != null) {
-      return init(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _InitPortfolioEvent extends PortfolioEvent {
-  const factory _InitPortfolioEvent() = _$_InitPortfolioEvent;
-  const _InitPortfolioEvent._() : super._();
 }
 
 /// @nodoc
@@ -205,7 +100,6 @@ class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() init,
     required TResult Function() update,
   }) {
     return update();
@@ -214,7 +108,6 @@ class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
     TResult? Function()? update,
   }) {
     return update?.call();
@@ -223,7 +116,6 @@ class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
     TResult Function()? update,
     required TResult orElse(),
   }) {
@@ -236,7 +128,6 @@ class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitPortfolioEvent value) init,
     required TResult Function(_UpdatePortfolioEvent value) update,
   }) {
     return update(this);
@@ -245,7 +136,6 @@ class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitPortfolioEvent value)? init,
     TResult? Function(_UpdatePortfolioEvent value)? update,
   }) {
     return update?.call(this);
@@ -254,7 +144,6 @@ class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitPortfolioEvent value)? init,
     TResult Function(_UpdatePortfolioEvent value)? update,
     required TResult orElse(),
   }) {
@@ -272,26 +161,26 @@ abstract class _UpdatePortfolioEvent extends PortfolioEvent {
 
 /// @nodoc
 mixin _$PortfolioState {
-  List<PortfolioPosition> get portfolioPositions => throw _privateConstructorUsedError;
+  Portfolio? get portfolio => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PortfolioPosition> portfolioPositions) initialized,
-    required TResult Function(List<PortfolioPosition> portfolioPositions) inProgress,
-    required TResult Function(List<PortfolioPosition> portfolioPositions, String message) error,
+    required TResult Function(Portfolio? portfolio) initialized,
+    required TResult Function(Portfolio? portfolio) inProgress,
+    required TResult Function(Portfolio? portfolio, String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PortfolioPosition> portfolioPositions)? initialized,
-    TResult? Function(List<PortfolioPosition> portfolioPositions)? inProgress,
-    TResult? Function(List<PortfolioPosition> portfolioPositions, String message)? error,
+    TResult? Function(Portfolio? portfolio)? initialized,
+    TResult? Function(Portfolio? portfolio)? inProgress,
+    TResult? Function(Portfolio? portfolio, String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PortfolioPosition> portfolioPositions)? initialized,
-    TResult Function(List<PortfolioPosition> portfolioPositions)? inProgress,
-    TResult Function(List<PortfolioPosition> portfolioPositions, String message)? error,
+    TResult Function(Portfolio? portfolio)? initialized,
+    TResult Function(Portfolio? portfolio)? inProgress,
+    TResult Function(Portfolio? portfolio, String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -327,7 +216,9 @@ abstract class $PortfolioStateCopyWith<$Res> {
   factory $PortfolioStateCopyWith(PortfolioState value, $Res Function(PortfolioState) then) =
       _$PortfolioStateCopyWithImpl<$Res, PortfolioState>;
   @useResult
-  $Res call({List<PortfolioPosition> portfolioPositions});
+  $Res call({Portfolio? portfolio});
+
+  $PortfolioCopyWith<$Res>? get portfolio;
 }
 
 /// @nodoc
@@ -342,14 +233,26 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState> implements
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? portfolioPositions = null,
+    Object? portfolio = freezed,
   }) {
     return _then(_value.copyWith(
-      portfolioPositions: null == portfolioPositions
-          ? _value.portfolioPositions
-          : portfolioPositions // ignore: cast_nullable_to_non_nullable
-              as List<PortfolioPosition>,
+      portfolio: freezed == portfolio
+          ? _value.portfolio
+          : portfolio // ignore: cast_nullable_to_non_nullable
+              as Portfolio?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PortfolioCopyWith<$Res>? get portfolio {
+    if (_value.portfolio == null) {
+      return null;
+    }
+
+    return $PortfolioCopyWith<$Res>(_value.portfolio!, (value) {
+      return _then(_value.copyWith(portfolio: value) as $Val);
+    });
   }
 }
 
@@ -360,7 +263,10 @@ abstract class _$$_InitializedPortfolioStateCopyWith<$Res> implements $Portfolio
       __$$_InitializedPortfolioStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PortfolioPosition> portfolioPositions});
+  $Res call({Portfolio? portfolio});
+
+  @override
+  $PortfolioCopyWith<$Res>? get portfolio;
 }
 
 /// @nodoc
@@ -374,13 +280,13 @@ class __$$_InitializedPortfolioStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? portfolioPositions = null,
+    Object? portfolio = freezed,
   }) {
     return _then(_$_InitializedPortfolioState(
-      portfolioPositions: null == portfolioPositions
-          ? _value._portfolioPositions
-          : portfolioPositions // ignore: cast_nullable_to_non_nullable
-              as List<PortfolioPosition>,
+      portfolio: freezed == portfolio
+          ? _value.portfolio
+          : portfolio // ignore: cast_nullable_to_non_nullable
+              as Portfolio?,
     ));
   }
 }
@@ -388,21 +294,14 @@ class __$$_InitializedPortfolioStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_InitializedPortfolioState extends _InitializedPortfolioState {
-  _$_InitializedPortfolioState({required final List<PortfolioPosition> portfolioPositions})
-      : _portfolioPositions = portfolioPositions,
-        super._();
+  _$_InitializedPortfolioState({this.portfolio}) : super._();
 
-  final List<PortfolioPosition> _portfolioPositions;
   @override
-  List<PortfolioPosition> get portfolioPositions {
-    if (_portfolioPositions is EqualUnmodifiableListView) return _portfolioPositions;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_portfolioPositions);
-  }
+  final Portfolio? portfolio;
 
   @override
   String toString() {
-    return 'PortfolioState.initialized(portfolioPositions: $portfolioPositions)';
+    return 'PortfolioState.initialized(portfolio: $portfolio)';
   }
 
   @override
@@ -410,11 +309,11 @@ class _$_InitializedPortfolioState extends _InitializedPortfolioState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InitializedPortfolioState &&
-            const DeepCollectionEquality().equals(other._portfolioPositions, _portfolioPositions));
+            (identical(other.portfolio, portfolio) || other.portfolio == portfolio));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_portfolioPositions));
+  int get hashCode => Object.hash(runtimeType, portfolio);
 
   @JsonKey(ignore: true)
   @override
@@ -425,33 +324,33 @@ class _$_InitializedPortfolioState extends _InitializedPortfolioState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PortfolioPosition> portfolioPositions) initialized,
-    required TResult Function(List<PortfolioPosition> portfolioPositions) inProgress,
-    required TResult Function(List<PortfolioPosition> portfolioPositions, String message) error,
+    required TResult Function(Portfolio? portfolio) initialized,
+    required TResult Function(Portfolio? portfolio) inProgress,
+    required TResult Function(Portfolio? portfolio, String message) error,
   }) {
-    return initialized(portfolioPositions);
+    return initialized(portfolio);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PortfolioPosition> portfolioPositions)? initialized,
-    TResult? Function(List<PortfolioPosition> portfolioPositions)? inProgress,
-    TResult? Function(List<PortfolioPosition> portfolioPositions, String message)? error,
+    TResult? Function(Portfolio? portfolio)? initialized,
+    TResult? Function(Portfolio? portfolio)? inProgress,
+    TResult? Function(Portfolio? portfolio, String message)? error,
   }) {
-    return initialized?.call(portfolioPositions);
+    return initialized?.call(portfolio);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PortfolioPosition> portfolioPositions)? initialized,
-    TResult Function(List<PortfolioPosition> portfolioPositions)? inProgress,
-    TResult Function(List<PortfolioPosition> portfolioPositions, String message)? error,
+    TResult Function(Portfolio? portfolio)? initialized,
+    TResult Function(Portfolio? portfolio)? inProgress,
+    TResult Function(Portfolio? portfolio, String message)? error,
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(portfolioPositions);
+      return initialized(portfolio);
     }
     return orElse();
   }
@@ -492,12 +391,11 @@ class _$_InitializedPortfolioState extends _InitializedPortfolioState {
 }
 
 abstract class _InitializedPortfolioState extends PortfolioState {
-  factory _InitializedPortfolioState({required final List<PortfolioPosition> portfolioPositions}) =
-      _$_InitializedPortfolioState;
+  factory _InitializedPortfolioState({final Portfolio? portfolio}) = _$_InitializedPortfolioState;
   _InitializedPortfolioState._() : super._();
 
   @override
-  List<PortfolioPosition> get portfolioPositions;
+  Portfolio? get portfolio;
   @override
   @JsonKey(ignore: true)
   _$$_InitializedPortfolioStateCopyWith<_$_InitializedPortfolioState> get copyWith =>
@@ -511,7 +409,10 @@ abstract class _$$_InProgressPortfolioStateCopyWith<$Res> implements $PortfolioS
       __$$_InProgressPortfolioStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PortfolioPosition> portfolioPositions});
+  $Res call({Portfolio? portfolio});
+
+  @override
+  $PortfolioCopyWith<$Res>? get portfolio;
 }
 
 /// @nodoc
@@ -525,13 +426,13 @@ class __$$_InProgressPortfolioStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? portfolioPositions = null,
+    Object? portfolio = freezed,
   }) {
     return _then(_$_InProgressPortfolioState(
-      portfolioPositions: null == portfolioPositions
-          ? _value._portfolioPositions
-          : portfolioPositions // ignore: cast_nullable_to_non_nullable
-              as List<PortfolioPosition>,
+      portfolio: freezed == portfolio
+          ? _value.portfolio
+          : portfolio // ignore: cast_nullable_to_non_nullable
+              as Portfolio?,
     ));
   }
 }
@@ -539,21 +440,14 @@ class __$$_InProgressPortfolioStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_InProgressPortfolioState extends _InProgressPortfolioState {
-  _$_InProgressPortfolioState({required final List<PortfolioPosition> portfolioPositions})
-      : _portfolioPositions = portfolioPositions,
-        super._();
+  _$_InProgressPortfolioState({this.portfolio}) : super._();
 
-  final List<PortfolioPosition> _portfolioPositions;
   @override
-  List<PortfolioPosition> get portfolioPositions {
-    if (_portfolioPositions is EqualUnmodifiableListView) return _portfolioPositions;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_portfolioPositions);
-  }
+  final Portfolio? portfolio;
 
   @override
   String toString() {
-    return 'PortfolioState.inProgress(portfolioPositions: $portfolioPositions)';
+    return 'PortfolioState.inProgress(portfolio: $portfolio)';
   }
 
   @override
@@ -561,11 +455,11 @@ class _$_InProgressPortfolioState extends _InProgressPortfolioState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InProgressPortfolioState &&
-            const DeepCollectionEquality().equals(other._portfolioPositions, _portfolioPositions));
+            (identical(other.portfolio, portfolio) || other.portfolio == portfolio));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_portfolioPositions));
+  int get hashCode => Object.hash(runtimeType, portfolio);
 
   @JsonKey(ignore: true)
   @override
@@ -576,33 +470,33 @@ class _$_InProgressPortfolioState extends _InProgressPortfolioState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PortfolioPosition> portfolioPositions) initialized,
-    required TResult Function(List<PortfolioPosition> portfolioPositions) inProgress,
-    required TResult Function(List<PortfolioPosition> portfolioPositions, String message) error,
+    required TResult Function(Portfolio? portfolio) initialized,
+    required TResult Function(Portfolio? portfolio) inProgress,
+    required TResult Function(Portfolio? portfolio, String message) error,
   }) {
-    return inProgress(portfolioPositions);
+    return inProgress(portfolio);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PortfolioPosition> portfolioPositions)? initialized,
-    TResult? Function(List<PortfolioPosition> portfolioPositions)? inProgress,
-    TResult? Function(List<PortfolioPosition> portfolioPositions, String message)? error,
+    TResult? Function(Portfolio? portfolio)? initialized,
+    TResult? Function(Portfolio? portfolio)? inProgress,
+    TResult? Function(Portfolio? portfolio, String message)? error,
   }) {
-    return inProgress?.call(portfolioPositions);
+    return inProgress?.call(portfolio);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PortfolioPosition> portfolioPositions)? initialized,
-    TResult Function(List<PortfolioPosition> portfolioPositions)? inProgress,
-    TResult Function(List<PortfolioPosition> portfolioPositions, String message)? error,
+    TResult Function(Portfolio? portfolio)? initialized,
+    TResult Function(Portfolio? portfolio)? inProgress,
+    TResult Function(Portfolio? portfolio, String message)? error,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
-      return inProgress(portfolioPositions);
+      return inProgress(portfolio);
     }
     return orElse();
   }
@@ -643,12 +537,11 @@ class _$_InProgressPortfolioState extends _InProgressPortfolioState {
 }
 
 abstract class _InProgressPortfolioState extends PortfolioState {
-  factory _InProgressPortfolioState({required final List<PortfolioPosition> portfolioPositions}) =
-      _$_InProgressPortfolioState;
+  factory _InProgressPortfolioState({final Portfolio? portfolio}) = _$_InProgressPortfolioState;
   _InProgressPortfolioState._() : super._();
 
   @override
-  List<PortfolioPosition> get portfolioPositions;
+  Portfolio? get portfolio;
   @override
   @JsonKey(ignore: true)
   _$$_InProgressPortfolioStateCopyWith<_$_InProgressPortfolioState> get copyWith => throw _privateConstructorUsedError;
@@ -660,7 +553,10 @@ abstract class _$$_ErrorPortfolioStateCopyWith<$Res> implements $PortfolioStateC
       __$$_ErrorPortfolioStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PortfolioPosition> portfolioPositions, String message});
+  $Res call({Portfolio? portfolio, String message});
+
+  @override
+  $PortfolioCopyWith<$Res>? get portfolio;
 }
 
 /// @nodoc
@@ -672,14 +568,14 @@ class __$$_ErrorPortfolioStateCopyWithImpl<$Res> extends _$PortfolioStateCopyWit
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? portfolioPositions = null,
+    Object? portfolio = freezed,
     Object? message = null,
   }) {
     return _then(_$_ErrorPortfolioState(
-      portfolioPositions: null == portfolioPositions
-          ? _value._portfolioPositions
-          : portfolioPositions // ignore: cast_nullable_to_non_nullable
-              as List<PortfolioPosition>,
+      portfolio: freezed == portfolio
+          ? _value.portfolio
+          : portfolio // ignore: cast_nullable_to_non_nullable
+              as Portfolio?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -691,24 +587,16 @@ class __$$_ErrorPortfolioStateCopyWithImpl<$Res> extends _$PortfolioStateCopyWit
 /// @nodoc
 
 class _$_ErrorPortfolioState extends _ErrorPortfolioState {
-  _$_ErrorPortfolioState({required final List<PortfolioPosition> portfolioPositions, required this.message})
-      : _portfolioPositions = portfolioPositions,
-        super._();
+  _$_ErrorPortfolioState({this.portfolio, required this.message}) : super._();
 
-  final List<PortfolioPosition> _portfolioPositions;
   @override
-  List<PortfolioPosition> get portfolioPositions {
-    if (_portfolioPositions is EqualUnmodifiableListView) return _portfolioPositions;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_portfolioPositions);
-  }
-
+  final Portfolio? portfolio;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'PortfolioState.error(portfolioPositions: $portfolioPositions, message: $message)';
+    return 'PortfolioState.error(portfolio: $portfolio, message: $message)';
   }
 
   @override
@@ -716,12 +604,12 @@ class _$_ErrorPortfolioState extends _ErrorPortfolioState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ErrorPortfolioState &&
-            const DeepCollectionEquality().equals(other._portfolioPositions, _portfolioPositions) &&
+            (identical(other.portfolio, portfolio) || other.portfolio == portfolio) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_portfolioPositions), message);
+  int get hashCode => Object.hash(runtimeType, portfolio, message);
 
   @JsonKey(ignore: true)
   @override
@@ -732,33 +620,33 @@ class _$_ErrorPortfolioState extends _ErrorPortfolioState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PortfolioPosition> portfolioPositions) initialized,
-    required TResult Function(List<PortfolioPosition> portfolioPositions) inProgress,
-    required TResult Function(List<PortfolioPosition> portfolioPositions, String message) error,
+    required TResult Function(Portfolio? portfolio) initialized,
+    required TResult Function(Portfolio? portfolio) inProgress,
+    required TResult Function(Portfolio? portfolio, String message) error,
   }) {
-    return error(portfolioPositions, message);
+    return error(portfolio, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PortfolioPosition> portfolioPositions)? initialized,
-    TResult? Function(List<PortfolioPosition> portfolioPositions)? inProgress,
-    TResult? Function(List<PortfolioPosition> portfolioPositions, String message)? error,
+    TResult? Function(Portfolio? portfolio)? initialized,
+    TResult? Function(Portfolio? portfolio)? inProgress,
+    TResult? Function(Portfolio? portfolio, String message)? error,
   }) {
-    return error?.call(portfolioPositions, message);
+    return error?.call(portfolio, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PortfolioPosition> portfolioPositions)? initialized,
-    TResult Function(List<PortfolioPosition> portfolioPositions)? inProgress,
-    TResult Function(List<PortfolioPosition> portfolioPositions, String message)? error,
+    TResult Function(Portfolio? portfolio)? initialized,
+    TResult Function(Portfolio? portfolio)? inProgress,
+    TResult Function(Portfolio? portfolio, String message)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(portfolioPositions, message);
+      return error(portfolio, message);
     }
     return orElse();
   }
@@ -799,13 +687,11 @@ class _$_ErrorPortfolioState extends _ErrorPortfolioState {
 }
 
 abstract class _ErrorPortfolioState extends PortfolioState {
-  factory _ErrorPortfolioState(
-      {required final List<PortfolioPosition> portfolioPositions,
-      required final String message}) = _$_ErrorPortfolioState;
+  factory _ErrorPortfolioState({final Portfolio? portfolio, required final String message}) = _$_ErrorPortfolioState;
   _ErrorPortfolioState._() : super._();
 
   @override
-  List<PortfolioPosition> get portfolioPositions;
+  Portfolio? get portfolio;
   String get message;
   @override
   @JsonKey(ignore: true)

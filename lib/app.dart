@@ -4,6 +4,7 @@ import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
+import 'package:tinkoff_helper/presentation/features/portfolio/bloc/portfolio_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/portfolio/screens/portfolio_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
@@ -25,6 +26,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<ExpertBloc>(
           create: (context) => ExpertBloc(balancer: getIt<HiveStorage>().stepsBalancer),
+        ),
+        BlocProvider<PortfolioBloc>(
+          create: (context) => PortfolioBloc(portfolio: null),
         ),
       ],
       child: MaterialApp(

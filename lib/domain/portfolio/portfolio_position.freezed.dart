@@ -17,30 +17,32 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PortfolioPosition {
   String get figi => throw _privateConstructorUsedError;
-  String get instrumentType => throw _privateConstructorUsedError;
-  Quotation get quantity => throw _privateConstructorUsedError;
-  MoneyValue get averagePositionPrice => throw _privateConstructorUsedError;
-  Quotation get expectedYield => throw _privateConstructorUsedError;
-  MoneyValue get currentPrice => throw _privateConstructorUsedError;
+  String get ticket => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  double get quantity => throw _privateConstructorUsedError;
+  double get averagePositionPrice => throw _privateConstructorUsedError;
+  double get expectedYield => throw _privateConstructorUsedError;
+  double get expectedYieldFifo => throw _privateConstructorUsedError;
+  double get currentPrice => throw _privateConstructorUsedError;
   bool get blocked => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String figi, String instrumentType, Quotation quantity, MoneyValue averagePositionPrice,
-            Quotation expectedYield, MoneyValue currentPrice, bool blocked)
+    required TResult Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
+            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)
         newPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String figi, String instrumentType, Quotation quantity, MoneyValue averagePositionPrice,
-            Quotation expectedYield, MoneyValue currentPrice, bool blocked)?
+    TResult? Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
+            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)?
         newPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String figi, String instrumentType, Quotation quantity, MoneyValue averagePositionPrice,
-            Quotation expectedYield, MoneyValue currentPrice, bool blocked)?
+    TResult Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
+            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)?
         newPosition,
     required TResult orElse(),
   }) =>
@@ -73,11 +75,13 @@ abstract class $PortfolioPositionCopyWith<$Res> {
   @useResult
   $Res call(
       {String figi,
-      String instrumentType,
-      Quotation quantity,
-      MoneyValue averagePositionPrice,
-      Quotation expectedYield,
-      MoneyValue currentPrice,
+      String ticket,
+      String title,
+      double quantity,
+      double averagePositionPrice,
+      double expectedYield,
+      double expectedYieldFifo,
+      double currentPrice,
       bool blocked});
 }
 
@@ -95,10 +99,12 @@ class _$PortfolioPositionCopyWithImpl<$Res, $Val extends PortfolioPosition>
   @override
   $Res call({
     Object? figi = null,
-    Object? instrumentType = null,
+    Object? ticket = null,
+    Object? title = null,
     Object? quantity = null,
     Object? averagePositionPrice = null,
     Object? expectedYield = null,
+    Object? expectedYieldFifo = null,
     Object? currentPrice = null,
     Object? blocked = null,
   }) {
@@ -107,26 +113,34 @@ class _$PortfolioPositionCopyWithImpl<$Res, $Val extends PortfolioPosition>
           ? _value.figi
           : figi // ignore: cast_nullable_to_non_nullable
               as String,
-      instrumentType: null == instrumentType
-          ? _value.instrumentType
-          : instrumentType // ignore: cast_nullable_to_non_nullable
+      ticket: null == ticket
+          ? _value.ticket
+          : ticket // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as Quotation,
+              as double,
       averagePositionPrice: null == averagePositionPrice
           ? _value.averagePositionPrice
           : averagePositionPrice // ignore: cast_nullable_to_non_nullable
-              as MoneyValue,
+              as double,
       expectedYield: null == expectedYield
           ? _value.expectedYield
           : expectedYield // ignore: cast_nullable_to_non_nullable
-              as Quotation,
+              as double,
+      expectedYieldFifo: null == expectedYieldFifo
+          ? _value.expectedYieldFifo
+          : expectedYieldFifo // ignore: cast_nullable_to_non_nullable
+              as double,
       currentPrice: null == currentPrice
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
-              as MoneyValue,
+              as double,
       blocked: null == blocked
           ? _value.blocked
           : blocked // ignore: cast_nullable_to_non_nullable
@@ -143,11 +157,13 @@ abstract class _$$_NewPortfolioPositionCopyWith<$Res> implements $PortfolioPosit
   @useResult
   $Res call(
       {String figi,
-      String instrumentType,
-      Quotation quantity,
-      MoneyValue averagePositionPrice,
-      Quotation expectedYield,
-      MoneyValue currentPrice,
+      String ticket,
+      String title,
+      double quantity,
+      double averagePositionPrice,
+      double expectedYield,
+      double expectedYieldFifo,
+      double currentPrice,
       bool blocked});
 }
 
@@ -161,10 +177,12 @@ class __$$_NewPortfolioPositionCopyWithImpl<$Res> extends _$PortfolioPositionCop
   @override
   $Res call({
     Object? figi = null,
-    Object? instrumentType = null,
+    Object? ticket = null,
+    Object? title = null,
     Object? quantity = null,
     Object? averagePositionPrice = null,
     Object? expectedYield = null,
+    Object? expectedYieldFifo = null,
     Object? currentPrice = null,
     Object? blocked = null,
   }) {
@@ -173,26 +191,34 @@ class __$$_NewPortfolioPositionCopyWithImpl<$Res> extends _$PortfolioPositionCop
           ? _value.figi
           : figi // ignore: cast_nullable_to_non_nullable
               as String,
-      instrumentType: null == instrumentType
-          ? _value.instrumentType
-          : instrumentType // ignore: cast_nullable_to_non_nullable
+      ticket: null == ticket
+          ? _value.ticket
+          : ticket // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as Quotation,
+              as double,
       averagePositionPrice: null == averagePositionPrice
           ? _value.averagePositionPrice
           : averagePositionPrice // ignore: cast_nullable_to_non_nullable
-              as MoneyValue,
+              as double,
       expectedYield: null == expectedYield
           ? _value.expectedYield
           : expectedYield // ignore: cast_nullable_to_non_nullable
-              as Quotation,
+              as double,
+      expectedYieldFifo: null == expectedYieldFifo
+          ? _value.expectedYieldFifo
+          : expectedYieldFifo // ignore: cast_nullable_to_non_nullable
+              as double,
       currentPrice: null == currentPrice
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
-              as MoneyValue,
+              as double,
       blocked: null == blocked
           ? _value.blocked
           : blocked // ignore: cast_nullable_to_non_nullable
@@ -206,10 +232,12 @@ class __$$_NewPortfolioPositionCopyWithImpl<$Res> extends _$PortfolioPositionCop
 class _$_NewPortfolioPosition extends _NewPortfolioPosition {
   const _$_NewPortfolioPosition(
       {required this.figi,
-      required this.instrumentType,
+      required this.ticket,
+      required this.title,
       required this.quantity,
       required this.averagePositionPrice,
       required this.expectedYield,
+      required this.expectedYieldFifo,
       required this.currentPrice,
       required this.blocked})
       : super._();
@@ -217,21 +245,25 @@ class _$_NewPortfolioPosition extends _NewPortfolioPosition {
   @override
   final String figi;
   @override
-  final String instrumentType;
+  final String ticket;
   @override
-  final Quotation quantity;
+  final String title;
   @override
-  final MoneyValue averagePositionPrice;
+  final double quantity;
   @override
-  final Quotation expectedYield;
+  final double averagePositionPrice;
   @override
-  final MoneyValue currentPrice;
+  final double expectedYield;
+  @override
+  final double expectedYieldFifo;
+  @override
+  final double currentPrice;
   @override
   final bool blocked;
 
   @override
   String toString() {
-    return 'PortfolioPosition.newPosition(figi: $figi, instrumentType: $instrumentType, quantity: $quantity, averagePositionPrice: $averagePositionPrice, expectedYield: $expectedYield, currentPrice: $currentPrice, blocked: $blocked)';
+    return 'PortfolioPosition.newPosition(figi: $figi, ticket: $ticket, title: $title, quantity: $quantity, averagePositionPrice: $averagePositionPrice, expectedYield: $expectedYield, expectedYieldFifo: $expectedYieldFifo, currentPrice: $currentPrice, blocked: $blocked)';
   }
 
   @override
@@ -240,18 +272,20 @@ class _$_NewPortfolioPosition extends _NewPortfolioPosition {
         (other.runtimeType == runtimeType &&
             other is _$_NewPortfolioPosition &&
             (identical(other.figi, figi) || other.figi == figi) &&
-            (identical(other.instrumentType, instrumentType) || other.instrumentType == instrumentType) &&
+            (identical(other.ticket, ticket) || other.ticket == ticket) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.quantity, quantity) || other.quantity == quantity) &&
             (identical(other.averagePositionPrice, averagePositionPrice) ||
                 other.averagePositionPrice == averagePositionPrice) &&
             (identical(other.expectedYield, expectedYield) || other.expectedYield == expectedYield) &&
+            (identical(other.expectedYieldFifo, expectedYieldFifo) || other.expectedYieldFifo == expectedYieldFifo) &&
             (identical(other.currentPrice, currentPrice) || other.currentPrice == currentPrice) &&
             (identical(other.blocked, blocked) || other.blocked == blocked));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, figi, instrumentType, quantity, averagePositionPrice, expectedYield, currentPrice, blocked);
+  int get hashCode => Object.hash(runtimeType, figi, ticket, title, quantity, averagePositionPrice, expectedYield,
+      expectedYieldFifo, currentPrice, blocked);
 
   @JsonKey(ignore: true)
   @override
@@ -262,34 +296,36 @@ class _$_NewPortfolioPosition extends _NewPortfolioPosition {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String figi, String instrumentType, Quotation quantity, MoneyValue averagePositionPrice,
-            Quotation expectedYield, MoneyValue currentPrice, bool blocked)
+    required TResult Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
+            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)
         newPosition,
   }) {
-    return newPosition(figi, instrumentType, quantity, averagePositionPrice, expectedYield, currentPrice, blocked);
+    return newPosition(
+        figi, ticket, title, quantity, averagePositionPrice, expectedYield, expectedYieldFifo, currentPrice, blocked);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String figi, String instrumentType, Quotation quantity, MoneyValue averagePositionPrice,
-            Quotation expectedYield, MoneyValue currentPrice, bool blocked)?
+    TResult? Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
+            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)?
         newPosition,
   }) {
     return newPosition?.call(
-        figi, instrumentType, quantity, averagePositionPrice, expectedYield, currentPrice, blocked);
+        figi, ticket, title, quantity, averagePositionPrice, expectedYield, expectedYieldFifo, currentPrice, blocked);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String figi, String instrumentType, Quotation quantity, MoneyValue averagePositionPrice,
-            Quotation expectedYield, MoneyValue currentPrice, bool blocked)?
+    TResult Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
+            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)?
         newPosition,
     required TResult orElse(),
   }) {
     if (newPosition != null) {
-      return newPosition(figi, instrumentType, quantity, averagePositionPrice, expectedYield, currentPrice, blocked);
+      return newPosition(
+          figi, ticket, title, quantity, averagePositionPrice, expectedYield, expectedYieldFifo, currentPrice, blocked);
     }
     return orElse();
   }
@@ -326,26 +362,32 @@ class _$_NewPortfolioPosition extends _NewPortfolioPosition {
 abstract class _NewPortfolioPosition extends PortfolioPosition {
   const factory _NewPortfolioPosition(
       {required final String figi,
-      required final String instrumentType,
-      required final Quotation quantity,
-      required final MoneyValue averagePositionPrice,
-      required final Quotation expectedYield,
-      required final MoneyValue currentPrice,
+      required final String ticket,
+      required final String title,
+      required final double quantity,
+      required final double averagePositionPrice,
+      required final double expectedYield,
+      required final double expectedYieldFifo,
+      required final double currentPrice,
       required final bool blocked}) = _$_NewPortfolioPosition;
   const _NewPortfolioPosition._() : super._();
 
   @override
   String get figi;
   @override
-  String get instrumentType;
+  String get ticket;
   @override
-  Quotation get quantity;
+  String get title;
   @override
-  MoneyValue get averagePositionPrice;
+  double get quantity;
   @override
-  Quotation get expectedYield;
+  double get averagePositionPrice;
   @override
-  MoneyValue get currentPrice;
+  double get expectedYield;
+  @override
+  double get expectedYieldFifo;
+  @override
+  double get currentPrice;
   @override
   bool get blocked;
   @override

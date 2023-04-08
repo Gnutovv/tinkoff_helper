@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tinkoff_helper/common/format.dart';
+import 'package:tinkoff_helper/common/extensions.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/common/widgets/card_item_widget.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/expert/widgets/balancer_settings_gialog.dart';
+import 'package:tinkoff_helper/presentation/features/expert/widgets/balancer_settings_dialog.dart';
 
 class ExpertScreen extends StatefulWidget {
   const ExpertScreen({Key? key}) : super(key: key);
@@ -87,7 +87,7 @@ class _ExpertScreenState extends State<ExpertScreen> {
                 (index) => Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 160, child: Text('${intToOrderStepName(index)}: ')),
+                    SizedBox(width: 160, child: Text('${index.toStepName()}:')),
                     SizedBox(
                       width: 50,
                       child: Text(

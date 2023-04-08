@@ -16,21 +16,31 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Portfolio {
-  MoneyValue get totalAmountShares => throw _privateConstructorUsedError;
-  bool get blocked => throw _privateConstructorUsedError;
+  double get totalAmountPortfolio => throw _privateConstructorUsedError;
+  double get withdrawLimit => throw _privateConstructorUsedError;
+  double get expectedYield => throw _privateConstructorUsedError;
+  List<PortfolioPosition> get positions => throw _privateConstructorUsedError;
+  String get accountId => throw _privateConstructorUsedError;
+  String get accountName => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MoneyValue totalAmountShares, bool blocked) create,
+    required TResult Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
+            List<PortfolioPosition> positions, String accountId, String accountName)
+        create,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MoneyValue totalAmountShares, bool blocked)? create,
+    TResult? Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
+            List<PortfolioPosition> positions, String accountId, String accountName)?
+        create,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MoneyValue totalAmountShares, bool blocked)? create,
+    TResult Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
+            List<PortfolioPosition> positions, String accountId, String accountName)?
+        create,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,7 +69,13 @@ mixin _$Portfolio {
 abstract class $PortfolioCopyWith<$Res> {
   factory $PortfolioCopyWith(Portfolio value, $Res Function(Portfolio) then) = _$PortfolioCopyWithImpl<$Res, Portfolio>;
   @useResult
-  $Res call({MoneyValue totalAmountShares, bool blocked});
+  $Res call(
+      {double totalAmountPortfolio,
+      double withdrawLimit,
+      double expectedYield,
+      List<PortfolioPosition> positions,
+      String accountId,
+      String accountName});
 }
 
 /// @nodoc
@@ -74,18 +90,38 @@ class _$PortfolioCopyWithImpl<$Res, $Val extends Portfolio> implements $Portfoli
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalAmountShares = null,
-    Object? blocked = null,
+    Object? totalAmountPortfolio = null,
+    Object? withdrawLimit = null,
+    Object? expectedYield = null,
+    Object? positions = null,
+    Object? accountId = null,
+    Object? accountName = null,
   }) {
     return _then(_value.copyWith(
-      totalAmountShares: null == totalAmountShares
-          ? _value.totalAmountShares
-          : totalAmountShares // ignore: cast_nullable_to_non_nullable
-              as MoneyValue,
-      blocked: null == blocked
-          ? _value.blocked
-          : blocked // ignore: cast_nullable_to_non_nullable
-              as bool,
+      totalAmountPortfolio: null == totalAmountPortfolio
+          ? _value.totalAmountPortfolio
+          : totalAmountPortfolio // ignore: cast_nullable_to_non_nullable
+              as double,
+      withdrawLimit: null == withdrawLimit
+          ? _value.withdrawLimit
+          : withdrawLimit // ignore: cast_nullable_to_non_nullable
+              as double,
+      expectedYield: null == expectedYield
+          ? _value.expectedYield
+          : expectedYield // ignore: cast_nullable_to_non_nullable
+              as double,
+      positions: null == positions
+          ? _value.positions
+          : positions // ignore: cast_nullable_to_non_nullable
+              as List<PortfolioPosition>,
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountName: null == accountName
+          ? _value.accountName
+          : accountName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -96,7 +132,13 @@ abstract class _$$_NewPortfolioCopyWith<$Res> implements $PortfolioCopyWith<$Res
       __$$_NewPortfolioCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MoneyValue totalAmountShares, bool blocked});
+  $Res call(
+      {double totalAmountPortfolio,
+      double withdrawLimit,
+      double expectedYield,
+      List<PortfolioPosition> positions,
+      String accountId,
+      String accountName});
 }
 
 /// @nodoc
@@ -107,18 +149,38 @@ class __$$_NewPortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalAmountShares = null,
-    Object? blocked = null,
+    Object? totalAmountPortfolio = null,
+    Object? withdrawLimit = null,
+    Object? expectedYield = null,
+    Object? positions = null,
+    Object? accountId = null,
+    Object? accountName = null,
   }) {
     return _then(_$_NewPortfolio(
-      totalAmountShares: null == totalAmountShares
-          ? _value.totalAmountShares
-          : totalAmountShares // ignore: cast_nullable_to_non_nullable
-              as MoneyValue,
-      blocked: null == blocked
-          ? _value.blocked
-          : blocked // ignore: cast_nullable_to_non_nullable
-              as bool,
+      totalAmountPortfolio: null == totalAmountPortfolio
+          ? _value.totalAmountPortfolio
+          : totalAmountPortfolio // ignore: cast_nullable_to_non_nullable
+              as double,
+      withdrawLimit: null == withdrawLimit
+          ? _value.withdrawLimit
+          : withdrawLimit // ignore: cast_nullable_to_non_nullable
+              as double,
+      expectedYield: null == expectedYield
+          ? _value.expectedYield
+          : expectedYield // ignore: cast_nullable_to_non_nullable
+              as double,
+      positions: null == positions
+          ? _value._positions
+          : positions // ignore: cast_nullable_to_non_nullable
+              as List<PortfolioPosition>,
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountName: null == accountName
+          ? _value.accountName
+          : accountName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -126,16 +188,38 @@ class __$$_NewPortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, 
 /// @nodoc
 
 class _$_NewPortfolio extends _NewPortfolio {
-  const _$_NewPortfolio({required this.totalAmountShares, required this.blocked}) : super._();
+  const _$_NewPortfolio(
+      {required this.totalAmountPortfolio,
+      required this.withdrawLimit,
+      required this.expectedYield,
+      required final List<PortfolioPosition> positions,
+      required this.accountId,
+      required this.accountName})
+      : _positions = positions,
+        super._();
 
   @override
-  final MoneyValue totalAmountShares;
+  final double totalAmountPortfolio;
   @override
-  final bool blocked;
+  final double withdrawLimit;
+  @override
+  final double expectedYield;
+  final List<PortfolioPosition> _positions;
+  @override
+  List<PortfolioPosition> get positions {
+    if (_positions is EqualUnmodifiableListView) return _positions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_positions);
+  }
+
+  @override
+  final String accountId;
+  @override
+  final String accountName;
 
   @override
   String toString() {
-    return 'Portfolio.create(totalAmountShares: $totalAmountShares, blocked: $blocked)';
+    return 'Portfolio.create(totalAmountPortfolio: $totalAmountPortfolio, withdrawLimit: $withdrawLimit, expectedYield: $expectedYield, positions: $positions, accountId: $accountId, accountName: $accountName)';
   }
 
   @override
@@ -143,12 +227,18 @@ class _$_NewPortfolio extends _NewPortfolio {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NewPortfolio &&
-            (identical(other.totalAmountShares, totalAmountShares) || other.totalAmountShares == totalAmountShares) &&
-            (identical(other.blocked, blocked) || other.blocked == blocked));
+            (identical(other.totalAmountPortfolio, totalAmountPortfolio) ||
+                other.totalAmountPortfolio == totalAmountPortfolio) &&
+            (identical(other.withdrawLimit, withdrawLimit) || other.withdrawLimit == withdrawLimit) &&
+            (identical(other.expectedYield, expectedYield) || other.expectedYield == expectedYield) &&
+            const DeepCollectionEquality().equals(other._positions, _positions) &&
+            (identical(other.accountId, accountId) || other.accountId == accountId) &&
+            (identical(other.accountName, accountName) || other.accountName == accountName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, totalAmountShares, blocked);
+  int get hashCode => Object.hash(runtimeType, totalAmountPortfolio, withdrawLimit, expectedYield,
+      const DeepCollectionEquality().hash(_positions), accountId, accountName);
 
   @JsonKey(ignore: true)
   @override
@@ -159,27 +249,33 @@ class _$_NewPortfolio extends _NewPortfolio {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MoneyValue totalAmountShares, bool blocked) create,
+    required TResult Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
+            List<PortfolioPosition> positions, String accountId, String accountName)
+        create,
   }) {
-    return create(totalAmountShares, blocked);
+    return create(totalAmountPortfolio, withdrawLimit, expectedYield, positions, accountId, accountName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MoneyValue totalAmountShares, bool blocked)? create,
+    TResult? Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
+            List<PortfolioPosition> positions, String accountId, String accountName)?
+        create,
   }) {
-    return create?.call(totalAmountShares, blocked);
+    return create?.call(totalAmountPortfolio, withdrawLimit, expectedYield, positions, accountId, accountName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MoneyValue totalAmountShares, bool blocked)? create,
+    TResult Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
+            List<PortfolioPosition> positions, String accountId, String accountName)?
+        create,
     required TResult orElse(),
   }) {
     if (create != null) {
-      return create(totalAmountShares, blocked);
+      return create(totalAmountPortfolio, withdrawLimit, expectedYield, positions, accountId, accountName);
     }
     return orElse();
   }
@@ -214,14 +310,27 @@ class _$_NewPortfolio extends _NewPortfolio {
 }
 
 abstract class _NewPortfolio extends Portfolio {
-  const factory _NewPortfolio({required final MoneyValue totalAmountShares, required final bool blocked}) =
-      _$_NewPortfolio;
+  const factory _NewPortfolio(
+      {required final double totalAmountPortfolio,
+      required final double withdrawLimit,
+      required final double expectedYield,
+      required final List<PortfolioPosition> positions,
+      required final String accountId,
+      required final String accountName}) = _$_NewPortfolio;
   const _NewPortfolio._() : super._();
 
   @override
-  MoneyValue get totalAmountShares;
+  double get totalAmountPortfolio;
   @override
-  bool get blocked;
+  double get withdrawLimit;
+  @override
+  double get expectedYield;
+  @override
+  List<PortfolioPosition> get positions;
+  @override
+  String get accountId;
+  @override
+  String get accountName;
   @override
   @JsonKey(ignore: true)
   _$$_NewPortfolioCopyWith<_$_NewPortfolio> get copyWith => throw _privateConstructorUsedError;
