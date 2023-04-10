@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/domain/expert/steps_balancer.dart';
-import 'package:tinkoff_helper/storage/hive_storage.dart';
 
 part 'expert_bloc.freezed.dart';
 
@@ -10,10 +8,18 @@ part 'expert_bloc.freezed.dart';
 class ExpertEvent with _$ExpertEvent {
   const ExpertEvent._();
 
-  const factory ExpertEvent.init({required StepsBalancer balancer}) = _InitExpertEvent;
+  const factory ExpertEvent.init({
+    required StepsBalancer balancer,
+    required List<String> expertPositions,
+  }) = _InitExpertEvent;
 
-  const factory ExpertEvent.updateBalancer({List<int>? stepsRateList, int? stocksAmount, double? balance}) =
-      _UpdateBalancerExpertEvent;
+  const factory ExpertEvent.calculateNewBalancer({required StepsBalancer balancer}) = _CalculateNewBalancerExpertEvent;
+
+  const factory ExpertEvent.update({required List<String> expertPositions}) = _UpdateExpertEvent;
+
+  const factory ExpertEvent.doRecommend() = _DoRecommendExpertEvent;
+
+  const factory ExpertEvent.doAllRecommends() = _DoAllRecommendsExpertEvent;
 }
 
 @freezed
@@ -22,75 +28,46 @@ class ExpertState with _$ExpertState {
 
   factory ExpertState.initialized({
     required StepsBalancer balancer,
+    required List<String> positions,
   }) = _InitializedExpertState;
 
   factory ExpertState.inProgress({
     required StepsBalancer balancer,
+    required List<String> positions,
   }) = _InProgressExpertState;
 
   factory ExpertState.error({
     required StepsBalancer balancer,
+    required List<String> positions,
     required String message,
   }) = _ErrorExpertState;
 }
 
 class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
-  ExpertBloc({required StepsBalancer balancer}) : super(ExpertState.initialized(balancer: balancer)) {
+  ExpertBloc({
+    required StepsBalancer balancer,
+    required List<String> positions,
+  }) : super(ExpertState.initialized(balancer: balancer, positions: positions)) {
     on<ExpertEvent>(
       (event, emitter) => event.map(
         init: (event) => _init(event, emitter),
-        updateBalancer: (event) => _updateBalancer(event, emitter),
+        calculateNewBalancer: (event) => _calculateNewBalancer(event, emitter),
+        update: (event) => _update(event, emitter),
+        doRecommend: (event) => null,
+        doAllRecommends: (event) => null,
       ),
     );
   }
 
-  void _init(_InitExpertEvent event, Emitter<ExpertState> emitter) {
-    emitter(ExpertState.initialized(balancer: state.balancer));
-  }
+  Future<void> _init(_InitExpertEvent event, Emitter<ExpertState> emitter) async {}
 
-  Future<void> _updateBalancer(_UpdateBalancerExpertEvent event, Emitter<ExpertState> emitter) async {
-    emitter(ExpertState.inProgress(balancer: state.balancer));
-    final balancer = StepsBalancer.create(
-      stepRateList: event.stepsRateList ?? state.balancer.stepRateList,
-      tradeBalance: event.balance ?? state.balancer.tradeBalance,
-      stocksAmount: event.stocksAmount ?? state.balancer.stocksAmount,
-    );
-    await getIt<HiveStorage>().saveStepsBalancer(balancer);
-    emitter(ExpertState.initialized(
-      balancer: balancer,
-    ));
-  }
-// Future<void> _updateTotalBalance(_UpdateTotalBalanceExpertEvent event, Emitter<ExpertState> emitter) async {
-//   emitter(ExpertState.inProgress(account: state.account, balancer: state.balancer));
-//   try {
-//     final portfolioResponse = await tinkoffApiService.operationsServiceClient.getPortfolio(
-//       PortfolioRequest(
-//         accountId: state.account!.accountId,
-//         currency: PortfolioRequest_CurrencyRequest.RUB,
-//       ),
-//       options: tinkoffApiService.callOptions,
-//     );
-//     final withdrawResponse = await tinkoffApiService.operationsServiceClient.getWithdrawLimits(
-//       WithdrawLimitsRequest(accountId: state.account!.accountId),
-//       options: tinkoffApiService.callOptions,
-//     );
-//     final newUser = UserAccount.newUser(
-//       accountId: state.account!.accountId,
-//       accountName: state.account!.accountName,
-//       totalBalance: unitNanoToDouble(
-//         portfolioResponse.totalAmountPortfolio.units,
-//         portfolioResponse.totalAmountPortfolio.nano,
-//       ),
-//       tradeBalance: getIt<HiveStorage>().tradeBalance,
-//       freeBalance: unitNanoToDouble(
-//         withdrawResponse.money.first.units,
-//         withdrawResponse.money.first.nano,
-//       ),
-//     );
-//     emitter(ExpertState.initialized(account: newUser, balancer: state.balancer));
-//   } catch (error) {
-//     emitter(ExpertState.error(account: state.account, balancer: state.balancer, message: error.toString()));
-//     emitter(ExpertState.initialized(account: state.account, balancer: state.balancer));
-//   }
-// }
+  Future<void> _calculateNewBalancer(_CalculateNewBalancerExpertEvent event, Emitter<ExpertState> emitter) async {}
+
+  Future<void> _update(_UpdateExpertEvent event, Emitter<ExpertState> emitter) async {}
+
+  Future<void> _getShares() async {}
+
+  Future<void> _getPortfolioPositions() async {}
+
+  Future<void> _getSharesInfo(List<String> positions) async {}
 }

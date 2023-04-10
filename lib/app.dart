@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
+import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
 import 'package:tinkoff_helper/presentation/features/portfolio/bloc/portfolio_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/portfolio/screens/portfolio_screen.dart';
@@ -24,8 +25,11 @@ class App extends StatelessWidget {
         BlocProvider<SettingsBloc>(
           create: (context) => SettingsBloc(apiKey: getIt<HiveStorage>().apiKey),
         ),
+        BlocProvider<ExpertSettingsBloc>(
+          create: (context) => ExpertSettingsBloc(balancer: getIt<HiveStorage>().stepsBalancer),
+        ),
         BlocProvider<ExpertBloc>(
-          create: (context) => ExpertBloc(balancer: getIt<HiveStorage>().stepsBalancer),
+          create: (context) => ExpertBloc(balancer: getIt<HiveStorage>().stepsBalancer, positions: []),
         ),
         BlocProvider<PortfolioBloc>(
           create: (context) => PortfolioBloc(portfolio: null),
@@ -45,7 +49,7 @@ class App extends StatelessWidget {
               return VerticalTabs(
                 direction: TextDirection.ltr,
                 contentScrollAxis: Axis.vertical,
-                initialIndex: 3,
+                initialIndex: 2,
                 selectedTabBackgroundColor: Colors.yellow,
                 tabBackgroundColor: const Color(0xFFb5b50b),
                 tabsShadowColor: Colors.yellow,
@@ -54,13 +58,11 @@ class App extends StatelessWidget {
                 tabs: const [
                   Tab(icon: Icon(Icons.cases_rounded)),
                   Tab(icon: Icon(Icons.science_rounded)),
-                  Tab(icon: Icon(Icons.search_sharp)),
                   Tab(icon: Icon(Icons.settings)),
                 ],
                 contents: [
                   state.tokenChecked ? const PortfolioScreen() : const NeedAuthorizePlaceholder(),
                   state.tokenChecked ? const ExpertScreen() : const NeedAuthorizePlaceholder(),
-                  state.tokenChecked ? const Center() : const NeedAuthorizePlaceholder(),
                   const SettingsScreen(),
                 ],
               );

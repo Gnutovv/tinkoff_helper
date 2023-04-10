@@ -6,7 +6,7 @@ class NeedAuthorizePlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Для продолжения работы с приложением, необходимо верифицировать API на странице настроек'),
+      child: Text('Для продолжения работы с приложением, необходимо верифицировать токен на странице настроек'),
     );
   }
 }
