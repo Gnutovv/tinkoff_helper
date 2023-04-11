@@ -22,44 +22,6 @@ mixin _$StepsBalancer {
   double get tradeBalance => throw _privateConstructorUsedError;
   @HiveField(2)
   int get stocksAmount => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            @HiveField(0) List<int> stepRateList, @HiveField(1) double tradeBalance, @HiveField(2) int stocksAmount)
-        create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            @HiveField(0) List<int> stepRateList, @HiveField(1) double tradeBalance, @HiveField(2) int stocksAmount)?
-        create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            @HiveField(0) List<int> stepRateList, @HiveField(1) double tradeBalance, @HiveField(2) int stocksAmount)?
-        create,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StepBalancer value) create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StepBalancer value)? create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StepBalancer value)? create,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StepsBalancerCopyWith<StepsBalancer> get copyWith => throw _privateConstructorUsedError;
@@ -173,7 +135,7 @@ class _$_StepBalancer extends _StepBalancer {
 
   @override
   String toString() {
-    return 'StepsBalancer.create(stepRateList: $stepRateList, tradeBalance: $tradeBalance, stocksAmount: $stocksAmount)';
+    return 'StepsBalancer(stepRateList: $stepRateList, tradeBalance: $tradeBalance, stocksAmount: $stocksAmount)';
   }
 
   @override
@@ -195,68 +157,6 @@ class _$_StepBalancer extends _StepBalancer {
   @pragma('vm:prefer-inline')
   _$$_StepBalancerCopyWith<_$_StepBalancer> get copyWith =>
       __$$_StepBalancerCopyWithImpl<_$_StepBalancer>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            @HiveField(0) List<int> stepRateList, @HiveField(1) double tradeBalance, @HiveField(2) int stocksAmount)
-        create,
-  }) {
-    return create(stepRateList, tradeBalance, stocksAmount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            @HiveField(0) List<int> stepRateList, @HiveField(1) double tradeBalance, @HiveField(2) int stocksAmount)?
-        create,
-  }) {
-    return create?.call(stepRateList, tradeBalance, stocksAmount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            @HiveField(0) List<int> stepRateList, @HiveField(1) double tradeBalance, @HiveField(2) int stocksAmount)?
-        create,
-    required TResult orElse(),
-  }) {
-    if (create != null) {
-      return create(stepRateList, tradeBalance, stocksAmount);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StepBalancer value) create,
-  }) {
-    return create(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StepBalancer value)? create,
-  }) {
-    return create?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StepBalancer value)? create,
-    required TResult orElse(),
-  }) {
-    if (create != null) {
-      return create(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _StepBalancer extends StepsBalancer {

@@ -58,11 +58,13 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     emitter(SettingsState.inProgress(apiKey: newApiKey));
 
     try {
-      await tinkoffApiService.usersServiceClient.getAccounts(
+      final result = await tinkoffApiService.usersServiceClient.getAccounts(
         GetAccountsRequest(),
         options: tinkoffApiService.callOptions,
       );
       await getIt<HiveStorage>().saveApiKey(newApiKey);
+      tinkoffApiService.setAccountId(result.accounts.first.id);
+      tinkoffApiService.setAccountName(result.accounts.first.name);
       emitter(SettingsState.initialized(
         apiKey: newApiKey,
         checkStatus: CheckApiKeyStatuses.ok,

@@ -29,7 +29,10 @@ class App extends StatelessWidget {
           create: (context) => ExpertSettingsBloc(balancer: getIt<HiveStorage>().stepsBalancer),
         ),
         BlocProvider<ExpertBloc>(
-          create: (context) => ExpertBloc(balancer: getIt<HiveStorage>().stepsBalancer, positions: []),
+          create: (context) => ExpertBloc(
+            balancer: getIt<HiveStorage>().stepsBalancer,
+            initPositions: getIt<HiveStorage>().expertPositions,
+          ),
         ),
         BlocProvider<PortfolioBloc>(
           create: (context) => PortfolioBloc(portfolio: null),

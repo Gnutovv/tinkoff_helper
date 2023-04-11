@@ -5,7 +5,7 @@ part 'portfolio.freezed.dart';
 
 @freezed
 class Portfolio with _$Portfolio {
-  const factory Portfolio.create({
+  const factory Portfolio({
     required double totalAmountPortfolio,
     required double withdrawLimit,
     required double expectedYield,

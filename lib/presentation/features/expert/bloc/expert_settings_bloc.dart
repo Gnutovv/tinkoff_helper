@@ -50,7 +50,7 @@ class ExpertSettingsBloc extends Bloc<ExpertSettingsEvent, ExpertSettingsState> 
 
   Future<void> _updateBalancer(_UpdateBalancerExpertSettingsEvent event, Emitter<ExpertSettingsState> emitter) async {
     emitter(ExpertSettingsState.inProgress(balancer: state.balancer));
-    final balancer = StepsBalancer.create(
+    final balancer = StepsBalancer(
       stepRateList: event.stepsRateList ?? state.balancer.stepRateList,
       tradeBalance: event.balance ?? state.balancer.tradeBalance,
       stocksAmount: event.stocksAmount ?? state.balancer.stocksAmount,

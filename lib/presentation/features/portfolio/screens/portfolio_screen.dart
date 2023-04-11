@@ -4,6 +4,7 @@ import 'package:tinkoff_helper/common/extensions.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/common/widgets/card_item_widget.dart';
+import 'package:tinkoff_helper/presentation/common/widgets/equal_color.dart';
 import 'package:tinkoff_helper/presentation/features/portfolio/bloc/portfolio_bloc.dart';
 
 class PortfolioScreen extends StatelessWidget {
@@ -86,9 +87,9 @@ class PortfolioScreen extends StatelessWidget {
                           children: [
                             const Text('Прибыль по открытым позициям:'),
                             Text(
-                              '${state.portfolio!.expectedYield}%',
+                              '${state.portfolio!.expectedYield.toStringAsFixed(2)} %',
                               style: tabElementsStyle.copyWith(
-                                color: state.portfolio!.expectedYield >= 0 ? const Color(0xFF00AA00) : Colors.red,
+                                color: equalColor(first: state.portfolio!.expectedYield, second: 0),
                               ),
                             ),
                           ],
@@ -207,26 +208,31 @@ class PortfolioScreen extends StatelessWidget {
                                           Container(
                                             alignment: Alignment.center,
                                             width: 118,
-                                            child: Text(state.portfolio!.positions[index].expectedYield.toString(),
-                                                style: tabElementsStyle.copyWith(
-                                                  color: state.portfolio!.positions[index].expectedYield >= 0
-                                                      ? const Color(0xFF00AA00)
-                                                      : Colors.red,
-                                                )),
+                                            child: Text(
+                                              state.portfolio!.positions[index].expectedYield.toString(),
+                                              style: tabElementsStyle.copyWith(
+                                                color: equalColor(
+                                                  first: state.portfolio!.positions[index].expectedYield,
+                                                  second: 0,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                           Container(
                                             alignment: Alignment.center,
                                             width: 118,
                                             child: Text(
-                                                _getProfitPercent(
-                                                  state.portfolio!.positions[index].averagePositionPrice,
-                                                  state.portfolio!.positions[index].currentPrice,
+                                              _getProfitPercent(
+                                                state.portfolio!.positions[index].averagePositionPrice,
+                                                state.portfolio!.positions[index].currentPrice,
+                                              ),
+                                              style: tabElementsStyle.copyWith(
+                                                color: equalColor(
+                                                  first: state.portfolio!.positions[index].expectedYield,
+                                                  second: 0,
                                                 ),
-                                                style: tabElementsStyle.copyWith(
-                                                  color: state.portfolio!.positions[index].expectedYield >= 0
-                                                      ? const Color(0xFF00AA00)
-                                                      : Colors.red,
-                                                )),
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),

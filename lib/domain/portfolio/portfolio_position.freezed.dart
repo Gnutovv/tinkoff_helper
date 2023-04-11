@@ -17,52 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PortfolioPosition {
   String get figi => throw _privateConstructorUsedError;
+  String get instrumentId => throw _privateConstructorUsedError;
   String get ticket => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   double get quantity => throw _privateConstructorUsedError;
   double get averagePositionPrice => throw _privateConstructorUsedError;
   double get expectedYield => throw _privateConstructorUsedError;
-  double get expectedYieldFifo => throw _privateConstructorUsedError;
   double get currentPrice => throw _privateConstructorUsedError;
   bool get blocked => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
-            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)
-        newPosition,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
-            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)?
-        newPosition,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
-            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)?
-        newPosition,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NewPortfolioPosition value) newPosition,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NewPortfolioPosition value)? newPosition,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewPortfolioPosition value)? newPosition,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PortfolioPositionCopyWith<PortfolioPosition> get copyWith => throw _privateConstructorUsedError;
@@ -75,12 +37,12 @@ abstract class $PortfolioPositionCopyWith<$Res> {
   @useResult
   $Res call(
       {String figi,
+      String instrumentId,
       String ticket,
       String title,
       double quantity,
       double averagePositionPrice,
       double expectedYield,
-      double expectedYieldFifo,
       double currentPrice,
       bool blocked});
 }
@@ -99,12 +61,12 @@ class _$PortfolioPositionCopyWithImpl<$Res, $Val extends PortfolioPosition>
   @override
   $Res call({
     Object? figi = null,
+    Object? instrumentId = null,
     Object? ticket = null,
     Object? title = null,
     Object? quantity = null,
     Object? averagePositionPrice = null,
     Object? expectedYield = null,
-    Object? expectedYieldFifo = null,
     Object? currentPrice = null,
     Object? blocked = null,
   }) {
@@ -112,6 +74,10 @@ class _$PortfolioPositionCopyWithImpl<$Res, $Val extends PortfolioPosition>
       figi: null == figi
           ? _value.figi
           : figi // ignore: cast_nullable_to_non_nullable
+              as String,
+      instrumentId: null == instrumentId
+          ? _value.instrumentId
+          : instrumentId // ignore: cast_nullable_to_non_nullable
               as String,
       ticket: null == ticket
           ? _value.ticket
@@ -132,10 +98,6 @@ class _$PortfolioPositionCopyWithImpl<$Res, $Val extends PortfolioPosition>
       expectedYield: null == expectedYield
           ? _value.expectedYield
           : expectedYield // ignore: cast_nullable_to_non_nullable
-              as double,
-      expectedYieldFifo: null == expectedYieldFifo
-          ? _value.expectedYieldFifo
-          : expectedYieldFifo // ignore: cast_nullable_to_non_nullable
               as double,
       currentPrice: null == currentPrice
           ? _value.currentPrice
@@ -150,46 +112,50 @@ class _$PortfolioPositionCopyWithImpl<$Res, $Val extends PortfolioPosition>
 }
 
 /// @nodoc
-abstract class _$$_NewPortfolioPositionCopyWith<$Res> implements $PortfolioPositionCopyWith<$Res> {
-  factory _$$_NewPortfolioPositionCopyWith(_$_NewPortfolioPosition value, $Res Function(_$_NewPortfolioPosition) then) =
-      __$$_NewPortfolioPositionCopyWithImpl<$Res>;
+abstract class _$$_PortfolioPositionCopyWith<$Res> implements $PortfolioPositionCopyWith<$Res> {
+  factory _$$_PortfolioPositionCopyWith(_$_PortfolioPosition value, $Res Function(_$_PortfolioPosition) then) =
+      __$$_PortfolioPositionCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String figi,
+      String instrumentId,
       String ticket,
       String title,
       double quantity,
       double averagePositionPrice,
       double expectedYield,
-      double expectedYieldFifo,
       double currentPrice,
       bool blocked});
 }
 
 /// @nodoc
-class __$$_NewPortfolioPositionCopyWithImpl<$Res> extends _$PortfolioPositionCopyWithImpl<$Res, _$_NewPortfolioPosition>
-    implements _$$_NewPortfolioPositionCopyWith<$Res> {
-  __$$_NewPortfolioPositionCopyWithImpl(_$_NewPortfolioPosition _value, $Res Function(_$_NewPortfolioPosition) _then)
+class __$$_PortfolioPositionCopyWithImpl<$Res> extends _$PortfolioPositionCopyWithImpl<$Res, _$_PortfolioPosition>
+    implements _$$_PortfolioPositionCopyWith<$Res> {
+  __$$_PortfolioPositionCopyWithImpl(_$_PortfolioPosition _value, $Res Function(_$_PortfolioPosition) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? figi = null,
+    Object? instrumentId = null,
     Object? ticket = null,
     Object? title = null,
     Object? quantity = null,
     Object? averagePositionPrice = null,
     Object? expectedYield = null,
-    Object? expectedYieldFifo = null,
     Object? currentPrice = null,
     Object? blocked = null,
   }) {
-    return _then(_$_NewPortfolioPosition(
+    return _then(_$_PortfolioPosition(
       figi: null == figi
           ? _value.figi
           : figi // ignore: cast_nullable_to_non_nullable
+              as String,
+      instrumentId: null == instrumentId
+          ? _value.instrumentId
+          : instrumentId // ignore: cast_nullable_to_non_nullable
               as String,
       ticket: null == ticket
           ? _value.ticket
@@ -210,10 +176,6 @@ class __$$_NewPortfolioPositionCopyWithImpl<$Res> extends _$PortfolioPositionCop
       expectedYield: null == expectedYield
           ? _value.expectedYield
           : expectedYield // ignore: cast_nullable_to_non_nullable
-              as double,
-      expectedYieldFifo: null == expectedYieldFifo
-          ? _value.expectedYieldFifo
-          : expectedYieldFifo // ignore: cast_nullable_to_non_nullable
               as double,
       currentPrice: null == currentPrice
           ? _value.currentPrice
@@ -229,21 +191,23 @@ class __$$_NewPortfolioPositionCopyWithImpl<$Res> extends _$PortfolioPositionCop
 
 /// @nodoc
 
-class _$_NewPortfolioPosition extends _NewPortfolioPosition {
-  const _$_NewPortfolioPosition(
+class _$_PortfolioPosition extends _PortfolioPosition {
+  const _$_PortfolioPosition(
       {required this.figi,
+      required this.instrumentId,
       required this.ticket,
       required this.title,
       required this.quantity,
       required this.averagePositionPrice,
       required this.expectedYield,
-      required this.expectedYieldFifo,
       required this.currentPrice,
       required this.blocked})
       : super._();
 
   @override
   final String figi;
+  @override
+  final String instrumentId;
   @override
   final String ticket;
   @override
@@ -255,125 +219,60 @@ class _$_NewPortfolioPosition extends _NewPortfolioPosition {
   @override
   final double expectedYield;
   @override
-  final double expectedYieldFifo;
-  @override
   final double currentPrice;
   @override
   final bool blocked;
 
   @override
   String toString() {
-    return 'PortfolioPosition.newPosition(figi: $figi, ticket: $ticket, title: $title, quantity: $quantity, averagePositionPrice: $averagePositionPrice, expectedYield: $expectedYield, expectedYieldFifo: $expectedYieldFifo, currentPrice: $currentPrice, blocked: $blocked)';
+    return 'PortfolioPosition(figi: $figi, instrumentId: $instrumentId, ticket: $ticket, title: $title, quantity: $quantity, averagePositionPrice: $averagePositionPrice, expectedYield: $expectedYield, currentPrice: $currentPrice, blocked: $blocked)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewPortfolioPosition &&
+            other is _$_PortfolioPosition &&
             (identical(other.figi, figi) || other.figi == figi) &&
+            (identical(other.instrumentId, instrumentId) || other.instrumentId == instrumentId) &&
             (identical(other.ticket, ticket) || other.ticket == ticket) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.quantity, quantity) || other.quantity == quantity) &&
             (identical(other.averagePositionPrice, averagePositionPrice) ||
                 other.averagePositionPrice == averagePositionPrice) &&
             (identical(other.expectedYield, expectedYield) || other.expectedYield == expectedYield) &&
-            (identical(other.expectedYieldFifo, expectedYieldFifo) || other.expectedYieldFifo == expectedYieldFifo) &&
             (identical(other.currentPrice, currentPrice) || other.currentPrice == currentPrice) &&
             (identical(other.blocked, blocked) || other.blocked == blocked));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, figi, ticket, title, quantity, averagePositionPrice, expectedYield,
-      expectedYieldFifo, currentPrice, blocked);
+  int get hashCode => Object.hash(runtimeType, figi, instrumentId, ticket, title, quantity, averagePositionPrice,
+      expectedYield, currentPrice, blocked);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewPortfolioPositionCopyWith<_$_NewPortfolioPosition> get copyWith =>
-      __$$_NewPortfolioPositionCopyWithImpl<_$_NewPortfolioPosition>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
-            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)
-        newPosition,
-  }) {
-    return newPosition(
-        figi, ticket, title, quantity, averagePositionPrice, expectedYield, expectedYieldFifo, currentPrice, blocked);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
-            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)?
-        newPosition,
-  }) {
-    return newPosition?.call(
-        figi, ticket, title, quantity, averagePositionPrice, expectedYield, expectedYieldFifo, currentPrice, blocked);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String figi, String ticket, String title, double quantity, double averagePositionPrice,
-            double expectedYield, double expectedYieldFifo, double currentPrice, bool blocked)?
-        newPosition,
-    required TResult orElse(),
-  }) {
-    if (newPosition != null) {
-      return newPosition(
-          figi, ticket, title, quantity, averagePositionPrice, expectedYield, expectedYieldFifo, currentPrice, blocked);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NewPortfolioPosition value) newPosition,
-  }) {
-    return newPosition(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NewPortfolioPosition value)? newPosition,
-  }) {
-    return newPosition?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewPortfolioPosition value)? newPosition,
-    required TResult orElse(),
-  }) {
-    if (newPosition != null) {
-      return newPosition(this);
-    }
-    return orElse();
-  }
+  _$$_PortfolioPositionCopyWith<_$_PortfolioPosition> get copyWith =>
+      __$$_PortfolioPositionCopyWithImpl<_$_PortfolioPosition>(this, _$identity);
 }
 
-abstract class _NewPortfolioPosition extends PortfolioPosition {
-  const factory _NewPortfolioPosition(
+abstract class _PortfolioPosition extends PortfolioPosition {
+  const factory _PortfolioPosition(
       {required final String figi,
+      required final String instrumentId,
       required final String ticket,
       required final String title,
       required final double quantity,
       required final double averagePositionPrice,
       required final double expectedYield,
-      required final double expectedYieldFifo,
       required final double currentPrice,
-      required final bool blocked}) = _$_NewPortfolioPosition;
-  const _NewPortfolioPosition._() : super._();
+      required final bool blocked}) = _$_PortfolioPosition;
+  const _PortfolioPosition._() : super._();
 
   @override
   String get figi;
+  @override
+  String get instrumentId;
   @override
   String get ticket;
   @override
@@ -385,12 +284,10 @@ abstract class _NewPortfolioPosition extends PortfolioPosition {
   @override
   double get expectedYield;
   @override
-  double get expectedYieldFifo;
-  @override
   double get currentPrice;
   @override
   bool get blocked;
   @override
   @JsonKey(ignore: true)
-  _$$_NewPortfolioPositionCopyWith<_$_NewPortfolioPosition> get copyWith => throw _privateConstructorUsedError;
+  _$$_PortfolioPositionCopyWith<_$_PortfolioPosition> get copyWith => throw _privateConstructorUsedError;
 }

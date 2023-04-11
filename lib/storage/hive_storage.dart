@@ -1,17 +1,19 @@
 import 'dart:io';
 
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:tinkoff_helper/domain/expert/expert_position.dart';
 import 'package:tinkoff_helper/domain/expert/steps_balancer.dart';
+import 'package:tinkoff_helper/domain/stock_instrument.dart';
 
 class HiveStorage {
   late final Box _pref;
-  late final Box _stepsBalancer;
+  late final Box _expert;
 
   Future<void> init() async {
     Hive.init(Directory.current.path);
     _registerAdapters();
     _pref = await Hive.openBox('pref');
-    _stepsBalancer = await Hive.openBox('balancer');
+    _expert = await Hive.openBox('expert');
   }
 
   void _registerAdapters() {
@@ -20,19 +22,29 @@ class HiveStorage {
 
   //API KEY
   String get apiKey => _pref.get('api_key') ?? '';
+
   Future<void> saveApiKey(String apiKey) async {
     await _pref.put('api_key', apiKey);
   }
 
   //STEPS BALANCER
   StepsBalancer get stepsBalancer =>
-      _stepsBalancer.get('steps_balancer') ??
-      const StepsBalancer.create(
+      _expert.get('balancer') ??
+      const StepsBalancer(
         stepRateList: [1, 1, 1, 1, 1],
         tradeBalance: 0,
         stocksAmount: 25,
       );
+
   Future<void> saveStepsBalancer(StepsBalancer balancer) async {
-    await _stepsBalancer.put('steps_balancer', balancer);
+    await _expert.put('balancer', balancer);
+  }
+
+  //EXPERT POSITIONS
+  List<String> get expertPositions => _expert.get('positions') ?? <String>[];
+
+  Future<void> saveExpertPositions(Map<String, dynamic> positions) async {
+    List<String> positionsList = positions.keys.toList();
+    await _expert.put('positions', positionsList);
   }
 }

@@ -22,44 +22,6 @@ mixin _$Portfolio {
   List<PortfolioPosition> get positions => throw _privateConstructorUsedError;
   String get accountId => throw _privateConstructorUsedError;
   String get accountName => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
-            List<PortfolioPosition> positions, String accountId, String accountName)
-        create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
-            List<PortfolioPosition> positions, String accountId, String accountName)?
-        create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
-            List<PortfolioPosition> positions, String accountId, String accountName)?
-        create,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NewPortfolio value) create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NewPortfolio value)? create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewPortfolio value)? create,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PortfolioCopyWith<Portfolio> get copyWith => throw _privateConstructorUsedError;
@@ -219,7 +181,7 @@ class _$_NewPortfolio extends _NewPortfolio {
 
   @override
   String toString() {
-    return 'Portfolio.create(totalAmountPortfolio: $totalAmountPortfolio, withdrawLimit: $withdrawLimit, expectedYield: $expectedYield, positions: $positions, accountId: $accountId, accountName: $accountName)';
+    return 'Portfolio(totalAmountPortfolio: $totalAmountPortfolio, withdrawLimit: $withdrawLimit, expectedYield: $expectedYield, positions: $positions, accountId: $accountId, accountName: $accountName)';
   }
 
   @override
@@ -245,68 +207,6 @@ class _$_NewPortfolio extends _NewPortfolio {
   @pragma('vm:prefer-inline')
   _$$_NewPortfolioCopyWith<_$_NewPortfolio> get copyWith =>
       __$$_NewPortfolioCopyWithImpl<_$_NewPortfolio>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
-            List<PortfolioPosition> positions, String accountId, String accountName)
-        create,
-  }) {
-    return create(totalAmountPortfolio, withdrawLimit, expectedYield, positions, accountId, accountName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
-            List<PortfolioPosition> positions, String accountId, String accountName)?
-        create,
-  }) {
-    return create?.call(totalAmountPortfolio, withdrawLimit, expectedYield, positions, accountId, accountName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double totalAmountPortfolio, double withdrawLimit, double expectedYield,
-            List<PortfolioPosition> positions, String accountId, String accountName)?
-        create,
-    required TResult orElse(),
-  }) {
-    if (create != null) {
-      return create(totalAmountPortfolio, withdrawLimit, expectedYield, positions, accountId, accountName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NewPortfolio value) create,
-  }) {
-    return create(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NewPortfolio value)? create,
-  }) {
-    return create?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewPortfolio value)? create,
-    required TResult orElse(),
-  }) {
-    if (create != null) {
-      return create(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _NewPortfolio extends Portfolio {

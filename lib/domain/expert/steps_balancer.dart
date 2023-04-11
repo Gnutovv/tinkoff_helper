@@ -7,7 +7,7 @@ part 'steps_balancer.g.dart';
 @freezed
 class StepsBalancer with _$StepsBalancer {
   @HiveType(typeId: 0, adapterName: 'StepsBalancerAdapter')
-  const factory StepsBalancer.create({
+  const factory StepsBalancer({
     @HiveField(0) required List<int> stepRateList,
     @HiveField(1) required double tradeBalance,
     @HiveField(2) required int stocksAmount,
@@ -45,5 +45,16 @@ class StepsBalancer with _$StepsBalancer {
       stepsMoneyVolume[i] = getStepMoneyVolume(i);
     }
     return stepsMoneyVolume;
+  }
+
+  List<double> stepsPrices(List<double> lhPrices) {
+    final linesCount = stepRateList.length + 2;
+    final divider = (lhPrices.last - lhPrices.first) / linesCount;
+    final priceLevels = List.generate(linesCount, (index) {
+      if (index == 0) return lhPrices.first;
+      return lhPrices.first + (divider * index);
+    });
+    priceLevels.add(lhPrices.last);
+    return priceLevels;
   }
 }
