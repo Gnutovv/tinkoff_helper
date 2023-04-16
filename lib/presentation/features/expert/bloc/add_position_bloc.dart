@@ -53,6 +53,7 @@ class AddPositionBloc extends Bloc<AddPositionEvent, AddPositionState> {
         $instruments_pb.InstrumentsRequest(instrumentStatus: $instruments_pb.InstrumentStatus.INSTRUMENT_STATUS_BASE),
         options: _tinkoffApiService.callOptions,
       );
+
       final share = shares.instruments.firstWhereOrNull((share) => share.ticker == event.ticker);
 
       if (share == null) {
@@ -76,13 +77,11 @@ class AddPositionBloc extends Bloc<AddPositionEvent, AddPositionState> {
       );
       final responsePortfolioPosition =
           portfolioResponse.positions.firstWhereOrNull((position) => position.figi == stockInstrument.figi);
-
-      /// !!!
       final portfolioPosition = responsePortfolioPosition != null
           ? ExpertPortfolioPosition.fromPP(responsePortfolioPosition, stockInstrument)
           : null;
       final intFrom = (DateTime.now().toUtc().subtract(const Duration(days: 350)).millisecondsSinceEpoch) ~/ 1000;
-      final intTo = ((DateTime.now().toUtc().subtract(const Duration(days: 1)).millisecondsSinceEpoch) ~/ 1000);
+      final intTo = (DateTime.now().toUtc().millisecondsSinceEpoch) ~/ 1000;
       final instrumentCandles = await _tinkoffApiService.marketDataServiceClient.getCandles(
         $marketdata_pb.GetCandlesRequest(
           figi: share.figi,
