@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tinkoff_helper/domain/portfolio/portfolio_position.dart';
+import 'package:tinkoff_helper/domain/portfolio/expert_portfolio_position.dart';
 
 part 'portfolio.freezed.dart';
 
@@ -9,10 +9,8 @@ class Portfolio with _$Portfolio {
     required double totalAmountPortfolio,
     required double withdrawLimit,
     required double expectedYield,
-    required List<PortfolioPosition> positions,
+    required List<ExpertPortfolioPosition> positions,
     required String accountId,
     required String accountName,
-  }) = _NewPortfolio;
-
-  const Portfolio._();
+  }) = _Portfolio;
 }

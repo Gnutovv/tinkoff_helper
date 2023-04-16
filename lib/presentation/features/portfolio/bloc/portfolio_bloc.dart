@@ -2,8 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tinkoff_helper/common/extensions.dart';
 import 'package:tinkoff_helper/di/di.dart';
+import 'package:tinkoff_helper/domain/portfolio/expert_portfolio_position.dart';
 import 'package:tinkoff_helper/domain/portfolio/portfolio.dart';
-import 'package:tinkoff_helper/domain/portfolio/portfolio_position.dart' as pp;
 import 'package:tinkoff_helper/network/generated/instruments.pb.dart' as inst;
 import 'package:tinkoff_helper/network/generated/operations.pb.dart';
 import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
@@ -73,10 +73,10 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
             expectedYield: portfolioResponse.expectedYield.toDouble,
             positions: List.generate(
               positions.length,
-              (index) => pp.PortfolioPosition(
+              (index) => ExpertPortfolioPosition(
                 figi: positions[index].figi,
                 instrumentId: positions[index].instrumentUid,
-                ticket: instrumentsResponse.instruments
+                ticker: instrumentsResponse.instruments
                     .firstWhere((element) => element.figi == positions[index].figi)
                     .ticker,
                 title:
@@ -85,7 +85,6 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
                 averagePositionPrice: positions[index].averagePositionPrice.toDouble,
                 expectedYield: positions[index].expectedYield.toDouble,
                 currentPrice: positions[index].currentPrice.toDouble,
-                blocked: positions[index].blocked,
               ),
             ),
             accountId: portfolioResponse.accountId,

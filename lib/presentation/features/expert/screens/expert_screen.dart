@@ -92,7 +92,6 @@ class ExpertScreen extends StatelessWidget {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) => const AddExpertPositionScreen()))
                                 .then((expertPosition) {
-                              print('Returned expertPosition: $expertPosition');
                               if (expertPosition != null) bloc.add(ExpertEvent.addExpertPositions(expertPosition));
                             });
                           },
@@ -152,6 +151,10 @@ class ExpertScreen extends StatelessWidget {
                     Container(
                         alignment: Alignment.center,
                         width: 118,
+                        child: const Text('Индикатор', style: tabElementsStyle)),
+                    Container(
+                        alignment: Alignment.center,
+                        width: 118,
                         child: const Text('Рекомендация', style: tabElementsStyle)),
                     Container(
                         alignment: Alignment.center,
@@ -185,13 +188,14 @@ class ExpertScreen extends StatelessWidget {
                                         child: Text((index + 1).toString(), style: tabElementsStyle),
                                       ),
                                       _rowElement(state.expertPositions[index]!.instrument.ticker),
-                                      _rowElement(state.expertPositions[index]!.instrument.name),
-                                      _rowElement(state.expertPositions[index]!.quantity.toString()),
-                                      _rowElement(state.expertPositions[index]!.recommendationQuantity.toString(),
+                                      _rowElement(state.expertPositions[index]!.instrument.title),
+                                      _rowElement(state.expertPositions[index]!.instrument.quantity.toStringAsFixed(0)),
+                                      _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
                                           color: equalColor(
-                                            first: state.expertPositions[index]!.recommendationQuantity,
-                                            second: state.expertPositions[index]!.quantity,
+                                            first: state.expertPositions[index]!.recommendAmount,
+                                            second: state.expertPositions[index]!.instrument.quantity,
                                           )),
+                                      _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌'),
                                       _rowElement(state.expertPositions[index]!.recommendAction.toActionName()),
                                       _rowElement('555'),
                                     ],

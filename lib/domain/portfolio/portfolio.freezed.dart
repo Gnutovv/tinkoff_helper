@@ -19,7 +19,7 @@ mixin _$Portfolio {
   double get totalAmountPortfolio => throw _privateConstructorUsedError;
   double get withdrawLimit => throw _privateConstructorUsedError;
   double get expectedYield => throw _privateConstructorUsedError;
-  List<PortfolioPosition> get positions => throw _privateConstructorUsedError;
+  List<ExpertPortfolioPosition> get positions => throw _privateConstructorUsedError;
   String get accountId => throw _privateConstructorUsedError;
   String get accountName => throw _privateConstructorUsedError;
 
@@ -35,7 +35,7 @@ abstract class $PortfolioCopyWith<$Res> {
       {double totalAmountPortfolio,
       double withdrawLimit,
       double expectedYield,
-      List<PortfolioPosition> positions,
+      List<ExpertPortfolioPosition> positions,
       String accountId,
       String accountName});
 }
@@ -75,7 +75,7 @@ class _$PortfolioCopyWithImpl<$Res, $Val extends Portfolio> implements $Portfoli
       positions: null == positions
           ? _value.positions
           : positions // ignore: cast_nullable_to_non_nullable
-              as List<PortfolioPosition>,
+              as List<ExpertPortfolioPosition>,
       accountId: null == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
@@ -89,24 +89,24 @@ class _$PortfolioCopyWithImpl<$Res, $Val extends Portfolio> implements $Portfoli
 }
 
 /// @nodoc
-abstract class _$$_NewPortfolioCopyWith<$Res> implements $PortfolioCopyWith<$Res> {
-  factory _$$_NewPortfolioCopyWith(_$_NewPortfolio value, $Res Function(_$_NewPortfolio) then) =
-      __$$_NewPortfolioCopyWithImpl<$Res>;
+abstract class _$$_PortfolioCopyWith<$Res> implements $PortfolioCopyWith<$Res> {
+  factory _$$_PortfolioCopyWith(_$_Portfolio value, $Res Function(_$_Portfolio) then) =
+      __$$_PortfolioCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {double totalAmountPortfolio,
       double withdrawLimit,
       double expectedYield,
-      List<PortfolioPosition> positions,
+      List<ExpertPortfolioPosition> positions,
       String accountId,
       String accountName});
 }
 
 /// @nodoc
-class __$$_NewPortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, _$_NewPortfolio>
-    implements _$$_NewPortfolioCopyWith<$Res> {
-  __$$_NewPortfolioCopyWithImpl(_$_NewPortfolio _value, $Res Function(_$_NewPortfolio) _then) : super(_value, _then);
+class __$$_PortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, _$_Portfolio>
+    implements _$$_PortfolioCopyWith<$Res> {
+  __$$_PortfolioCopyWithImpl(_$_Portfolio _value, $Res Function(_$_Portfolio) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -118,7 +118,7 @@ class __$$_NewPortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, 
     Object? accountId = null,
     Object? accountName = null,
   }) {
-    return _then(_$_NewPortfolio(
+    return _then(_$_Portfolio(
       totalAmountPortfolio: null == totalAmountPortfolio
           ? _value.totalAmountPortfolio
           : totalAmountPortfolio // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ class __$$_NewPortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, 
       positions: null == positions
           ? _value._positions
           : positions // ignore: cast_nullable_to_non_nullable
-              as List<PortfolioPosition>,
+              as List<ExpertPortfolioPosition>,
       accountId: null == accountId
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
@@ -149,16 +149,15 @@ class __$$_NewPortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, 
 
 /// @nodoc
 
-class _$_NewPortfolio extends _NewPortfolio {
-  const _$_NewPortfolio(
+class _$_Portfolio implements _Portfolio {
+  const _$_Portfolio(
       {required this.totalAmountPortfolio,
       required this.withdrawLimit,
       required this.expectedYield,
-      required final List<PortfolioPosition> positions,
+      required final List<ExpertPortfolioPosition> positions,
       required this.accountId,
       required this.accountName})
-      : _positions = positions,
-        super._();
+      : _positions = positions;
 
   @override
   final double totalAmountPortfolio;
@@ -166,9 +165,9 @@ class _$_NewPortfolio extends _NewPortfolio {
   final double withdrawLimit;
   @override
   final double expectedYield;
-  final List<PortfolioPosition> _positions;
+  final List<ExpertPortfolioPosition> _positions;
   @override
-  List<PortfolioPosition> get positions {
+  List<ExpertPortfolioPosition> get positions {
     if (_positions is EqualUnmodifiableListView) return _positions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_positions);
@@ -188,7 +187,7 @@ class _$_NewPortfolio extends _NewPortfolio {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewPortfolio &&
+            other is _$_Portfolio &&
             (identical(other.totalAmountPortfolio, totalAmountPortfolio) ||
                 other.totalAmountPortfolio == totalAmountPortfolio) &&
             (identical(other.withdrawLimit, withdrawLimit) || other.withdrawLimit == withdrawLimit) &&
@@ -205,19 +204,17 @@ class _$_NewPortfolio extends _NewPortfolio {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewPortfolioCopyWith<_$_NewPortfolio> get copyWith =>
-      __$$_NewPortfolioCopyWithImpl<_$_NewPortfolio>(this, _$identity);
+  _$$_PortfolioCopyWith<_$_Portfolio> get copyWith => __$$_PortfolioCopyWithImpl<_$_Portfolio>(this, _$identity);
 }
 
-abstract class _NewPortfolio extends Portfolio {
-  const factory _NewPortfolio(
+abstract class _Portfolio implements Portfolio {
+  const factory _Portfolio(
       {required final double totalAmountPortfolio,
       required final double withdrawLimit,
       required final double expectedYield,
-      required final List<PortfolioPosition> positions,
+      required final List<ExpertPortfolioPosition> positions,
       required final String accountId,
-      required final String accountName}) = _$_NewPortfolio;
-  const _NewPortfolio._() : super._();
+      required final String accountName}) = _$_Portfolio;
 
   @override
   double get totalAmountPortfolio;
@@ -226,12 +223,12 @@ abstract class _NewPortfolio extends Portfolio {
   @override
   double get expectedYield;
   @override
-  List<PortfolioPosition> get positions;
+  List<ExpertPortfolioPosition> get positions;
   @override
   String get accountId;
   @override
   String get accountName;
   @override
   @JsonKey(ignore: true)
-  _$$_NewPortfolioCopyWith<_$_NewPortfolio> get copyWith => throw _privateConstructorUsedError;
+  _$$_PortfolioCopyWith<_$_Portfolio> get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tinkoff_helper/domain/stock_instrument.dart';
+import 'package:tinkoff_helper/domain/portfolio/expert_portfolio_position.dart';
 
 part 'expert_position.freezed.dart';
 
@@ -8,19 +8,18 @@ class ExpertPosition with _$ExpertPosition {
   const ExpertPosition._();
 
   const factory ExpertPosition({
-    required StockInstrument instrument,
-    required int quantity,
-    required int recommendationQuantity,
-    required bool canBuy,
-    required List<double> stepsPrices,
+    required ExpertPortfolioPosition instrument,
+    required int recommendAmount,
+    required bool shouldBuy,
   }) = _ExpertPosition;
 
-  bool get isRecommend => (quantity != recommendationQuantity) && canBuy;
+  /// TODO: Add CanBuy check
+  bool get isRecommend => recommendAction != ExpertAction.keep;
 
-  ExpertAction get recommendAction => quantity < recommendationQuantity
-      ? ExpertAction.buy
-      : quantity > recommendationQuantity
-          ? ExpertAction.sell
+  ExpertAction get recommendAction => instrument.quantity > recommendAmount
+      ? ExpertAction.sell
+      : (instrument.quantity < recommendAmount && shouldBuy)
+          ? ExpertAction.buy
           : ExpertAction.keep;
 }
 

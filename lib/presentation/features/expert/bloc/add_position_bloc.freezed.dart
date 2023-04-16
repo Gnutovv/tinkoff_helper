@@ -16,37 +16,37 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddPositionEvent {
-  String get ticket => throw _privateConstructorUsedError;
+  String get ticker => throw _privateConstructorUsedError;
   StepsBalancer get balancer => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String ticket, StepsBalancer balancer) getPositionByTicket,
+    required TResult Function(String ticker, StepsBalancer balancer) getPositionByTicker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String ticket, StepsBalancer balancer)? getPositionByTicket,
+    TResult? Function(String ticker, StepsBalancer balancer)? getPositionByTicker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String ticket, StepsBalancer balancer)? getPositionByTicket,
+    TResult Function(String ticker, StepsBalancer balancer)? getPositionByTicker,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetPositionByTicketAddPositionEvent value) getPositionByTicket,
+    required TResult Function(_GetPositionByTickerAddPositionEvent value) getPositionByTicker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetPositionByTicketAddPositionEvent value)? getPositionByTicket,
+    TResult? Function(_GetPositionByTickerAddPositionEvent value)? getPositionByTicker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetPositionByTicketAddPositionEvent value)? getPositionByTicket,
+    TResult Function(_GetPositionByTickerAddPositionEvent value)? getPositionByTicker,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +60,7 @@ abstract class $AddPositionEventCopyWith<$Res> {
   factory $AddPositionEventCopyWith(AddPositionEvent value, $Res Function(AddPositionEvent) then) =
       _$AddPositionEventCopyWithImpl<$Res, AddPositionEvent>;
   @useResult
-  $Res call({String ticket, StepsBalancer balancer});
+  $Res call({String ticker, StepsBalancer balancer});
 
   $StepsBalancerCopyWith<$Res> get balancer;
 }
@@ -77,13 +77,13 @@ class _$AddPositionEventCopyWithImpl<$Res, $Val extends AddPositionEvent> implem
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ticket = null,
+    Object? ticker = null,
     Object? balancer = null,
   }) {
     return _then(_value.copyWith(
-      ticket: null == ticket
-          ? _value.ticket
-          : ticket // ignore: cast_nullable_to_non_nullable
+      ticker: null == ticker
+          ? _value.ticker
+          : ticker // ignore: cast_nullable_to_non_nullable
               as String,
       balancer: null == balancer
           ? _value.balancer
@@ -102,36 +102,36 @@ class _$AddPositionEventCopyWithImpl<$Res, $Val extends AddPositionEvent> implem
 }
 
 /// @nodoc
-abstract class _$$_GetPositionByTicketAddPositionEventCopyWith<$Res> implements $AddPositionEventCopyWith<$Res> {
-  factory _$$_GetPositionByTicketAddPositionEventCopyWith(
-          _$_GetPositionByTicketAddPositionEvent value, $Res Function(_$_GetPositionByTicketAddPositionEvent) then) =
-      __$$_GetPositionByTicketAddPositionEventCopyWithImpl<$Res>;
+abstract class _$$_GetPositionByTickerAddPositionEventCopyWith<$Res> implements $AddPositionEventCopyWith<$Res> {
+  factory _$$_GetPositionByTickerAddPositionEventCopyWith(
+          _$_GetPositionByTickerAddPositionEvent value, $Res Function(_$_GetPositionByTickerAddPositionEvent) then) =
+      __$$_GetPositionByTickerAddPositionEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String ticket, StepsBalancer balancer});
+  $Res call({String ticker, StepsBalancer balancer});
 
   @override
   $StepsBalancerCopyWith<$Res> get balancer;
 }
 
 /// @nodoc
-class __$$_GetPositionByTicketAddPositionEventCopyWithImpl<$Res>
-    extends _$AddPositionEventCopyWithImpl<$Res, _$_GetPositionByTicketAddPositionEvent>
-    implements _$$_GetPositionByTicketAddPositionEventCopyWith<$Res> {
-  __$$_GetPositionByTicketAddPositionEventCopyWithImpl(
-      _$_GetPositionByTicketAddPositionEvent _value, $Res Function(_$_GetPositionByTicketAddPositionEvent) _then)
+class __$$_GetPositionByTickerAddPositionEventCopyWithImpl<$Res>
+    extends _$AddPositionEventCopyWithImpl<$Res, _$_GetPositionByTickerAddPositionEvent>
+    implements _$$_GetPositionByTickerAddPositionEventCopyWith<$Res> {
+  __$$_GetPositionByTickerAddPositionEventCopyWithImpl(
+      _$_GetPositionByTickerAddPositionEvent _value, $Res Function(_$_GetPositionByTickerAddPositionEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ticket = null,
+    Object? ticker = null,
     Object? balancer = null,
   }) {
-    return _then(_$_GetPositionByTicketAddPositionEvent(
-      ticket: null == ticket
-          ? _value.ticket
-          : ticket // ignore: cast_nullable_to_non_nullable
+    return _then(_$_GetPositionByTickerAddPositionEvent(
+      ticker: null == ticker
+          ? _value.ticker
+          : ticker // ignore: cast_nullable_to_non_nullable
               as String,
       balancer: null == balancer
           ? _value.balancer
@@ -143,61 +143,61 @@ class __$$_GetPositionByTicketAddPositionEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetPositionByTicketAddPositionEvent extends _GetPositionByTicketAddPositionEvent {
-  const _$_GetPositionByTicketAddPositionEvent({required this.ticket, required this.balancer}) : super._();
+class _$_GetPositionByTickerAddPositionEvent extends _GetPositionByTickerAddPositionEvent {
+  const _$_GetPositionByTickerAddPositionEvent({required this.ticker, required this.balancer}) : super._();
 
   @override
-  final String ticket;
+  final String ticker;
   @override
   final StepsBalancer balancer;
 
   @override
   String toString() {
-    return 'AddPositionEvent.getPositionByTicket(ticket: $ticket, balancer: $balancer)';
+    return 'AddPositionEvent.getPositionByTicker(ticker: $ticker, balancer: $balancer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetPositionByTicketAddPositionEvent &&
-            (identical(other.ticket, ticket) || other.ticket == ticket) &&
+            other is _$_GetPositionByTickerAddPositionEvent &&
+            (identical(other.ticker, ticker) || other.ticker == ticker) &&
             (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ticket, balancer);
+  int get hashCode => Object.hash(runtimeType, ticker, balancer);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetPositionByTicketAddPositionEventCopyWith<_$_GetPositionByTicketAddPositionEvent> get copyWith =>
-      __$$_GetPositionByTicketAddPositionEventCopyWithImpl<_$_GetPositionByTicketAddPositionEvent>(this, _$identity);
+  _$$_GetPositionByTickerAddPositionEventCopyWith<_$_GetPositionByTickerAddPositionEvent> get copyWith =>
+      __$$_GetPositionByTickerAddPositionEventCopyWithImpl<_$_GetPositionByTickerAddPositionEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String ticket, StepsBalancer balancer) getPositionByTicket,
+    required TResult Function(String ticker, StepsBalancer balancer) getPositionByTicker,
   }) {
-    return getPositionByTicket(ticket, balancer);
+    return getPositionByTicker(ticker, balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String ticket, StepsBalancer balancer)? getPositionByTicket,
+    TResult? Function(String ticker, StepsBalancer balancer)? getPositionByTicker,
   }) {
-    return getPositionByTicket?.call(ticket, balancer);
+    return getPositionByTicker?.call(ticker, balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String ticket, StepsBalancer balancer)? getPositionByTicket,
+    TResult Function(String ticker, StepsBalancer balancer)? getPositionByTicker,
     required TResult orElse(),
   }) {
-    if (getPositionByTicket != null) {
-      return getPositionByTicket(ticket, balancer);
+    if (getPositionByTicker != null) {
+      return getPositionByTicker(ticker, balancer);
     }
     return orElse();
   }
@@ -205,44 +205,44 @@ class _$_GetPositionByTicketAddPositionEvent extends _GetPositionByTicketAddPosi
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetPositionByTicketAddPositionEvent value) getPositionByTicket,
+    required TResult Function(_GetPositionByTickerAddPositionEvent value) getPositionByTicker,
   }) {
-    return getPositionByTicket(this);
+    return getPositionByTicker(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetPositionByTicketAddPositionEvent value)? getPositionByTicket,
+    TResult? Function(_GetPositionByTickerAddPositionEvent value)? getPositionByTicker,
   }) {
-    return getPositionByTicket?.call(this);
+    return getPositionByTicker?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetPositionByTicketAddPositionEvent value)? getPositionByTicket,
+    TResult Function(_GetPositionByTickerAddPositionEvent value)? getPositionByTicker,
     required TResult orElse(),
   }) {
-    if (getPositionByTicket != null) {
-      return getPositionByTicket(this);
+    if (getPositionByTicker != null) {
+      return getPositionByTicker(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetPositionByTicketAddPositionEvent extends AddPositionEvent {
-  const factory _GetPositionByTicketAddPositionEvent(
-      {required final String ticket, required final StepsBalancer balancer}) = _$_GetPositionByTicketAddPositionEvent;
-  const _GetPositionByTicketAddPositionEvent._() : super._();
+abstract class _GetPositionByTickerAddPositionEvent extends AddPositionEvent {
+  const factory _GetPositionByTickerAddPositionEvent(
+      {required final String ticker, required final StepsBalancer balancer}) = _$_GetPositionByTickerAddPositionEvent;
+  const _GetPositionByTickerAddPositionEvent._() : super._();
 
   @override
-  String get ticket;
+  String get ticker;
   @override
   StepsBalancer get balancer;
   @override
   @JsonKey(ignore: true)
-  _$$_GetPositionByTicketAddPositionEventCopyWith<_$_GetPositionByTicketAddPositionEvent> get copyWith =>
+  _$$_GetPositionByTickerAddPositionEventCopyWith<_$_GetPositionByTickerAddPositionEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

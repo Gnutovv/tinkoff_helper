@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tinkoff_helper/domain/expert/expert_position.dart';
 import 'package:tinkoff_helper/domain/expert/steps_balancer.dart';
-import 'package:tinkoff_helper/domain/stock_instrument.dart';
 
 class HiveStorage {
   late final Box _pref;
@@ -43,8 +42,8 @@ class HiveStorage {
   //EXPERT POSITIONS
   List<String> get expertPositions => _expert.get('positions') ?? <String>[];
 
-  Future<void> saveExpertPositions(Map<String, dynamic> positions) async {
-    List<String> positionsList = positions.keys.toList();
-    await _expert.put('positions', positionsList);
+  Future<void> saveExpertPositions(List<ExpertPosition?> positions) async {
+    List<String> tickers = List.generate(positions.length, (index) => positions[index]!.instrument.ticker);
+    await _expert.put('positions', tickers);
   }
 }

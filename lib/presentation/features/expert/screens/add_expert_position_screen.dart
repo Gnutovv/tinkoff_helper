@@ -86,8 +86,8 @@ class _AddExpertPositionScreen extends StatelessWidget {
                   ),
                   const Divider(),
                   AppButton(
-                    onPressed: () => bloc.add(AddPositionEvent.getPositionByTicket(
-                      ticket: tickerController.text.toUpperCase(),
+                    onPressed: () => bloc.add(AddPositionEvent.getPositionByTicker(
+                      ticker: tickerController.text.toUpperCase(),
                       balancer: context.read<ExpertBloc>().state.balancer,
                     )),
                     child: const Icon(Icons.download),

@@ -177,6 +177,11 @@ class _$_StockInstriment extends _StockInstriment {
   final double lastPrice;
 
   @override
+  String toString() {
+    return 'StockInstrument(ticker: $ticker, figi: $figi, lot: $lot, currency: $currency, name: $name, country: $country, lastPrice: $lastPrice)';
+  }
+
+  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

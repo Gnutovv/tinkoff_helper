@@ -16,11 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ExpertPosition {
-  StockInstrument get instrument => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
-  int get recommendationQuantity => throw _privateConstructorUsedError;
-  bool get canBuy => throw _privateConstructorUsedError;
-  List<double> get stepsPrices => throw _privateConstructorUsedError;
+  ExpertPortfolioPosition get instrument => throw _privateConstructorUsedError;
+  int get recommendAmount => throw _privateConstructorUsedError;
+  bool get shouldBuy => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ExpertPositionCopyWith<ExpertPosition> get copyWith => throw _privateConstructorUsedError;
@@ -31,10 +29,9 @@ abstract class $ExpertPositionCopyWith<$Res> {
   factory $ExpertPositionCopyWith(ExpertPosition value, $Res Function(ExpertPosition) then) =
       _$ExpertPositionCopyWithImpl<$Res, ExpertPosition>;
   @useResult
-  $Res call(
-      {StockInstrument instrument, int quantity, int recommendationQuantity, bool canBuy, List<double> stepsPrices});
+  $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy});
 
-  $StockInstrumentCopyWith<$Res> get instrument;
+  $ExpertPortfolioPositionCopyWith<$Res> get instrument;
 }
 
 /// @nodoc
@@ -50,39 +47,29 @@ class _$ExpertPositionCopyWithImpl<$Res, $Val extends ExpertPosition> implements
   @override
   $Res call({
     Object? instrument = null,
-    Object? quantity = null,
-    Object? recommendationQuantity = null,
-    Object? canBuy = null,
-    Object? stepsPrices = null,
+    Object? recommendAmount = null,
+    Object? shouldBuy = null,
   }) {
     return _then(_value.copyWith(
       instrument: null == instrument
           ? _value.instrument
           : instrument // ignore: cast_nullable_to_non_nullable
-              as StockInstrument,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
+              as ExpertPortfolioPosition,
+      recommendAmount: null == recommendAmount
+          ? _value.recommendAmount
+          : recommendAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      recommendationQuantity: null == recommendationQuantity
-          ? _value.recommendationQuantity
-          : recommendationQuantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      canBuy: null == canBuy
-          ? _value.canBuy
-          : canBuy // ignore: cast_nullable_to_non_nullable
+      shouldBuy: null == shouldBuy
+          ? _value.shouldBuy
+          : shouldBuy // ignore: cast_nullable_to_non_nullable
               as bool,
-      stepsPrices: null == stepsPrices
-          ? _value.stepsPrices
-          : stepsPrices // ignore: cast_nullable_to_non_nullable
-              as List<double>,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $StockInstrumentCopyWith<$Res> get instrument {
-    return $StockInstrumentCopyWith<$Res>(_value.instrument, (value) {
+  $ExpertPortfolioPositionCopyWith<$Res> get instrument {
+    return $ExpertPortfolioPositionCopyWith<$Res>(_value.instrument, (value) {
       return _then(_value.copyWith(instrument: value) as $Val);
     });
   }
@@ -94,11 +81,10 @@ abstract class _$$_ExpertPositionCopyWith<$Res> implements $ExpertPositionCopyWi
       __$$_ExpertPositionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {StockInstrument instrument, int quantity, int recommendationQuantity, bool canBuy, List<double> stepsPrices});
+  $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy});
 
   @override
-  $StockInstrumentCopyWith<$Res> get instrument;
+  $ExpertPortfolioPositionCopyWith<$Res> get instrument;
 }
 
 /// @nodoc
@@ -111,32 +97,22 @@ class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl
   @override
   $Res call({
     Object? instrument = null,
-    Object? quantity = null,
-    Object? recommendationQuantity = null,
-    Object? canBuy = null,
-    Object? stepsPrices = null,
+    Object? recommendAmount = null,
+    Object? shouldBuy = null,
   }) {
     return _then(_$_ExpertPosition(
       instrument: null == instrument
           ? _value.instrument
           : instrument // ignore: cast_nullable_to_non_nullable
-              as StockInstrument,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
+              as ExpertPortfolioPosition,
+      recommendAmount: null == recommendAmount
+          ? _value.recommendAmount
+          : recommendAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      recommendationQuantity: null == recommendationQuantity
-          ? _value.recommendationQuantity
-          : recommendationQuantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      canBuy: null == canBuy
-          ? _value.canBuy
-          : canBuy // ignore: cast_nullable_to_non_nullable
+      shouldBuy: null == shouldBuy
+          ? _value.shouldBuy
+          : shouldBuy // ignore: cast_nullable_to_non_nullable
               as bool,
-      stepsPrices: null == stepsPrices
-          ? _value._stepsPrices
-          : stepsPrices // ignore: cast_nullable_to_non_nullable
-              as List<double>,
     ));
   }
 }
@@ -144,34 +120,19 @@ class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl
 /// @nodoc
 
 class _$_ExpertPosition extends _ExpertPosition {
-  const _$_ExpertPosition(
-      {required this.instrument,
-      required this.quantity,
-      required this.recommendationQuantity,
-      required this.canBuy,
-      required final List<double> stepsPrices})
-      : _stepsPrices = stepsPrices,
-        super._();
+  const _$_ExpertPosition({required this.instrument, required this.recommendAmount, required this.shouldBuy})
+      : super._();
 
   @override
-  final StockInstrument instrument;
+  final ExpertPortfolioPosition instrument;
   @override
-  final int quantity;
+  final int recommendAmount;
   @override
-  final int recommendationQuantity;
-  @override
-  final bool canBuy;
-  final List<double> _stepsPrices;
-  @override
-  List<double> get stepsPrices {
-    if (_stepsPrices is EqualUnmodifiableListView) return _stepsPrices;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stepsPrices);
-  }
+  final bool shouldBuy;
 
   @override
   String toString() {
-    return 'ExpertPosition(instrument: $instrument, quantity: $quantity, recommendationQuantity: $recommendationQuantity, canBuy: $canBuy, stepsPrices: $stepsPrices)';
+    return 'ExpertPosition(instrument: $instrument, recommendAmount: $recommendAmount, shouldBuy: $shouldBuy)';
   }
 
   @override
@@ -180,16 +141,12 @@ class _$_ExpertPosition extends _ExpertPosition {
         (other.runtimeType == runtimeType &&
             other is _$_ExpertPosition &&
             (identical(other.instrument, instrument) || other.instrument == instrument) &&
-            (identical(other.quantity, quantity) || other.quantity == quantity) &&
-            (identical(other.recommendationQuantity, recommendationQuantity) ||
-                other.recommendationQuantity == recommendationQuantity) &&
-            (identical(other.canBuy, canBuy) || other.canBuy == canBuy) &&
-            const DeepCollectionEquality().equals(other._stepsPrices, _stepsPrices));
+            (identical(other.recommendAmount, recommendAmount) || other.recommendAmount == recommendAmount) &&
+            (identical(other.shouldBuy, shouldBuy) || other.shouldBuy == shouldBuy));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, instrument, quantity, recommendationQuantity, canBuy,
-      const DeepCollectionEquality().hash(_stepsPrices));
+  int get hashCode => Object.hash(runtimeType, instrument, recommendAmount, shouldBuy);
 
   @JsonKey(ignore: true)
   @override
@@ -200,23 +157,17 @@ class _$_ExpertPosition extends _ExpertPosition {
 
 abstract class _ExpertPosition extends ExpertPosition {
   const factory _ExpertPosition(
-      {required final StockInstrument instrument,
-      required final int quantity,
-      required final int recommendationQuantity,
-      required final bool canBuy,
-      required final List<double> stepsPrices}) = _$_ExpertPosition;
+      {required final ExpertPortfolioPosition instrument,
+      required final int recommendAmount,
+      required final bool shouldBuy}) = _$_ExpertPosition;
   const _ExpertPosition._() : super._();
 
   @override
-  StockInstrument get instrument;
+  ExpertPortfolioPosition get instrument;
   @override
-  int get quantity;
+  int get recommendAmount;
   @override
-  int get recommendationQuantity;
-  @override
-  bool get canBuy;
-  @override
-  List<double> get stepsPrices;
+  bool get shouldBuy;
   @override
   @JsonKey(ignore: true)
   _$$_ExpertPositionCopyWith<_$_ExpertPosition> get copyWith => throw _privateConstructorUsedError;

@@ -173,7 +173,7 @@ class PortfolioScreen extends StatelessWidget {
                                             alignment: Alignment.center,
                                             width: 118,
                                             child:
-                                                Text(state.portfolio!.positions[index].ticket, style: tabElementsStyle),
+                                                Text(state.portfolio!.positions[index].ticker, style: tabElementsStyle),
                                           ),
                                           Container(
                                             alignment: Alignment.center,

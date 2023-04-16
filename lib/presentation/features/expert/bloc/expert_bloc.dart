@@ -4,6 +4,7 @@ import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/domain/expert/expert_position.dart';
 import 'package:tinkoff_helper/domain/expert/steps_balancer.dart';
 import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
+import 'package:tinkoff_helper/storage/hive_storage.dart';
 
 part 'expert_bloc.freezed.dart';
 
@@ -76,7 +77,7 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
     List<String> initPositions = state.initPositions!;
     emitter(ExpertState.inProgress(balancer: state.balancer, expertPositions: state.expertPositions));
     try {
-      final updatedExpertPositions = await _calculateExpertPositions(initPositions);
+      final updatedExpertPositions = await _initExpertPositions(initPositions);
       emitter(ExpertState.initialized(
         balancer: state.balancer,
         expertPositions: updatedExpertPositions,
@@ -96,11 +97,10 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
   }
 
   Future<void> _addExpertPosition(_AddExpertPositionsExpertEvent event, Emitter<ExpertState> emitter) async {
-    print('!!!! START ADD POSITION');
     final positions = [...state.expertPositions, event.expertPosition];
     emitter(ExpertState.inProgress(balancer: state.balancer, expertPositions: positions));
-    positions.sort((a, b) => a!.instrument.ticker.compareTo(b!.instrument.name));
-    print(state.expertPositions);
+    positions.sort((a, b) => a!.instrument.ticker.compareTo(b!.instrument.ticker));
+    getIt<HiveStorage>().saveExpertPositions(positions);
     emitter(ExpertState.initialized(balancer: state.balancer, expertPositions: state.expertPositions));
   }
 
@@ -110,7 +110,7 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
 
   Future<void> _updateExpertPositions(_UpdateExpertPositionsExpertEvent event, Emitter<ExpertState> emitter) async {}
 
-  Future<List<ExpertPosition>> _calculateExpertPositions(List<String> positions) async {
+  Future<List<ExpertPosition>> _initExpertPositions(List<String> positions) async {
     return [];
   }
 }

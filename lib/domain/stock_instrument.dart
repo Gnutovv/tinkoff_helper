@@ -28,16 +28,4 @@ class StockInstrument with _$StockInstrument {
       );
 
   double get lotPrice => (lastPrice * lot).toDouble();
-
-  @override
-  String toString() {
-    return '''Ticker: $ticker
-    figi: $figi
-    Lot: $lot
-    Currency: $currency
-    Name: $name
-    Country: $country
-    Last price: $lastPrice
-    Lot price: $lotPrice''';
-  }
 }
