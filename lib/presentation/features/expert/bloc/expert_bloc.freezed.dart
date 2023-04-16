@@ -22,6 +22,7 @@ mixin _$ExpertEvent {
     required TResult Function(StepsBalancer balancer) updateBalancer,
     required TResult Function() updateExpertPositions,
     required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
     required TResult Function(ExpertPosition expertPosition) doRecommend,
     required TResult Function() doAllRecommends,
   }) =>
@@ -32,6 +33,7 @@ mixin _$ExpertEvent {
     TResult? Function(StepsBalancer balancer)? updateBalancer,
     TResult? Function()? updateExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? doRecommend,
     TResult? Function()? doAllRecommends,
   }) =>
@@ -42,6 +44,7 @@ mixin _$ExpertEvent {
     TResult Function(StepsBalancer balancer)? updateBalancer,
     TResult Function()? updateExpertPositions,
     TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult Function(ExpertPosition expertPosition)? doRecommend,
     TResult Function()? doAllRecommends,
     required TResult orElse(),
@@ -53,6 +56,7 @@ mixin _$ExpertEvent {
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
     required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
     required TResult Function(_DoRecommendExpertEvent value) doRecommend,
     required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) =>
@@ -63,6 +67,7 @@ mixin _$ExpertEvent {
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) =>
@@ -73,6 +78,7 @@ mixin _$ExpertEvent {
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
@@ -134,6 +140,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     required TResult Function(StepsBalancer balancer) updateBalancer,
     required TResult Function() updateExpertPositions,
     required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
     required TResult Function(ExpertPosition expertPosition) doRecommend,
     required TResult Function() doAllRecommends,
   }) {
@@ -147,6 +154,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     TResult? Function(StepsBalancer balancer)? updateBalancer,
     TResult? Function()? updateExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? doRecommend,
     TResult? Function()? doAllRecommends,
   }) {
@@ -160,6 +168,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     TResult Function(StepsBalancer balancer)? updateBalancer,
     TResult Function()? updateExpertPositions,
     TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult Function(ExpertPosition expertPosition)? doRecommend,
     TResult Function()? doAllRecommends,
     required TResult orElse(),
@@ -177,6 +186,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
     required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
     required TResult Function(_DoRecommendExpertEvent value) doRecommend,
     required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
@@ -190,6 +200,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
@@ -203,6 +214,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
@@ -297,6 +309,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     required TResult Function(StepsBalancer balancer) updateBalancer,
     required TResult Function() updateExpertPositions,
     required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
     required TResult Function(ExpertPosition expertPosition) doRecommend,
     required TResult Function() doAllRecommends,
   }) {
@@ -310,6 +323,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     TResult? Function(StepsBalancer balancer)? updateBalancer,
     TResult? Function()? updateExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? doRecommend,
     TResult? Function()? doAllRecommends,
   }) {
@@ -323,6 +337,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     TResult Function(StepsBalancer balancer)? updateBalancer,
     TResult Function()? updateExpertPositions,
     TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult Function(ExpertPosition expertPosition)? doRecommend,
     TResult Function()? doAllRecommends,
     required TResult orElse(),
@@ -340,6 +355,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
     required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
     required TResult Function(_DoRecommendExpertEvent value) doRecommend,
     required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
@@ -353,6 +369,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
@@ -366,6 +383,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
@@ -428,6 +446,7 @@ class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEv
     required TResult Function(StepsBalancer balancer) updateBalancer,
     required TResult Function() updateExpertPositions,
     required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
     required TResult Function(ExpertPosition expertPosition) doRecommend,
     required TResult Function() doAllRecommends,
   }) {
@@ -441,6 +460,7 @@ class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEv
     TResult? Function(StepsBalancer balancer)? updateBalancer,
     TResult? Function()? updateExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? doRecommend,
     TResult? Function()? doAllRecommends,
   }) {
@@ -454,6 +474,7 @@ class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEv
     TResult Function(StepsBalancer balancer)? updateBalancer,
     TResult Function()? updateExpertPositions,
     TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult Function(ExpertPosition expertPosition)? doRecommend,
     TResult Function()? doAllRecommends,
     required TResult orElse(),
@@ -471,6 +492,7 @@ class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEv
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
     required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
     required TResult Function(_DoRecommendExpertEvent value) doRecommend,
     required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
@@ -484,6 +506,7 @@ class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEv
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
@@ -497,6 +520,7 @@ class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEv
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
@@ -591,6 +615,7 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
     required TResult Function(StepsBalancer balancer) updateBalancer,
     required TResult Function() updateExpertPositions,
     required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
     required TResult Function(ExpertPosition expertPosition) doRecommend,
     required TResult Function() doAllRecommends,
   }) {
@@ -604,6 +629,7 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
     TResult? Function(StepsBalancer balancer)? updateBalancer,
     TResult? Function()? updateExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? doRecommend,
     TResult? Function()? doAllRecommends,
   }) {
@@ -617,6 +643,7 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
     TResult Function(StepsBalancer balancer)? updateBalancer,
     TResult Function()? updateExpertPositions,
     TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult Function(ExpertPosition expertPosition)? doRecommend,
     TResult Function()? doAllRecommends,
     required TResult orElse(),
@@ -634,6 +661,7 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
     required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
     required TResult Function(_DoRecommendExpertEvent value) doRecommend,
     required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
@@ -647,6 +675,7 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
@@ -660,6 +689,7 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
@@ -678,6 +708,190 @@ abstract class _AddExpertPositionsExpertEvent extends ExpertEvent {
   ExpertPosition get expertPosition;
   @JsonKey(ignore: true)
   _$$_AddExpertPositionsExpertEventCopyWith<_$_AddExpertPositionsExpertEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RemoveExpertPositionsExpertEventCopyWith<$Res> {
+  factory _$$_RemoveExpertPositionsExpertEventCopyWith(
+          _$_RemoveExpertPositionsExpertEvent value, $Res Function(_$_RemoveExpertPositionsExpertEvent) then) =
+      __$$_RemoveExpertPositionsExpertEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ExpertPosition expertPosition, bool sell});
+
+  $ExpertPositionCopyWith<$Res> get expertPosition;
+}
+
+/// @nodoc
+class __$$_RemoveExpertPositionsExpertEventCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$_RemoveExpertPositionsExpertEvent>
+    implements _$$_RemoveExpertPositionsExpertEventCopyWith<$Res> {
+  __$$_RemoveExpertPositionsExpertEventCopyWithImpl(
+      _$_RemoveExpertPositionsExpertEvent _value, $Res Function(_$_RemoveExpertPositionsExpertEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? expertPosition = null,
+    Object? sell = null,
+  }) {
+    return _then(_$_RemoveExpertPositionsExpertEvent(
+      null == expertPosition
+          ? _value.expertPosition
+          : expertPosition // ignore: cast_nullable_to_non_nullable
+              as ExpertPosition,
+      null == sell
+          ? _value.sell
+          : sell // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpertPositionCopyWith<$Res> get expertPosition {
+    return $ExpertPositionCopyWith<$Res>(_value.expertPosition, (value) {
+      return _then(_value.copyWith(expertPosition: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_RemoveExpertPositionsExpertEvent extends _RemoveExpertPositionsExpertEvent {
+  const _$_RemoveExpertPositionsExpertEvent(this.expertPosition, this.sell) : super._();
+
+  @override
+  final ExpertPosition expertPosition;
+  @override
+  final bool sell;
+
+  @override
+  String toString() {
+    return 'ExpertEvent.removeExpertPositions(expertPosition: $expertPosition, sell: $sell)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RemoveExpertPositionsExpertEvent &&
+            (identical(other.expertPosition, expertPosition) || other.expertPosition == expertPosition) &&
+            (identical(other.sell, sell) || other.sell == sell));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, expertPosition, sell);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RemoveExpertPositionsExpertEventCopyWith<_$_RemoveExpertPositionsExpertEvent> get copyWith =>
+      __$$_RemoveExpertPositionsExpertEventCopyWithImpl<_$_RemoveExpertPositionsExpertEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
+  }) {
+    return removeExpertPositions(expertPosition, sell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
+  }) {
+    return removeExpertPositions?.call(expertPosition, sell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (removeExpertPositions != null) {
+      return removeExpertPositions(expertPosition, sell);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitExpertEvent value) init,
+    required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
+  }) {
+    return removeExpertPositions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitExpertEvent value)? init,
+    TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+  }) {
+    return removeExpertPositions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitExpertEvent value)? init,
+    TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (removeExpertPositions != null) {
+      return removeExpertPositions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveExpertPositionsExpertEvent extends ExpertEvent {
+  const factory _RemoveExpertPositionsExpertEvent(final ExpertPosition expertPosition, final bool sell) =
+      _$_RemoveExpertPositionsExpertEvent;
+  const _RemoveExpertPositionsExpertEvent._() : super._();
+
+  ExpertPosition get expertPosition;
+  bool get sell;
+  @JsonKey(ignore: true)
+  _$$_RemoveExpertPositionsExpertEventCopyWith<_$_RemoveExpertPositionsExpertEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -758,6 +972,7 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
     required TResult Function(StepsBalancer balancer) updateBalancer,
     required TResult Function() updateExpertPositions,
     required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
     required TResult Function(ExpertPosition expertPosition) doRecommend,
     required TResult Function() doAllRecommends,
   }) {
@@ -771,6 +986,7 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
     TResult? Function(StepsBalancer balancer)? updateBalancer,
     TResult? Function()? updateExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? doRecommend,
     TResult? Function()? doAllRecommends,
   }) {
@@ -784,6 +1000,7 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
     TResult Function(StepsBalancer balancer)? updateBalancer,
     TResult Function()? updateExpertPositions,
     TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult Function(ExpertPosition expertPosition)? doRecommend,
     TResult Function()? doAllRecommends,
     required TResult orElse(),
@@ -801,6 +1018,7 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
     required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
     required TResult Function(_DoRecommendExpertEvent value) doRecommend,
     required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
@@ -814,6 +1032,7 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
@@ -827,6 +1046,7 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
@@ -888,6 +1108,7 @@ class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
     required TResult Function(StepsBalancer balancer) updateBalancer,
     required TResult Function() updateExpertPositions,
     required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
     required TResult Function(ExpertPosition expertPosition) doRecommend,
     required TResult Function() doAllRecommends,
   }) {
@@ -901,6 +1122,7 @@ class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
     TResult? Function(StepsBalancer balancer)? updateBalancer,
     TResult? Function()? updateExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult? Function(ExpertPosition expertPosition)? doRecommend,
     TResult? Function()? doAllRecommends,
   }) {
@@ -914,6 +1136,7 @@ class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
     TResult Function(StepsBalancer balancer)? updateBalancer,
     TResult Function()? updateExpertPositions,
     TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
     TResult Function(ExpertPosition expertPosition)? doRecommend,
     TResult Function()? doAllRecommends,
     required TResult orElse(),
@@ -931,6 +1154,7 @@ class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
     required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
     required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
     required TResult Function(_DoRecommendExpertEvent value) doRecommend,
     required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
@@ -944,6 +1168,7 @@ class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
@@ -957,6 +1182,7 @@ class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
     TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
     TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
     TResult Function(_DoRecommendExpertEvent value)? doRecommend,
     TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
@@ -984,6 +1210,9 @@ mixin _$ExpertState {
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -993,6 +1222,8 @@ mixin _$ExpertState {
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1002,6 +1233,8 @@ mixin _$ExpertState {
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1011,6 +1244,7 @@ mixin _$ExpertState {
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1019,6 +1253,7 @@ mixin _$ExpertState {
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1027,6 +1262,7 @@ mixin _$ExpertState {
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1188,6 +1424,9 @@ class _$_NotInitializedExpertState extends _NotInitializedExpertState {
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
   }) {
     return notInitialized(balancer, expertPositions, initPositions);
   }
@@ -1200,6 +1439,8 @@ class _$_NotInitializedExpertState extends _NotInitializedExpertState {
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
   }) {
     return notInitialized?.call(balancer, expertPositions, initPositions);
   }
@@ -1212,6 +1453,8 @@ class _$_NotInitializedExpertState extends _NotInitializedExpertState {
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
     required TResult orElse(),
   }) {
     if (notInitialized != null) {
@@ -1227,6 +1470,7 @@ class _$_NotInitializedExpertState extends _NotInitializedExpertState {
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
   }) {
     return notInitialized(this);
   }
@@ -1238,6 +1482,7 @@ class _$_NotInitializedExpertState extends _NotInitializedExpertState {
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
   }) {
     return notInitialized?.call(this);
   }
@@ -1249,6 +1494,7 @@ class _$_NotInitializedExpertState extends _NotInitializedExpertState {
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
     required TResult orElse(),
   }) {
     if (notInitialized != null) {
@@ -1363,6 +1609,9 @@ class _$_InitializedExpertState extends _InitializedExpertState {
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
   }) {
     return initialized(balancer, expertPositions);
   }
@@ -1375,6 +1624,8 @@ class _$_InitializedExpertState extends _InitializedExpertState {
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
   }) {
     return initialized?.call(balancer, expertPositions);
   }
@@ -1387,6 +1638,8 @@ class _$_InitializedExpertState extends _InitializedExpertState {
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -1402,6 +1655,7 @@ class _$_InitializedExpertState extends _InitializedExpertState {
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
   }) {
     return initialized(this);
   }
@@ -1413,6 +1667,7 @@ class _$_InitializedExpertState extends _InitializedExpertState {
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
   }) {
     return initialized?.call(this);
   }
@@ -1424,6 +1679,7 @@ class _$_InitializedExpertState extends _InitializedExpertState {
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -1534,6 +1790,9 @@ class _$_InProgressExpertState extends _InProgressExpertState {
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
   }) {
     return inProgress(balancer, expertPositions);
   }
@@ -1546,6 +1805,8 @@ class _$_InProgressExpertState extends _InProgressExpertState {
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
   }) {
     return inProgress?.call(balancer, expertPositions);
   }
@@ -1558,6 +1819,8 @@ class _$_InProgressExpertState extends _InProgressExpertState {
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -1573,6 +1836,7 @@ class _$_InProgressExpertState extends _InProgressExpertState {
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
   }) {
     return inProgress(this);
   }
@@ -1584,6 +1848,7 @@ class _$_InProgressExpertState extends _InProgressExpertState {
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
   }) {
     return inProgress?.call(this);
   }
@@ -1595,6 +1860,7 @@ class _$_InProgressExpertState extends _InProgressExpertState {
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -1715,6 +1981,9 @@ class _$_ErrorExpertState extends _ErrorExpertState {
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
     required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
   }) {
     return error(balancer, expertPositions, message);
   }
@@ -1727,6 +1996,8 @@ class _$_ErrorExpertState extends _ErrorExpertState {
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
   }) {
     return error?.call(balancer, expertPositions, message);
   }
@@ -1739,6 +2010,8 @@ class _$_ErrorExpertState extends _ErrorExpertState {
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
     TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1754,6 +2027,7 @@ class _$_ErrorExpertState extends _ErrorExpertState {
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
   }) {
     return error(this);
   }
@@ -1765,6 +2039,7 @@ class _$_ErrorExpertState extends _ErrorExpertState {
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
   }) {
     return error?.call(this);
   }
@@ -1776,6 +2051,7 @@ class _$_ErrorExpertState extends _ErrorExpertState {
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1800,4 +2076,210 @@ abstract class _ErrorExpertState extends ExpertState {
   @override
   @JsonKey(ignore: true)
   _$$_ErrorExpertStateCopyWith<_$_ErrorExpertState> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ExpertPositionRemovedExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$_ExpertPositionRemovedExpertStateCopyWith(
+          _$_ExpertPositionRemovedExpertState value, $Res Function(_$_ExpertPositionRemovedExpertState) then) =
+      __$$_ExpertPositionRemovedExpertStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition});
+
+  @override
+  $StepsBalancerCopyWith<$Res> get balancer;
+  $ExpertPositionCopyWith<$Res> get removedPosition;
+}
+
+/// @nodoc
+class __$$_ExpertPositionRemovedExpertStateCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$_ExpertPositionRemovedExpertState>
+    implements _$$_ExpertPositionRemovedExpertStateCopyWith<$Res> {
+  __$$_ExpertPositionRemovedExpertStateCopyWithImpl(
+      _$_ExpertPositionRemovedExpertState _value, $Res Function(_$_ExpertPositionRemovedExpertState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? balancer = null,
+    Object? expertPositions = null,
+    Object? removedPosition = null,
+  }) {
+    return _then(_$_ExpertPositionRemovedExpertState(
+      balancer: null == balancer
+          ? _value.balancer
+          : balancer // ignore: cast_nullable_to_non_nullable
+              as StepsBalancer,
+      expertPositions: null == expertPositions
+          ? _value._expertPositions
+          : expertPositions // ignore: cast_nullable_to_non_nullable
+              as List<ExpertPosition?>,
+      removedPosition: null == removedPosition
+          ? _value.removedPosition
+          : removedPosition // ignore: cast_nullable_to_non_nullable
+              as ExpertPosition,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpertPositionCopyWith<$Res> get removedPosition {
+    return $ExpertPositionCopyWith<$Res>(_value.removedPosition, (value) {
+      return _then(_value.copyWith(removedPosition: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_ExpertPositionRemovedExpertState extends _ExpertPositionRemovedExpertState {
+  _$_ExpertPositionRemovedExpertState(
+      {required this.balancer, required final List<ExpertPosition?> expertPositions, required this.removedPosition})
+      : _expertPositions = expertPositions,
+        super._();
+
+  @override
+  final StepsBalancer balancer;
+  final List<ExpertPosition?> _expertPositions;
+  @override
+  List<ExpertPosition?> get expertPositions {
+    if (_expertPositions is EqualUnmodifiableListView) return _expertPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_expertPositions);
+  }
+
+  @override
+  final ExpertPosition removedPosition;
+
+  @override
+  String toString() {
+    return 'ExpertState.expertPositionRemoved(balancer: $balancer, expertPositions: $expertPositions, removedPosition: $removedPosition)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ExpertPositionRemovedExpertState &&
+            (identical(other.balancer, balancer) || other.balancer == balancer) &&
+            const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
+            (identical(other.removedPosition, removedPosition) || other.removedPosition == removedPosition));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, balancer, const DeepCollectionEquality().hash(_expertPositions), removedPosition);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ExpertPositionRemovedExpertStateCopyWith<_$_ExpertPositionRemovedExpertState> get copyWith =>
+      __$$_ExpertPositionRemovedExpertStateCopyWithImpl<_$_ExpertPositionRemovedExpertState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)
+        notInitialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
+  }) {
+    return expertPositionRemoved(balancer, expertPositions, removedPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+  }) {
+    return expertPositionRemoved?.call(balancer, expertPositions, removedPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    required TResult orElse(),
+  }) {
+    if (expertPositionRemoved != null) {
+      return expertPositionRemoved(balancer, expertPositions, removedPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NotInitializedExpertState value) notInitialized,
+    required TResult Function(_InitializedExpertState value) initialized,
+    required TResult Function(_InProgressExpertState value) inProgress,
+    required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
+  }) {
+    return expertPositionRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotInitializedExpertState value)? notInitialized,
+    TResult? Function(_InitializedExpertState value)? initialized,
+    TResult? Function(_InProgressExpertState value)? inProgress,
+    TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+  }) {
+    return expertPositionRemoved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotInitializedExpertState value)? notInitialized,
+    TResult Function(_InitializedExpertState value)? initialized,
+    TResult Function(_InProgressExpertState value)? inProgress,
+    TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    required TResult orElse(),
+  }) {
+    if (expertPositionRemoved != null) {
+      return expertPositionRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ExpertPositionRemovedExpertState extends ExpertState {
+  factory _ExpertPositionRemovedExpertState(
+      {required final StepsBalancer balancer,
+      required final List<ExpertPosition?> expertPositions,
+      required final ExpertPosition removedPosition}) = _$_ExpertPositionRemovedExpertState;
+  _ExpertPositionRemovedExpertState._() : super._();
+
+  @override
+  StepsBalancer get balancer;
+  @override
+  List<ExpertPosition?> get expertPositions;
+  ExpertPosition get removedPosition;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ExpertPositionRemovedExpertStateCopyWith<_$_ExpertPositionRemovedExpertState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

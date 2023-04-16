@@ -13,7 +13,6 @@ class ExpertPosition with _$ExpertPosition {
     required bool shouldBuy,
   }) = _ExpertPosition;
 
-  /// TODO: Add CanBuy check
   bool get isRecommend => recommendAction != ExpertAction.keep;
 
   ExpertAction get recommendAction => instrument.quantity > recommendAmount
@@ -33,7 +32,7 @@ extension ParseToString on ExpertAction {
       case ExpertAction.sell:
         return 'Продавать';
       case ExpertAction.keep:
-        return 'Держать';
+        return 'Ждать';
     }
   }
 }

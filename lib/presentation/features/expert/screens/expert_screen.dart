@@ -42,6 +42,23 @@ class ExpertScreen extends StatelessWidget {
               );
             },
           ),
+          expertPositionRemoved: (state) => showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Позиция удалена'),
+                content: Text(state.removedPosition.instrument.title),
+                actions: <Widget>[
+                  ElevatedButton(
+                    child: const Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          ),
         );
       },
       builder: (context, state) => state.maybeWhen(
@@ -101,7 +118,7 @@ class ExpertScreen extends StatelessWidget {
                           child: const Icon(Icons.add),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () => bloc.add(const ExpertEvent.updateExpertPositions()),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.amber, // Background color
                           ),
@@ -135,30 +152,30 @@ class ExpertScreen extends StatelessWidget {
                   children: [
                     Container(alignment: Alignment.center, width: 20, child: const Text('#', style: tabElementsStyle)),
                     Container(
-                        alignment: Alignment.center, width: 118, child: const Text('Тикер', style: tabElementsStyle)),
+                        alignment: Alignment.center, width: 138, child: const Text('Тикер', style: tabElementsStyle)),
                     Container(
                         alignment: Alignment.center,
-                        width: 118,
+                        width: 138,
                         child: const Text('Наименование', style: tabElementsStyle)),
                     Container(
                         alignment: Alignment.center,
-                        width: 118,
+                        width: 138,
                         child: const Text('Количество', style: tabElementsStyle)),
                     Container(
                         alignment: Alignment.center,
-                        width: 118,
+                        width: 138,
                         child: const Text('Рекомендовано', style: tabElementsStyle)),
                     Container(
                         alignment: Alignment.center,
-                        width: 118,
+                        width: 138,
                         child: const Text('Индикатор', style: tabElementsStyle)),
                     Container(
                         alignment: Alignment.center,
-                        width: 118,
+                        width: 138,
                         child: const Text('Рекомендация', style: tabElementsStyle)),
                     Container(
                         alignment: Alignment.center,
-                        width: 118,
+                        width: 145,
                         child: const Text('Действие', style: tabElementsStyle)),
                   ],
                 ),
@@ -166,7 +183,7 @@ class ExpertScreen extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20, top: 0),
                   color: const Color(0xFFECECEC),
-                  width: 900,
+                  width: 1060,
                   height: 380,
                   child: state.expertPositions.isNotEmpty
                       ? SingleChildScrollView(
@@ -197,7 +214,37 @@ class ExpertScreen extends StatelessWidget {
                                           )),
                                       _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌'),
                                       _rowElement(state.expertPositions[index]!.recommendAction.toActionName()),
-                                      _rowElement('555'),
+                                      Container(
+                                        width: 145,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            IconButton(
+                                                onPressed: () {},
+                                                icon: const Icon(
+                                                  Icons.check,
+                                                  color: Colors.green,
+                                                )),
+                                            IconButton(
+                                                onPressed: () {},
+                                                icon: const Icon(
+                                                  Icons.info,
+                                                  color: Colors.blue,
+                                                )),
+                                            IconButton(
+                                                onPressed: () => bloc.add(
+                                                      ExpertEvent.removeExpertPositions(
+                                                        state.expertPositions[index]!,
+                                                        false,
+                                                      ),
+                                                    ),
+                                                icon: const Icon(
+                                                  Icons.close,
+                                                  color: Colors.red,
+                                                )),
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -217,8 +264,9 @@ class ExpertScreen extends StatelessWidget {
 
   Container _rowElement(String text, {Color? color}) => Container(
         alignment: Alignment.center,
-        width: 118,
+        width: 138,
         child: Text(text,
+            maxLines: 1,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: color,

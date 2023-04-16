@@ -12,6 +12,7 @@ import 'package:tinkoff_helper/network/generated/google/protobuf/timestamp.pb.da
 import 'package:tinkoff_helper/network/generated/instruments.pb.dart' as $instruments_pb;
 import 'package:tinkoff_helper/network/generated/marketdata.pb.dart' as $marketdata_pb;
 import 'package:tinkoff_helper/network/generated/operations.pb.dart' as $operations_pb;
+import 'package:tinkoff_helper/network/generated/orders.pb.dart';
 import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
 
@@ -28,6 +29,9 @@ class ExpertEvent with _$ExpertEvent {
   const factory ExpertEvent.updateExpertPositions() = _UpdateExpertPositionsExpertEvent;
 
   const factory ExpertEvent.addExpertPositions(ExpertPosition expertPosition) = _AddExpertPositionsExpertEvent;
+
+  const factory ExpertEvent.removeExpertPositions(ExpertPosition expertPosition, bool sell) =
+      _RemoveExpertPositionsExpertEvent;
 
   const factory ExpertEvent.doRecommend(ExpertPosition expertPosition) = _DoRecommendExpertEvent;
 
@@ -60,6 +64,12 @@ class ExpertState with _$ExpertState {
     required String message,
   }) = _ErrorExpertState;
 
+  factory ExpertState.expertPositionRemoved({
+    required StepsBalancer balancer,
+    required List<ExpertPosition?> expertPositions,
+    required ExpertPosition removedPosition,
+  }) = _ExpertPositionRemovedExpertState;
+
   List<String>? get initPositions => mapOrNull(notInitialized: (state) => state.initPositions);
 }
 
@@ -76,6 +86,7 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
         doRecommend: (event) => null,
         doAllRecommends: (event) => null,
         addExpertPositions: (event) => _addExpertPosition(event, emitter),
+        removeExpertPositions: (event) => _removeExpertPosition(event, emitter),
       ),
     );
   }
@@ -113,13 +124,73 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
     emitter(ExpertState.initialized(balancer: state.balancer, expertPositions: state.expertPositions));
   }
 
+  Future<void> _removeExpertPosition(_RemoveExpertPositionsExpertEvent event, Emitter<ExpertState> emitter) async {
+    emitter(ExpertState.inProgress(balancer: state.balancer, expertPositions: state.expertPositions));
+    try {
+      List<ExpertPosition?> resultPositions =
+          state.expertPositions.where((element) => element != event.expertPosition).toList();
+      if (event.sell) {
+        await _tinkoffApiService.ordersServiceClient.postOrder(
+          PostOrderRequest(
+            figi: event.expertPosition.instrument.figi,
+            quantity: Int64(event.expertPosition.instrument.quantity.toInt()),
+            price: event.expertPosition.instrument.currentPrice.toQuotation,
+            direction: OrderDirection.ORDER_DIRECTION_SELL,
+            accountId: _tinkoffApiService.accountId,
+            orderType: OrderType.ORDER_TYPE_MARKET,
+            orderId: null,
+            instrumentId: event.expertPosition.instrument.instrumentId,
+          ),
+          options: _tinkoffApiService.callOptions,
+        );
+      }
+      await getIt<HiveStorage>().saveExpertPositions(resultPositions);
+      emitter(ExpertState.expertPositionRemoved(
+        balancer: state.balancer,
+        expertPositions: resultPositions,
+        removedPosition: event.expertPosition,
+      ));
+      emitter(ExpertState.initialized(balancer: state.balancer, expertPositions: state.expertPositions));
+    } catch (e) {
+      emitter(ExpertState.error(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+        message: e.toString(),
+      ));
+      emitter(ExpertState.initialized(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+      ));
+    }
+  }
+
   Future<void> _updateBalancer(_UpdateBalancerExpertEvent event, Emitter<ExpertState> emitter) async {
     emitter(ExpertState.initialized(balancer: event.balancer, expertPositions: state.expertPositions));
   }
 
-  Future<void> _updateExpertPositions(_UpdateExpertPositionsExpertEvent event, Emitter<ExpertState> emitter) async {}
+  Future<void> _updateExpertPositions(_UpdateExpertPositionsExpertEvent event, Emitter<ExpertState> emitter) async {
+    emitter(ExpertState.inProgress(balancer: state.balancer, expertPositions: state.expertPositions));
+    List<String> tickers = [];
+    for (final position in state.expertPositions) {
+      tickers.add(position!.instrument.ticker);
+    }
+    try {
+      final resultExpertPositions = await _initExpertPositions(tickers);
+      emitter(ExpertState.initialized(balancer: state.balancer, expertPositions: resultExpertPositions));
+    } catch (e) {
+      emitter(ExpertState.error(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+        message: e.toString(),
+      ));
+      emitter(ExpertState.initialized(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+      ));
+    }
+  }
 
-  Future<List<ExpertPosition>> _initExpertPositions(List<String> positions) async {
+  Future<List<ExpertPosition>> _initExpertPositions(List<String> tickers) async {
     List<ExpertPosition> resultExpertPositions = [];
     final shares = await _tinkoffApiService.instrumentsServiceClient.shares(
       $instruments_pb.InstrumentsRequest(instrumentStatus: $instruments_pb.InstrumentStatus.INSTRUMENT_STATUS_BASE),
@@ -135,7 +206,7 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
     final intFrom = (DateTime.now().toUtc().subtract(const Duration(days: 350)).millisecondsSinceEpoch) ~/ 1000;
     final intTo = (DateTime.now().toUtc().millisecondsSinceEpoch) ~/ 1000;
 
-    for (final positionTicker in positions) {
+    for (final positionTicker in tickers) {
       final share = shares.instruments.firstWhereOrNull((share) => share.ticker == positionTicker);
       if (share == null) continue;
       final price = await _tinkoffApiService.marketDataServiceClient.getLastPrices(
