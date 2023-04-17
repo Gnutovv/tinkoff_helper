@@ -18,23 +18,35 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ExpertEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +54,33 @@ mixin _$ExpertEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,10 +106,6 @@ class _$ExpertEventCopyWithImpl<$Res, $Val extends ExpertEvent> implements $Expe
 abstract class _$$_InitExpertEventCopyWith<$Res> {
   factory _$$_InitExpertEventCopyWith(_$_InitExpertEvent value, $Res Function(_$_InitExpertEvent) then) =
       __$$_InitExpertEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({UserAccount userAccount});
-
-  $UserAccountCopyWith<$Res> get userAccount;
 }
 
 /// @nodoc
@@ -93,89 +113,68 @@ class __$$_InitExpertEventCopyWithImpl<$Res> extends _$ExpertEventCopyWithImpl<$
     implements _$$_InitExpertEventCopyWith<$Res> {
   __$$_InitExpertEventCopyWithImpl(_$_InitExpertEvent _value, $Res Function(_$_InitExpertEvent) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userAccount = null,
-  }) {
-    return _then(_$_InitExpertEvent(
-      userAccount: null == userAccount
-          ? _value.userAccount
-          : userAccount // ignore: cast_nullable_to_non_nullable
-              as UserAccount,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserAccountCopyWith<$Res> get userAccount {
-    return $UserAccountCopyWith<$Res>(_value.userAccount, (value) {
-      return _then(_value.copyWith(userAccount: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$_InitExpertEvent extends _InitExpertEvent {
-  const _$_InitExpertEvent({required this.userAccount}) : super._();
-
-  @override
-  final UserAccount userAccount;
+  const _$_InitExpertEvent() : super._();
 
   @override
   String toString() {
-    return 'ExpertEvent.init(userAccount: $userAccount)';
+    return 'ExpertEvent.init()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_InitExpertEvent &&
-            (identical(other.userAccount, userAccount) || other.userAccount == userAccount));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitExpertEvent);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userAccount);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_InitExpertEventCopyWith<_$_InitExpertEvent> get copyWith =>
-      __$$_InitExpertEventCopyWithImpl<_$_InitExpertEvent>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
   }) {
-    return init(userAccount);
+    return init();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
   }) {
-    return init?.call(userAccount);
+    return init?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
     required TResult orElse(),
   }) {
     if (init != null) {
-      return init(userAccount);
+      return init();
     }
     return orElse();
   }
@@ -185,7 +184,11 @@ class _$_InitExpertEvent extends _InitExpertEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
     return init(this);
   }
@@ -195,7 +198,11 @@ class _$_InitExpertEvent extends _InitExpertEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
     return init?.call(this);
   }
@@ -205,7 +212,11 @@ class _$_InitExpertEvent extends _InitExpertEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -216,12 +227,8 @@ class _$_InitExpertEvent extends _InitExpertEvent {
 }
 
 abstract class _InitExpertEvent extends ExpertEvent {
-  const factory _InitExpertEvent({required final UserAccount userAccount}) = _$_InitExpertEvent;
+  const factory _InitExpertEvent() = _$_InitExpertEvent;
   const _InitExpertEvent._() : super._();
-
-  UserAccount get userAccount;
-  @JsonKey(ignore: true)
-  _$$_InitExpertEventCopyWith<_$_InitExpertEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -230,7 +237,9 @@ abstract class _$$_UpdateBalancerExpertEventCopyWith<$Res> {
           _$_UpdateBalancerExpertEvent value, $Res Function(_$_UpdateBalancerExpertEvent) then) =
       __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<int>? stepsRateList, int? stocksAmount});
+  $Res call({StepsBalancer balancer});
+
+  $StepsBalancerCopyWith<$Res> get balancer;
 }
 
 /// @nodoc
@@ -244,45 +253,36 @@ class __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? stepsRateList = freezed,
-    Object? stocksAmount = freezed,
+    Object? balancer = null,
   }) {
     return _then(_$_UpdateBalancerExpertEvent(
-      stepsRateList: freezed == stepsRateList
-          ? _value._stepsRateList
-          : stepsRateList // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
-      stocksAmount: freezed == stocksAmount
-          ? _value.stocksAmount
-          : stocksAmount // ignore: cast_nullable_to_non_nullable
-              as int?,
+      balancer: null == balancer
+          ? _value.balancer
+          : balancer // ignore: cast_nullable_to_non_nullable
+              as StepsBalancer,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StepsBalancerCopyWith<$Res> get balancer {
+    return $StepsBalancerCopyWith<$Res>(_value.balancer, (value) {
+      return _then(_value.copyWith(balancer: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
-  const _$_UpdateBalancerExpertEvent({final List<int>? stepsRateList, this.stocksAmount})
-      : _stepsRateList = stepsRateList,
-        super._();
-
-  final List<int>? _stepsRateList;
-  @override
-  List<int>? get stepsRateList {
-    final value = _stepsRateList;
-    if (value == null) return null;
-    if (_stepsRateList is EqualUnmodifiableListView) return _stepsRateList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  const _$_UpdateBalancerExpertEvent({required this.balancer}) : super._();
 
   @override
-  final int? stocksAmount;
+  final StepsBalancer balancer;
 
   @override
   String toString() {
-    return 'ExpertEvent.updateBalancer(stepsRateList: $stepsRateList, stocksAmount: $stocksAmount)';
+    return 'ExpertEvent.updateBalancer(balancer: $balancer)';
   }
 
   @override
@@ -290,12 +290,11 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateBalancerExpertEvent &&
-            const DeepCollectionEquality().equals(other._stepsRateList, _stepsRateList) &&
-            (identical(other.stocksAmount, stocksAmount) || other.stocksAmount == stocksAmount));
+            (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_stepsRateList), stocksAmount);
+  int get hashCode => Object.hash(runtimeType, balancer);
 
   @JsonKey(ignore: true)
   @override
@@ -306,33 +305,45 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
   }) {
-    return updateBalancer(stepsRateList, stocksAmount);
+    return updateBalancer(balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
   }) {
-    return updateBalancer?.call(stepsRateList, stocksAmount);
+    return updateBalancer?.call(balancer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
     required TResult orElse(),
   }) {
     if (updateBalancer != null) {
-      return updateBalancer(stepsRateList, stocksAmount);
+      return updateBalancer(balancer);
     }
     return orElse();
   }
@@ -342,7 +353,11 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
     return updateBalancer(this);
   }
@@ -352,7 +367,11 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
     return updateBalancer?.call(this);
   }
@@ -362,7 +381,11 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
   }) {
     if (updateBalancer != null) {
@@ -373,108 +396,91 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
 }
 
 abstract class _UpdateBalancerExpertEvent extends ExpertEvent {
-  const factory _UpdateBalancerExpertEvent({final List<int>? stepsRateList, final int? stocksAmount}) =
-      _$_UpdateBalancerExpertEvent;
+  const factory _UpdateBalancerExpertEvent({required final StepsBalancer balancer}) = _$_UpdateBalancerExpertEvent;
   const _UpdateBalancerExpertEvent._() : super._();
 
-  List<int>? get stepsRateList;
-  int? get stocksAmount;
+  StepsBalancer get balancer;
   @JsonKey(ignore: true)
   _$$_UpdateBalancerExpertEventCopyWith<_$_UpdateBalancerExpertEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateTradeBalanceExpertEventCopyWith<$Res> {
-  factory _$$_UpdateTradeBalanceExpertEventCopyWith(
-          _$_UpdateTradeBalanceExpertEvent value, $Res Function(_$_UpdateTradeBalanceExpertEvent) then) =
-      __$$_UpdateTradeBalanceExpertEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({double newBalance});
+abstract class _$$_UpdateExpertPositionsExpertEventCopyWith<$Res> {
+  factory _$$_UpdateExpertPositionsExpertEventCopyWith(
+          _$_UpdateExpertPositionsExpertEvent value, $Res Function(_$_UpdateExpertPositionsExpertEvent) then) =
+      __$$_UpdateExpertPositionsExpertEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UpdateTradeBalanceExpertEventCopyWithImpl<$Res>
-    extends _$ExpertEventCopyWithImpl<$Res, _$_UpdateTradeBalanceExpertEvent>
-    implements _$$_UpdateTradeBalanceExpertEventCopyWith<$Res> {
-  __$$_UpdateTradeBalanceExpertEventCopyWithImpl(
-      _$_UpdateTradeBalanceExpertEvent _value, $Res Function(_$_UpdateTradeBalanceExpertEvent) _then)
+class __$$_UpdateExpertPositionsExpertEventCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$_UpdateExpertPositionsExpertEvent>
+    implements _$$_UpdateExpertPositionsExpertEventCopyWith<$Res> {
+  __$$_UpdateExpertPositionsExpertEventCopyWithImpl(
+      _$_UpdateExpertPositionsExpertEvent _value, $Res Function(_$_UpdateExpertPositionsExpertEvent) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? newBalance = null,
-  }) {
-    return _then(_$_UpdateTradeBalanceExpertEvent(
-      newBalance: null == newBalance
-          ? _value.newBalance
-          : newBalance // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
-  const _$_UpdateTradeBalanceExpertEvent({required this.newBalance}) : super._();
-
-  @override
-  final double newBalance;
+class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEvent {
+  const _$_UpdateExpertPositionsExpertEvent() : super._();
 
   @override
   String toString() {
-    return 'ExpertEvent.updateTradeBalance(newBalance: $newBalance)';
+    return 'ExpertEvent.updateExpertPositions()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UpdateTradeBalanceExpertEvent &&
-            (identical(other.newBalance, newBalance) || other.newBalance == newBalance));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UpdateExpertPositionsExpertEvent);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, newBalance);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UpdateTradeBalanceExpertEventCopyWith<_$_UpdateTradeBalanceExpertEvent> get copyWith =>
-      __$$_UpdateTradeBalanceExpertEventCopyWithImpl<_$_UpdateTradeBalanceExpertEvent>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UserAccount userAccount) init,
-    required TResult Function(List<int>? stepsRateList, int? stocksAmount) updateBalancer,
-    required TResult Function(double newBalance) updateTradeBalance,
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
   }) {
-    return updateTradeBalance(newBalance);
+    return updateExpertPositions();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UserAccount userAccount)? init,
-    TResult? Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult? Function(double newBalance)? updateTradeBalance,
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
   }) {
-    return updateTradeBalance?.call(newBalance);
+    return updateExpertPositions?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UserAccount userAccount)? init,
-    TResult Function(List<int>? stepsRateList, int? stocksAmount)? updateBalancer,
-    TResult Function(double newBalance)? updateTradeBalance,
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
     required TResult orElse(),
   }) {
-    if (updateTradeBalance != null) {
-      return updateTradeBalance(newBalance);
+    if (updateExpertPositions != null) {
+      return updateExpertPositions();
     }
     return orElse();
   }
@@ -484,9 +490,13 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitExpertEvent value) init,
     required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
-    required TResult Function(_UpdateTradeBalanceExpertEvent value) updateTradeBalance,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
   }) {
-    return updateTradeBalance(this);
+    return updateExpertPositions(this);
   }
 
   @override
@@ -494,9 +504,13 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitExpertEvent value)? init,
     TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult? Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
   }) {
-    return updateTradeBalance?.call(this);
+    return updateExpertPositions?.call(this);
   }
 
   @override
@@ -504,71 +518,761 @@ class _$_UpdateTradeBalanceExpertEvent extends _UpdateTradeBalanceExpertEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitExpertEvent value)? init,
     TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
-    TResult Function(_UpdateTradeBalanceExpertEvent value)? updateTradeBalance,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
     required TResult orElse(),
   }) {
-    if (updateTradeBalance != null) {
-      return updateTradeBalance(this);
+    if (updateExpertPositions != null) {
+      return updateExpertPositions(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateTradeBalanceExpertEvent extends ExpertEvent {
-  const factory _UpdateTradeBalanceExpertEvent({required final double newBalance}) = _$_UpdateTradeBalanceExpertEvent;
-  const _UpdateTradeBalanceExpertEvent._() : super._();
+abstract class _UpdateExpertPositionsExpertEvent extends ExpertEvent {
+  const factory _UpdateExpertPositionsExpertEvent() = _$_UpdateExpertPositionsExpertEvent;
+  const _UpdateExpertPositionsExpertEvent._() : super._();
+}
 
-  double get newBalance;
+/// @nodoc
+abstract class _$$_AddExpertPositionsExpertEventCopyWith<$Res> {
+  factory _$$_AddExpertPositionsExpertEventCopyWith(
+          _$_AddExpertPositionsExpertEvent value, $Res Function(_$_AddExpertPositionsExpertEvent) then) =
+      __$$_AddExpertPositionsExpertEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ExpertPosition expertPosition});
+
+  $ExpertPositionCopyWith<$Res> get expertPosition;
+}
+
+/// @nodoc
+class __$$_AddExpertPositionsExpertEventCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$_AddExpertPositionsExpertEvent>
+    implements _$$_AddExpertPositionsExpertEventCopyWith<$Res> {
+  __$$_AddExpertPositionsExpertEventCopyWithImpl(
+      _$_AddExpertPositionsExpertEvent _value, $Res Function(_$_AddExpertPositionsExpertEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? expertPosition = null,
+  }) {
+    return _then(_$_AddExpertPositionsExpertEvent(
+      null == expertPosition
+          ? _value.expertPosition
+          : expertPosition // ignore: cast_nullable_to_non_nullable
+              as ExpertPosition,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpertPositionCopyWith<$Res> get expertPosition {
+    return $ExpertPositionCopyWith<$Res>(_value.expertPosition, (value) {
+      return _then(_value.copyWith(expertPosition: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
+  const _$_AddExpertPositionsExpertEvent(this.expertPosition) : super._();
+
+  @override
+  final ExpertPosition expertPosition;
+
+  @override
+  String toString() {
+    return 'ExpertEvent.addExpertPositions(expertPosition: $expertPosition)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AddExpertPositionsExpertEvent &&
+            (identical(other.expertPosition, expertPosition) || other.expertPosition == expertPosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, expertPosition);
+
   @JsonKey(ignore: true)
-  _$$_UpdateTradeBalanceExpertEventCopyWith<_$_UpdateTradeBalanceExpertEvent> get copyWith =>
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddExpertPositionsExpertEventCopyWith<_$_AddExpertPositionsExpertEvent> get copyWith =>
+      __$$_AddExpertPositionsExpertEventCopyWithImpl<_$_AddExpertPositionsExpertEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
+  }) {
+    return addExpertPositions(expertPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
+  }) {
+    return addExpertPositions?.call(expertPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (addExpertPositions != null) {
+      return addExpertPositions(expertPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitExpertEvent value) init,
+    required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
+  }) {
+    return addExpertPositions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitExpertEvent value)? init,
+    TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+  }) {
+    return addExpertPositions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitExpertEvent value)? init,
+    TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (addExpertPositions != null) {
+      return addExpertPositions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddExpertPositionsExpertEvent extends ExpertEvent {
+  const factory _AddExpertPositionsExpertEvent(final ExpertPosition expertPosition) = _$_AddExpertPositionsExpertEvent;
+  const _AddExpertPositionsExpertEvent._() : super._();
+
+  ExpertPosition get expertPosition;
+  @JsonKey(ignore: true)
+  _$$_AddExpertPositionsExpertEventCopyWith<_$_AddExpertPositionsExpertEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RemoveExpertPositionsExpertEventCopyWith<$Res> {
+  factory _$$_RemoveExpertPositionsExpertEventCopyWith(
+          _$_RemoveExpertPositionsExpertEvent value, $Res Function(_$_RemoveExpertPositionsExpertEvent) then) =
+      __$$_RemoveExpertPositionsExpertEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ExpertPosition expertPosition, bool sell});
+
+  $ExpertPositionCopyWith<$Res> get expertPosition;
+}
+
+/// @nodoc
+class __$$_RemoveExpertPositionsExpertEventCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$_RemoveExpertPositionsExpertEvent>
+    implements _$$_RemoveExpertPositionsExpertEventCopyWith<$Res> {
+  __$$_RemoveExpertPositionsExpertEventCopyWithImpl(
+      _$_RemoveExpertPositionsExpertEvent _value, $Res Function(_$_RemoveExpertPositionsExpertEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? expertPosition = null,
+    Object? sell = null,
+  }) {
+    return _then(_$_RemoveExpertPositionsExpertEvent(
+      null == expertPosition
+          ? _value.expertPosition
+          : expertPosition // ignore: cast_nullable_to_non_nullable
+              as ExpertPosition,
+      null == sell
+          ? _value.sell
+          : sell // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpertPositionCopyWith<$Res> get expertPosition {
+    return $ExpertPositionCopyWith<$Res>(_value.expertPosition, (value) {
+      return _then(_value.copyWith(expertPosition: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_RemoveExpertPositionsExpertEvent extends _RemoveExpertPositionsExpertEvent {
+  const _$_RemoveExpertPositionsExpertEvent(this.expertPosition, this.sell) : super._();
+
+  @override
+  final ExpertPosition expertPosition;
+  @override
+  final bool sell;
+
+  @override
+  String toString() {
+    return 'ExpertEvent.removeExpertPositions(expertPosition: $expertPosition, sell: $sell)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RemoveExpertPositionsExpertEvent &&
+            (identical(other.expertPosition, expertPosition) || other.expertPosition == expertPosition) &&
+            (identical(other.sell, sell) || other.sell == sell));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, expertPosition, sell);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RemoveExpertPositionsExpertEventCopyWith<_$_RemoveExpertPositionsExpertEvent> get copyWith =>
+      __$$_RemoveExpertPositionsExpertEventCopyWithImpl<_$_RemoveExpertPositionsExpertEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
+  }) {
+    return removeExpertPositions(expertPosition, sell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
+  }) {
+    return removeExpertPositions?.call(expertPosition, sell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (removeExpertPositions != null) {
+      return removeExpertPositions(expertPosition, sell);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitExpertEvent value) init,
+    required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
+  }) {
+    return removeExpertPositions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitExpertEvent value)? init,
+    TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+  }) {
+    return removeExpertPositions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitExpertEvent value)? init,
+    TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (removeExpertPositions != null) {
+      return removeExpertPositions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveExpertPositionsExpertEvent extends ExpertEvent {
+  const factory _RemoveExpertPositionsExpertEvent(final ExpertPosition expertPosition, final bool sell) =
+      _$_RemoveExpertPositionsExpertEvent;
+  const _RemoveExpertPositionsExpertEvent._() : super._();
+
+  ExpertPosition get expertPosition;
+  bool get sell;
+  @JsonKey(ignore: true)
+  _$$_RemoveExpertPositionsExpertEventCopyWith<_$_RemoveExpertPositionsExpertEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DoRecommendExpertEventCopyWith<$Res> {
+  factory _$$_DoRecommendExpertEventCopyWith(
+          _$_DoRecommendExpertEvent value, $Res Function(_$_DoRecommendExpertEvent) then) =
+      __$$_DoRecommendExpertEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ExpertPosition expertPosition});
+
+  $ExpertPositionCopyWith<$Res> get expertPosition;
+}
+
+/// @nodoc
+class __$$_DoRecommendExpertEventCopyWithImpl<$Res> extends _$ExpertEventCopyWithImpl<$Res, _$_DoRecommendExpertEvent>
+    implements _$$_DoRecommendExpertEventCopyWith<$Res> {
+  __$$_DoRecommendExpertEventCopyWithImpl(
+      _$_DoRecommendExpertEvent _value, $Res Function(_$_DoRecommendExpertEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? expertPosition = null,
+  }) {
+    return _then(_$_DoRecommendExpertEvent(
+      null == expertPosition
+          ? _value.expertPosition
+          : expertPosition // ignore: cast_nullable_to_non_nullable
+              as ExpertPosition,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpertPositionCopyWith<$Res> get expertPosition {
+    return $ExpertPositionCopyWith<$Res>(_value.expertPosition, (value) {
+      return _then(_value.copyWith(expertPosition: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
+  const _$_DoRecommendExpertEvent(this.expertPosition) : super._();
+
+  @override
+  final ExpertPosition expertPosition;
+
+  @override
+  String toString() {
+    return 'ExpertEvent.doRecommend(expertPosition: $expertPosition)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DoRecommendExpertEvent &&
+            (identical(other.expertPosition, expertPosition) || other.expertPosition == expertPosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, expertPosition);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DoRecommendExpertEventCopyWith<_$_DoRecommendExpertEvent> get copyWith =>
+      __$$_DoRecommendExpertEventCopyWithImpl<_$_DoRecommendExpertEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
+  }) {
+    return doRecommend(expertPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
+  }) {
+    return doRecommend?.call(expertPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (doRecommend != null) {
+      return doRecommend(expertPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitExpertEvent value) init,
+    required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
+  }) {
+    return doRecommend(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitExpertEvent value)? init,
+    TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+  }) {
+    return doRecommend?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitExpertEvent value)? init,
+    TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (doRecommend != null) {
+      return doRecommend(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DoRecommendExpertEvent extends ExpertEvent {
+  const factory _DoRecommendExpertEvent(final ExpertPosition expertPosition) = _$_DoRecommendExpertEvent;
+  const _DoRecommendExpertEvent._() : super._();
+
+  ExpertPosition get expertPosition;
+  @JsonKey(ignore: true)
+  _$$_DoRecommendExpertEventCopyWith<_$_DoRecommendExpertEvent> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DoAllRecommendsExpertEventCopyWith<$Res> {
+  factory _$$_DoAllRecommendsExpertEventCopyWith(
+          _$_DoAllRecommendsExpertEvent value, $Res Function(_$_DoAllRecommendsExpertEvent) then) =
+      __$$_DoAllRecommendsExpertEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DoAllRecommendsExpertEventCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$_DoAllRecommendsExpertEvent>
+    implements _$$_DoAllRecommendsExpertEventCopyWith<$Res> {
+  __$$_DoAllRecommendsExpertEventCopyWithImpl(
+      _$_DoAllRecommendsExpertEvent _value, $Res Function(_$_DoAllRecommendsExpertEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
+  const _$_DoAllRecommendsExpertEvent() : super._();
+
+  @override
+  String toString() {
+    return 'ExpertEvent.doAllRecommends()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_DoAllRecommendsExpertEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(StepsBalancer balancer) updateBalancer,
+    required TResult Function() updateExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) addExpertPositions,
+    required TResult Function(ExpertPosition expertPosition, bool sell) removeExpertPositions,
+    required TResult Function(ExpertPosition expertPosition) doRecommend,
+    required TResult Function() doAllRecommends,
+  }) {
+    return doAllRecommends();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(StepsBalancer balancer)? updateBalancer,
+    TResult? Function()? updateExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult? Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult? Function(ExpertPosition expertPosition)? doRecommend,
+    TResult? Function()? doAllRecommends,
+  }) {
+    return doAllRecommends?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(StepsBalancer balancer)? updateBalancer,
+    TResult Function()? updateExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? addExpertPositions,
+    TResult Function(ExpertPosition expertPosition, bool sell)? removeExpertPositions,
+    TResult Function(ExpertPosition expertPosition)? doRecommend,
+    TResult Function()? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (doAllRecommends != null) {
+      return doAllRecommends();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitExpertEvent value) init,
+    required TResult Function(_UpdateBalancerExpertEvent value) updateBalancer,
+    required TResult Function(_UpdateExpertPositionsExpertEvent value) updateExpertPositions,
+    required TResult Function(_AddExpertPositionsExpertEvent value) addExpertPositions,
+    required TResult Function(_RemoveExpertPositionsExpertEvent value) removeExpertPositions,
+    required TResult Function(_DoRecommendExpertEvent value) doRecommend,
+    required TResult Function(_DoAllRecommendsExpertEvent value) doAllRecommends,
+  }) {
+    return doAllRecommends(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitExpertEvent value)? init,
+    TResult? Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult? Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult? Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult? Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult? Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult? Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+  }) {
+    return doAllRecommends?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitExpertEvent value)? init,
+    TResult Function(_UpdateBalancerExpertEvent value)? updateBalancer,
+    TResult Function(_UpdateExpertPositionsExpertEvent value)? updateExpertPositions,
+    TResult Function(_AddExpertPositionsExpertEvent value)? addExpertPositions,
+    TResult Function(_RemoveExpertPositionsExpertEvent value)? removeExpertPositions,
+    TResult Function(_DoRecommendExpertEvent value)? doRecommend,
+    TResult Function(_DoAllRecommendsExpertEvent value)? doAllRecommends,
+    required TResult orElse(),
+  }) {
+    if (doAllRecommends != null) {
+      return doAllRecommends(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DoAllRecommendsExpertEvent extends ExpertEvent {
+  const factory _DoAllRecommendsExpertEvent() = _$_DoAllRecommendsExpertEvent;
+  const _DoAllRecommendsExpertEvent._() : super._();
 }
 
 /// @nodoc
 mixin _$ExpertState {
   StepsBalancer get balancer => throw _privateConstructorUsedError;
-  UserAccount? get account => throw _privateConstructorUsedError;
+  List<ExpertPosition?> get expertPositions => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StepsBalancer balancer, UserAccount? account) initialized,
-    required TResult Function(StepsBalancer balancer, UserAccount? account) inProgress,
-    required TResult Function(StepsBalancer balancer, UserAccount? account, String message) error,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)
+        notInitialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)
+        noRecommendation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult? Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_NotInitializedExpertState value) notInitialized,
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
+    required TResult Function(_NoRecommendationExpertState value) noRecommendation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotInitializedExpertState value)? notInitialized,
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult? Function(_NoRecommendationExpertState value)? noRecommendation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotInitializedExpertState value)? notInitialized,
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult Function(_NoRecommendationExpertState value)? noRecommendation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -582,9 +1286,9 @@ abstract class $ExpertStateCopyWith<$Res> {
   factory $ExpertStateCopyWith(ExpertState value, $Res Function(ExpertState) then) =
       _$ExpertStateCopyWithImpl<$Res, ExpertState>;
   @useResult
-  $Res call({StepsBalancer balancer, UserAccount? account});
+  $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions});
 
-  $UserAccountCopyWith<$Res>? get account;
+  $StepsBalancerCopyWith<$Res> get balancer;
 }
 
 /// @nodoc
@@ -600,31 +1304,242 @@ class _$ExpertStateCopyWithImpl<$Res, $Val extends ExpertState> implements $Expe
   @override
   $Res call({
     Object? balancer = null,
-    Object? account = freezed,
+    Object? expertPositions = null,
   }) {
     return _then(_value.copyWith(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
               as StepsBalancer,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as UserAccount?,
+      expertPositions: null == expertPositions
+          ? _value.expertPositions
+          : expertPositions // ignore: cast_nullable_to_non_nullable
+              as List<ExpertPosition?>,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserAccountCopyWith<$Res>? get account {
-    if (_value.account == null) {
-      return null;
-    }
-
-    return $UserAccountCopyWith<$Res>(_value.account!, (value) {
-      return _then(_value.copyWith(account: value) as $Val);
+  $StepsBalancerCopyWith<$Res> get balancer {
+    return $StepsBalancerCopyWith<$Res>(_value.balancer, (value) {
+      return _then(_value.copyWith(balancer: value) as $Val);
     });
   }
+}
+
+/// @nodoc
+abstract class _$$_NotInitializedExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$_NotInitializedExpertStateCopyWith(
+          _$_NotInitializedExpertState value, $Res Function(_$_NotInitializedExpertState) then) =
+      __$$_NotInitializedExpertStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions});
+
+  @override
+  $StepsBalancerCopyWith<$Res> get balancer;
+}
+
+/// @nodoc
+class __$$_NotInitializedExpertStateCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$_NotInitializedExpertState>
+    implements _$$_NotInitializedExpertStateCopyWith<$Res> {
+  __$$_NotInitializedExpertStateCopyWithImpl(
+      _$_NotInitializedExpertState _value, $Res Function(_$_NotInitializedExpertState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? balancer = null,
+    Object? expertPositions = null,
+    Object? initPositions = null,
+  }) {
+    return _then(_$_NotInitializedExpertState(
+      balancer: null == balancer
+          ? _value.balancer
+          : balancer // ignore: cast_nullable_to_non_nullable
+              as StepsBalancer,
+      expertPositions: null == expertPositions
+          ? _value._expertPositions
+          : expertPositions // ignore: cast_nullable_to_non_nullable
+              as List<ExpertPosition?>,
+      initPositions: null == initPositions
+          ? _value._initPositions
+          : initPositions // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_NotInitializedExpertState extends _NotInitializedExpertState {
+  _$_NotInitializedExpertState(
+      {required this.balancer,
+      required final List<ExpertPosition?> expertPositions,
+      required final List<String> initPositions})
+      : _expertPositions = expertPositions,
+        _initPositions = initPositions,
+        super._();
+
+  @override
+  final StepsBalancer balancer;
+  final List<ExpertPosition?> _expertPositions;
+  @override
+  List<ExpertPosition?> get expertPositions {
+    if (_expertPositions is EqualUnmodifiableListView) return _expertPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_expertPositions);
+  }
+
+  final List<String> _initPositions;
+  @override
+  List<String> get initPositions {
+    if (_initPositions is EqualUnmodifiableListView) return _initPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_initPositions);
+  }
+
+  @override
+  String toString() {
+    return 'ExpertState.notInitialized(balancer: $balancer, expertPositions: $expertPositions, initPositions: $initPositions)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_NotInitializedExpertState &&
+            (identical(other.balancer, balancer) || other.balancer == balancer) &&
+            const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
+            const DeepCollectionEquality().equals(other._initPositions, _initPositions));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, balancer, const DeepCollectionEquality().hash(_expertPositions),
+      const DeepCollectionEquality().hash(_initPositions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_NotInitializedExpertStateCopyWith<_$_NotInitializedExpertState> get copyWith =>
+      __$$_NotInitializedExpertStateCopyWithImpl<_$_NotInitializedExpertState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)
+        notInitialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)
+        noRecommendation,
+  }) {
+    return notInitialized(balancer, expertPositions, initPositions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
+  }) {
+    return notInitialized?.call(balancer, expertPositions, initPositions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
+    required TResult orElse(),
+  }) {
+    if (notInitialized != null) {
+      return notInitialized(balancer, expertPositions, initPositions);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NotInitializedExpertState value) notInitialized,
+    required TResult Function(_InitializedExpertState value) initialized,
+    required TResult Function(_InProgressExpertState value) inProgress,
+    required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
+    required TResult Function(_NoRecommendationExpertState value) noRecommendation,
+  }) {
+    return notInitialized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotInitializedExpertState value)? notInitialized,
+    TResult? Function(_InitializedExpertState value)? initialized,
+    TResult? Function(_InProgressExpertState value)? inProgress,
+    TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult? Function(_NoRecommendationExpertState value)? noRecommendation,
+  }) {
+    return notInitialized?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotInitializedExpertState value)? notInitialized,
+    TResult Function(_InitializedExpertState value)? initialized,
+    TResult Function(_InProgressExpertState value)? inProgress,
+    TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult Function(_NoRecommendationExpertState value)? noRecommendation,
+    required TResult orElse(),
+  }) {
+    if (notInitialized != null) {
+      return notInitialized(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotInitializedExpertState extends ExpertState {
+  factory _NotInitializedExpertState(
+      {required final StepsBalancer balancer,
+      required final List<ExpertPosition?> expertPositions,
+      required final List<String> initPositions}) = _$_NotInitializedExpertState;
+  _NotInitializedExpertState._() : super._();
+
+  @override
+  StepsBalancer get balancer;
+  @override
+  List<ExpertPosition?> get expertPositions;
+  List<String> get initPositions;
+  @override
+  @JsonKey(ignore: true)
+  _$$_NotInitializedExpertStateCopyWith<_$_NotInitializedExpertState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -634,10 +1549,10 @@ abstract class _$$_InitializedExpertStateCopyWith<$Res> implements $ExpertStateC
       __$$_InitializedExpertStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StepsBalancer balancer, UserAccount? account});
+  $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions});
 
   @override
-  $UserAccountCopyWith<$Res>? get account;
+  $StepsBalancerCopyWith<$Res> get balancer;
 }
 
 /// @nodoc
@@ -651,17 +1566,17 @@ class __$$_InitializedExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWit
   @override
   $Res call({
     Object? balancer = null,
-    Object? account = freezed,
+    Object? expertPositions = null,
   }) {
     return _then(_$_InitializedExpertState(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
               as StepsBalancer,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as UserAccount?,
+      expertPositions: null == expertPositions
+          ? _value._expertPositions
+          : expertPositions // ignore: cast_nullable_to_non_nullable
+              as List<ExpertPosition?>,
     ));
   }
 }
@@ -669,16 +1584,23 @@ class __$$_InitializedExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWit
 /// @nodoc
 
 class _$_InitializedExpertState extends _InitializedExpertState {
-  _$_InitializedExpertState({required this.balancer, this.account}) : super._();
+  _$_InitializedExpertState({required this.balancer, required final List<ExpertPosition?> expertPositions})
+      : _expertPositions = expertPositions,
+        super._();
 
   @override
   final StepsBalancer balancer;
+  final List<ExpertPosition?> _expertPositions;
   @override
-  final UserAccount? account;
+  List<ExpertPosition?> get expertPositions {
+    if (_expertPositions is EqualUnmodifiableListView) return _expertPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_expertPositions);
+  }
 
   @override
   String toString() {
-    return 'ExpertState.initialized(balancer: $balancer, account: $account)';
+    return 'ExpertState.initialized(balancer: $balancer, expertPositions: $expertPositions)';
   }
 
   @override
@@ -687,11 +1609,11 @@ class _$_InitializedExpertState extends _InitializedExpertState {
         (other.runtimeType == runtimeType &&
             other is _$_InitializedExpertState &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
-            (identical(other.account, account) || other.account == account));
+            const DeepCollectionEquality().equals(other._expertPositions, _expertPositions));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, balancer, account);
+  int get hashCode => Object.hash(runtimeType, balancer, const DeepCollectionEquality().hash(_expertPositions));
 
   @JsonKey(ignore: true)
   @override
@@ -702,33 +1624,53 @@ class _$_InitializedExpertState extends _InitializedExpertState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StepsBalancer balancer, UserAccount? account) initialized,
-    required TResult Function(StepsBalancer balancer, UserAccount? account) inProgress,
-    required TResult Function(StepsBalancer balancer, UserAccount? account, String message) error,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)
+        notInitialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)
+        noRecommendation,
   }) {
-    return initialized(balancer, account);
+    return initialized(balancer, expertPositions);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult? Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
   }) {
-    return initialized?.call(balancer, account);
+    return initialized?.call(balancer, expertPositions);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(balancer, account);
+      return initialized(balancer, expertPositions);
     }
     return orElse();
   }
@@ -736,9 +1678,12 @@ class _$_InitializedExpertState extends _InitializedExpertState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_NotInitializedExpertState value) notInitialized,
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
+    required TResult Function(_NoRecommendationExpertState value) noRecommendation,
   }) {
     return initialized(this);
   }
@@ -746,9 +1691,12 @@ class _$_InitializedExpertState extends _InitializedExpertState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotInitializedExpertState value)? notInitialized,
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult? Function(_NoRecommendationExpertState value)? noRecommendation,
   }) {
     return initialized?.call(this);
   }
@@ -756,9 +1704,12 @@ class _$_InitializedExpertState extends _InitializedExpertState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotInitializedExpertState value)? notInitialized,
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult Function(_NoRecommendationExpertState value)? noRecommendation,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -769,14 +1720,15 @@ class _$_InitializedExpertState extends _InitializedExpertState {
 }
 
 abstract class _InitializedExpertState extends ExpertState {
-  factory _InitializedExpertState({required final StepsBalancer balancer, final UserAccount? account}) =
-      _$_InitializedExpertState;
+  factory _InitializedExpertState(
+      {required final StepsBalancer balancer,
+      required final List<ExpertPosition?> expertPositions}) = _$_InitializedExpertState;
   _InitializedExpertState._() : super._();
 
   @override
   StepsBalancer get balancer;
   @override
-  UserAccount? get account;
+  List<ExpertPosition?> get expertPositions;
   @override
   @JsonKey(ignore: true)
   _$$_InitializedExpertStateCopyWith<_$_InitializedExpertState> get copyWith => throw _privateConstructorUsedError;
@@ -789,10 +1741,10 @@ abstract class _$$_InProgressExpertStateCopyWith<$Res> implements $ExpertStateCo
       __$$_InProgressExpertStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StepsBalancer balancer, UserAccount? account});
+  $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions});
 
   @override
-  $UserAccountCopyWith<$Res>? get account;
+  $StepsBalancerCopyWith<$Res> get balancer;
 }
 
 /// @nodoc
@@ -805,17 +1757,17 @@ class __$$_InProgressExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWith
   @override
   $Res call({
     Object? balancer = null,
-    Object? account = freezed,
+    Object? expertPositions = null,
   }) {
     return _then(_$_InProgressExpertState(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
               as StepsBalancer,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as UserAccount?,
+      expertPositions: null == expertPositions
+          ? _value._expertPositions
+          : expertPositions // ignore: cast_nullable_to_non_nullable
+              as List<ExpertPosition?>,
     ));
   }
 }
@@ -823,16 +1775,23 @@ class __$$_InProgressExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWith
 /// @nodoc
 
 class _$_InProgressExpertState extends _InProgressExpertState {
-  _$_InProgressExpertState({required this.balancer, this.account}) : super._();
+  _$_InProgressExpertState({required this.balancer, required final List<ExpertPosition?> expertPositions})
+      : _expertPositions = expertPositions,
+        super._();
 
   @override
   final StepsBalancer balancer;
+  final List<ExpertPosition?> _expertPositions;
   @override
-  final UserAccount? account;
+  List<ExpertPosition?> get expertPositions {
+    if (_expertPositions is EqualUnmodifiableListView) return _expertPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_expertPositions);
+  }
 
   @override
   String toString() {
-    return 'ExpertState.inProgress(balancer: $balancer, account: $account)';
+    return 'ExpertState.inProgress(balancer: $balancer, expertPositions: $expertPositions)';
   }
 
   @override
@@ -841,11 +1800,11 @@ class _$_InProgressExpertState extends _InProgressExpertState {
         (other.runtimeType == runtimeType &&
             other is _$_InProgressExpertState &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
-            (identical(other.account, account) || other.account == account));
+            const DeepCollectionEquality().equals(other._expertPositions, _expertPositions));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, balancer, account);
+  int get hashCode => Object.hash(runtimeType, balancer, const DeepCollectionEquality().hash(_expertPositions));
 
   @JsonKey(ignore: true)
   @override
@@ -856,33 +1815,53 @@ class _$_InProgressExpertState extends _InProgressExpertState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StepsBalancer balancer, UserAccount? account) initialized,
-    required TResult Function(StepsBalancer balancer, UserAccount? account) inProgress,
-    required TResult Function(StepsBalancer balancer, UserAccount? account, String message) error,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)
+        notInitialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)
+        noRecommendation,
   }) {
-    return inProgress(balancer, account);
+    return inProgress(balancer, expertPositions);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult? Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
   }) {
-    return inProgress?.call(balancer, account);
+    return inProgress?.call(balancer, expertPositions);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
-      return inProgress(balancer, account);
+      return inProgress(balancer, expertPositions);
     }
     return orElse();
   }
@@ -890,9 +1869,12 @@ class _$_InProgressExpertState extends _InProgressExpertState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_NotInitializedExpertState value) notInitialized,
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
+    required TResult Function(_NoRecommendationExpertState value) noRecommendation,
   }) {
     return inProgress(this);
   }
@@ -900,9 +1882,12 @@ class _$_InProgressExpertState extends _InProgressExpertState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotInitializedExpertState value)? notInitialized,
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult? Function(_NoRecommendationExpertState value)? noRecommendation,
   }) {
     return inProgress?.call(this);
   }
@@ -910,9 +1895,12 @@ class _$_InProgressExpertState extends _InProgressExpertState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotInitializedExpertState value)? notInitialized,
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult Function(_NoRecommendationExpertState value)? noRecommendation,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -923,14 +1911,15 @@ class _$_InProgressExpertState extends _InProgressExpertState {
 }
 
 abstract class _InProgressExpertState extends ExpertState {
-  factory _InProgressExpertState({required final StepsBalancer balancer, final UserAccount? account}) =
-      _$_InProgressExpertState;
+  factory _InProgressExpertState(
+      {required final StepsBalancer balancer,
+      required final List<ExpertPosition?> expertPositions}) = _$_InProgressExpertState;
   _InProgressExpertState._() : super._();
 
   @override
   StepsBalancer get balancer;
   @override
-  UserAccount? get account;
+  List<ExpertPosition?> get expertPositions;
   @override
   @JsonKey(ignore: true)
   _$$_InProgressExpertStateCopyWith<_$_InProgressExpertState> get copyWith => throw _privateConstructorUsedError;
@@ -942,10 +1931,10 @@ abstract class _$$_ErrorExpertStateCopyWith<$Res> implements $ExpertStateCopyWit
       __$$_ErrorExpertStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StepsBalancer balancer, UserAccount? account, String message});
+  $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message});
 
   @override
-  $UserAccountCopyWith<$Res>? get account;
+  $StepsBalancerCopyWith<$Res> get balancer;
 }
 
 /// @nodoc
@@ -958,7 +1947,7 @@ class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<
   @override
   $Res call({
     Object? balancer = null,
-    Object? account = freezed,
+    Object? expertPositions = null,
     Object? message = null,
   }) {
     return _then(_$_ErrorExpertState(
@@ -966,10 +1955,10 @@ class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
               as StepsBalancer,
-      account: freezed == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as UserAccount?,
+      expertPositions: null == expertPositions
+          ? _value._expertPositions
+          : expertPositions // ignore: cast_nullable_to_non_nullable
+              as List<ExpertPosition?>,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -981,18 +1970,27 @@ class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<
 /// @nodoc
 
 class _$_ErrorExpertState extends _ErrorExpertState {
-  _$_ErrorExpertState({required this.balancer, this.account, required this.message}) : super._();
+  _$_ErrorExpertState(
+      {required this.balancer, required final List<ExpertPosition?> expertPositions, required this.message})
+      : _expertPositions = expertPositions,
+        super._();
 
   @override
   final StepsBalancer balancer;
+  final List<ExpertPosition?> _expertPositions;
   @override
-  final UserAccount? account;
+  List<ExpertPosition?> get expertPositions {
+    if (_expertPositions is EqualUnmodifiableListView) return _expertPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_expertPositions);
+  }
+
   @override
   final String message;
 
   @override
   String toString() {
-    return 'ExpertState.error(balancer: $balancer, account: $account, message: $message)';
+    return 'ExpertState.error(balancer: $balancer, expertPositions: $expertPositions, message: $message)';
   }
 
   @override
@@ -1001,12 +1999,13 @@ class _$_ErrorExpertState extends _ErrorExpertState {
         (other.runtimeType == runtimeType &&
             other is _$_ErrorExpertState &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
-            (identical(other.account, account) || other.account == account) &&
+            const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, balancer, account, message);
+  int get hashCode =>
+      Object.hash(runtimeType, balancer, const DeepCollectionEquality().hash(_expertPositions), message);
 
   @JsonKey(ignore: true)
   @override
@@ -1017,33 +2016,53 @@ class _$_ErrorExpertState extends _ErrorExpertState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StepsBalancer balancer, UserAccount? account) initialized,
-    required TResult Function(StepsBalancer balancer, UserAccount? account) inProgress,
-    required TResult Function(StepsBalancer balancer, UserAccount? account, String message) error,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)
+        notInitialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)
+        noRecommendation,
   }) {
-    return error(balancer, account, message);
+    return error(balancer, expertPositions, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult? Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult? Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
   }) {
-    return error?.call(balancer, account, message);
+    return error?.call(balancer, expertPositions, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StepsBalancer balancer, UserAccount? account)? initialized,
-    TResult Function(StepsBalancer balancer, UserAccount? account)? inProgress,
-    TResult Function(StepsBalancer balancer, UserAccount? account, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(balancer, account, message);
+      return error(balancer, expertPositions, message);
     }
     return orElse();
   }
@@ -1051,9 +2070,12 @@ class _$_ErrorExpertState extends _ErrorExpertState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_NotInitializedExpertState value) notInitialized,
     required TResult Function(_InitializedExpertState value) initialized,
     required TResult Function(_InProgressExpertState value) inProgress,
     required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
+    required TResult Function(_NoRecommendationExpertState value) noRecommendation,
   }) {
     return error(this);
   }
@@ -1061,9 +2083,12 @@ class _$_ErrorExpertState extends _ErrorExpertState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotInitializedExpertState value)? notInitialized,
     TResult? Function(_InitializedExpertState value)? initialized,
     TResult? Function(_InProgressExpertState value)? inProgress,
     TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult? Function(_NoRecommendationExpertState value)? noRecommendation,
   }) {
     return error?.call(this);
   }
@@ -1071,9 +2096,12 @@ class _$_ErrorExpertState extends _ErrorExpertState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotInitializedExpertState value)? notInitialized,
     TResult Function(_InitializedExpertState value)? initialized,
     TResult Function(_InProgressExpertState value)? inProgress,
     TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult Function(_NoRecommendationExpertState value)? noRecommendation,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1086,16 +2114,448 @@ class _$_ErrorExpertState extends _ErrorExpertState {
 abstract class _ErrorExpertState extends ExpertState {
   factory _ErrorExpertState(
       {required final StepsBalancer balancer,
-      final UserAccount? account,
+      required final List<ExpertPosition?> expertPositions,
       required final String message}) = _$_ErrorExpertState;
   _ErrorExpertState._() : super._();
 
   @override
   StepsBalancer get balancer;
   @override
-  UserAccount? get account;
+  List<ExpertPosition?> get expertPositions;
   String get message;
   @override
   @JsonKey(ignore: true)
   _$$_ErrorExpertStateCopyWith<_$_ErrorExpertState> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ExpertPositionRemovedExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$_ExpertPositionRemovedExpertStateCopyWith(
+          _$_ExpertPositionRemovedExpertState value, $Res Function(_$_ExpertPositionRemovedExpertState) then) =
+      __$$_ExpertPositionRemovedExpertStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition});
+
+  @override
+  $StepsBalancerCopyWith<$Res> get balancer;
+  $ExpertPositionCopyWith<$Res> get removedPosition;
+}
+
+/// @nodoc
+class __$$_ExpertPositionRemovedExpertStateCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$_ExpertPositionRemovedExpertState>
+    implements _$$_ExpertPositionRemovedExpertStateCopyWith<$Res> {
+  __$$_ExpertPositionRemovedExpertStateCopyWithImpl(
+      _$_ExpertPositionRemovedExpertState _value, $Res Function(_$_ExpertPositionRemovedExpertState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? balancer = null,
+    Object? expertPositions = null,
+    Object? removedPosition = null,
+  }) {
+    return _then(_$_ExpertPositionRemovedExpertState(
+      balancer: null == balancer
+          ? _value.balancer
+          : balancer // ignore: cast_nullable_to_non_nullable
+              as StepsBalancer,
+      expertPositions: null == expertPositions
+          ? _value._expertPositions
+          : expertPositions // ignore: cast_nullable_to_non_nullable
+              as List<ExpertPosition?>,
+      removedPosition: null == removedPosition
+          ? _value.removedPosition
+          : removedPosition // ignore: cast_nullable_to_non_nullable
+              as ExpertPosition,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpertPositionCopyWith<$Res> get removedPosition {
+    return $ExpertPositionCopyWith<$Res>(_value.removedPosition, (value) {
+      return _then(_value.copyWith(removedPosition: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_ExpertPositionRemovedExpertState extends _ExpertPositionRemovedExpertState {
+  _$_ExpertPositionRemovedExpertState(
+      {required this.balancer, required final List<ExpertPosition?> expertPositions, required this.removedPosition})
+      : _expertPositions = expertPositions,
+        super._();
+
+  @override
+  final StepsBalancer balancer;
+  final List<ExpertPosition?> _expertPositions;
+  @override
+  List<ExpertPosition?> get expertPositions {
+    if (_expertPositions is EqualUnmodifiableListView) return _expertPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_expertPositions);
+  }
+
+  @override
+  final ExpertPosition removedPosition;
+
+  @override
+  String toString() {
+    return 'ExpertState.expertPositionRemoved(balancer: $balancer, expertPositions: $expertPositions, removedPosition: $removedPosition)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ExpertPositionRemovedExpertState &&
+            (identical(other.balancer, balancer) || other.balancer == balancer) &&
+            const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
+            (identical(other.removedPosition, removedPosition) || other.removedPosition == removedPosition));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, balancer, const DeepCollectionEquality().hash(_expertPositions), removedPosition);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ExpertPositionRemovedExpertStateCopyWith<_$_ExpertPositionRemovedExpertState> get copyWith =>
+      __$$_ExpertPositionRemovedExpertStateCopyWithImpl<_$_ExpertPositionRemovedExpertState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)
+        notInitialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)
+        noRecommendation,
+  }) {
+    return expertPositionRemoved(balancer, expertPositions, removedPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
+  }) {
+    return expertPositionRemoved?.call(balancer, expertPositions, removedPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
+    required TResult orElse(),
+  }) {
+    if (expertPositionRemoved != null) {
+      return expertPositionRemoved(balancer, expertPositions, removedPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NotInitializedExpertState value) notInitialized,
+    required TResult Function(_InitializedExpertState value) initialized,
+    required TResult Function(_InProgressExpertState value) inProgress,
+    required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
+    required TResult Function(_NoRecommendationExpertState value) noRecommendation,
+  }) {
+    return expertPositionRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotInitializedExpertState value)? notInitialized,
+    TResult? Function(_InitializedExpertState value)? initialized,
+    TResult? Function(_InProgressExpertState value)? inProgress,
+    TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult? Function(_NoRecommendationExpertState value)? noRecommendation,
+  }) {
+    return expertPositionRemoved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotInitializedExpertState value)? notInitialized,
+    TResult Function(_InitializedExpertState value)? initialized,
+    TResult Function(_InProgressExpertState value)? inProgress,
+    TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult Function(_NoRecommendationExpertState value)? noRecommendation,
+    required TResult orElse(),
+  }) {
+    if (expertPositionRemoved != null) {
+      return expertPositionRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ExpertPositionRemovedExpertState extends ExpertState {
+  factory _ExpertPositionRemovedExpertState(
+      {required final StepsBalancer balancer,
+      required final List<ExpertPosition?> expertPositions,
+      required final ExpertPosition removedPosition}) = _$_ExpertPositionRemovedExpertState;
+  _ExpertPositionRemovedExpertState._() : super._();
+
+  @override
+  StepsBalancer get balancer;
+  @override
+  List<ExpertPosition?> get expertPositions;
+  ExpertPosition get removedPosition;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ExpertPositionRemovedExpertStateCopyWith<_$_ExpertPositionRemovedExpertState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_NoRecommendationExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$_NoRecommendationExpertStateCopyWith(
+          _$_NoRecommendationExpertState value, $Res Function(_$_NoRecommendationExpertState) then) =
+      __$$_NoRecommendationExpertStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition});
+
+  @override
+  $StepsBalancerCopyWith<$Res> get balancer;
+  $ExpertPositionCopyWith<$Res> get currentPosition;
+}
+
+/// @nodoc
+class __$$_NoRecommendationExpertStateCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$_NoRecommendationExpertState>
+    implements _$$_NoRecommendationExpertStateCopyWith<$Res> {
+  __$$_NoRecommendationExpertStateCopyWithImpl(
+      _$_NoRecommendationExpertState _value, $Res Function(_$_NoRecommendationExpertState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? balancer = null,
+    Object? expertPositions = null,
+    Object? currentPosition = null,
+  }) {
+    return _then(_$_NoRecommendationExpertState(
+      balancer: null == balancer
+          ? _value.balancer
+          : balancer // ignore: cast_nullable_to_non_nullable
+              as StepsBalancer,
+      expertPositions: null == expertPositions
+          ? _value._expertPositions
+          : expertPositions // ignore: cast_nullable_to_non_nullable
+              as List<ExpertPosition?>,
+      currentPosition: null == currentPosition
+          ? _value.currentPosition
+          : currentPosition // ignore: cast_nullable_to_non_nullable
+              as ExpertPosition,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpertPositionCopyWith<$Res> get currentPosition {
+    return $ExpertPositionCopyWith<$Res>(_value.currentPosition, (value) {
+      return _then(_value.copyWith(currentPosition: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_NoRecommendationExpertState extends _NoRecommendationExpertState {
+  _$_NoRecommendationExpertState(
+      {required this.balancer, required final List<ExpertPosition?> expertPositions, required this.currentPosition})
+      : _expertPositions = expertPositions,
+        super._();
+
+  @override
+  final StepsBalancer balancer;
+  final List<ExpertPosition?> _expertPositions;
+  @override
+  List<ExpertPosition?> get expertPositions {
+    if (_expertPositions is EqualUnmodifiableListView) return _expertPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_expertPositions);
+  }
+
+  @override
+  final ExpertPosition currentPosition;
+
+  @override
+  String toString() {
+    return 'ExpertState.noRecommendation(balancer: $balancer, expertPositions: $expertPositions, currentPosition: $currentPosition)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_NoRecommendationExpertState &&
+            (identical(other.balancer, balancer) || other.balancer == balancer) &&
+            const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
+            (identical(other.currentPosition, currentPosition) || other.currentPosition == currentPosition));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, balancer, const DeepCollectionEquality().hash(_expertPositions), currentPosition);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_NoRecommendationExpertStateCopyWith<_$_NoRecommendationExpertState> get copyWith =>
+      __$$_NoRecommendationExpertStateCopyWithImpl<_$_NoRecommendationExpertState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)
+        notInitialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) initialized,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions) inProgress,
+    required TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message) error,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)
+        expertPositionRemoved,
+    required TResult Function(
+            StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)
+        noRecommendation,
+  }) {
+    return noRecommendation(balancer, expertPositions, currentPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult? Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
+  }) {
+    return noRecommendation?.call(balancer, expertPositions, currentPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions)?
+        notInitialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? initialized,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions)? inProgress,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message)? error,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition)?
+        expertPositionRemoved,
+    TResult Function(StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition)?
+        noRecommendation,
+    required TResult orElse(),
+  }) {
+    if (noRecommendation != null) {
+      return noRecommendation(balancer, expertPositions, currentPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NotInitializedExpertState value) notInitialized,
+    required TResult Function(_InitializedExpertState value) initialized,
+    required TResult Function(_InProgressExpertState value) inProgress,
+    required TResult Function(_ErrorExpertState value) error,
+    required TResult Function(_ExpertPositionRemovedExpertState value) expertPositionRemoved,
+    required TResult Function(_NoRecommendationExpertState value) noRecommendation,
+  }) {
+    return noRecommendation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotInitializedExpertState value)? notInitialized,
+    TResult? Function(_InitializedExpertState value)? initialized,
+    TResult? Function(_InProgressExpertState value)? inProgress,
+    TResult? Function(_ErrorExpertState value)? error,
+    TResult? Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult? Function(_NoRecommendationExpertState value)? noRecommendation,
+  }) {
+    return noRecommendation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotInitializedExpertState value)? notInitialized,
+    TResult Function(_InitializedExpertState value)? initialized,
+    TResult Function(_InProgressExpertState value)? inProgress,
+    TResult Function(_ErrorExpertState value)? error,
+    TResult Function(_ExpertPositionRemovedExpertState value)? expertPositionRemoved,
+    TResult Function(_NoRecommendationExpertState value)? noRecommendation,
+    required TResult orElse(),
+  }) {
+    if (noRecommendation != null) {
+      return noRecommendation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoRecommendationExpertState extends ExpertState {
+  factory _NoRecommendationExpertState(
+      {required final StepsBalancer balancer,
+      required final List<ExpertPosition?> expertPositions,
+      required final ExpertPosition currentPosition}) = _$_NoRecommendationExpertState;
+  _NoRecommendationExpertState._() : super._();
+
+  @override
+  StepsBalancer get balancer;
+  @override
+  List<ExpertPosition?> get expertPositions;
+  ExpertPosition get currentPosition;
+  @override
+  @JsonKey(ignore: true)
+  _$$_NoRecommendationExpertStateCopyWith<_$_NoRecommendationExpertState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

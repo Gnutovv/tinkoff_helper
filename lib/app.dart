@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
-import 'package:tinkoff_helper/presentation/features/debug/bloc/debug_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/debug/screens/debug_screen.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
+import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
-import 'package:tinkoff_helper/presentation/features/main/screens/main_screen.dart';
+import 'package:tinkoff_helper/presentation/features/portfolio/bloc/portfolio_bloc.dart';
+import 'package:tinkoff_helper/presentation/features/portfolio/screens/portfolio_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/widgets/need_authorize_placeholder.dart';
@@ -22,12 +22,20 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<DebugBloc>(create: (context) => DebugBloc()),
         BlocProvider<SettingsBloc>(
           create: (context) => SettingsBloc(apiKey: getIt<HiveStorage>().apiKey),
         ),
+        BlocProvider<ExpertSettingsBloc>(
+          create: (context) => ExpertSettingsBloc(balancer: getIt<HiveStorage>().stepsBalancer),
+        ),
         BlocProvider<ExpertBloc>(
-          create: (context) => ExpertBloc(balancer: getIt<HiveStorage>().stepsBalancer),
+          create: (context) => ExpertBloc(
+            balancer: getIt<HiveStorage>().stepsBalancer,
+            initPositions: getIt<HiveStorage>().expertPositions,
+          ),
+        ),
+        BlocProvider<PortfolioBloc>(
+          create: (context) => PortfolioBloc(portfolio: null),
         ),
       ],
       child: MaterialApp(
@@ -51,16 +59,14 @@ class App extends StatelessWidget {
                 indicatorWidth: 0,
                 tabsWidth: 59,
                 tabs: const [
-                  Tab(icon: Icon(Icons.home)),
+                  Tab(icon: Icon(Icons.cases_rounded)),
                   Tab(icon: Icon(Icons.science_rounded)),
                   Tab(icon: Icon(Icons.settings)),
-                  Tab(icon: Icon(Icons.developer_board_rounded)),
                 ],
                 contents: [
-                  state.hasUserAccount ? const HomeScreen() : const NeedAuthorizePlaceholder(),
-                  state.hasUserAccount ? const ExpertScreen() : const NeedAuthorizePlaceholder(),
+                  state.tokenChecked ? const PortfolioScreen() : const NeedAuthorizePlaceholder(),
+                  state.tokenChecked ? const ExpertScreen() : const NeedAuthorizePlaceholder(),
                   const SettingsScreen(),
-                  state.hasUserAccount ? const DebugScreen() : const NeedAuthorizePlaceholder(),
                 ],
               );
             }),

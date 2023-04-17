@@ -7,7 +7,6 @@ import 'package:tinkoff_helper/network/generated/orders.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/sandbox.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/stoporders.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/users.pbgrpc.dart';
-import 'package:tinkoff_helper/network/hosts.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
 
 class TinkoffApiService {
@@ -20,8 +19,15 @@ class TinkoffApiService {
   late final SandboxServiceClient sandboxServiceClient;
   late final StopOrdersServiceClient stopOrdersServiceClient;
   late final UsersServiceClient usersServiceClient;
+  String? _accountId;
+  String? _accountName;
 
   CallOptions get callOptions => _callOptions;
+  String? get accountId => _accountId;
+  String? get accountName => _accountName;
+
+  void setAccountId(String accountId) => _accountId = accountId;
+  void setAccountName(String accountName) => _accountName = accountName;
 
   void init() {
     updateCallOptions(getIt<HiveStorage>().apiKey);
@@ -41,4 +47,10 @@ class TinkoffApiService {
       port: TinkoffHosts.port,
     );
   }
+}
+
+class TinkoffHosts {
+  static const sandbox = 'sandbox-invest-public-api.tinkoff.ru';
+  static const prod = 'invest-public-api.tinkoff.ru';
+  static const port = 443;
 }

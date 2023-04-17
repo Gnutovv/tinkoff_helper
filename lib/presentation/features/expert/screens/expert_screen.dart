@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tinkoff_helper/common/format.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
+import 'package:tinkoff_helper/domain/expert/expert_position.dart';
 import 'package:tinkoff_helper/presentation/common/widgets/card_item_widget.dart';
+import 'package:tinkoff_helper/presentation/common/widgets/equal_color.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/expert/widgets/account_settings_gialog.dart';
-import 'package:tinkoff_helper/presentation/features/expert/widgets/balancer_settings_gialog.dart';
+import 'package:tinkoff_helper/presentation/features/expert/screens/add_expert_position_screen.dart';
+import 'package:tinkoff_helper/presentation/features/expert/screens/expert_settings_screen.dart';
 
-class ExpertScreen extends StatefulWidget {
+class ExpertScreen extends StatelessWidget {
   const ExpertScreen({Key? key}) : super(key: key);
 
   @override
-  State<ExpertScreen> createState() => _ExpertScreenState();
-}
-
-class _ExpertScreenState extends State<ExpertScreen> {
-  final loaderController = getIt<LoaderController>();
-
-  @override
   Widget build(BuildContext context) {
+    const tabElementsStyle = TextStyle(fontWeight: FontWeight.bold);
+    final loaderController = getIt<LoaderController>();
+    final bloc = context.read<ExpertBloc>();
+
     return BlocConsumer<ExpertBloc, ExpertState>(
       listener: (context, state) {
         state.maybeWhen(
@@ -43,171 +41,240 @@ class _ExpertScreenState extends State<ExpertScreen> {
                 ],
               );
             },
-          ), //print(state.message),
+          ),
+          expertPositionRemoved: (state) => showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Позиция удалена'),
+                content: Text(state.removedPosition.instrument.title),
+                actions: <Widget>[
+                  ElevatedButton(
+                    child: const Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          ),
         );
       },
-      builder: (context, state) => Center(
-        child: Row(
+      builder: (context, state) => state.maybeWhen(
+        notInitialized: (balancer, _, positions) => Center(
+          child: ElevatedButton(
+            onPressed: () => bloc.add(const ExpertEvent.init()),
+            child: const Text('Загрузить данные'),
+          ),
+        ),
+        orElse: () => Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CardItemWidget(
-                width: 390,
-                label: const Text(
-                  'Баланс',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                content: [
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Всего: '),
-                      Text(
-                        state.account!.totalBalance.toString().toMoneyFormat,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
+            SizedBox(
+              width: 400,
+              child: CardItemWidget(
+                  label: const Text(
+                    'Эксперт',
+                    style: tabElementsStyle,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Cвободно: '),
-                      Text(
-                        state.account!.freeBalance.toString().toMoneyFormat,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Торгуемый баланс: '),
-                      Text(
-                        state.account!.tradeBalance.toString().toMoneyFormat,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          //context.read<ExpertBloc>().add(const ExpertEvent.updateBalancer());
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.amber, // Background color
-                        ),
-                        child: const SizedBox(
-                          width: 96,
-                          child: Icon(Icons.refresh_rounded),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () => showAccountSettingsDialog(
-                          context,
-                          initBalance: state.account!.tradeBalance,
-                          maxBalance: state.account!.totalBalance,
-                          onAccept: (String newValue) {
-                            double? bal = double.tryParse(newValue);
-                            if (bal != null) {
-                              context.read<ExpertBloc>().add(ExpertEvent.updateTradeBalance(
-                                    newBalance: double.parse(newValue),
-                                  ));
-                            }
-                          },
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.amber, // Background color
-                        ),
-                        child: const SizedBox(width: 96, child: Icon(Icons.edit)),
-                      ),
-                    ],
-                  ),
-                ]),
-            CardItemWidget(
-                width: 390,
-                label: const Text(
-                  'Ступени',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                content: [
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Количество торгуемых инструментов: '),
-                      Text(state.balancer.stocksAmount.toString(), style: const TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Средств на один инструмент: '),
-                      Text(
-                        state.balancer.oneStockMoneyVolume.toString().toMoneyFormat,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  ...List.generate(
-                    state.balancer.stepRateList.length,
-                    (index) => Row(
+                  content: [
+                    const Divider(),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('${intToOrderStepName(index)}: '),
+                        const Text('Новых рекомендаций:', style: tabElementsStyle),
                         Text(
-                          '${state.balancer.stepRateList[index]} : ${state.balancer.getStepPercent(index)}% (${state.balancer.getStepMoneyVolume(index).toString().toMoneyFormat})',
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                            state.expertPositions.isNotEmpty
+                                ? state.expertPositions.where((element) => element!.isRecommend).length.toString()
+                                : '0',
+                            style: tabElementsStyle.copyWith(
+                                color: equalColor(first: 0, second: state.expertPositions.length))),
+                        ElevatedButton(
+                          onPressed: state.expertPositions.where((element) => element!.isRecommend).isEmpty
+                              ? null
+                              : () => bloc.add(
+                                    const ExpertEvent.doAllRecommends(),
+                                  ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.amber, // Background color
+                          ),
+                          child: const Icon(Icons.playlist_add_check_rounded),
                         ),
                       ],
                     ),
-                  ),
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          context.read<ExpertBloc>().add(const ExpertEvent.updateBalancer());
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.amber, // Background color
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) => const AddExpertPositionScreen()))
+                                .then((expertPosition) {
+                              if (expertPosition != null) bloc.add(ExpertEvent.addExpertPositions(expertPosition));
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.amber, // Background color
+                          ),
+                          child: const Icon(Icons.add),
                         ),
-                        child: const SizedBox(
-                          width: 96,
-                          child: Icon(Icons.refresh_rounded),
+                        ElevatedButton(
+                          onPressed: () => bloc.add(const ExpertEvent.updateExpertPositions()),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.amber, // Background color
+                          ),
+                          child: const SizedBox(width: 64, child: Icon(Icons.refresh)),
                         ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () => showBalancerSettingsDialog(
-                          context,
-                          stocksAmount: state.balancer.stocksAmount,
-                          stepsRate: state.balancer.stepRateList,
-                          onAccept: ({required int stocksAmount, required List<int> stepsRate}) =>
-                              context.read<ExpertBloc>().add(ExpertEvent.updateBalancer(
-                                    stepsRateList: stepsRate,
-                                    stocksAmount: stocksAmount,
-                                  )),
+                        ElevatedButton(
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ExpertSettingsScreen(),
+                            ),
+                          ).then((newBalancer) {
+                            if (newBalancer != state.balancer) {
+                              bloc.add(ExpertEvent.updateBalancer(balancer: newBalancer));
+                            }
+                          }),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.amber, // Background color
+                          ),
+                          child: const Icon(Icons.settings),
                         ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.amber, // Background color
-                        ),
-                        child: const SizedBox(width: 96, child: Icon(Icons.edit)),
-                      ),
-                    ],
-                  ),
-                ]),
+                      ],
+                    ),
+                  ]),
+            ),
+            Column(
+              children: [
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(alignment: Alignment.center, width: 20, child: const Text('#', style: tabElementsStyle)),
+                    Container(
+                        alignment: Alignment.center, width: 138, child: const Text('Тикер', style: tabElementsStyle)),
+                    Container(
+                        alignment: Alignment.center,
+                        width: 138,
+                        child: const Text('Наименование', style: tabElementsStyle)),
+                    Container(
+                        alignment: Alignment.center,
+                        width: 138,
+                        child: const Text('Количество', style: tabElementsStyle)),
+                    Container(
+                        alignment: Alignment.center,
+                        width: 138,
+                        child: const Text('Рекомендовано', style: tabElementsStyle)),
+                    Container(
+                        alignment: Alignment.center,
+                        width: 138,
+                        child: const Text('Индикатор', style: tabElementsStyle)),
+                    Container(
+                        alignment: Alignment.center,
+                        width: 138,
+                        child: const Text('Рекомендация', style: tabElementsStyle)),
+                    Container(
+                        alignment: Alignment.center,
+                        width: 145,
+                        child: const Text('Действие', style: tabElementsStyle)),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20, top: 0),
+                  color: const Color(0xFFECECEC),
+                  width: 1060,
+                  height: 380,
+                  child: state.expertPositions.isNotEmpty
+                      ? SingleChildScrollView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          child: Column(
+                            children: [
+                              ...List.generate(
+                                state.expertPositions.length,
+                                (index) => Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 7.0, vertical: 4),
+                                  color: index % 2 == 0 ? Colors.yellowAccent : Colors.yellow,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        width: 20,
+                                        height: 30,
+                                        child: Text((index + 1).toString(), style: tabElementsStyle),
+                                      ),
+                                      _rowElement(state.expertPositions[index]!.instrument.ticker),
+                                      _rowElement(state.expertPositions[index]!.instrument.title),
+                                      _rowElement(state.expertPositions[index]!.amount.toString()),
+                                      _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
+                                          color: equalColor(
+                                            first: state.expertPositions[index]!.recommendAmount,
+                                            second: state.expertPositions[index]!.instrument.amount,
+                                          )),
+                                      _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌'),
+                                      _rowElement(state.expertPositions[index]!.recommendAction.toActionName()),
+                                      SizedBox(
+                                        width: 108,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            IconButton(
+                                                onPressed: () => bloc.add(
+                                                      ExpertEvent.doRecommend(state.expertPositions[index]!),
+                                                    ),
+                                                icon: const Icon(
+                                                  Icons.check,
+                                                  color: Colors.green,
+                                                )),
+                                            // const IconButton(
+                                            //     onPressed: null,
+                                            //     icon: Icon(
+                                            //       Icons.info,
+                                            //       color: Colors.blue,
+                                            //     )),
+                                            IconButton(
+                                                onPressed: () => bloc.add(
+                                                      ExpertEvent.removeExpertPositions(
+                                                        state.expertPositions[index]!,
+                                                        false,
+                                                      ),
+                                                    ),
+                                                icon: const Icon(
+                                                  Icons.close,
+                                                  color: Colors.red,
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : const Center(child: Text('Нет активных позиций')),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
   }
-}
 
-/// Тут у нас будут виджеты с общим (1) торговым(2 *) и свободным(3) балансом,
-/// (в блоке с балансами будет иконка обновления)
-/// сила ступеней (4*), кол-во акций в торговле (5*).
-/// Ниже будет кнопка перехода на экран непосредственно акций и торговли
+  Container _rowElement(String text, {Color? color}) => Container(
+        alignment: Alignment.center,
+        width: 143,
+        child: Text(text,
+            maxLines: 1,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: color,
+            )),
+      );
+}

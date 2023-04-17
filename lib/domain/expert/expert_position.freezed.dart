@@ -1,0 +1,174 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'expert_position.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$ExpertPosition {
+  ExpertPortfolioPosition get instrument => throw _privateConstructorUsedError;
+  int get recommendAmount => throw _privateConstructorUsedError;
+  bool get shouldBuy => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ExpertPositionCopyWith<ExpertPosition> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ExpertPositionCopyWith<$Res> {
+  factory $ExpertPositionCopyWith(ExpertPosition value, $Res Function(ExpertPosition) then) =
+      _$ExpertPositionCopyWithImpl<$Res, ExpertPosition>;
+  @useResult
+  $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy});
+
+  $ExpertPortfolioPositionCopyWith<$Res> get instrument;
+}
+
+/// @nodoc
+class _$ExpertPositionCopyWithImpl<$Res, $Val extends ExpertPosition> implements $ExpertPositionCopyWith<$Res> {
+  _$ExpertPositionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? instrument = null,
+    Object? recommendAmount = null,
+    Object? shouldBuy = null,
+  }) {
+    return _then(_value.copyWith(
+      instrument: null == instrument
+          ? _value.instrument
+          : instrument // ignore: cast_nullable_to_non_nullable
+              as ExpertPortfolioPosition,
+      recommendAmount: null == recommendAmount
+          ? _value.recommendAmount
+          : recommendAmount // ignore: cast_nullable_to_non_nullable
+              as int,
+      shouldBuy: null == shouldBuy
+          ? _value.shouldBuy
+          : shouldBuy // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExpertPortfolioPositionCopyWith<$Res> get instrument {
+    return $ExpertPortfolioPositionCopyWith<$Res>(_value.instrument, (value) {
+      return _then(_value.copyWith(instrument: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_ExpertPositionCopyWith<$Res> implements $ExpertPositionCopyWith<$Res> {
+  factory _$$_ExpertPositionCopyWith(_$_ExpertPosition value, $Res Function(_$_ExpertPosition) then) =
+      __$$_ExpertPositionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy});
+
+  @override
+  $ExpertPortfolioPositionCopyWith<$Res> get instrument;
+}
+
+/// @nodoc
+class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl<$Res, _$_ExpertPosition>
+    implements _$$_ExpertPositionCopyWith<$Res> {
+  __$$_ExpertPositionCopyWithImpl(_$_ExpertPosition _value, $Res Function(_$_ExpertPosition) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? instrument = null,
+    Object? recommendAmount = null,
+    Object? shouldBuy = null,
+  }) {
+    return _then(_$_ExpertPosition(
+      instrument: null == instrument
+          ? _value.instrument
+          : instrument // ignore: cast_nullable_to_non_nullable
+              as ExpertPortfolioPosition,
+      recommendAmount: null == recommendAmount
+          ? _value.recommendAmount
+          : recommendAmount // ignore: cast_nullable_to_non_nullable
+              as int,
+      shouldBuy: null == shouldBuy
+          ? _value.shouldBuy
+          : shouldBuy // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ExpertPosition extends _ExpertPosition {
+  const _$_ExpertPosition({required this.instrument, required this.recommendAmount, required this.shouldBuy})
+      : super._();
+
+  @override
+  final ExpertPortfolioPosition instrument;
+  @override
+  final int recommendAmount;
+  @override
+  final bool shouldBuy;
+
+  @override
+  String toString() {
+    return 'ExpertPosition(instrument: $instrument, recommendAmount: $recommendAmount, shouldBuy: $shouldBuy)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ExpertPosition &&
+            (identical(other.instrument, instrument) || other.instrument == instrument) &&
+            (identical(other.recommendAmount, recommendAmount) || other.recommendAmount == recommendAmount) &&
+            (identical(other.shouldBuy, shouldBuy) || other.shouldBuy == shouldBuy));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, instrument, recommendAmount, shouldBuy);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ExpertPositionCopyWith<_$_ExpertPosition> get copyWith =>
+      __$$_ExpertPositionCopyWithImpl<_$_ExpertPosition>(this, _$identity);
+}
+
+abstract class _ExpertPosition extends ExpertPosition {
+  const factory _ExpertPosition(
+      {required final ExpertPortfolioPosition instrument,
+      required final int recommendAmount,
+      required final bool shouldBuy}) = _$_ExpertPosition;
+  const _ExpertPosition._() : super._();
+
+  @override
+  ExpertPortfolioPosition get instrument;
+  @override
+  int get recommendAmount;
+  @override
+  bool get shouldBuy;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ExpertPositionCopyWith<_$_ExpertPosition> get copyWith => throw _privateConstructorUsedError;
+}

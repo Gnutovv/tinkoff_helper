@@ -4,7 +4,8 @@ Future showBalancerSettingsDialog(
   BuildContext context, {
   required int stocksAmount,
   required List<int> stepsRate,
-  required Function({required int stocksAmount, required List<int> stepsRate}) onAccept,
+  required double initBalance,
+  required Function({required int stocksAmount, required List<int> stepsRate, required String balance}) onAccept,
 }) {
   List<int> strToList(String str) {
     String newStr = str.trim()..replaceAll(' ', '');
@@ -26,17 +27,29 @@ Future showBalancerSettingsDialog(
 
   final stocksAmountController = TextEditingController();
   final stepsRateController = TextEditingController();
+  final balanceController = TextEditingController();
   stocksAmountController.text = stocksAmount.toString();
   stepsRateController.text = listToString(stepsRate);
+  balanceController.text = initBalance.toString();
 
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Настройка силы ступеней'),
+        title: const Text('Настройки эксперта'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            TextField(
+              controller: balanceController,
+              decoration: const InputDecoration(
+                labelText: 'Торгуемый баланс',
+                border: OutlineInputBorder(),
+                labelStyle: TextStyle(color: Colors.blue),
+                hintText: 'Торгуемый баланс',
+              ),
+            ),
+            const SizedBox(height: 24),
             TextField(
               controller: stocksAmountController,
               decoration: const InputDecoration(
@@ -65,6 +78,7 @@ Future showBalancerSettingsDialog(
               onAccept(
                 stocksAmount: int.parse(stocksAmountController.text),
                 stepsRate: strToList(stepsRateController.text),
+                balance: balanceController.text,
               );
             },
             style: ElevatedButton.styleFrom(
