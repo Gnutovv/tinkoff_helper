@@ -13,9 +13,11 @@ class ExpertPosition with _$ExpertPosition {
     required bool shouldBuy,
   }) = _ExpertPosition;
 
+  int get amount => instrument.quantity ~/ instrument.lot;
+
   bool get isRecommend => recommendAction != ExpertAction.keep;
 
-  ExpertAction get recommendAction => instrument.quantity > recommendAmount
+  ExpertAction get recommendAction => amount > recommendAmount
       ? ExpertAction.sell
       : (instrument.quantity < recommendAmount && shouldBuy)
           ? ExpertAction.buy

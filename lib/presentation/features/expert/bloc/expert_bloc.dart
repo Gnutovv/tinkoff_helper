@@ -70,6 +70,12 @@ class ExpertState with _$ExpertState {
     required ExpertPosition removedPosition,
   }) = _ExpertPositionRemovedExpertState;
 
+  factory ExpertState.noRecommendation({
+    required StepsBalancer balancer,
+    required List<ExpertPosition?> expertPositions,
+    required ExpertPosition currentPosition,
+  }) = _NoRecommendationExpertState;
+
   List<String>? get initPositions => mapOrNull(notInitialized: (state) => state.initPositions);
 }
 
@@ -83,8 +89,8 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
         init: (event) => _init(event, emitter),
         updateBalancer: (event) => _updateBalancer(event, emitter),
         updateExpertPositions: (event) => _updateExpertPositions(event, emitter),
-        doRecommend: (event) => null,
-        doAllRecommends: (event) => null,
+        doRecommend: (event) => _doRecommend(event, emitter),
+        doAllRecommends: (event) => _doAllRecommends(event, emitter),
         addExpertPositions: (event) => _addExpertPosition(event, emitter),
         removeExpertPositions: (event) => _removeExpertPosition(event, emitter),
       ),
@@ -129,21 +135,6 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
     try {
       List<ExpertPosition?> resultPositions =
           state.expertPositions.where((element) => element != event.expertPosition).toList();
-      if (event.sell) {
-        await _tinkoffApiService.ordersServiceClient.postOrder(
-          PostOrderRequest(
-            figi: event.expertPosition.instrument.figi,
-            quantity: Int64(event.expertPosition.instrument.quantity.toInt()),
-            price: event.expertPosition.instrument.currentPrice.toQuotation,
-            direction: OrderDirection.ORDER_DIRECTION_SELL,
-            accountId: _tinkoffApiService.accountId,
-            orderType: OrderType.ORDER_TYPE_MARKET,
-            orderId: null,
-            instrumentId: event.expertPosition.instrument.instrumentId,
-          ),
-          options: _tinkoffApiService.callOptions,
-        );
-      }
       await getIt<HiveStorage>().saveExpertPositions(resultPositions);
       emitter(ExpertState.expertPositionRemoved(
         balancer: state.balancer,
@@ -237,6 +228,7 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
               ticker: share.ticker,
               title: share.name,
               quantity: 0,
+              lot: share.lot,
               averagePositionPrice: 0,
               expectedYield: 0,
               currentPrice: instrumentCandles.candles.last.close.toDouble,
@@ -247,5 +239,122 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
     }
 
     return resultExpertPositions;
+  }
+
+  Future<void> _doRecommend(_DoRecommendExpertEvent event, Emitter<ExpertState> emitter) async {
+    emitter(ExpertState.inProgress(balancer: state.balancer, expertPositions: state.expertPositions));
+    if (!event.expertPosition.isRecommend) {
+      emitter(ExpertState.noRecommendation(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+        currentPosition: event.expertPosition,
+      ));
+      emitter(ExpertState.initialized(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+      ));
+      return;
+    }
+
+    try {
+      final operationType = event.expertPosition.recommendAction == ExpertAction.buy
+          ? OrderDirection.ORDER_DIRECTION_BUY
+          : OrderDirection.ORDER_DIRECTION_SELL;
+      final amount = (event.expertPosition.recommendAmount - event.expertPosition.instrument.amount).toInt().abs();
+      final priceResponse = await _tinkoffApiService.marketDataServiceClient.getLastPrices(
+        $marketdata_pb.GetLastPricesRequest(instrumentId: [event.expertPosition.instrument.instrumentId]),
+        options: _tinkoffApiService.callOptions,
+      );
+      final price = priceResponse.lastPrices.single.price;
+      await _tinkoffApiService.ordersServiceClient.postOrder(
+        PostOrderRequest(
+          quantity: Int64(amount),
+          price: price,
+          direction: operationType,
+          accountId: _tinkoffApiService.accountId,
+          orderType: OrderType.ORDER_TYPE_MARKET,
+          orderId:
+              '${event.expertPosition.instrument.ticker} (${operationType == OrderDirection.ORDER_DIRECTION_BUY ? 'BUY' : 'SELL'}) $amount ${price.toDouble}',
+          instrumentId: event.expertPosition.instrument.instrumentId,
+        ),
+        options: _tinkoffApiService.callOptions,
+      );
+
+      List<String> tickers = [];
+      for (final position in state.expertPositions) {
+        tickers.add(position!.instrument.ticker);
+      }
+      final newPositions = await _initExpertPositions(tickers);
+      emitter(ExpertState.initialized(
+        balancer: state.balancer,
+        expertPositions: newPositions,
+      ));
+    } catch (e) {
+      emitter(ExpertState.error(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+        message: e.toString(),
+      ));
+      emitter(ExpertState.initialized(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+      ));
+    }
+  }
+
+  Future<void> _doAllRecommends(_DoAllRecommendsExpertEvent event, Emitter<ExpertState> emitter) async {
+    emitter(ExpertState.inProgress(balancer: state.balancer, expertPositions: state.expertPositions));
+    final positionsWithRecommendation = state.expertPositions.where((element) => element!.isRecommend);
+    final List<String> instrumentsID = [];
+    for (final position in positionsWithRecommendation) {
+      instrumentsID.add(position!.instrument.instrumentId);
+    }
+    try {
+      final pricesResponse = await _tinkoffApiService.marketDataServiceClient.getLastPrices(
+        $marketdata_pb.GetLastPricesRequest(instrumentId: instrumentsID),
+        options: _tinkoffApiService.callOptions,
+      );
+      for (final position in positionsWithRecommendation) {
+        final currentPrice = pricesResponse.lastPrices
+            .firstWhere((element) => element.instrumentUid == position!.instrument.instrumentId);
+        final operationType = position!.recommendAction == ExpertAction.buy
+            ? OrderDirection.ORDER_DIRECTION_BUY
+            : OrderDirection.ORDER_DIRECTION_SELL;
+        final amount = (position.recommendAmount - position.instrument.amount).toInt().abs();
+        await _tinkoffApiService.ordersServiceClient.postOrder(
+          PostOrderRequest(
+            quantity: Int64(amount),
+            price: currentPrice.price,
+            direction: operationType,
+            accountId: _tinkoffApiService.accountId,
+            orderType: OrderType.ORDER_TYPE_MARKET,
+            orderId:
+                '${position.instrument.ticker} (${operationType == OrderDirection.ORDER_DIRECTION_BUY ? 'BUY' : 'SELL'}) $amount ${currentPrice.price.toDouble}',
+            instrumentId: position.instrument.instrumentId,
+          ),
+          options: _tinkoffApiService.callOptions,
+        );
+      }
+
+      List<String> tickers = [];
+      for (final position in state.expertPositions) {
+        tickers.add(position!.instrument.ticker);
+      }
+      final newPositions = await _initExpertPositions(tickers);
+      emitter(ExpertState.initialized(
+        balancer: state.balancer,
+        expertPositions: newPositions,
+      ));
+    } catch (e) {
+      emitter(ExpertState.error(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+        message: e.toString(),
+      ));
+      emitter(ExpertState.initialized(
+        balancer: state.balancer,
+        expertPositions: state.expertPositions,
+      ));
+    }
   }
 }

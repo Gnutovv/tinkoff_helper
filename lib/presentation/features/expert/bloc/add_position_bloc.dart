@@ -102,6 +102,7 @@ class AddPositionBloc extends Bloc<AddPositionEvent, AddPositionState> {
                   ticker: share.ticker,
                   title: share.name,
                   quantity: 0,
+                  lot: share.lot,
                   averagePositionPrice: 0,
                   expectedYield: 0,
                   currentPrice: instrumentCandles.candles.last.close.toDouble,

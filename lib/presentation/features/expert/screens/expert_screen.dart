@@ -91,8 +91,11 @@ class ExpertScreen extends StatelessWidget {
                             style: tabElementsStyle.copyWith(
                                 color: equalColor(first: 0, second: state.expertPositions.length))),
                         ElevatedButton(
-                          onPressed:
-                              state.expertPositions.where((element) => element!.isRecommend).isEmpty ? null : () {},
+                          onPressed: state.expertPositions.where((element) => element!.isRecommend).isEmpty
+                              ? null
+                              : () => bloc.add(
+                                    const ExpertEvent.doAllRecommends(),
+                                  ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.amber, // Background color
                           ),
@@ -206,31 +209,33 @@ class ExpertScreen extends StatelessWidget {
                                       ),
                                       _rowElement(state.expertPositions[index]!.instrument.ticker),
                                       _rowElement(state.expertPositions[index]!.instrument.title),
-                                      _rowElement(state.expertPositions[index]!.instrument.quantity.toStringAsFixed(0)),
+                                      _rowElement(state.expertPositions[index]!.amount.toString()),
                                       _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
                                           color: equalColor(
                                             first: state.expertPositions[index]!.recommendAmount,
-                                            second: state.expertPositions[index]!.instrument.quantity,
+                                            second: state.expertPositions[index]!.instrument.amount,
                                           )),
                                       _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌'),
                                       _rowElement(state.expertPositions[index]!.recommendAction.toActionName()),
-                                      Container(
-                                        width: 145,
+                                      SizedBox(
+                                        width: 108,
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             IconButton(
-                                                onPressed: () {},
+                                                onPressed: () => bloc.add(
+                                                      ExpertEvent.doRecommend(state.expertPositions[index]!),
+                                                    ),
                                                 icon: const Icon(
                                                   Icons.check,
                                                   color: Colors.green,
                                                 )),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons.info,
-                                                  color: Colors.blue,
-                                                )),
+                                            // const IconButton(
+                                            //     onPressed: null,
+                                            //     icon: Icon(
+                                            //       Icons.info,
+                                            //       color: Colors.blue,
+                                            //     )),
                                             IconButton(
                                                 onPressed: () => bloc.add(
                                                       ExpertEvent.removeExpertPositions(
@@ -264,7 +269,7 @@ class ExpertScreen extends StatelessWidget {
 
   Container _rowElement(String text, {Color? color}) => Container(
         alignment: Alignment.center,
-        width: 138,
+        width: 143,
         child: Text(text,
             maxLines: 1,
             style: TextStyle(

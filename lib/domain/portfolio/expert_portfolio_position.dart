@@ -13,10 +13,13 @@ class ExpertPortfolioPosition with _$ExpertPortfolioPosition {
     required String ticker,
     required String title,
     required double quantity,
+    required int lot,
     required double averagePositionPrice,
     required double expectedYield,
     required double currentPrice,
   }) = _ExpertPortfolioPosition;
+
+  int get amount => quantity ~/ lot;
 
   factory ExpertPortfolioPosition.fromPP(PortfolioPosition position, StockInstrument instrument) =>
       ExpertPortfolioPosition(
@@ -25,6 +28,7 @@ class ExpertPortfolioPosition with _$ExpertPortfolioPosition {
         ticker: instrument.ticker,
         title: instrument.name,
         quantity: position.quantity.toDouble,
+        lot: instrument.lot,
         averagePositionPrice: position.averagePositionPrice.toDouble,
         expectedYield: position.expectedYield.toDouble,
         currentPrice: position.currentPrice.toDouble,

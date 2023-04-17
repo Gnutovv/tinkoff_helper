@@ -178,14 +178,17 @@ class PortfolioScreen extends StatelessWidget {
                                           Container(
                                             alignment: Alignment.center,
                                             width: 118,
-                                            child:
-                                                Text(state.portfolio!.positions[index].title, style: tabElementsStyle),
+                                            child: Text(
+                                              state.portfolio!.positions[index].title,
+                                              style: tabElementsStyle,
+                                              maxLines: 1,
+                                            ),
                                           ),
                                           Container(
                                             alignment: Alignment.center,
                                             width: 118,
                                             child: Text(
-                                              state.portfolio!.positions[index].quantity.toInt().toString(),
+                                              state.portfolio!.positions[index].amount.toString(),
                                               style: tabElementsStyle,
                                             ),
                                           ),
@@ -209,7 +212,7 @@ class PortfolioScreen extends StatelessWidget {
                                             alignment: Alignment.center,
                                             width: 118,
                                             child: Text(
-                                              state.portfolio!.positions[index].expectedYield.toString(),
+                                              state.portfolio!.positions[index].expectedYield.toStringAsFixed(2),
                                               style: tabElementsStyle.copyWith(
                                                 color: equalColor(
                                                   first: state.portfolio!.positions[index].expectedYield,

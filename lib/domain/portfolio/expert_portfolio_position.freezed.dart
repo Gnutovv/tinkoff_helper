@@ -21,6 +21,7 @@ mixin _$ExpertPortfolioPosition {
   String get ticker => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   double get quantity => throw _privateConstructorUsedError;
+  int get lot => throw _privateConstructorUsedError;
   double get averagePositionPrice => throw _privateConstructorUsedError;
   double get expectedYield => throw _privateConstructorUsedError;
   double get currentPrice => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $ExpertPortfolioPositionCopyWith<$Res> {
       String ticker,
       String title,
       double quantity,
+      int lot,
       double averagePositionPrice,
       double expectedYield,
       double currentPrice});
@@ -63,6 +65,7 @@ class _$ExpertPortfolioPositionCopyWithImpl<$Res, $Val extends ExpertPortfolioPo
     Object? ticker = null,
     Object? title = null,
     Object? quantity = null,
+    Object? lot = null,
     Object? averagePositionPrice = null,
     Object? expectedYield = null,
     Object? currentPrice = null,
@@ -88,6 +91,10 @@ class _$ExpertPortfolioPositionCopyWithImpl<$Res, $Val extends ExpertPortfolioPo
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as double,
+      lot: null == lot
+          ? _value.lot
+          : lot // ignore: cast_nullable_to_non_nullable
+              as int,
       averagePositionPrice: null == averagePositionPrice
           ? _value.averagePositionPrice
           : averagePositionPrice // ignore: cast_nullable_to_non_nullable
@@ -117,6 +124,7 @@ abstract class _$$_ExpertPortfolioPositionCopyWith<$Res> implements $ExpertPortf
       String ticker,
       String title,
       double quantity,
+      int lot,
       double averagePositionPrice,
       double expectedYield,
       double currentPrice});
@@ -138,6 +146,7 @@ class __$$_ExpertPortfolioPositionCopyWithImpl<$Res>
     Object? ticker = null,
     Object? title = null,
     Object? quantity = null,
+    Object? lot = null,
     Object? averagePositionPrice = null,
     Object? expectedYield = null,
     Object? currentPrice = null,
@@ -163,6 +172,10 @@ class __$$_ExpertPortfolioPositionCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as double,
+      lot: null == lot
+          ? _value.lot
+          : lot // ignore: cast_nullable_to_non_nullable
+              as int,
       averagePositionPrice: null == averagePositionPrice
           ? _value.averagePositionPrice
           : averagePositionPrice // ignore: cast_nullable_to_non_nullable
@@ -188,6 +201,7 @@ class _$_ExpertPortfolioPosition extends _ExpertPortfolioPosition {
       required this.ticker,
       required this.title,
       required this.quantity,
+      required this.lot,
       required this.averagePositionPrice,
       required this.expectedYield,
       required this.currentPrice})
@@ -204,6 +218,8 @@ class _$_ExpertPortfolioPosition extends _ExpertPortfolioPosition {
   @override
   final double quantity;
   @override
+  final int lot;
+  @override
   final double averagePositionPrice;
   @override
   final double expectedYield;
@@ -212,7 +228,7 @@ class _$_ExpertPortfolioPosition extends _ExpertPortfolioPosition {
 
   @override
   String toString() {
-    return 'ExpertPortfolioPosition(figi: $figi, instrumentId: $instrumentId, ticker: $ticker, title: $title, quantity: $quantity, averagePositionPrice: $averagePositionPrice, expectedYield: $expectedYield, currentPrice: $currentPrice)';
+    return 'ExpertPortfolioPosition(figi: $figi, instrumentId: $instrumentId, ticker: $ticker, title: $title, quantity: $quantity, lot: $lot, averagePositionPrice: $averagePositionPrice, expectedYield: $expectedYield, currentPrice: $currentPrice)';
   }
 
   @override
@@ -225,6 +241,7 @@ class _$_ExpertPortfolioPosition extends _ExpertPortfolioPosition {
             (identical(other.ticker, ticker) || other.ticker == ticker) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.quantity, quantity) || other.quantity == quantity) &&
+            (identical(other.lot, lot) || other.lot == lot) &&
             (identical(other.averagePositionPrice, averagePositionPrice) ||
                 other.averagePositionPrice == averagePositionPrice) &&
             (identical(other.expectedYield, expectedYield) || other.expectedYield == expectedYield) &&
@@ -233,7 +250,7 @@ class _$_ExpertPortfolioPosition extends _ExpertPortfolioPosition {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, figi, instrumentId, ticker, title, quantity, averagePositionPrice, expectedYield, currentPrice);
+      runtimeType, figi, instrumentId, ticker, title, quantity, lot, averagePositionPrice, expectedYield, currentPrice);
 
   @JsonKey(ignore: true)
   @override
@@ -249,6 +266,7 @@ abstract class _ExpertPortfolioPosition extends ExpertPortfolioPosition {
       required final String ticker,
       required final String title,
       required final double quantity,
+      required final int lot,
       required final double averagePositionPrice,
       required final double expectedYield,
       required final double currentPrice}) = _$_ExpertPortfolioPosition;
@@ -264,6 +282,8 @@ abstract class _ExpertPortfolioPosition extends ExpertPortfolioPosition {
   String get title;
   @override
   double get quantity;
+  @override
+  int get lot;
   @override
   double get averagePositionPrice;
   @override

@@ -82,6 +82,7 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
                 title:
                     instrumentsResponse.instruments.firstWhere((element) => element.figi == positions[index].figi).name,
                 quantity: positions[index].quantity.toDouble,
+                lot: instrumentsResponse.instruments.firstWhere((element) => element.figi == positions[index].figi).lot,
                 averagePositionPrice: positions[index].averagePositionPrice.toDouble,
                 expectedYield: positions[index].expectedYield.toDouble,
                 currentPrice: positions[index].currentPrice.toDouble,
