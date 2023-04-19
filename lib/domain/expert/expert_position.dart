@@ -19,7 +19,7 @@ class ExpertPosition with _$ExpertPosition {
 
   ExpertAction get recommendAction => amount > recommendAmount
       ? ExpertAction.sell
-      : (instrument.quantity < recommendAmount && shouldBuy)
+      : (amount < recommendAmount && shouldBuy)
           ? ExpertAction.buy
           : ExpertAction.keep;
 }

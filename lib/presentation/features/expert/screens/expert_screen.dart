@@ -230,12 +230,6 @@ class ExpertScreen extends StatelessWidget {
                                                   Icons.check,
                                                   color: Colors.green,
                                                 )),
-                                            // const IconButton(
-                                            //     onPressed: null,
-                                            //     icon: Icon(
-                                            //       Icons.info,
-                                            //       color: Colors.blue,
-                                            //     )),
                                             IconButton(
                                                 onPressed: () => bloc.add(
                                                       ExpertEvent.removeExpertPositions(
