@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
@@ -264,7 +265,7 @@ class ExpertScreen extends StatelessWidget {
   Container _rowElement(String text, {Color? color}) => Container(
         alignment: Alignment.center,
         width: 143,
-        child: Text(text,
+        child: AutoSizeText(text,
             maxLines: 1,
             style: TextStyle(
               fontWeight: FontWeight.bold,

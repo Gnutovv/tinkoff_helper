@@ -88,6 +88,7 @@ class StepsBalancer with _$StepsBalancer {
     final currentStep = _getCurrentStepPrice(candles);
     double moneyForAllStepsToCurrent = 0;
     for (int i = 0; i < currentStep; i++) {
+      if (i >= allStepsMoneyValue.length) break;
       moneyForAllStepsToCurrent += allStepsMoneyValue[i];
     }
     final recommendedAmount = (moneyForAllStepsToCurrent / lotPrice).round();
