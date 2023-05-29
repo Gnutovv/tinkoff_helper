@@ -102,6 +102,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 30),
                 Expanded(
                   child: TextField(
+                    obscureText: true,
+                    obscuringCharacter: '•',
                     controller: apiKeyController,
                     onChanged: (text) => setState(() {}),
                     decoration: const InputDecoration(

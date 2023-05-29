@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/common/extensions.dart';
@@ -178,10 +179,11 @@ class PortfolioScreen extends StatelessWidget {
                                           Container(
                                             alignment: Alignment.center,
                                             width: 118,
-                                            child: Text(
+                                            child: AutoSizeText(
                                               state.portfolio!.positions[index].title,
+                                              textAlign: TextAlign.center,
                                               style: tabElementsStyle,
-                                              maxLines: 1,
+                                              maxLines: 2,
                                             ),
                                           ),
                                           Container(

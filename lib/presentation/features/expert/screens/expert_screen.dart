@@ -266,7 +266,8 @@ class ExpertScreen extends StatelessWidget {
         alignment: Alignment.center,
         width: 143,
         child: AutoSizeText(text,
-            maxLines: 1,
+            textAlign: TextAlign.center,
+            maxLines: 2,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: color,
