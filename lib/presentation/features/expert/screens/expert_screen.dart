@@ -70,191 +70,196 @@ class ExpertScreen extends StatelessWidget {
           ),
         ),
         orElse: () => Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              width: 400,
-              child: CardItemWidget(
-                  label: const Text(
-                    'Эксперт',
-                    style: tabElementsStyle,
-                  ),
-                  content: [
-                    const Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Новых рекомендаций:', style: tabElementsStyle),
-                        Text(
-                            state.expertPositions.isNotEmpty
-                                ? state.expertPositions.where((element) => element!.isRecommend).length.toString()
-                                : '0',
-                            style: tabElementsStyle.copyWith(
-                                color: equalColor(first: 0, second: state.expertPositions.length))),
-                        ElevatedButton(
-                          onPressed: state.expertPositions.where((element) => element!.isRecommend).isEmpty
-                              ? null
-                              : () => bloc.add(
-                                    const ExpertEvent.doAllRecommends(),
-                                  ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amber, // Background color
-                          ),
-                          child: const Icon(Icons.playlist_add_check_rounded),
-                        ),
-                      ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 32),
+              child: SizedBox(
+                width: 400,
+                child: CardItemWidget(
+                    label: const Text(
+                      'Эксперт',
+                      style: tabElementsStyle,
                     ),
-                    const Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) => const AddExpertPositionScreen()))
-                                .then((expertPosition) {
-                              if (expertPosition != null) bloc.add(ExpertEvent.addExpertPositions(expertPosition));
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amber, // Background color
-                          ),
-                          child: const Icon(Icons.add),
-                        ),
-                        ElevatedButton(
-                          onPressed: () => bloc.add(const ExpertEvent.updateExpertPositions()),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amber, // Background color
-                          ),
-                          child: const SizedBox(width: 64, child: Icon(Icons.refresh)),
-                        ),
-                        ElevatedButton(
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ExpertSettingsScreen(),
+                    content: [
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text('Новых рекомендаций:', style: tabElementsStyle),
+                          Text(
+                              state.expertPositions.isNotEmpty
+                                  ? state.expertPositions.where((element) => element!.isRecommend).length.toString()
+                                  : '0',
+                              style: tabElementsStyle.copyWith(
+                                  color: equalColor(first: 0, second: state.expertPositions.length))),
+                          ElevatedButton(
+                            onPressed: state.expertPositions.where((element) => element!.isRecommend).isEmpty
+                                ? null
+                                : () => bloc.add(
+                                      const ExpertEvent.doAllRecommends(),
+                                    ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.amber, // Background color
                             ),
-                          ).then((newBalancer) {
-                            if (newBalancer != state.balancer) {
-                              bloc.add(ExpertEvent.updateBalancer(balancer: newBalancer));
-                            }
-                          }),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amber, // Background color
+                            child: const Icon(Icons.playlist_add_check_rounded),
                           ),
-                          child: const Icon(Icons.settings),
-                        ),
-                      ],
-                    ),
-                  ]),
-            ),
-            Column(
-              children: [
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(alignment: Alignment.center, width: 20, child: const Text('#', style: tabElementsStyle)),
-                    Container(
-                        alignment: Alignment.center, width: 138, child: const Text('Тикер', style: tabElementsStyle)),
-                    Container(
-                        alignment: Alignment.center,
-                        width: 138,
-                        child: const Text('Наименование', style: tabElementsStyle)),
-                    Container(
-                        alignment: Alignment.center,
-                        width: 138,
-                        child: const Text('Количество', style: tabElementsStyle)),
-                    Container(
-                        alignment: Alignment.center,
-                        width: 138,
-                        child: const Text('Рекомендовано', style: tabElementsStyle)),
-                    Container(
-                        alignment: Alignment.center,
-                        width: 138,
-                        child: const Text('Индикатор', style: tabElementsStyle)),
-                    Container(
-                        alignment: Alignment.center,
-                        width: 138,
-                        child: const Text('Рекомендация', style: tabElementsStyle)),
-                    Container(
-                        alignment: Alignment.center,
-                        width: 145,
-                        child: const Text('Действие', style: tabElementsStyle)),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20, top: 0),
-                  color: const Color(0xFFECECEC),
-                  width: 1060,
-                  height: 380,
-                  child: state.expertPositions.isNotEmpty
-                      ? SingleChildScrollView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          child: Column(
-                            children: [
-                              ...List.generate(
-                                state.expertPositions.length,
-                                (index) => Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 7.0, vertical: 4),
-                                  color: index % 2 == 0 ? Colors.yellowAccent : Colors.yellow,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.center,
-                                        width: 20,
-                                        height: 30,
-                                        child: Text((index + 1).toString(), style: tabElementsStyle),
-                                      ),
-                                      _rowElement(state.expertPositions[index]!.instrument.ticker),
-                                      _rowElement(state.expertPositions[index]!.instrument.title),
-                                      _rowElement(state.expertPositions[index]!.amount.toString()),
-                                      _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
-                                          color: equalColor(
-                                            first: state.expertPositions[index]!.recommendAmount,
-                                            second: state.expertPositions[index]!.instrument.amount,
-                                          )),
-                                      _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌'),
-                                      _rowElement(state.expertPositions[index]!.recommendAction.toActionName()),
-                                      SizedBox(
-                                        width: 108,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            IconButton(
-                                                onPressed: () => bloc.add(
-                                                      ExpertEvent.doRecommend(state.expertPositions[index]!),
-                                                    ),
-                                                icon: const Icon(
-                                                  Icons.check,
-                                                  color: Colors.green,
-                                                )),
-                                            IconButton(
-                                                onPressed: () => bloc.add(
-                                                      ExpertEvent.removeExpertPositions(
-                                                        state.expertPositions[index]!,
-                                                        false,
-                                                      ),
-                                                    ),
-                                                icon: const Icon(
-                                                  Icons.close,
-                                                  color: Colors.red,
-                                                )),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                        ],
+                      ),
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) => const AddExpertPositionScreen()))
+                                  .then((expertPosition) {
+                                if (expertPosition != null) bloc.add(ExpertEvent.addExpertPositions(expertPosition));
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.amber, // Background color
+                            ),
+                            child: const Icon(Icons.add),
+                          ),
+                          ElevatedButton(
+                            onPressed: () => bloc.add(const ExpertEvent.updateExpertPositions()),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.amber, // Background color
+                            ),
+                            child: const SizedBox(width: 64, child: Icon(Icons.refresh)),
+                          ),
+                          ElevatedButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ExpertSettingsScreen(),
                               ),
-                            ],
+                            ).then((newBalancer) {
+                              if (newBalancer != state.balancer) {
+                                bloc.add(ExpertEvent.updateBalancer(balancer: newBalancer));
+                              }
+                            }),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.amber, // Background color
+                            ),
+                            child: const Icon(Icons.settings),
                           ),
-                        )
-                      : const Center(child: Text('Нет активных позиций')),
-                ),
-              ],
+                        ],
+                      ),
+                    ]),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(alignment: Alignment.center, width: 20, child: const Text('#', style: tabElementsStyle)),
+                      Container(
+                          alignment: Alignment.center, width: 138, child: const Text('Тикер', style: tabElementsStyle)),
+                      Container(
+                          alignment: Alignment.center,
+                          width: 138,
+                          child: const Text('Наименование', style: tabElementsStyle)),
+                      Container(
+                          alignment: Alignment.center,
+                          width: 138,
+                          child: const Text('Количество', style: tabElementsStyle)),
+                      Container(
+                          alignment: Alignment.center,
+                          width: 138,
+                          child: const Text('Рекомендовано', style: tabElementsStyle)),
+                      Container(
+                          alignment: Alignment.center,
+                          width: 138,
+                          child: const Text('Индикатор', style: tabElementsStyle)),
+                      Container(
+                          alignment: Alignment.center,
+                          width: 138,
+                          child: const Text('Рекомендация', style: tabElementsStyle)),
+                      Container(
+                          alignment: Alignment.center,
+                          width: 145,
+                          child: const Text('Действие', style: tabElementsStyle)),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20, top: 0),
+                      color: const Color(0xFFECECEC),
+                      width: 1060,
+                      child: state.expertPositions.isNotEmpty
+                          ? SingleChildScrollView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              child: Column(
+                                children: [
+                                  ...List.generate(
+                                    state.expertPositions.length,
+                                    (index) => Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 7.0, vertical: 4),
+                                      color: index % 2 == 0 ? Colors.yellowAccent : Colors.yellow,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            alignment: Alignment.center,
+                                            width: 20,
+                                            height: 30,
+                                            child: Text((index + 1).toString(), style: tabElementsStyle),
+                                          ),
+                                          _rowElement(state.expertPositions[index]!.instrument.ticker),
+                                          _rowElement(state.expertPositions[index]!.instrument.title),
+                                          _rowElement(state.expertPositions[index]!.amount.toString()),
+                                          _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
+                                              color: equalColor(
+                                                first: state.expertPositions[index]!.recommendAmount,
+                                                second: state.expertPositions[index]!.instrument.amount,
+                                              )),
+                                          _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌'),
+                                          _rowElement(state.expertPositions[index]!.recommendAction.toActionName()),
+                                          SizedBox(
+                                            width: 108,
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                IconButton(
+                                                    onPressed: () => bloc.add(
+                                                          ExpertEvent.doRecommend(state.expertPositions[index]!),
+                                                        ),
+                                                    icon: const Icon(
+                                                      Icons.check,
+                                                      color: Colors.green,
+                                                    )),
+                                                IconButton(
+                                                    onPressed: () => bloc.add(
+                                                          ExpertEvent.removeExpertPositions(
+                                                            state.expertPositions[index]!,
+                                                            false,
+                                                          ),
+                                                        ),
+                                                    icon: const Icon(
+                                                      Icons.close,
+                                                      color: Colors.red,
+                                                    )),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : const Center(child: Text('Нет активных позиций')),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

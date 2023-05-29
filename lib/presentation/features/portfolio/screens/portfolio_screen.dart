@@ -45,209 +45,215 @@ class PortfolioScreen extends StatelessWidget {
       },
       builder: (context, state) => state.portfolio != null
           ? Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(
-                  width: 500,
-                  child: Column(
-                    children: [
-                      CardItemWidget(label: const Text('Портфель', style: tabElementsStyle), content: [
-                        const Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text('Наименование счета:'),
-                            Text(
-                              '${state.portfolio!.accountName} (№ ${state.portfolio!.accountId})',
-                              style: tabElementsStyle,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text('Стоимость портфеля:'),
-                            Text(
-                              state.portfolio!.totalAmountPortfolio.toString().toMoneyFormat,
-                              style: tabElementsStyle,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text('Свободных средств:'),
-                            Text(
-                              state.portfolio!.withdrawLimit.toString().toMoneyFormat,
-                              style: tabElementsStyle,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text('Прибыль по открытым позициям:'),
-                            Text(
-                              '${state.portfolio!.expectedYield.toStringAsFixed(2)} %',
-                              style: tabElementsStyle.copyWith(
-                                color: equalColor(first: state.portfolio!.expectedYield, second: 0),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Divider(),
-                        ElevatedButton(
-                          onPressed: () => bloc.add(const PortfolioEvent.update()),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amber, // Background color
-                          ),
-                          child: const SizedBox(width: 64, child: Icon(Icons.refresh)),
-                        ),
-                      ]),
-                    ],
-                  ),
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 32),
+                  child: SizedBox(
+                    width: 500,
+                    child: Column(
                       children: [
-                        Container(
-                            alignment: Alignment.center, width: 20, child: const Text('#', style: tabElementsStyle)),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 118,
-                            child: const Text('Тикер', style: tabElementsStyle)),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 118,
-                            child: const Text('Наименование', style: tabElementsStyle)),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 118,
-                            child: const Text('Количество', style: tabElementsStyle)),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 118,
-                            child: const Text('Цена покупки', style: tabElementsStyle)),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 118,
-                            child: const Text('Текущая цена', style: tabElementsStyle)),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 118,
-                            child: const Text('Прибыль (₽)', style: tabElementsStyle)),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 118,
-                            child: const Text('Прибыль (%)', style: tabElementsStyle)),
+                        CardItemWidget(label: const Text('Портфель', style: tabElementsStyle), content: [
+                          const Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text('Наименование счета:'),
+                              Text(
+                                '${state.portfolio!.accountName} (№ ${state.portfolio!.accountId})',
+                                style: tabElementsStyle,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text('Стоимость портфеля:'),
+                              Text(
+                                state.portfolio!.totalAmountPortfolio.toString().toMoneyFormat,
+                                style: tabElementsStyle,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text('Свободных средств:'),
+                              Text(
+                                state.portfolio!.withdrawLimit.toString().toMoneyFormat,
+                                style: tabElementsStyle,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text('Прибыль по открытым позициям:'),
+                              Text(
+                                '${state.portfolio!.expectedYield.toStringAsFixed(2)} %',
+                                style: tabElementsStyle.copyWith(
+                                  color: equalColor(first: state.portfolio!.expectedYield, second: 0),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(),
+                          ElevatedButton(
+                            onPressed: () => bloc.add(const PortfolioEvent.update()),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.amber, // Background color
+                            ),
+                            child: const SizedBox(width: 64, child: Icon(Icons.refresh)),
+                          ),
+                        ]),
                       ],
                     ),
-                    const SizedBox(height: 8),
-                    Container(
-                      margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20, top: 0),
-                      color: const Color(0xFFECECEC),
-                      width: 860,
-                      height: 370,
-                      child: state.portfolio!.positions.isEmpty
-                          ? const Center(child: Text('Нет активных позиций'))
-                          : SingleChildScrollView(
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              child: Column(
-                                children: [
-                                  ...List.generate(
-                                    state.portfolio!.positions.length,
-                                    (index) => Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 7.0, vertical: 4),
-                                      color: index % 2 == 0 ? Colors.yellowAccent : Colors.yellow,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 20,
-                                            height: 30,
-                                            child: Text((index + 1).toString(), style: tabElementsStyle),
-                                          ),
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 118,
-                                            child:
-                                                Text(state.portfolio!.positions[index].ticker, style: tabElementsStyle),
-                                          ),
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 118,
-                                            child: AutoSizeText(
-                                              state.portfolio!.positions[index].title,
-                                              textAlign: TextAlign.center,
-                                              style: tabElementsStyle,
-                                              maxLines: 2,
-                                            ),
-                                          ),
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 118,
-                                            child: Text(
-                                              state.portfolio!.positions[index].amount.toString(),
-                                              style: tabElementsStyle,
-                                            ),
-                                          ),
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 118,
-                                            child: Text(
-                                              state.portfolio!.positions[index].averagePositionPrice.toString(),
-                                              style: tabElementsStyle,
-                                            ),
-                                          ),
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 118,
-                                            child: Text(
-                                              state.portfolio!.positions[index].currentPrice.toString(),
-                                              style: tabElementsStyle,
-                                            ),
-                                          ),
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 118,
-                                            child: Text(
-                                              state.portfolio!.positions[index].expectedYield.toStringAsFixed(2),
-                                              style: tabElementsStyle.copyWith(
-                                                color: equalColor(
-                                                  first: state.portfolio!.positions[index].expectedYield,
-                                                  second: 0,
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              alignment: Alignment.center, width: 20, child: const Text('#', style: tabElementsStyle)),
+                          Container(
+                              alignment: Alignment.center,
+                              width: 118,
+                              child: const Text('Тикер', style: tabElementsStyle)),
+                          Container(
+                              alignment: Alignment.center,
+                              width: 118,
+                              child: const Text('Наименование', style: tabElementsStyle)),
+                          Container(
+                              alignment: Alignment.center,
+                              width: 118,
+                              child: const Text('Количество', style: tabElementsStyle)),
+                          Container(
+                              alignment: Alignment.center,
+                              width: 118,
+                              child: const Text('Цена покупки', style: tabElementsStyle)),
+                          Container(
+                              alignment: Alignment.center,
+                              width: 118,
+                              child: const Text('Текущая цена', style: tabElementsStyle)),
+                          Container(
+                              alignment: Alignment.center,
+                              width: 118,
+                              child: const Text('Прибыль (₽)', style: tabElementsStyle)),
+                          Container(
+                              alignment: Alignment.center,
+                              width: 118,
+                              child: const Text('Прибыль (%)', style: tabElementsStyle)),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Flexible(
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20, top: 0),
+                          color: const Color(0xFFECECEC),
+                          width: 860,
+                          //height: 370,
+                          child: state.portfolio!.positions.isEmpty
+                              ? const Center(child: Text('Нет активных позиций'))
+                              : SingleChildScrollView(
+                                  physics: const AlwaysScrollableScrollPhysics(),
+                                  child: Column(
+                                    children: [
+                                      ...List.generate(
+                                        state.portfolio!.positions.length,
+                                        (index) => Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 7.0, vertical: 4),
+                                          color: index % 2 == 0 ? Colors.yellowAccent : Colors.yellow,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                alignment: Alignment.center,
+                                                width: 20,
+                                                height: 30,
+                                                child: Text((index + 1).toString(), style: tabElementsStyle),
+                                              ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                width: 118,
+                                                child:
+                                                    Text(state.portfolio!.positions[index].ticker, style: tabElementsStyle),
+                                              ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                width: 118,
+                                                child: AutoSizeText(
+                                                  state.portfolio!.positions[index].title,
+                                                  textAlign: TextAlign.center,
+                                                  style: tabElementsStyle,
+                                                  maxLines: 2,
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 118,
-                                            child: Text(
-                                              _getProfitPercent(
-                                                state.portfolio!.positions[index].averagePositionPrice,
-                                                state.portfolio!.positions[index].currentPrice,
-                                              ),
-                                              style: tabElementsStyle.copyWith(
-                                                color: equalColor(
-                                                  first: state.portfolio!.positions[index].expectedYield,
-                                                  second: 0,
+                                              Container(
+                                                alignment: Alignment.center,
+                                                width: 118,
+                                                child: Text(
+                                                  state.portfolio!.positions[index].amount.toString(),
+                                                  style: tabElementsStyle,
                                                 ),
                                               ),
-                                            ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                width: 118,
+                                                child: Text(
+                                                  state.portfolio!.positions[index].averagePositionPrice.toString(),
+                                                  style: tabElementsStyle,
+                                                ),
+                                              ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                width: 118,
+                                                child: Text(
+                                                  state.portfolio!.positions[index].currentPrice.toString(),
+                                                  style: tabElementsStyle,
+                                                ),
+                                              ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                width: 118,
+                                                child: Text(
+                                                  state.portfolio!.positions[index].expectedYield.toStringAsFixed(2),
+                                                  style: tabElementsStyle.copyWith(
+                                                    color: equalColor(
+                                                      first: state.portfolio!.positions[index].expectedYield,
+                                                      second: 0,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                width: 118,
+                                                child: Text(
+                                                  _getProfitPercent(
+                                                    state.portfolio!.positions[index].averagePositionPrice,
+                                                    state.portfolio!.positions[index].currentPrice,
+                                                  ),
+                                                  style: tabElementsStyle.copyWith(
+                                                    color: equalColor(
+                                                      first: state.portfolio!.positions[index].expectedYield,
+                                                      second: 0,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ),
-                    ),
-                  ],
+                                ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             )
