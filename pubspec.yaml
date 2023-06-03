@@ -3,13 +3,11 @@ description: App for working with Tinkoff API
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: '>=3.0.2 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-
-  vertical_tabs_flutter: ^1.0.0
   auto_size_text: ^3.0.0
   get_it: ^7.2.0
   flutter_bloc: ^8.1.2

@@ -10,8 +10,21 @@ import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dar
 import 'package:tinkoff_helper/presentation/features/expert/screens/add_expert_position_screen.dart';
 import 'package:tinkoff_helper/presentation/features/expert/screens/expert_settings_screen.dart';
 
-class ExpertScreen extends StatelessWidget {
+class ExpertScreen extends StatefulWidget {
   const ExpertScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ExpertScreen> createState() => _ExpertScreenState();
+}
+
+class _ExpertScreenState extends State<ExpertScreen> {
+  @override
+  void initState() {
+    super.initState();
+    if (context.read<ExpertBloc>().state.expertPositions.isEmpty) {
+      context.read<ExpertBloc>().add(const ExpertEvent.init());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -153,43 +166,26 @@ class ExpertScreen extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(alignment: Alignment.center, width: 20, child: const Text('#', style: tabElementsStyle)),
-                      Container(
-                          alignment: Alignment.center, width: 138, child: const Text('Тикер', style: tabElementsStyle)),
-                      Container(
-                          alignment: Alignment.center,
-                          width: 138,
-                          child: const Text('Наименование', style: tabElementsStyle)),
-                      Container(
-                          alignment: Alignment.center,
-                          width: 138,
-                          child: const Text('Количество', style: tabElementsStyle)),
-                      Container(
-                          alignment: Alignment.center,
-                          width: 138,
-                          child: const Text('Рекомендовано', style: tabElementsStyle)),
-                      Container(
-                          alignment: Alignment.center,
-                          width: 138,
-                          child: const Text('Индикатор', style: tabElementsStyle)),
-                      Container(
-                          alignment: Alignment.center,
-                          width: 138,
-                          child: const Text('Рекомендация', style: tabElementsStyle)),
-                      Container(
-                          alignment: Alignment.center,
-                          width: 145,
-                          child: const Text('Действие', style: tabElementsStyle)),
-                    ],
+                  Container(
+                    margin: const EdgeInsets.only(left: 40, right: 40, bottom: 5),
+                    width: 1060,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _rowElement('#', width: 20),
+                        _rowElement('Тикер', width: 100),
+                        _rowElement('Наименование', width: 300),
+                        _rowElement('Количество', width: 100),
+                        _rowElement('Рекомендовано', width: 120),
+                        _rowElement('Индикатор', width: 90),
+                        _rowElement('Рекомендация', width: 120),
+                        _rowElement('Действие', width: 90),
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 8),
                   Flexible(
                     child: Container(
-                      margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20, top: 0),
+                      margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
                       color: const Color(0xFFECECEC),
                       width: 1060,
                       child: state.expertPositions.isNotEmpty
@@ -200,41 +196,44 @@ class ExpertScreen extends StatelessWidget {
                                   ...List.generate(
                                     state.expertPositions.length,
                                     (index) => Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 7.0, vertical: 4),
+                                      padding: const EdgeInsets.symmetric(vertical: 4),
                                       color: index % 2 == 0 ? Colors.yellowAccent : Colors.yellow,
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: 20,
-                                            height: 30,
-                                            child: Text((index + 1).toString(), style: tabElementsStyle),
-                                          ),
-                                          _rowElement(state.expertPositions[index]!.instrument.ticker),
-                                          _rowElement(state.expertPositions[index]!.instrument.title),
-                                          _rowElement(state.expertPositions[index]!.amount.toString()),
+                                          _rowElement((index + 1).toString(), width: 20),
+                                          _rowElement(state.expertPositions[index]!.instrument.ticker, width: 100),
+                                          _rowElement(state.expertPositions[index]!.instrument.title, width: 300),
+                                          _rowElement(state.expertPositions[index]!.amount.toString(), width: 100),
                                           _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
+                                              width: 120,
                                               color: equalColor(
                                                 first: state.expertPositions[index]!.recommendAmount,
                                                 second: state.expertPositions[index]!.instrument.amount,
                                               )),
-                                          _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌'),
-                                          _rowElement(state.expertPositions[index]!.recommendAction.toActionName()),
+                                          _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌', width: 90),
+                                          _rowElement(state.expertPositions[index]!.recommendAction.toActionName(),
+                                              width: 120),
                                           SizedBox(
-                                            width: 108,
+                                            width: 90,
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
+                                                state.expertPositions[index]!.recommendAction != ExpertAction.keep
+                                                    ? IconButton(
+                                                        tooltip: 'Выполнить рекомендацию',
+                                                        visualDensity: VisualDensity.comfortable,
+                                                        onPressed: () => bloc.add(
+                                                              ExpertEvent.doRecommend(state.expertPositions[index]!),
+                                                            ),
+                                                        icon: const Icon(
+                                                          Icons.check,
+                                                          color: Colors.green,
+                                                        ))
+                                                    : const SizedBox(),
                                                 IconButton(
-                                                    onPressed: () => bloc.add(
-                                                          ExpertEvent.doRecommend(state.expertPositions[index]!),
-                                                        ),
-                                                    icon: const Icon(
-                                                      Icons.check,
-                                                      color: Colors.green,
-                                                    )),
-                                                IconButton(
+                                                    tooltip: 'Удалить позицию',
+                                                    visualDensity: VisualDensity.comfortable,
                                                     onPressed: () => bloc.add(
                                                           ExpertEvent.removeExpertPositions(
                                                             state.expertPositions[index]!,
@@ -267,9 +266,9 @@ class ExpertScreen extends StatelessWidget {
     );
   }
 
-  Container _rowElement(String text, {Color? color}) => Container(
+  Container _rowElement(String text, {Color? color, double? width}) => Container(
         alignment: Alignment.center,
-        width: 143,
+        width: width ?? 150,
         child: AutoSizeText(text,
             textAlign: TextAlign.center,
             maxLines: 2,

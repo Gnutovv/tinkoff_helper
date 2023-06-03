@@ -12,7 +12,7 @@ class ApiKeyButton extends StatelessWidget {
     } else if (status == CheckApiKeyStatuses.failed) {
       return IconButton(onPressed: callback, icon: const Icon(Icons.close, color: Colors.red));
     } else {
-      return IconButton(onPressed: () {}, icon: const Icon(Icons.check, color: Colors.green));
+      return const IconButton(onPressed: null, icon: Icon(Icons.check, color: Colors.green));
     }
   }
 }

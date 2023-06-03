@@ -24,6 +24,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void initState() {
     super.initState();
     apiKeyController.text = getIt<HiveStorage>().apiKey;
+    if (apiKeyController.text != '' && !context.read<SettingsBloc>().state.tokenChecked) {
+      context.read<SettingsBloc>().add(SettingsEvent.checkToken(apiKey: apiKeyController.text));
+    }
   }
 
   @override
@@ -52,7 +55,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ],
               );
             },
-          ), //print(state.message),
+          ),
         );
       },
       builder: (context, state) => Padding(
@@ -94,13 +97,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 32),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
                   'API key:',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(width: 30),
-                Expanded(
+                SizedBox(
+                  width: 600,
                   child: TextField(
                     obscureText: true,
                     obscuringCharacter: '•',
@@ -122,8 +127,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               callback: () => bloc.add(SettingsEvent.checkToken(apiKey: apiKeyController.text)),
                               status: CheckApiKeyStatuses.readyToCheck)
                           : state.checkStatus == CheckApiKeyStatuses.failed
-                              ? ApiKeyButton(callback: () {}, status: CheckApiKeyStatuses.failed)
-                              : ApiKeyButton(callback: () {}, status: CheckApiKeyStatuses.ok),
+                              ? const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.failed)
+                              : const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.ok),
                 ),
               ],
             ),

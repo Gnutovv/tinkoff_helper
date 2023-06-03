@@ -87,10 +87,35 @@ class _AddExpertPositionScreen extends StatelessWidget {
                   ),
                   const Divider(),
                   AppButton(
-                    onPressed: () => bloc.add(AddPositionEvent.getPositionByTicker(
-                      ticker: tickerController.text.toUpperCase(),
-                      balancer: context.read<ExpertBloc>().state.balancer,
-                    )),
+                    onPressed: () {
+                      final newTicker = tickerController.text.toUpperCase();
+                      final existingPositionsTickers =
+                          context.read<ExpertBloc>().state.expertPositions.map((e) => e?.instrument.ticker);
+                      if (existingPositionsTickers.any((element) => element == newTicker)) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Error'),
+                              content: const Text('Такой инструмент уже добавлен в советник'),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: const Text('Ok'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        bloc.add(AddPositionEvent.getPositionByTicker(
+                          ticker: newTicker,
+                          balancer: context.read<ExpertBloc>().state.balancer,
+                        ));
+                      }
+                    },
                     child: const Icon(Icons.download),
                   ),
                 ],

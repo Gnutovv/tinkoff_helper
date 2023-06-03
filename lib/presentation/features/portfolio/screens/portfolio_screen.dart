@@ -8,8 +8,21 @@ import 'package:tinkoff_helper/presentation/common/widgets/card_item_widget.dart
 import 'package:tinkoff_helper/presentation/common/widgets/equal_color.dart';
 import 'package:tinkoff_helper/presentation/features/portfolio/bloc/portfolio_bloc.dart';
 
-class PortfolioScreen extends StatelessWidget {
+class PortfolioScreen extends StatefulWidget {
   const PortfolioScreen({Key? key}) : super(key: key);
+
+  @override
+  State<PortfolioScreen> createState() => _PortfolioScreenState();
+}
+
+class _PortfolioScreenState extends State<PortfolioScreen> {
+  @override
+  void initState() {
+    super.initState();
+    if (context.read<PortfolioBloc>().state.portfolio == null) {
+      context.read<PortfolioBloc>().add(const PortfolioEvent.update());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +53,7 @@ class PortfolioScreen extends StatelessWidget {
                 ],
               );
             },
-          ), //print(state.message),
+          ),
         );
       },
       builder: (context, state) => state.portfolio != null
@@ -59,7 +72,7 @@ class PortfolioScreen extends StatelessWidget {
                             children: [
                               const Text('Наименование счета:'),
                               Text(
-                                '${state.portfolio!.accountName} (№ ${state.portfolio!.accountId})',
+                                state.portfolio!.accountName,
                                 style: tabElementsStyle,
                               ),
                             ],
@@ -67,7 +80,7 @@ class PortfolioScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('Стоимость портфеля:'),
+                              const Text('Всего средств:'),
                               Text(
                                 state.portfolio!.totalAmountPortfolio.toString().toMoneyFormat,
                                 style: tabElementsStyle,
@@ -87,9 +100,9 @@ class PortfolioScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('Прибыль по открытым позициям:'),
+                              const Text('Открытые позиции:'),
                               Text(
-                                '${state.portfolio!.expectedYield.toStringAsFixed(2)} %',
+                                '${state.profit.toStringAsFixed(2).toMoneyFormat} (${state.portfolio!.expectedYield.toStringAsFixed(2)} %)',
                                 style: tabElementsStyle.copyWith(
                                   color: equalColor(first: state.portfolio!.expectedYield, second: 0),
                                 ),
@@ -112,48 +125,29 @@ class PortfolioScreen extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                              alignment: Alignment.center, width: 20, child: const Text('#', style: tabElementsStyle)),
-                          Container(
-                              alignment: Alignment.center,
-                              width: 118,
-                              child: const Text('Тикер', style: tabElementsStyle)),
-                          Container(
-                              alignment: Alignment.center,
-                              width: 118,
-                              child: const Text('Наименование', style: tabElementsStyle)),
-                          Container(
-                              alignment: Alignment.center,
-                              width: 118,
-                              child: const Text('Количество', style: tabElementsStyle)),
-                          Container(
-                              alignment: Alignment.center,
-                              width: 118,
-                              child: const Text('Цена покупки', style: tabElementsStyle)),
-                          Container(
-                              alignment: Alignment.center,
-                              width: 118,
-                              child: const Text('Текущая цена', style: tabElementsStyle)),
-                          Container(
-                              alignment: Alignment.center,
-                              width: 118,
-                              child: const Text('Прибыль (₽)', style: tabElementsStyle)),
-                          Container(
-                              alignment: Alignment.center,
-                              width: 118,
-                              child: const Text('Прибыль (%)', style: tabElementsStyle)),
-                        ],
+                      Container(
+                        margin: const EdgeInsets.only(left: 40, right: 40, bottom: 5),
+                        width: 1060,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _rowElement('#', width: 20),
+                            _rowElement('Тикер', width: 100),
+                            _rowElement('Наименование', width: 300),
+                            _rowElement('Количество', width: 100),
+                            _rowElement('Цена покупки', width: 120),
+                            _rowElement('Текущая цена', width: 100),
+                            _rowElement('Прибыль (₽)', width: 120),
+                            _rowElement('Прибыль (%)', width: 100),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 8),
                       Flexible(
                         child: Container(
-                          margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20, top: 0),
+                          margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
                           color: const Color(0xFFECECEC),
-                          width: 860,
-                          //height: 370,
+                          width: 1060,
                           child: state.portfolio!.positions.isEmpty
                               ? const Center(child: Text('Нет активных позиций'))
                               : SingleChildScrollView(
@@ -161,86 +155,40 @@ class PortfolioScreen extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       ...List.generate(
-                                        state.portfolio!.positions.length,
+                                        state.positions.length,
                                         (index) => Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 7.0, vertical: 4),
+                                          padding: const EdgeInsets.symmetric(vertical: 4),
                                           color: index % 2 == 0 ? Colors.yellowAccent : Colors.yellow,
+                                          height: 52,
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                             children: [
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 20,
-                                                height: 30,
-                                                child: Text((index + 1).toString(), style: tabElementsStyle),
+                                              _rowElement((index + 1).toString(), width: 20),
+                                              _rowElement(state.positions[index].ticker, width: 100),
+                                              _rowElement(state.positions[index].title, width: 300),
+                                              _rowElement(state.positions[index].amount.toString(), width: 100),
+                                              _rowElement(
+                                                state.positions[index].averagePositionPrice.toString(),
+                                                width: 120,
                                               ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 118,
-                                                child:
-                                                    Text(state.portfolio!.positions[index].ticker, style: tabElementsStyle),
-                                              ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 118,
-                                                child: AutoSizeText(
-                                                  state.portfolio!.positions[index].title,
-                                                  textAlign: TextAlign.center,
-                                                  style: tabElementsStyle,
-                                                  maxLines: 2,
+                                              _rowElement(state.positions[index].currentPrice.toString(), width: 100),
+                                              _rowElement(
+                                                state.positions[index].expectedYield.toStringAsFixed(2),
+                                                width: 120,
+                                                color: equalColor(
+                                                  first: state.positions[index].expectedYield,
+                                                  second: 0,
                                                 ),
                                               ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 118,
-                                                child: Text(
-                                                  state.portfolio!.positions[index].amount.toString(),
-                                                  style: tabElementsStyle,
+                                              _rowElement(
+                                                _getProfitPercent(
+                                                  state.positions[index].averagePositionPrice,
+                                                  state.positions[index].currentPrice,
                                                 ),
-                                              ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 118,
-                                                child: Text(
-                                                  state.portfolio!.positions[index].averagePositionPrice.toString(),
-                                                  style: tabElementsStyle,
-                                                ),
-                                              ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 118,
-                                                child: Text(
-                                                  state.portfolio!.positions[index].currentPrice.toString(),
-                                                  style: tabElementsStyle,
-                                                ),
-                                              ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 118,
-                                                child: Text(
-                                                  state.portfolio!.positions[index].expectedYield.toStringAsFixed(2),
-                                                  style: tabElementsStyle.copyWith(
-                                                    color: equalColor(
-                                                      first: state.portfolio!.positions[index].expectedYield,
-                                                      second: 0,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 118,
-                                                child: Text(
-                                                  _getProfitPercent(
-                                                    state.portfolio!.positions[index].averagePositionPrice,
-                                                    state.portfolio!.positions[index].currentPrice,
-                                                  ),
-                                                  style: tabElementsStyle.copyWith(
-                                                    color: equalColor(
-                                                      first: state.portfolio!.positions[index].expectedYield,
-                                                      second: 0,
-                                                    ),
-                                                  ),
+                                                width: 100,
+                                                color: equalColor(
+                                                  first: state.positions[index].expectedYield,
+                                                  second: 0,
                                                 ),
                                               ),
                                             ],
@@ -265,6 +213,18 @@ class PortfolioScreen extends StatelessWidget {
             ),
     );
   }
+
+  Container _rowElement(String text, {Color? color, double? width}) => Container(
+        alignment: Alignment.center,
+        width: width ?? 150,
+        child: AutoSizeText(text,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: color,
+            )),
+      );
 
   String _getProfitPercent(double app, double cp) {
     return '${((cp - app) / cp * 100).toStringAsFixed(2)} %';

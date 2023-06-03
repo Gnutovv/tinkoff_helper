@@ -21,6 +21,22 @@ class PortfolioEvent with _$PortfolioEvent {
 class PortfolioState with _$PortfolioState {
   bool get existPositions => portfolio?.positions.isNotEmpty ?? false;
 
+  List<ExpertPortfolioPosition> get positions {
+    List<ExpertPortfolioPosition> positions = [];
+    positions.addAll(portfolio!.positions);
+    positions.sort((a, b) => a.ticker.compareTo(b.ticker));
+    return positions;
+  }
+
+  double get profit {
+    final profits = portfolio!.positions.map((e) => e.expectedYield);
+    double sum = 0;
+    for (final element in profits) {
+      sum += element;
+    }
+    return sum;
+  }
+
   const PortfolioState._();
 
   factory PortfolioState.initialized({

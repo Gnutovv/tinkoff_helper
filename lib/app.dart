@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
+import 'package:tinkoff_helper/presentation/common/vertical_tabs.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
@@ -11,7 +12,6 @@ import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc
 import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/widgets/need_authorize_placeholder.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
-import 'package:vertical_tabs_flutter/vertical_tabs.dart';
 
 import 'common/loader/loader_widget.dart';
 
@@ -23,7 +23,14 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<SettingsBloc>(
-          create: (context) => SettingsBloc(apiKey: getIt<HiveStorage>().apiKey),
+          create: (context) {
+            String apiKey = getIt<HiveStorage>().apiKey;
+            if (getIt<HiveStorage>().apiKey != '') {
+              return SettingsBloc(apiKey: apiKey)..add(SettingsEvent.checkToken(apiKey: apiKey));
+            } else {
+              return SettingsBloc(apiKey: '');
+            }
+          },
         ),
         BlocProvider<ExpertSettingsBloc>(
           create: (context) => ExpertSettingsBloc(balancer: getIt<HiveStorage>().stepsBalancer),
@@ -51,8 +58,8 @@ class App extends StatelessWidget {
             BlocBuilder<SettingsBloc, SettingsState>(builder: (context, state) {
               return VerticalTabs(
                 direction: TextDirection.ltr,
-                contentScrollAxis: Axis.vertical,
-                initialIndex: 2,
+                contentScrollAxis: Axis.horizontal,
+                initialIndex: 0,
                 selectedTabBackgroundColor: Colors.yellow,
                 tabBackgroundColor: const Color(0xFFb5b50b),
                 tabsShadowColor: Colors.yellow,
