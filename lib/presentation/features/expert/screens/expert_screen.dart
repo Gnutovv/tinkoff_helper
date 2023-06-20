@@ -174,7 +174,7 @@ class _ExpertScreenState extends State<ExpertScreen> {
                       children: [
                         _rowElement('#', width: 20),
                         _rowElement('Тикер', width: 100),
-                        _rowElement('Наименование', width: 300),
+                        _rowElement('Наименование (цена за лот)', width: 300),
                         _rowElement('Количество', width: 100),
                         _rowElement('Рекомендовано', width: 120),
                         _rowElement('Индикатор', width: 90),
@@ -203,7 +203,7 @@ class _ExpertScreenState extends State<ExpertScreen> {
                                         children: [
                                           _rowElement((index + 1).toString(), width: 20),
                                           _rowElement(state.expertPositions[index]!.instrument.ticker, width: 100),
-                                          _rowElement(state.expertPositions[index]!.instrument.title, width: 300),
+                                          _rowElement('${state.expertPositions[index]!.instrument.title} (${state.expertPositions[index]!.lotPrice})', width: 300),
                                           _rowElement(state.expertPositions[index]!.amount.toString(), width: 100),
                                           _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
                                               width: 120,

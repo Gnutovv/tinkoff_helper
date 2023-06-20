@@ -15,6 +15,8 @@ class ExpertPosition with _$ExpertPosition {
 
   int get amount => instrument.quantity ~/ instrument.lot;
 
+  String get lotPrice => (instrument.lot * instrument.currentPrice).toStringAsFixed(2);
+
   bool get isRecommend => recommendAction != ExpertAction.keep;
 
   ExpertAction get recommendAction => amount > recommendAmount
