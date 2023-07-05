@@ -233,7 +233,7 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
               expectedYield: 0,
               currentPrice: instrumentCandles.candles.last.close.toDouble,
             ),
-        recommendAmount: state.balancer.getRecommendedAmount(stockInstrument.lotPrice, instrumentCandles.candles),
+        recommendAmount: state.balancer.getRecommendedAmount(stockInstrument.lot.toDouble(), instrumentCandles.candles),
         shouldBuy: state.balancer.shouldBuy(instrumentCandles.candles),
       ));
     }

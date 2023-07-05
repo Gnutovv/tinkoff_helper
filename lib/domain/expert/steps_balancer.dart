@@ -83,7 +83,9 @@ class StepsBalancer with _$StepsBalancer {
     return 0;
   }
 
-  int getRecommendedAmount(double lotPrice, List<HistoricCandle> candles) {
+  int getRecommendedAmount(double lot, List<HistoricCandle> candles) {
+    final hlPrices = _getMinMaxPricesFromCandles(candles);
+    final averageLotPrice = lot * ((hlPrices.first + hlPrices.last) / 2);
     final allStepsMoneyValue = stepsMoneyVolume;
     final currentStep = _getCurrentStepPrice(candles);
     double moneyForAllStepsToCurrent = 0;
@@ -91,9 +93,7 @@ class StepsBalancer with _$StepsBalancer {
       if (i >= allStepsMoneyValue.length) break;
       moneyForAllStepsToCurrent += allStepsMoneyValue[i];
     }
-    final recommendedAmount = (moneyForAllStepsToCurrent / lotPrice).round();
-
-    return recommendedAmount;
+    return (moneyForAllStepsToCurrent / averageLotPrice).round();
   }
 
   bool shouldBuy(List<HistoricCandle> candles) {
