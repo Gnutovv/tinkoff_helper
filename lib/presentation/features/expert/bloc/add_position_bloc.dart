@@ -107,7 +107,7 @@ class AddPositionBloc extends Bloc<AddPositionEvent, AddPositionState> {
                   expectedYield: 0,
                   currentPrice: instrumentCandles.candles.last.close.toDouble,
                 ),
-            recommendAmount: event.balancer.getRecommendedAmount(stockInstrument.lotPrice, instrumentCandles.candles),
+            recommendAmount: event.balancer.getRecommendedAmount(stockInstrument.lot.toDouble(), instrumentCandles.candles),
             shouldBuy: event.balancer.shouldBuy(instrumentCandles.candles),
           ),
         ),
