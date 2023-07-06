@@ -168,10 +168,15 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                                               _rowElement(state.positions[index].title, width: 300),
                                               _rowElement(state.positions[index].amount.toString(), width: 100),
                                               _rowElement(
-                                                state.positions[index].averagePositionPrice.toString(),
+                                                double.parse(
+                                                        state.positions[index].averagePositionPrice.toStringAsFixed(6))
+                                                    .toString(),
                                                 width: 120,
                                               ),
-                                              _rowElement(state.positions[index].currentPrice.toString(), width: 100),
+                                              _rowElement(
+                                                  double.parse(state.positions[index].currentPrice.toStringAsFixed(6))
+                                                      .toString(),
+                                                  width: 100),
                                               _rowElement(
                                                 state.positions[index].expectedYield.toStringAsFixed(2),
                                                 width: 120,

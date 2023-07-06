@@ -71,14 +71,12 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
         options: _tinkoffApiService.callOptions,
       );
       final positions = portfolioResponse.positions.where((element) => element.instrumentType == 'share').toList();
-      final withdrawRequest = WithdrawLimitsRequest(accountId: _tinkoffApiService.accountId);
       final withdrawResponse = await _tinkoffApiService.operationsServiceClient.getWithdrawLimits(
-        withdrawRequest,
+        WithdrawLimitsRequest(accountId: _tinkoffApiService.accountId),
         options: _tinkoffApiService.callOptions,
       );
-      final instrumentRequest = inst.InstrumentsRequest();
       final instrumentsResponse = await _tinkoffApiService.instrumentsServiceClient.shares(
-        instrumentRequest,
+        inst.InstrumentsRequest(),
         options: _tinkoffApiService.callOptions,
       );
       emitter(
