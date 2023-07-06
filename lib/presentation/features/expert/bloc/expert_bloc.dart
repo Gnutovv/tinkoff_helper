@@ -133,8 +133,9 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
   Future<void> _removeExpertPosition(_RemoveExpertPositionsExpertEvent event, Emitter<ExpertState> emitter) async {
     emitter(ExpertState.inProgress(balancer: state.balancer, expertPositions: state.expertPositions));
     try {
-      List<ExpertPosition?> resultPositions =
-          state.expertPositions.where((element) => element != event.expertPosition).toList();
+      List<ExpertPosition?> resultPositions = state.expertPositions
+          .where((element) => element!.instrument.ticker != event.expertPosition.instrument.ticker)
+          .toList();
       await getIt<HiveStorage>().saveExpertPositions(resultPositions);
       emitter(ExpertState.expertPositionRemoved(
         balancer: state.balancer,
@@ -161,10 +162,7 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
 
   Future<void> _updateExpertPositions(_UpdateExpertPositionsExpertEvent event, Emitter<ExpertState> emitter) async {
     emitter(ExpertState.inProgress(balancer: state.balancer, expertPositions: state.expertPositions));
-    List<String> tickers = [];
-    for (final position in state.expertPositions) {
-      tickers.add(position!.instrument.ticker);
-    }
+    final tickers = (state.expertPositions.map((e) => e!.instrument.ticker).toList());
     try {
       final resultExpertPositions = await _initExpertPositions(tickers);
       emitter(ExpertState.initialized(balancer: state.balancer, expertPositions: resultExpertPositions));
@@ -182,11 +180,29 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
   }
 
   Future<List<ExpertPosition>> _initExpertPositions(List<String> tickers) async {
-    List<ExpertPosition> resultExpertPositions = [];
+    // Получаем все шарес
     final shares = await _tinkoffApiService.instrumentsServiceClient.shares(
       $instruments_pb.InstrumentsRequest(instrumentStatus: $instruments_pb.InstrumentStatus.INSTRUMENT_STATUS_BASE),
       options: _tinkoffApiService.callOptions,
     );
+
+    // Формируем мапу тикет - шара
+    final Map<String, $instruments_pb.Share> ticketShareMap = {};
+    for (final ticket in tickers) {
+      ticketShareMap[ticket] = shares.instruments.firstWhere((element) => element.ticker == ticket);
+    }
+
+    // Формируем фиги и получаем прайсес
+    final figis = List<String>.empty(growable: true);
+    ticketShareMap.forEach((key, value) {
+      figis.add(value.figi);
+    });
+    final prices = await _tinkoffApiService.marketDataServiceClient.getLastPrices(
+      $marketdata_pb.GetLastPricesRequest(instrumentId: figis),
+      options: _tinkoffApiService.callOptions,
+    );
+
+    // Получаем портфолио (чтобы знать, сколько у нас в наличии)
     final portfolioResponse = await _tinkoffApiService.operationsServiceClient.getPortfolio(
       $operations_pb.PortfolioRequest(
         accountId: _tinkoffApiService.accountId,
@@ -194,17 +210,19 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
       ),
       options: _tinkoffApiService.callOptions,
     );
-    final intFrom = (DateTime.now().toUtc().subtract(const Duration(days: 350)).millisecondsSinceEpoch) ~/ 1000;
-    final intTo = (DateTime.now().toUtc().millisecondsSinceEpoch) ~/ 1000;
 
+    // Формируем период для получения свечей
+    final intFrom = Timestamp(
+      seconds: Int64(((DateTime.now().toUtc().subtract(const Duration(days: 52 * 7)).millisecondsSinceEpoch) ~/ 1000)),
+    );
+    final intTo = Timestamp(seconds: Int64(((DateTime.now().toUtc().millisecondsSinceEpoch) ~/ 1000)));
+
+    // Новый цикл
+    List<ExpertPosition> resultExpertPositions = [];
     for (final positionTicker in tickers) {
-      final share = shares.instruments.firstWhereOrNull((share) => share.ticker == positionTicker);
-      if (share == null) continue;
-      final price = await _tinkoffApiService.marketDataServiceClient.getLastPrices(
-        $marketdata_pb.GetLastPricesRequest(instrumentId: [share.figi]),
-        options: _tinkoffApiService.callOptions,
-      );
-      final stockInstrument = StockInstrument.fromShare(share, price.lastPrices.single.price.toDouble);
+      final share = shares.instruments.firstWhere((element) => element.ticker == positionTicker);
+      final price = prices.lastPrices.firstWhere((element) => element.figi == figis[tickers.indexOf(positionTicker)]);
+      final stockInstrument = StockInstrument.fromShare(share, price.price.toDouble);
       final responsePortfolioPosition =
           portfolioResponse.positions.firstWhereOrNull((position) => position.figi == stockInstrument.figi);
       final portfolioPosition = responsePortfolioPosition != null
@@ -215,8 +233,8 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
           figi: share.figi,
           instrumentId: share.uid,
           interval: $marketdata_pb.CandleInterval.CANDLE_INTERVAL_WEEK,
-          from: Timestamp(seconds: Int64(intFrom)),
-          to: Timestamp(seconds: Int64(intTo)),
+          from: intFrom,
+          to: intTo,
         ),
         options: _tinkoffApiService.callOptions,
       );
