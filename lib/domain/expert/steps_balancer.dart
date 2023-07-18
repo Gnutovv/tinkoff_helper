@@ -72,7 +72,7 @@ class StepsBalancer with _$StepsBalancer {
   }
 
   // Текущая ступень
-  int _getCurrentStepPrice(List<HistoricCandle> candles) {
+  int getCurrentStepPrice(List<HistoricCandle> candles) {
     final currentPrice = candles.last.close.toDouble;
     final stepsPricesResult = stepsPrices(candles);
     for (int i = 1; i < stepsPricesResult.length; i++) {
@@ -87,7 +87,7 @@ class StepsBalancer with _$StepsBalancer {
     final hlPrices = _getMinMaxPricesFromCandles(candles);
     final averageLotPrice = lot * ((hlPrices.first + hlPrices.last) / 2);
     final allStepsMoneyValue = stepsMoneyVolume;
-    final currentStep = _getCurrentStepPrice(candles);
+    final currentStep = getCurrentStepPrice(candles);
     double moneyForAllStepsToCurrent = 0;
     for (int i = 0; i < currentStep; i++) {
       if (i >= allStepsMoneyValue.length) break;

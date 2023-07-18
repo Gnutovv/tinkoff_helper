@@ -203,7 +203,9 @@ class _ExpertScreenState extends State<ExpertScreen> {
                                         children: [
                                           _rowElement((index + 1).toString(), width: 20),
                                           _rowElement(state.expertPositions[index]!.instrument.ticker, width: 100),
-                                          _rowElement('${state.expertPositions[index]!.instrument.title} (${state.expertPositions[index]!.lotPrice})', width: 300),
+                                          _rowElement(
+                                              '${state.expertPositions[index]!.instrument.title} (${state.expertPositions[index]!.lotPrice})',
+                                              width: 300),
                                           _rowElement(state.expertPositions[index]!.amount.toString(), width: 100),
                                           _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
                                               width: 120,
