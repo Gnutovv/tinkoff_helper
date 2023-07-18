@@ -30,7 +30,7 @@ class _AddExpertPositionScreen extends StatelessWidget {
     return BlocConsumer<AddPositionBloc, AddPositionState>(
       listener: (context, state) {
         state.maybeWhen(
-          inProgress: () => loaderController.startLoading(),
+          inProgress: (state) => loaderController.startLoading(),
           orElse: () => loaderController.stopLoading(),
         );
         state.mapOrNull(
@@ -61,62 +61,119 @@ class _AddExpertPositionScreen extends StatelessWidget {
               title: const Text('Tinkoff Helper'),
             ),
             body: Center(
-              child: CardItemWidget(
-                width: 400,
-                label: const Text('Добавление новой позиции', style: TextStyle(fontWeight: FontWeight.bold)),
-                content: [
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Укажите тикет новой позиции:'),
-                      SizedBox(
-                        width: 100,
-                        child: TextField(
-                          autofocus: true,
-                          decoration: const InputDecoration(
-                            labelText: 'ABCD',
-                            border: OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(),
-                            labelStyle: TextStyle(color: Colors.blue),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CardItemWidget(
+                    width: 400,
+                    label: const Text('Добавление новой позиции', style: TextStyle(fontWeight: FontWeight.bold)),
+                    content: [
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text('Укажите тикет новой позиции:'),
+                          SizedBox(
+                            width: 100,
+                            child: TextField(
+                              autofocus: true,
+                              decoration: const InputDecoration(
+                                labelText: 'ABCD',
+                                border: OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(),
+                                labelStyle: TextStyle(color: Colors.blue),
+                              ),
+                              controller: tickerController,
+                            ),
                           ),
-                          controller: tickerController,
-                        ),
+                        ],
+                      ),
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          AppButton(
+                            onPressed: () {
+                              final newTicker = tickerController.text.toUpperCase();
+                              final existingPositionsTickers =
+                                  context.read<ExpertBloc>().state.expertPositions.map((e) => e?.instrument.ticker);
+                              if (existingPositionsTickers.any((element) => element == newTicker)) {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('Error'),
+                                      content: const Text('Такой инструмент уже добавлен в советник'),
+                                      actions: <Widget>[
+                                        ElevatedButton(
+                                          child: const Text('Ok'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                bloc.add(AddPositionEvent.getPositionByTicker(
+                                  ticker: newTicker,
+                                  balancer: context.read<ExpertBloc>().state.balancer,
+                                ));
+                              }
+                            },
+                            child: const Icon(Icons.add),
+                          ),
+                          AppButton(
+                            child: const Icon(Icons.download),
+                            onPressed: () => bloc.add(
+                              AddPositionEvent.getRecommendedPositions(
+                                balancer: context.read<ExpertBloc>().state.balancer,
+                                existingFigis: context
+                                    .read<ExpertBloc>()
+                                    .state
+                                    .expertPositions
+                                    .map((e) => e!.instrument.figi)
+                                    .toList(),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  const Divider(),
-                  AppButton(
-                    onPressed: () {
-                      final newTicker = tickerController.text.toUpperCase();
-                      final existingPositionsTickers =
-                          context.read<ExpertBloc>().state.expertPositions.map((e) => e?.instrument.ticker);
-                      if (existingPositionsTickers.any((element) => element == newTicker)) {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Error'),
-                              content: const Text('Такой инструмент уже добавлен в советник'),
-                              actions: <Widget>[
-                                ElevatedButton(
-                                  child: const Text('Ok'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      } else {
-                        bloc.add(AddPositionEvent.getPositionByTicker(
-                          ticker: newTicker,
-                          balancer: context.read<ExpertBloc>().state.balancer,
-                        ));
-                      }
-                    },
-                    child: const Icon(Icons.download),
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                      color: const Color(0xFFECECEC),
+                      width: 1060,
+                      child: state.recommendedPositions.isNotEmpty
+                          ? SingleChildScrollView(
+                              child: Column(
+                                children: List.generate(
+                                    state.recommendedPositions.length,
+                                    (index) => Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            SizedBox(width: 64, child: Text(state.recommendedPositions[index].ticker)),
+                                            Text(state.recommendedPositions[index].name),
+                                            const Spacer(),
+                                            SizedBox(
+                                              width: 128,
+                                              child: Text(
+                                                  state.recommendedPositions[index].currentPrice.toStringAsFixed(2)),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 64),
+                                              child: Text(state.recommendedPositions[index].currentStep.toString()),
+                                            ),
+                                          ],
+                                        )),
+                              ),
+                            )
+                          : const Center(child: Text('Нет активных позиций')),
+                    ),
                   ),
                 ],
               ),
