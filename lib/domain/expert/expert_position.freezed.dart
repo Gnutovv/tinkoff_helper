@@ -19,6 +19,7 @@ mixin _$ExpertPosition {
   ExpertPortfolioPosition get instrument => throw _privateConstructorUsedError;
   int get recommendAmount => throw _privateConstructorUsedError;
   bool get shouldBuy => throw _privateConstructorUsedError;
+  int get currentStep => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ExpertPositionCopyWith<ExpertPosition> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +30,7 @@ abstract class $ExpertPositionCopyWith<$Res> {
   factory $ExpertPositionCopyWith(ExpertPosition value, $Res Function(ExpertPosition) then) =
       _$ExpertPositionCopyWithImpl<$Res, ExpertPosition>;
   @useResult
-  $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy});
+  $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy, int currentStep});
 
   $ExpertPortfolioPositionCopyWith<$Res> get instrument;
 }
@@ -49,6 +50,7 @@ class _$ExpertPositionCopyWithImpl<$Res, $Val extends ExpertPosition> implements
     Object? instrument = null,
     Object? recommendAmount = null,
     Object? shouldBuy = null,
+    Object? currentStep = null,
   }) {
     return _then(_value.copyWith(
       instrument: null == instrument
@@ -63,6 +65,10 @@ class _$ExpertPositionCopyWithImpl<$Res, $Val extends ExpertPosition> implements
           ? _value.shouldBuy
           : shouldBuy // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentStep: null == currentStep
+          ? _value.currentStep
+          : currentStep // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -81,7 +87,7 @@ abstract class _$$_ExpertPositionCopyWith<$Res> implements $ExpertPositionCopyWi
       __$$_ExpertPositionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy});
+  $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy, int currentStep});
 
   @override
   $ExpertPortfolioPositionCopyWith<$Res> get instrument;
@@ -99,6 +105,7 @@ class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl
     Object? instrument = null,
     Object? recommendAmount = null,
     Object? shouldBuy = null,
+    Object? currentStep = null,
   }) {
     return _then(_$_ExpertPosition(
       instrument: null == instrument
@@ -113,6 +120,10 @@ class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl
           ? _value.shouldBuy
           : shouldBuy // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentStep: null == currentStep
+          ? _value.currentStep
+          : currentStep // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -120,7 +131,8 @@ class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl
 /// @nodoc
 
 class _$_ExpertPosition extends _ExpertPosition {
-  const _$_ExpertPosition({required this.instrument, required this.recommendAmount, required this.shouldBuy})
+  const _$_ExpertPosition(
+      {required this.instrument, required this.recommendAmount, required this.shouldBuy, required this.currentStep})
       : super._();
 
   @override
@@ -129,10 +141,12 @@ class _$_ExpertPosition extends _ExpertPosition {
   final int recommendAmount;
   @override
   final bool shouldBuy;
+  @override
+  final int currentStep;
 
   @override
   String toString() {
-    return 'ExpertPosition(instrument: $instrument, recommendAmount: $recommendAmount, shouldBuy: $shouldBuy)';
+    return 'ExpertPosition(instrument: $instrument, recommendAmount: $recommendAmount, shouldBuy: $shouldBuy, currentStep: $currentStep)';
   }
 
   @override
@@ -142,11 +156,12 @@ class _$_ExpertPosition extends _ExpertPosition {
             other is _$_ExpertPosition &&
             (identical(other.instrument, instrument) || other.instrument == instrument) &&
             (identical(other.recommendAmount, recommendAmount) || other.recommendAmount == recommendAmount) &&
-            (identical(other.shouldBuy, shouldBuy) || other.shouldBuy == shouldBuy));
+            (identical(other.shouldBuy, shouldBuy) || other.shouldBuy == shouldBuy) &&
+            (identical(other.currentStep, currentStep) || other.currentStep == currentStep));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, instrument, recommendAmount, shouldBuy);
+  int get hashCode => Object.hash(runtimeType, instrument, recommendAmount, shouldBuy, currentStep);
 
   @JsonKey(ignore: true)
   @override
@@ -159,7 +174,8 @@ abstract class _ExpertPosition extends ExpertPosition {
   const factory _ExpertPosition(
       {required final ExpertPortfolioPosition instrument,
       required final int recommendAmount,
-      required final bool shouldBuy}) = _$_ExpertPosition;
+      required final bool shouldBuy,
+      required final int currentStep}) = _$_ExpertPosition;
   const _ExpertPosition._() : super._();
 
   @override
@@ -168,6 +184,8 @@ abstract class _ExpertPosition extends ExpertPosition {
   int get recommendAmount;
   @override
   bool get shouldBuy;
+  @override
+  int get currentStep;
   @override
   @JsonKey(ignore: true)
   _$$_ExpertPositionCopyWith<_$_ExpertPosition> get copyWith => throw _privateConstructorUsedError;

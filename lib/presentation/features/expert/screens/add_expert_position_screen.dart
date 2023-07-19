@@ -143,6 +143,32 @@ class _AddExpertPositionScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const Divider(),
+                  Container(
+                    margin: const EdgeInsets.only(left: 40, right: 40, bottom: 3),
+                    color: const Color(0xFFECECEC),
+                    width: 1060,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 38,
+                          child: Text('#'),
+                        ),
+                        SizedBox(width: 64, child: Text('Тикер')),
+                        Text('Наименование'),
+                        Spacer(),
+                        SizedBox(
+                          width: 128,
+                          child: Text('Цена за лот'),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 64),
+                          child: Text('Ступень'),
+                        ),
+                      ],
+                    ),
+                  ),
                   Flexible(
                     child: Container(
                       margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
@@ -152,24 +178,37 @@ class _AddExpertPositionScreen extends StatelessWidget {
                           ? SingleChildScrollView(
                               child: Column(
                                 children: List.generate(
-                                    state.recommendedPositions.length,
-                                    (index) => Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            SizedBox(width: 64, child: Text(state.recommendedPositions[index].ticker)),
-                                            Text(state.recommendedPositions[index].name),
-                                            const Spacer(),
-                                            SizedBox(
-                                              width: 128,
-                                              child: Text(
-                                                  state.recommendedPositions[index].currentPrice.toStringAsFixed(2)),
+                                  state.recommendedPositions.length,
+                                  (index) => Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 18,
+                                        child: Text((index + 1).toString()),
+                                      ),
+                                      SizedBox(
+                                          width: 84,
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(
+                                              foregroundColor: Colors.blue,
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(right: 64),
-                                              child: Text(state.recommendedPositions[index].currentStep.toString()),
-                                            ),
-                                          ],
-                                        )),
+                                            onPressed: () =>
+                                                tickerController.text = state.recommendedPositions[index].ticker,
+                                            child: Text(state.recommendedPositions[index].ticker),
+                                          )),
+                                      Text(state.recommendedPositions[index].name),
+                                      const Spacer(),
+                                      SizedBox(
+                                        width: 128,
+                                        child: Text(state.recommendedPositions[index].currentPrice.toStringAsFixed(2)),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 88),
+                                        child: Text(state.recommendedPositions[index].currentStep.toString()),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             )
                           : const Center(child: Text('Нет активных позиций')),

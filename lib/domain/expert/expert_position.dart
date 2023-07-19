@@ -11,6 +11,7 @@ class ExpertPosition with _$ExpertPosition {
     required ExpertPortfolioPosition instrument,
     required int recommendAmount,
     required bool shouldBuy,
+    required int currentStep,
   }) = _ExpertPosition;
 
   int get amount => instrument.quantity ~/ instrument.lot;

@@ -197,7 +197,13 @@ class _ExpertScreenState extends State<ExpertScreen> {
                                     state.expertPositions.length,
                                     (index) => Container(
                                       padding: const EdgeInsets.symmetric(vertical: 4),
-                                      color: index % 2 == 0 ? Colors.yellowAccent : Colors.yellow,
+                                      color: _rowColor(
+                                        currentAmount: state.expertPositions[index]!.amount,
+                                        recommendedAmount: state.expertPositions[index]!.recommendAmount,
+                                        recommendation:
+                                            state.expertPositions[index]!.recommendAction != ExpertAction.keep,
+                                        binary: index % 2 == 0,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
@@ -207,7 +213,8 @@ class _ExpertScreenState extends State<ExpertScreen> {
                                               '${state.expertPositions[index]!.instrument.title} (${state.expertPositions[index]!.lotPrice})',
                                               width: 300),
                                           _rowElement(state.expertPositions[index]!.amount.toString(), width: 100),
-                                          _rowElement(state.expertPositions[index]!.recommendAmount.toString(),
+                                          _rowElement(
+                                              '${state.expertPositions[index]!.recommendAmount} (${state.expertPositions[index]!.currentStep})',
                                               width: 120,
                                               color: equalColor(
                                                 first: state.expertPositions[index]!.recommendAmount,
@@ -266,6 +273,18 @@ class _ExpertScreenState extends State<ExpertScreen> {
         ),
       ),
     );
+  }
+
+  Color _rowColor({
+    required int currentAmount,
+    required int recommendedAmount,
+    required bool recommendation,
+    required bool binary,
+  }) {
+    if (recommendedAmount == 0 && currentAmount == 0) return Colors.grey;
+    if (recommendation) return Colors.greenAccent;
+    if (binary) return Colors.yellowAccent;
+    return Colors.yellow;
   }
 
   Container _rowElement(String text, {Color? color, double? width}) => Container(
