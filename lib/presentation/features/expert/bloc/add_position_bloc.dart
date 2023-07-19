@@ -137,6 +137,7 @@ class AddPositionBloc extends Bloc<AddPositionEvent, AddPositionState> {
             recommendAmount:
                 event.balancer.getRecommendedAmount(stockInstrument.lot.toDouble(), instrumentCandles.candles),
             shouldBuy: event.balancer.shouldBuy(instrumentCandles.candles),
+            currentStep: event.balancer.getCurrentStepPrice(instrumentCandles.candles),
           ),
           recommendedPositions: state.recommendedPositions,
         ),
@@ -154,7 +155,6 @@ class AddPositionBloc extends Bloc<AddPositionEvent, AddPositionState> {
         $instruments_pb.InstrumentsRequest(instrumentStatus: $instruments_pb.InstrumentStatus.INSTRUMENT_STATUS_BASE),
         options: _tinkoffApiService.callOptions,
       );
-      await Future.delayed(const Duration(seconds: 5));
       final intFrom = (DateTime.now().toUtc().subtract(const Duration(days: 350)).millisecondsSinceEpoch) ~/ 1000;
       final intTo = (DateTime.now().toUtc().millisecondsSinceEpoch) ~/ 1000;
       final filteredShares = shares.instruments

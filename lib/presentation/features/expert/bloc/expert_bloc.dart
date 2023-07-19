@@ -253,6 +253,7 @@ class ExpertBloc extends Bloc<ExpertEvent, ExpertState> {
             ),
         recommendAmount: state.balancer.getRecommendedAmount(stockInstrument.lot.toDouble(), instrumentCandles.candles),
         shouldBuy: state.balancer.shouldBuy(instrumentCandles.candles),
+        currentStep: state.balancer.getCurrentStepPrice(instrumentCandles.candles),
       ));
     }
 
