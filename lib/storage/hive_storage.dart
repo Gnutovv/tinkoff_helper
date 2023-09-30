@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tinkoff_helper/domain/expert/expert_position.dart';
 import 'package:tinkoff_helper/domain/expert/steps_balancer.dart';
 
@@ -9,14 +8,13 @@ class HiveStorage {
   late final Box _expert;
 
   Future<void> init() async {
-    Hive.init(Directory.current.path);
-    _registerAdapters();
+    final directory = await getApplicationDocumentsDirectory();
+    final path = directory.path;
+    Hive
+      ..init(path)
+      ..registerAdapter(StepsBalancerAdapter());
     _pref = await Hive.openBox('pref');
     _expert = await Hive.openBox('expert');
-  }
-
-  void _registerAdapters() {
-    Hive.registerAdapter(StepsBalancerAdapter());
   }
 
   //API KEY

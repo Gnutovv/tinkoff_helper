@@ -77,7 +77,8 @@ class _AddExpertPositionScreen extends StatelessWidget {
                           SizedBox(
                             width: 100,
                             child: TextField(
-                              autofocus: true,
+                              showCursor: true,
+                              cursorColor: Colors.black,
                               decoration: const InputDecoration(
                                 labelText: 'ABCD',
                                 border: OutlineInputBorder(),

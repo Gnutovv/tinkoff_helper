@@ -41,6 +41,8 @@ Future showBalancerSettingsDialog(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
+              showCursor: true,
+              cursorColor: Colors.black,
               controller: balanceController,
               decoration: const InputDecoration(
                 labelText: 'Торгуемый баланс',
@@ -51,6 +53,8 @@ Future showBalancerSettingsDialog(
             ),
             const SizedBox(height: 24),
             TextField(
+              showCursor: true,
+              cursorColor: Colors.black,
               controller: stocksAmountController,
               decoration: const InputDecoration(
                 labelText: 'Кол-во торгуемых инструментов',
@@ -61,6 +65,8 @@ Future showBalancerSettingsDialog(
             ),
             const SizedBox(height: 24),
             TextField(
+              showCursor: true,
+              cursorColor: Colors.black,
               controller: stepsRateController,
               decoration: const InputDecoration(
                 labelText: 'Введите силу ступеней через запятую',

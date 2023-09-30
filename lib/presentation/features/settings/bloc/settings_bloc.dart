@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/network/generated/users.pb.dart';
 import 'package:tinkoff_helper/network/tinkoff_api_service.dart';
-import 'package:tinkoff_helper/presentation/features/settings/widgets/api_key_button.dart';
+import 'package:tinkoff_helper/presentation/features/settings/common/statuses.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
 
 part 'settings_bloc.freezed.dart';

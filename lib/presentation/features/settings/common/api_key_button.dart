@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tinkoff_helper/presentation/features/settings/common/statuses.dart';
 
 class ApiKeyButton extends StatelessWidget {
   final CheckApiKeyStatuses status;
@@ -16,5 +17,3 @@ class ApiKeyButton extends StatelessWidget {
     }
   }
 }
-
-enum CheckApiKeyStatuses { readyToCheck, ok, failed }

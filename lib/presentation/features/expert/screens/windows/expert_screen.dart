@@ -7,8 +7,8 @@ import 'package:tinkoff_helper/domain/expert/expert_position.dart';
 import 'package:tinkoff_helper/presentation/common/widgets/card_item_widget.dart';
 import 'package:tinkoff_helper/presentation/common/widgets/equal_color.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/expert/screens/add_expert_position_screen.dart';
-import 'package:tinkoff_helper/presentation/features/expert/screens/expert_settings_screen.dart';
+import 'package:tinkoff_helper/presentation/features/expert/screens/windows/add_expert_position_screen.dart';
+import 'package:tinkoff_helper/presentation/features/expert/screens/windows/expert_settings_screen.dart';
 
 class ExpertScreen extends StatefulWidget {
   const ExpertScreen({Key? key}) : super(key: key);
@@ -221,7 +221,7 @@ class _ExpertScreenState extends State<ExpertScreen> {
                                                 second: state.expertPositions[index]!.instrument.amount,
                                               )),
                                           _rowElement(state.expertPositions[index]!.shouldBuy ? '✅' : '❌', width: 90),
-                                          _rowElement(state.expertPositions[index]!.recommendAction.toActionName(),
+                                          _rowElement(state.expertPositions[index]!.recommendAction.toActionName,
                                               width: 120),
                                           SizedBox(
                                             width: 90,
