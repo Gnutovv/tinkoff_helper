@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/settings/widgets/api_key_button.dart';
+import 'package:tinkoff_helper/presentation/features/settings/common/statuses.dart';
+import 'package:tinkoff_helper/presentation/features/settings/common/api_key_button.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -61,20 +62,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (context, state) => Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text(
               'Для начала работы необходимо актуализировать корректность (доступность) секретного ключа.',
               style: TextStyle(fontSize: 22),
             ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 48,
+              child: const Text(
+                'В случае отстутствия секретного ключа его можно получить тут: ',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  'В случае отстутствия секретного ключа его можно получить тут: ',
-                  style: TextStyle(fontSize: 16),
-                ),
                 TextButton(
                     onPressed: () => launchUrl(Uri(path: link)),
                     child: Text(
@@ -96,39 +99,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             const SizedBox(height: 32),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'API key:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'API key:',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Clipboard.getData(Clipboard.kTextPlain).then(
+                          (value) => setState(() => apiKeyController.text = value?.text ?? ''),
+                        );
+                      },
+                      child: const Text('Вставить из буфера'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => setState(() => apiKeyController.text = ''),
+                      child: const Text('Очистить'),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 30),
                 SizedBox(
-                  width: 600,
                   child: TextField(
+                    showCursor: true,
+                    cursorColor: Colors.black,
                     obscureText: true,
                     obscuringCharacter: '•',
                     controller: apiKeyController,
                     onChanged: (text) => setState(() {}),
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
                       hintText: 'Enter a Tinkoff API key',
+                      suffixIcon: SizedBox(
+                        child: apiKeyController.text.isEmpty
+                            ? const SizedBox()
+                            : bloc.state.checkStatus == CheckApiKeyStatuses.readyToCheck ||
+                                    apiKeyController.text != state.apiKey
+                                ? ApiKeyButton(
+                                    callback: () => bloc.add(SettingsEvent.checkToken(apiKey: apiKeyController.text)),
+                                    status: CheckApiKeyStatuses.readyToCheck)
+                                : state.checkStatus == CheckApiKeyStatuses.failed
+                                    ? const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.failed)
+                                    : const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.ok),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 50,
-                  child: apiKeyController.text.isEmpty
-                      ? const SizedBox()
-                      : bloc.state.checkStatus == CheckApiKeyStatuses.readyToCheck ||
-                              apiKeyController.text != state.apiKey
-                          ? ApiKeyButton(
-                              callback: () => bloc.add(SettingsEvent.checkToken(apiKey: apiKeyController.text)),
-                              status: CheckApiKeyStatuses.readyToCheck)
-                          : state.checkStatus == CheckApiKeyStatuses.failed
-                              ? const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.failed)
-                              : const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.ok),
                 ),
               ],
             ),

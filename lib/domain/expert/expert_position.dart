@@ -30,7 +30,7 @@ class ExpertPosition with _$ExpertPosition {
 enum ExpertAction { buy, sell, keep }
 
 extension ParseToString on ExpertAction {
-  String toActionName() {
+  String get toActionName {
     switch (this) {
       case ExpertAction.buy:
         return 'Покупать';

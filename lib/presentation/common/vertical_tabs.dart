@@ -25,7 +25,7 @@ class VerticalTabs extends StatefulWidget {
   final Color? backgroundColor;
 
   const VerticalTabs(
-      {Key? key,
+      {super.key,
       required this.tabs,
       required this.contents,
       this.tabsWidth = 200,
@@ -46,8 +46,7 @@ class VerticalTabs extends StatefulWidget {
       this.tabsElevation = 2.0,
       this.onSelect,
       this.backgroundColor})
-      : assert(tabs.length == contents.length),
-        super(key: key);
+      : assert(tabs.length == contents.length);
 
   @override
   State<StatefulWidget> createState() => _VerticalTabsState();

@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/di/di.dart';
-import 'package:tinkoff_helper/presentation/common/vertical_tabs.dart';
+import 'package:tinkoff_helper/presentation/features/form_app.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_settings_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
 import 'package:tinkoff_helper/presentation/features/portfolio/bloc/portfolio_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/portfolio/screens/portfolio_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
-import 'package:tinkoff_helper/presentation/features/settings/widgets/need_authorize_placeholder.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
-
-import 'common/loader/loader_widget.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -45,42 +38,7 @@ class App extends StatelessWidget {
           create: (context) => PortfolioBloc(portfolio: null),
         ),
       ],
-      child: MaterialApp(
-        title: 'Tinkoff Helper',
-        theme: ThemeData(
-          primarySwatch: Colors.yellow,
-        ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Tinkoff Helper'),
-          ),
-          body: Stack(children: [
-            BlocBuilder<SettingsBloc, SettingsState>(builder: (context, state) {
-              return VerticalTabs(
-                direction: TextDirection.ltr,
-                contentScrollAxis: Axis.horizontal,
-                initialIndex: 0,
-                selectedTabBackgroundColor: Colors.yellow,
-                tabBackgroundColor: const Color(0xFFb5b50b),
-                tabsShadowColor: Colors.yellow,
-                indicatorWidth: 0,
-                tabsWidth: 59,
-                tabs: const [
-                  Tab(icon: Icon(Icons.cases_rounded)),
-                  Tab(icon: Icon(Icons.science_rounded)),
-                  Tab(icon: Icon(Icons.settings)),
-                ],
-                contents: [
-                  state.tokenChecked ? const PortfolioScreen() : const NeedAuthorizePlaceholder(),
-                  state.tokenChecked ? const ExpertScreen() : const NeedAuthorizePlaceholder(),
-                  const SettingsScreen(),
-                ],
-              );
-            }),
-            Positioned.fill(child: LoaderWidget(controller: getIt<LoaderController>())),
-          ]),
-        ),
-      ),
+      child: const AndroidFormApp(),
     );
   }
 }

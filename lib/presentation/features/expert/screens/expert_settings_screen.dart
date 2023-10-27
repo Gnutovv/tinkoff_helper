@@ -8,7 +8,7 @@ import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_settings
 import 'package:tinkoff_helper/presentation/features/expert/widgets/balancer_settings_dialog.dart';
 
 class ExpertSettingsScreen extends StatelessWidget {
-  ExpertSettingsScreen({Key? key}) : super(key: key);
+  ExpertSettingsScreen({super.key});
 
   final loaderController = getIt<LoaderController>();
 
@@ -79,7 +79,7 @@ class ExpertSettingsScreen extends StatelessWidget {
                   (index) => Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(width: 160, child: Text('${index.toStepName()}:')),
+                      SizedBox(width: 110, child: Text('${index.toStepName()}:')),
                       SizedBox(
                         width: 50,
                         child: Text(
@@ -87,16 +87,14 @@ class ExpertSettingsScreen extends StatelessWidget {
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      SizedBox(
-                        width: 80,
+                      Expanded(
                         child: Text(
                           '${state.balancer.getStepPercent(index)}%',
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      const Spacer(),
                       Text(
-                        state.balancer.getStepMoneyVolume(index).toString().toMoneyFormat,
+                        state.balancer.getStepMoneyVolume(index).toPriceFormat,
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -105,7 +103,7 @@ class ExpertSettingsScreen extends StatelessWidget {
                 const Divider(),
                 const SizedBox(height: 8),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
                       onPressed: () => showBalancerSettingsDialog(
@@ -129,7 +127,7 @@ class ExpertSettingsScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber, // Background color
                       ),
-                      child: const SizedBox(width: 138, child: Icon(Icons.edit)),
+                      child: const Icon(Icons.edit),
                     ),
                     const SizedBox(width: 34),
                     ElevatedButton(

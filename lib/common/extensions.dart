@@ -1,4 +1,5 @@
 import 'package:fixnum/fixnum.dart';
+import 'package:intl/intl.dart';
 import 'package:tinkoff_helper/network/generated/common.pb.dart';
 
 extension IntExtension on int {
@@ -60,6 +61,7 @@ extension QuotationExtension on Quotation {
 
 extension DoubleExtension on double {
   Quotation get toQuotation => Quotation(units: Int64(floor()), nano: int.parse((toString().split('.')).last));
+  String get toPriceFormat => NumberFormat('###,###,###,##0.00 ₽', 'ru').format(this);
 }
 
 double _unitNanoToDouble(int? units, int? nano) {
