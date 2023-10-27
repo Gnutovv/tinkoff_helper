@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tinkoff_helper/common/loader/loader_controller.dart';
 import 'package:tinkoff_helper/common/loader/loader_widget.dart';
 import 'package:tinkoff_helper/di/di.dart';
-import 'package:tinkoff_helper/presentation/features/expert/screens/android/expert_screen.dart';
-import 'package:tinkoff_helper/presentation/features/portfolio/screens/android/portfolio_screen.dart';
+import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
+import 'package:tinkoff_helper/presentation/features/portfolio/screens/portfolio_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/common/need_authorize_placeholder.dart';
-import 'package:tinkoff_helper/presentation/features/settings/screens/android/settings_screen.dart';
+import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
 
 class AndroidFormApp extends StatefulWidget {
   const AndroidFormApp({super.key});

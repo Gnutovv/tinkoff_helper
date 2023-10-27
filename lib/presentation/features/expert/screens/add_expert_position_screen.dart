@@ -10,7 +10,7 @@ import 'package:tinkoff_helper/presentation/features/expert/bloc/add_position_bl
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
 
 class AddExpertPositionScreen extends StatelessWidget {
-  const AddExpertPositionScreen({Key? key}) : super(key: key);
+  const AddExpertPositionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class AddExpertPositionScreen extends StatelessWidget {
 }
 
 class _AddExpertPositionScreen extends StatelessWidget {
-  const _AddExpertPositionScreen({Key? key}) : super(key: key);
+  const _AddExpertPositionScreen();
 
   @override
   Widget build(BuildContext context) {

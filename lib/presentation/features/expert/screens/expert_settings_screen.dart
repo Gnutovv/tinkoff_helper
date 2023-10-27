@@ -8,7 +8,7 @@ import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_settings
 import 'package:tinkoff_helper/presentation/features/expert/widgets/balancer_settings_dialog.dart';
 
 class ExpertSettingsScreen extends StatelessWidget {
-  ExpertSettingsScreen({Key? key}) : super(key: key);
+  ExpertSettingsScreen({super.key});
 
   final loaderController = getIt<LoaderController>();
 

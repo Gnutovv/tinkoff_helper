@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NeedAuthorizePlaceholder extends StatelessWidget {
-  const NeedAuthorizePlaceholder({Key? key}) : super(key: key);
+  const NeedAuthorizePlaceholder({super.key});
 
   @override
   Widget build(BuildContext context) {

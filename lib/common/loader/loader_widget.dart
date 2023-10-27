@@ -7,8 +7,8 @@ class LoaderWidget extends StatelessWidget {
 
   const LoaderWidget({
     required this.controller,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

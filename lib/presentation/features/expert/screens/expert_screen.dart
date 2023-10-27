@@ -5,11 +5,11 @@ import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/domain/expert/expert_position.dart';
 import 'package:tinkoff_helper/presentation/common/widgets/card_item_widget.dart';
 import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/expert/screens/android/add_expert_position_screen.dart';
-import 'package:tinkoff_helper/presentation/features/expert/screens/android/expert_settings_screen.dart';
+import 'package:tinkoff_helper/presentation/features/expert/screens/add_expert_position_screen.dart';
+import 'package:tinkoff_helper/presentation/features/expert/screens/expert_settings_screen.dart';
 
 class ExpertScreen extends StatefulWidget {
-  const ExpertScreen({Key? key}) : super(key: key);
+  const ExpertScreen({super.key});
 
   @override
   State<ExpertScreen> createState() => _ExpertScreenState();

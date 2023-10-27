@@ -4,7 +4,7 @@ import 'package:tinkoff_helper/presentation/features/settings/common/statuses.da
 class ApiKeyButton extends StatelessWidget {
   final CheckApiKeyStatuses status;
   final VoidCallback? callback;
-  const ApiKeyButton({required this.callback, required this.status, Key? key}) : super(key: key);
+  const ApiKeyButton({required this.callback, required this.status, super.key});
 
   @override
   Widget build(BuildContext context) {

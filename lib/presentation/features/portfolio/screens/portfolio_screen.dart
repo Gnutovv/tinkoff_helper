@@ -8,7 +8,7 @@ import 'package:tinkoff_helper/presentation/common/widgets/equal_color.dart';
 import 'package:tinkoff_helper/presentation/features/portfolio/bloc/portfolio_bloc.dart';
 
 class PortfolioScreen extends StatefulWidget {
-  const PortfolioScreen({Key? key}) : super(key: key);
+  const PortfolioScreen({super.key});
 
   @override
   State<PortfolioScreen> createState() => _PortfolioScreenState();
