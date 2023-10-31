@@ -6,7 +6,6 @@ import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/expert/screens/expert_screen.dart';
 import 'package:tinkoff_helper/presentation/features/portfolio/screens/portfolio_screen.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
-import 'package:tinkoff_helper/presentation/features/settings/common/need_authorize_placeholder.dart';
 import 'package:tinkoff_helper/presentation/features/settings/screens/settings_screen.dart';
 
 class AndroidFormApp extends StatefulWidget {
@@ -33,26 +32,28 @@ class _AndroidFormAppState extends State<AndroidFormApp> {
           ),
           bottomNavigationBar: NavigationBar(
             onDestinationSelected: (int index) {
-              setState(() {
-                currentPageIndex = index;
-              });
+              if (state.success) {
+                setState(() {
+                  currentPageIndex = index;
+                });
+              }
             },
             indicatorColor: Colors.yellowAccent,
-            selectedIndex: currentPageIndex,
-            destinations: const <Widget>[
+            selectedIndex: state.success ? currentPageIndex : 2,
+            destinations: <Widget>[
               NavigationDestination(
-                selectedIcon: Icon(Icons.cases_rounded),
-                icon: Icon(Icons.cases_outlined),
+                selectedIcon: const Icon(Icons.cases_rounded),
+                icon: Icon(Icons.cases_outlined, color: state.success ? Colors.black : Colors.grey),
                 label: 'Портфель',
               ),
               NavigationDestination(
-                selectedIcon: Icon(Icons.science_rounded),
-                icon: Icon(Icons.science_outlined),
+                selectedIcon: const Icon(Icons.science_rounded),
+                icon: Icon(Icons.science_outlined, color: state.success ? Colors.black : Colors.grey),
                 label: 'Советник',
               ),
-              NavigationDestination(
+              const NavigationDestination(
                 selectedIcon: Icon(Icons.settings_rounded),
-                icon: Icon(Icons.settings_outlined),
+                icon: Icon(Icons.settings_outlined, color: Colors.black),
                 label: 'Настройки',
               ),
             ],
@@ -60,10 +61,10 @@ class _AndroidFormAppState extends State<AndroidFormApp> {
           body: Stack(
             children: [
               <Widget>[
-                state.tokenChecked ? const PortfolioScreen() : const NeedAuthorizePlaceholder(),
-                state.tokenChecked ? const ExpertScreen() : const NeedAuthorizePlaceholder(),
+                const PortfolioScreen(),
+                const ExpertScreen(),
                 const SettingsScreen(),
-              ][currentPageIndex],
+              ][state.success ? currentPageIndex : 2],
               Positioned.fill(child: LoaderWidget(controller: getIt<LoaderController>())),
             ],
           ),

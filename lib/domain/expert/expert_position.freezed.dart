@@ -82,9 +82,9 @@ class _$ExpertPositionCopyWithImpl<$Res, $Val extends ExpertPosition> implements
 }
 
 /// @nodoc
-abstract class _$$_ExpertPositionCopyWith<$Res> implements $ExpertPositionCopyWith<$Res> {
-  factory _$$_ExpertPositionCopyWith(_$_ExpertPosition value, $Res Function(_$_ExpertPosition) then) =
-      __$$_ExpertPositionCopyWithImpl<$Res>;
+abstract class _$$ExpertPositionImplCopyWith<$Res> implements $ExpertPositionCopyWith<$Res> {
+  factory _$$ExpertPositionImplCopyWith(_$ExpertPositionImpl value, $Res Function(_$ExpertPositionImpl) then) =
+      __$$ExpertPositionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ExpertPortfolioPosition instrument, int recommendAmount, bool shouldBuy, int currentStep});
@@ -94,9 +94,9 @@ abstract class _$$_ExpertPositionCopyWith<$Res> implements $ExpertPositionCopyWi
 }
 
 /// @nodoc
-class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl<$Res, _$_ExpertPosition>
-    implements _$$_ExpertPositionCopyWith<$Res> {
-  __$$_ExpertPositionCopyWithImpl(_$_ExpertPosition _value, $Res Function(_$_ExpertPosition) _then)
+class __$$ExpertPositionImplCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl<$Res, _$ExpertPositionImpl>
+    implements _$$ExpertPositionImplCopyWith<$Res> {
+  __$$ExpertPositionImplCopyWithImpl(_$ExpertPositionImpl _value, $Res Function(_$ExpertPositionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl
     Object? shouldBuy = null,
     Object? currentStep = null,
   }) {
-    return _then(_$_ExpertPosition(
+    return _then(_$ExpertPositionImpl(
       instrument: null == instrument
           ? _value.instrument
           : instrument // ignore: cast_nullable_to_non_nullable
@@ -130,8 +130,8 @@ class __$$_ExpertPositionCopyWithImpl<$Res> extends _$ExpertPositionCopyWithImpl
 
 /// @nodoc
 
-class _$_ExpertPosition extends _ExpertPosition {
-  const _$_ExpertPosition(
+class _$ExpertPositionImpl extends _ExpertPosition {
+  const _$ExpertPositionImpl(
       {required this.instrument, required this.recommendAmount, required this.shouldBuy, required this.currentStep})
       : super._();
 
@@ -153,7 +153,7 @@ class _$_ExpertPosition extends _ExpertPosition {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ExpertPosition &&
+            other is _$ExpertPositionImpl &&
             (identical(other.instrument, instrument) || other.instrument == instrument) &&
             (identical(other.recommendAmount, recommendAmount) || other.recommendAmount == recommendAmount) &&
             (identical(other.shouldBuy, shouldBuy) || other.shouldBuy == shouldBuy) &&
@@ -166,8 +166,8 @@ class _$_ExpertPosition extends _ExpertPosition {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ExpertPositionCopyWith<_$_ExpertPosition> get copyWith =>
-      __$$_ExpertPositionCopyWithImpl<_$_ExpertPosition>(this, _$identity);
+  _$$ExpertPositionImplCopyWith<_$ExpertPositionImpl> get copyWith =>
+      __$$ExpertPositionImplCopyWithImpl<_$ExpertPositionImpl>(this, _$identity);
 }
 
 abstract class _ExpertPosition extends ExpertPosition {
@@ -175,7 +175,7 @@ abstract class _ExpertPosition extends ExpertPosition {
       {required final ExpertPortfolioPosition instrument,
       required final int recommendAmount,
       required final bool shouldBuy,
-      required final int currentStep}) = _$_ExpertPosition;
+      required final int currentStep}) = _$ExpertPositionImpl;
   const _ExpertPosition._() : super._();
 
   @override
@@ -188,5 +188,5 @@ abstract class _ExpertPosition extends ExpertPosition {
   int get currentStep;
   @override
   @JsonKey(ignore: true)
-  _$$_ExpertPositionCopyWith<_$_ExpertPosition> get copyWith => throw _privateConstructorUsedError;
+  _$$ExpertPositionImplCopyWith<_$ExpertPositionImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -6,7 +6,7 @@ import 'package:tinkoff_helper/di/di.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/common/statuses.dart';
 import 'package:tinkoff_helper/presentation/features/settings/common/api_key_button.dart';
-import 'package:tinkoff_helper/storage/hive_storage.dart';
+import 'package:tinkoff_helper/storage/secure_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -18,17 +18,8 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final loaderController = getIt<LoaderController>();
-  final TextEditingController apiKeyController = TextEditingController();
+  final TextEditingController apiKeyController = TextEditingController(text: getIt<SecureStorage>().key);
   final link = 'www.tinkoff.ru/invest/settings/';
-
-  @override
-  void initState() {
-    super.initState();
-    apiKeyController.text = getIt<HiveStorage>().apiKey;
-    if (apiKeyController.text != '' && !context.read<SettingsBloc>().state.tokenChecked) {
-      context.read<SettingsBloc>().add(SettingsEvent.checkToken(apiKey: apiKeyController.text));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +27,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return BlocConsumer<SettingsBloc, SettingsState>(
       listener: (context, state) {
         state.maybeWhen(
-          inProgress: (_, __) => loaderController.startLoading(),
+          inProgress: (_) => loaderController.startLoading(),
           orElse: () => loaderController.stopLoading(),
         );
         state.mapOrNull(
-          error: (state) => showDialog(
+          failed: (state) => showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
@@ -138,14 +129,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       suffixIcon: SizedBox(
                         child: apiKeyController.text.isEmpty
                             ? const SizedBox()
-                            : bloc.state.checkStatus == CheckApiKeyStatuses.readyToCheck ||
-                                    apiKeyController.text != state.apiKey
+                            : !state.success
                                 ? ApiKeyButton(
                                     callback: () => bloc.add(SettingsEvent.checkToken(apiKey: apiKeyController.text)),
                                     status: CheckApiKeyStatuses.readyToCheck)
-                                : state.checkStatus == CheckApiKeyStatuses.failed
-                                    ? const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.failed)
-                                    : const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.ok),
+                                : const ApiKeyButton(callback: null, status: CheckApiKeyStatuses.failed),
                       ),
                     ),
                   ),

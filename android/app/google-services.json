@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "729525750414",
+    "project_id": "tinkoff-helper-4dc32",
+    "storage_bucket": "tinkoff-helper-4dc32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729525750414:android:7606d8401b350e0b6197df",
+        "android_client_info": {
+          "package_name": "com.example.tinkoff_helper"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFabDdK635o6RhNboGdt9LqCX6cKME0ys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

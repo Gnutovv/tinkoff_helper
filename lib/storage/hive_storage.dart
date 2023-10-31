@@ -10,9 +10,7 @@ class HiveStorage {
   Future<void> init() async {
     final directory = await getApplicationDocumentsDirectory();
     final path = directory.path;
-    Hive
-      ..init(path)
-      ..registerAdapter(StepsBalancerAdapter());
+    Hive.init(path);
     _pref = await Hive.openBox('pref');
     _expert = await Hive.openBox('expert');
   }

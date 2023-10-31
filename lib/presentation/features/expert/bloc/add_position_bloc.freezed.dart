@@ -102,10 +102,10 @@ class _$AddPositionEventCopyWithImpl<$Res, $Val extends AddPositionEvent> implem
 }
 
 /// @nodoc
-abstract class _$$_GetPositionByTickerAddPositionEventCopyWith<$Res> implements $AddPositionEventCopyWith<$Res> {
-  factory _$$_GetPositionByTickerAddPositionEventCopyWith(
-          _$_GetPositionByTickerAddPositionEvent value, $Res Function(_$_GetPositionByTickerAddPositionEvent) then) =
-      __$$_GetPositionByTickerAddPositionEventCopyWithImpl<$Res>;
+abstract class _$$GetPositionByTickerAddPositionEventImplCopyWith<$Res> implements $AddPositionEventCopyWith<$Res> {
+  factory _$$GetPositionByTickerAddPositionEventImplCopyWith(_$GetPositionByTickerAddPositionEventImpl value,
+          $Res Function(_$GetPositionByTickerAddPositionEventImpl) then) =
+      __$$GetPositionByTickerAddPositionEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ticker, StepsBalancer balancer});
@@ -115,11 +115,11 @@ abstract class _$$_GetPositionByTickerAddPositionEventCopyWith<$Res> implements 
 }
 
 /// @nodoc
-class __$$_GetPositionByTickerAddPositionEventCopyWithImpl<$Res>
-    extends _$AddPositionEventCopyWithImpl<$Res, _$_GetPositionByTickerAddPositionEvent>
-    implements _$$_GetPositionByTickerAddPositionEventCopyWith<$Res> {
-  __$$_GetPositionByTickerAddPositionEventCopyWithImpl(
-      _$_GetPositionByTickerAddPositionEvent _value, $Res Function(_$_GetPositionByTickerAddPositionEvent) _then)
+class __$$GetPositionByTickerAddPositionEventImplCopyWithImpl<$Res>
+    extends _$AddPositionEventCopyWithImpl<$Res, _$GetPositionByTickerAddPositionEventImpl>
+    implements _$$GetPositionByTickerAddPositionEventImplCopyWith<$Res> {
+  __$$GetPositionByTickerAddPositionEventImplCopyWithImpl(
+      _$GetPositionByTickerAddPositionEventImpl _value, $Res Function(_$GetPositionByTickerAddPositionEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +128,7 @@ class __$$_GetPositionByTickerAddPositionEventCopyWithImpl<$Res>
     Object? ticker = null,
     Object? balancer = null,
   }) {
-    return _then(_$_GetPositionByTickerAddPositionEvent(
+    return _then(_$GetPositionByTickerAddPositionEventImpl(
       ticker: null == ticker
           ? _value.ticker
           : ticker // ignore: cast_nullable_to_non_nullable
@@ -143,8 +143,8 @@ class __$$_GetPositionByTickerAddPositionEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetPositionByTickerAddPositionEvent extends _GetPositionByTickerAddPositionEvent {
-  const _$_GetPositionByTickerAddPositionEvent({required this.ticker, required this.balancer}) : super._();
+class _$GetPositionByTickerAddPositionEventImpl extends _GetPositionByTickerAddPositionEvent {
+  const _$GetPositionByTickerAddPositionEventImpl({required this.ticker, required this.balancer}) : super._();
 
   @override
   final String ticker;
@@ -160,7 +160,7 @@ class _$_GetPositionByTickerAddPositionEvent extends _GetPositionByTickerAddPosi
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetPositionByTickerAddPositionEvent &&
+            other is _$GetPositionByTickerAddPositionEventImpl &&
             (identical(other.ticker, ticker) || other.ticker == ticker) &&
             (identical(other.balancer, balancer) || other.balancer == balancer));
   }
@@ -171,8 +171,9 @@ class _$_GetPositionByTickerAddPositionEvent extends _GetPositionByTickerAddPosi
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetPositionByTickerAddPositionEventCopyWith<_$_GetPositionByTickerAddPositionEvent> get copyWith =>
-      __$$_GetPositionByTickerAddPositionEventCopyWithImpl<_$_GetPositionByTickerAddPositionEvent>(this, _$identity);
+  _$$GetPositionByTickerAddPositionEventImplCopyWith<_$GetPositionByTickerAddPositionEventImpl> get copyWith =>
+      __$$GetPositionByTickerAddPositionEventImplCopyWithImpl<_$GetPositionByTickerAddPositionEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -239,7 +240,8 @@ class _$_GetPositionByTickerAddPositionEvent extends _GetPositionByTickerAddPosi
 
 abstract class _GetPositionByTickerAddPositionEvent extends AddPositionEvent {
   const factory _GetPositionByTickerAddPositionEvent(
-      {required final String ticker, required final StepsBalancer balancer}) = _$_GetPositionByTickerAddPositionEvent;
+      {required final String ticker,
+      required final StepsBalancer balancer}) = _$GetPositionByTickerAddPositionEventImpl;
   const _GetPositionByTickerAddPositionEvent._() : super._();
 
   String get ticker;
@@ -247,15 +249,15 @@ abstract class _GetPositionByTickerAddPositionEvent extends AddPositionEvent {
   StepsBalancer get balancer;
   @override
   @JsonKey(ignore: true)
-  _$$_GetPositionByTickerAddPositionEventCopyWith<_$_GetPositionByTickerAddPositionEvent> get copyWith =>
+  _$$GetPositionByTickerAddPositionEventImplCopyWith<_$GetPositionByTickerAddPositionEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetRecommendedPositionsEventCopyWith<$Res> implements $AddPositionEventCopyWith<$Res> {
-  factory _$$_GetRecommendedPositionsEventCopyWith(
-          _$_GetRecommendedPositionsEvent value, $Res Function(_$_GetRecommendedPositionsEvent) then) =
-      __$$_GetRecommendedPositionsEventCopyWithImpl<$Res>;
+abstract class _$$GetRecommendedPositionsEventImplCopyWith<$Res> implements $AddPositionEventCopyWith<$Res> {
+  factory _$$GetRecommendedPositionsEventImplCopyWith(
+          _$GetRecommendedPositionsEventImpl value, $Res Function(_$GetRecommendedPositionsEventImpl) then) =
+      __$$GetRecommendedPositionsEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer, List<String> existingFigis});
@@ -265,11 +267,11 @@ abstract class _$$_GetRecommendedPositionsEventCopyWith<$Res> implements $AddPos
 }
 
 /// @nodoc
-class __$$_GetRecommendedPositionsEventCopyWithImpl<$Res>
-    extends _$AddPositionEventCopyWithImpl<$Res, _$_GetRecommendedPositionsEvent>
-    implements _$$_GetRecommendedPositionsEventCopyWith<$Res> {
-  __$$_GetRecommendedPositionsEventCopyWithImpl(
-      _$_GetRecommendedPositionsEvent _value, $Res Function(_$_GetRecommendedPositionsEvent) _then)
+class __$$GetRecommendedPositionsEventImplCopyWithImpl<$Res>
+    extends _$AddPositionEventCopyWithImpl<$Res, _$GetRecommendedPositionsEventImpl>
+    implements _$$GetRecommendedPositionsEventImplCopyWith<$Res> {
+  __$$GetRecommendedPositionsEventImplCopyWithImpl(
+      _$GetRecommendedPositionsEventImpl _value, $Res Function(_$GetRecommendedPositionsEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -278,7 +280,7 @@ class __$$_GetRecommendedPositionsEventCopyWithImpl<$Res>
     Object? balancer = null,
     Object? existingFigis = null,
   }) {
-    return _then(_$_GetRecommendedPositionsEvent(
+    return _then(_$GetRecommendedPositionsEventImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -293,8 +295,8 @@ class __$$_GetRecommendedPositionsEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetRecommendedPositionsEvent extends _GetRecommendedPositionsEvent {
-  const _$_GetRecommendedPositionsEvent({required this.balancer, required final List<String> existingFigis})
+class _$GetRecommendedPositionsEventImpl extends _GetRecommendedPositionsEvent {
+  const _$GetRecommendedPositionsEventImpl({required this.balancer, required final List<String> existingFigis})
       : _existingFigis = existingFigis,
         super._();
 
@@ -317,7 +319,7 @@ class _$_GetRecommendedPositionsEvent extends _GetRecommendedPositionsEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetRecommendedPositionsEvent &&
+            other is _$GetRecommendedPositionsEventImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
             const DeepCollectionEquality().equals(other._existingFigis, _existingFigis));
   }
@@ -328,8 +330,8 @@ class _$_GetRecommendedPositionsEvent extends _GetRecommendedPositionsEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetRecommendedPositionsEventCopyWith<_$_GetRecommendedPositionsEvent> get copyWith =>
-      __$$_GetRecommendedPositionsEventCopyWithImpl<_$_GetRecommendedPositionsEvent>(this, _$identity);
+  _$$GetRecommendedPositionsEventImplCopyWith<_$GetRecommendedPositionsEventImpl> get copyWith =>
+      __$$GetRecommendedPositionsEventImplCopyWithImpl<_$GetRecommendedPositionsEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -397,7 +399,7 @@ class _$_GetRecommendedPositionsEvent extends _GetRecommendedPositionsEvent {
 abstract class _GetRecommendedPositionsEvent extends AddPositionEvent {
   const factory _GetRecommendedPositionsEvent(
       {required final StepsBalancer balancer,
-      required final List<String> existingFigis}) = _$_GetRecommendedPositionsEvent;
+      required final List<String> existingFigis}) = _$GetRecommendedPositionsEventImpl;
   const _GetRecommendedPositionsEvent._() : super._();
 
   @override
@@ -405,7 +407,7 @@ abstract class _GetRecommendedPositionsEvent extends AddPositionEvent {
   List<String> get existingFigis;
   @override
   @JsonKey(ignore: true)
-  _$$_GetRecommendedPositionsEventCopyWith<_$_GetRecommendedPositionsEvent> get copyWith =>
+  _$$GetRecommendedPositionsEventImplCopyWith<_$GetRecommendedPositionsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -505,21 +507,21 @@ class _$AddPositionStateCopyWithImpl<$Res, $Val extends AddPositionState> implem
 }
 
 /// @nodoc
-abstract class _$$_NotGotAddPositionStateCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
-  factory _$$_NotGotAddPositionStateCopyWith(
-          _$_NotGotAddPositionState value, $Res Function(_$_NotGotAddPositionState) then) =
-      __$$_NotGotAddPositionStateCopyWithImpl<$Res>;
+abstract class _$$NotGotAddPositionStateImplCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
+  factory _$$NotGotAddPositionStateImplCopyWith(
+          _$NotGotAddPositionStateImpl value, $Res Function(_$NotGotAddPositionStateImpl) then) =
+      __$$NotGotAddPositionStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<RecommendedPositions> recommendedPositions});
 }
 
 /// @nodoc
-class __$$_NotGotAddPositionStateCopyWithImpl<$Res>
-    extends _$AddPositionStateCopyWithImpl<$Res, _$_NotGotAddPositionState>
-    implements _$$_NotGotAddPositionStateCopyWith<$Res> {
-  __$$_NotGotAddPositionStateCopyWithImpl(
-      _$_NotGotAddPositionState _value, $Res Function(_$_NotGotAddPositionState) _then)
+class __$$NotGotAddPositionStateImplCopyWithImpl<$Res>
+    extends _$AddPositionStateCopyWithImpl<$Res, _$NotGotAddPositionStateImpl>
+    implements _$$NotGotAddPositionStateImplCopyWith<$Res> {
+  __$$NotGotAddPositionStateImplCopyWithImpl(
+      _$NotGotAddPositionStateImpl _value, $Res Function(_$NotGotAddPositionStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -527,7 +529,7 @@ class __$$_NotGotAddPositionStateCopyWithImpl<$Res>
   $Res call({
     Object? recommendedPositions = null,
   }) {
-    return _then(_$_NotGotAddPositionState(
+    return _then(_$NotGotAddPositionStateImpl(
       recommendedPositions: null == recommendedPositions
           ? _value._recommendedPositions
           : recommendedPositions // ignore: cast_nullable_to_non_nullable
@@ -538,8 +540,8 @@ class __$$_NotGotAddPositionStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NotGotAddPositionState extends _NotGotAddPositionState {
-  _$_NotGotAddPositionState({final List<RecommendedPositions> recommendedPositions = const <RecommendedPositions>[]})
+class _$NotGotAddPositionStateImpl extends _NotGotAddPositionState {
+  _$NotGotAddPositionStateImpl({final List<RecommendedPositions> recommendedPositions = const <RecommendedPositions>[]})
       : _recommendedPositions = recommendedPositions,
         super._();
 
@@ -561,7 +563,7 @@ class _$_NotGotAddPositionState extends _NotGotAddPositionState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NotGotAddPositionState &&
+            other is _$NotGotAddPositionStateImpl &&
             const DeepCollectionEquality().equals(other._recommendedPositions, _recommendedPositions));
   }
 
@@ -571,8 +573,8 @@ class _$_NotGotAddPositionState extends _NotGotAddPositionState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NotGotAddPositionStateCopyWith<_$_NotGotAddPositionState> get copyWith =>
-      __$$_NotGotAddPositionStateCopyWithImpl<_$_NotGotAddPositionState>(this, _$identity);
+  _$$NotGotAddPositionStateImplCopyWith<_$NotGotAddPositionStateImpl> get copyWith =>
+      __$$NotGotAddPositionStateImplCopyWithImpl<_$NotGotAddPositionStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -656,32 +658,34 @@ class _$_NotGotAddPositionState extends _NotGotAddPositionState {
 }
 
 abstract class _NotGotAddPositionState extends AddPositionState {
-  factory _NotGotAddPositionState({final List<RecommendedPositions> recommendedPositions}) = _$_NotGotAddPositionState;
+  factory _NotGotAddPositionState({final List<RecommendedPositions> recommendedPositions}) =
+      _$NotGotAddPositionStateImpl;
   _NotGotAddPositionState._() : super._();
 
   @override
   List<RecommendedPositions> get recommendedPositions;
   @override
   @JsonKey(ignore: true)
-  _$$_NotGotAddPositionStateCopyWith<_$_NotGotAddPositionState> get copyWith => throw _privateConstructorUsedError;
+  _$$NotGotAddPositionStateImplCopyWith<_$NotGotAddPositionStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotRecommendedPositionsStateCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
-  factory _$$_GotRecommendedPositionsStateCopyWith(
-          _$_GotRecommendedPositionsState value, $Res Function(_$_GotRecommendedPositionsState) then) =
-      __$$_GotRecommendedPositionsStateCopyWithImpl<$Res>;
+abstract class _$$GotRecommendedPositionsStateImplCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
+  factory _$$GotRecommendedPositionsStateImplCopyWith(
+          _$GotRecommendedPositionsStateImpl value, $Res Function(_$GotRecommendedPositionsStateImpl) then) =
+      __$$GotRecommendedPositionsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<RecommendedPositions> recommendedPositions});
 }
 
 /// @nodoc
-class __$$_GotRecommendedPositionsStateCopyWithImpl<$Res>
-    extends _$AddPositionStateCopyWithImpl<$Res, _$_GotRecommendedPositionsState>
-    implements _$$_GotRecommendedPositionsStateCopyWith<$Res> {
-  __$$_GotRecommendedPositionsStateCopyWithImpl(
-      _$_GotRecommendedPositionsState _value, $Res Function(_$_GotRecommendedPositionsState) _then)
+class __$$GotRecommendedPositionsStateImplCopyWithImpl<$Res>
+    extends _$AddPositionStateCopyWithImpl<$Res, _$GotRecommendedPositionsStateImpl>
+    implements _$$GotRecommendedPositionsStateImplCopyWith<$Res> {
+  __$$GotRecommendedPositionsStateImplCopyWithImpl(
+      _$GotRecommendedPositionsStateImpl _value, $Res Function(_$GotRecommendedPositionsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -689,7 +693,7 @@ class __$$_GotRecommendedPositionsStateCopyWithImpl<$Res>
   $Res call({
     Object? recommendedPositions = null,
   }) {
-    return _then(_$_GotRecommendedPositionsState(
+    return _then(_$GotRecommendedPositionsStateImpl(
       recommendedPositions: null == recommendedPositions
           ? _value._recommendedPositions
           : recommendedPositions // ignore: cast_nullable_to_non_nullable
@@ -700,8 +704,8 @@ class __$$_GotRecommendedPositionsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GotRecommendedPositionsState extends _GotRecommendedPositionsState {
-  _$_GotRecommendedPositionsState({required final List<RecommendedPositions> recommendedPositions})
+class _$GotRecommendedPositionsStateImpl extends _GotRecommendedPositionsState {
+  _$GotRecommendedPositionsStateImpl({required final List<RecommendedPositions> recommendedPositions})
       : _recommendedPositions = recommendedPositions,
         super._();
 
@@ -722,7 +726,7 @@ class _$_GotRecommendedPositionsState extends _GotRecommendedPositionsState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotRecommendedPositionsState &&
+            other is _$GotRecommendedPositionsStateImpl &&
             const DeepCollectionEquality().equals(other._recommendedPositions, _recommendedPositions));
   }
 
@@ -732,8 +736,8 @@ class _$_GotRecommendedPositionsState extends _GotRecommendedPositionsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotRecommendedPositionsStateCopyWith<_$_GotRecommendedPositionsState> get copyWith =>
-      __$$_GotRecommendedPositionsStateCopyWithImpl<_$_GotRecommendedPositionsState>(this, _$identity);
+  _$$GotRecommendedPositionsStateImplCopyWith<_$GotRecommendedPositionsStateImpl> get copyWith =>
+      __$$GotRecommendedPositionsStateImplCopyWithImpl<_$GotRecommendedPositionsStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -818,21 +822,22 @@ class _$_GotRecommendedPositionsState extends _GotRecommendedPositionsState {
 
 abstract class _GotRecommendedPositionsState extends AddPositionState {
   factory _GotRecommendedPositionsState({required final List<RecommendedPositions> recommendedPositions}) =
-      _$_GotRecommendedPositionsState;
+      _$GotRecommendedPositionsStateImpl;
   _GotRecommendedPositionsState._() : super._();
 
   @override
   List<RecommendedPositions> get recommendedPositions;
   @override
   @JsonKey(ignore: true)
-  _$$_GotRecommendedPositionsStateCopyWith<_$_GotRecommendedPositionsState> get copyWith =>
+  _$$GotRecommendedPositionsStateImplCopyWith<_$GotRecommendedPositionsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GotAddPositionStateCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
-  factory _$$_GotAddPositionStateCopyWith(_$_GotAddPositionState value, $Res Function(_$_GotAddPositionState) then) =
-      __$$_GotAddPositionStateCopyWithImpl<$Res>;
+abstract class _$$GotAddPositionStateImplCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
+  factory _$$GotAddPositionStateImplCopyWith(
+          _$GotAddPositionStateImpl value, $Res Function(_$GotAddPositionStateImpl) then) =
+      __$$GotAddPositionStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ExpertPosition expertPosition, List<RecommendedPositions> recommendedPositions});
@@ -841,9 +846,11 @@ abstract class _$$_GotAddPositionStateCopyWith<$Res> implements $AddPositionStat
 }
 
 /// @nodoc
-class __$$_GotAddPositionStateCopyWithImpl<$Res> extends _$AddPositionStateCopyWithImpl<$Res, _$_GotAddPositionState>
-    implements _$$_GotAddPositionStateCopyWith<$Res> {
-  __$$_GotAddPositionStateCopyWithImpl(_$_GotAddPositionState _value, $Res Function(_$_GotAddPositionState) _then)
+class __$$GotAddPositionStateImplCopyWithImpl<$Res>
+    extends _$AddPositionStateCopyWithImpl<$Res, _$GotAddPositionStateImpl>
+    implements _$$GotAddPositionStateImplCopyWith<$Res> {
+  __$$GotAddPositionStateImplCopyWithImpl(
+      _$GotAddPositionStateImpl _value, $Res Function(_$GotAddPositionStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -852,7 +859,7 @@ class __$$_GotAddPositionStateCopyWithImpl<$Res> extends _$AddPositionStateCopyW
     Object? expertPosition = null,
     Object? recommendedPositions = null,
   }) {
-    return _then(_$_GotAddPositionState(
+    return _then(_$GotAddPositionStateImpl(
       expertPosition: null == expertPosition
           ? _value.expertPosition
           : expertPosition // ignore: cast_nullable_to_non_nullable
@@ -875,8 +882,9 @@ class __$$_GotAddPositionStateCopyWithImpl<$Res> extends _$AddPositionStateCopyW
 
 /// @nodoc
 
-class _$_GotAddPositionState extends _GotAddPositionState {
-  _$_GotAddPositionState({required this.expertPosition, required final List<RecommendedPositions> recommendedPositions})
+class _$GotAddPositionStateImpl extends _GotAddPositionState {
+  _$GotAddPositionStateImpl(
+      {required this.expertPosition, required final List<RecommendedPositions> recommendedPositions})
       : _recommendedPositions = recommendedPositions,
         super._();
 
@@ -899,7 +907,7 @@ class _$_GotAddPositionState extends _GotAddPositionState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotAddPositionState &&
+            other is _$GotAddPositionStateImpl &&
             (identical(other.expertPosition, expertPosition) || other.expertPosition == expertPosition) &&
             const DeepCollectionEquality().equals(other._recommendedPositions, _recommendedPositions));
   }
@@ -911,8 +919,8 @@ class _$_GotAddPositionState extends _GotAddPositionState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotAddPositionStateCopyWith<_$_GotAddPositionState> get copyWith =>
-      __$$_GotAddPositionStateCopyWithImpl<_$_GotAddPositionState>(this, _$identity);
+  _$$GotAddPositionStateImplCopyWith<_$GotAddPositionStateImpl> get copyWith =>
+      __$$GotAddPositionStateImplCopyWithImpl<_$GotAddPositionStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -998,7 +1006,7 @@ class _$_GotAddPositionState extends _GotAddPositionState {
 abstract class _GotAddPositionState extends AddPositionState {
   factory _GotAddPositionState(
       {required final ExpertPosition expertPosition,
-      required final List<RecommendedPositions> recommendedPositions}) = _$_GotAddPositionState;
+      required final List<RecommendedPositions> recommendedPositions}) = _$GotAddPositionStateImpl;
   _GotAddPositionState._() : super._();
 
   ExpertPosition get expertPosition;
@@ -1006,25 +1014,25 @@ abstract class _GotAddPositionState extends AddPositionState {
   List<RecommendedPositions> get recommendedPositions;
   @override
   @JsonKey(ignore: true)
-  _$$_GotAddPositionStateCopyWith<_$_GotAddPositionState> get copyWith => throw _privateConstructorUsedError;
+  _$$GotAddPositionStateImplCopyWith<_$GotAddPositionStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InProgressAddPositionStateCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
-  factory _$$_InProgressAddPositionStateCopyWith(
-          _$_InProgressAddPositionState value, $Res Function(_$_InProgressAddPositionState) then) =
-      __$$_InProgressAddPositionStateCopyWithImpl<$Res>;
+abstract class _$$InProgressAddPositionStateImplCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
+  factory _$$InProgressAddPositionStateImplCopyWith(
+          _$InProgressAddPositionStateImpl value, $Res Function(_$InProgressAddPositionStateImpl) then) =
+      __$$InProgressAddPositionStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<RecommendedPositions> recommendedPositions});
 }
 
 /// @nodoc
-class __$$_InProgressAddPositionStateCopyWithImpl<$Res>
-    extends _$AddPositionStateCopyWithImpl<$Res, _$_InProgressAddPositionState>
-    implements _$$_InProgressAddPositionStateCopyWith<$Res> {
-  __$$_InProgressAddPositionStateCopyWithImpl(
-      _$_InProgressAddPositionState _value, $Res Function(_$_InProgressAddPositionState) _then)
+class __$$InProgressAddPositionStateImplCopyWithImpl<$Res>
+    extends _$AddPositionStateCopyWithImpl<$Res, _$InProgressAddPositionStateImpl>
+    implements _$$InProgressAddPositionStateImplCopyWith<$Res> {
+  __$$InProgressAddPositionStateImplCopyWithImpl(
+      _$InProgressAddPositionStateImpl _value, $Res Function(_$InProgressAddPositionStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1032,7 +1040,7 @@ class __$$_InProgressAddPositionStateCopyWithImpl<$Res>
   $Res call({
     Object? recommendedPositions = null,
   }) {
-    return _then(_$_InProgressAddPositionState(
+    return _then(_$InProgressAddPositionStateImpl(
       recommendedPositions: null == recommendedPositions
           ? _value._recommendedPositions
           : recommendedPositions // ignore: cast_nullable_to_non_nullable
@@ -1043,8 +1051,8 @@ class __$$_InProgressAddPositionStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InProgressAddPositionState extends _InProgressAddPositionState {
-  _$_InProgressAddPositionState({required final List<RecommendedPositions> recommendedPositions})
+class _$InProgressAddPositionStateImpl extends _InProgressAddPositionState {
+  _$InProgressAddPositionStateImpl({required final List<RecommendedPositions> recommendedPositions})
       : _recommendedPositions = recommendedPositions,
         super._();
 
@@ -1065,7 +1073,7 @@ class _$_InProgressAddPositionState extends _InProgressAddPositionState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InProgressAddPositionState &&
+            other is _$InProgressAddPositionStateImpl &&
             const DeepCollectionEquality().equals(other._recommendedPositions, _recommendedPositions));
   }
 
@@ -1075,8 +1083,8 @@ class _$_InProgressAddPositionState extends _InProgressAddPositionState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InProgressAddPositionStateCopyWith<_$_InProgressAddPositionState> get copyWith =>
-      __$$_InProgressAddPositionStateCopyWithImpl<_$_InProgressAddPositionState>(this, _$identity);
+  _$$InProgressAddPositionStateImplCopyWith<_$InProgressAddPositionStateImpl> get copyWith =>
+      __$$InProgressAddPositionStateImplCopyWithImpl<_$InProgressAddPositionStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1161,32 +1169,33 @@ class _$_InProgressAddPositionState extends _InProgressAddPositionState {
 
 abstract class _InProgressAddPositionState extends AddPositionState {
   factory _InProgressAddPositionState({required final List<RecommendedPositions> recommendedPositions}) =
-      _$_InProgressAddPositionState;
+      _$InProgressAddPositionStateImpl;
   _InProgressAddPositionState._() : super._();
 
   @override
   List<RecommendedPositions> get recommendedPositions;
   @override
   @JsonKey(ignore: true)
-  _$$_InProgressAddPositionStateCopyWith<_$_InProgressAddPositionState> get copyWith =>
+  _$$InProgressAddPositionStateImplCopyWith<_$InProgressAddPositionStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorAddPositionStateCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
-  factory _$$_ErrorAddPositionStateCopyWith(
-          _$_ErrorAddPositionState value, $Res Function(_$_ErrorAddPositionState) then) =
-      __$$_ErrorAddPositionStateCopyWithImpl<$Res>;
+abstract class _$$ErrorAddPositionStateImplCopyWith<$Res> implements $AddPositionStateCopyWith<$Res> {
+  factory _$$ErrorAddPositionStateImplCopyWith(
+          _$ErrorAddPositionStateImpl value, $Res Function(_$ErrorAddPositionStateImpl) then) =
+      __$$ErrorAddPositionStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, List<RecommendedPositions> recommendedPositions});
 }
 
 /// @nodoc
-class __$$_ErrorAddPositionStateCopyWithImpl<$Res>
-    extends _$AddPositionStateCopyWithImpl<$Res, _$_ErrorAddPositionState>
-    implements _$$_ErrorAddPositionStateCopyWith<$Res> {
-  __$$_ErrorAddPositionStateCopyWithImpl(_$_ErrorAddPositionState _value, $Res Function(_$_ErrorAddPositionState) _then)
+class __$$ErrorAddPositionStateImplCopyWithImpl<$Res>
+    extends _$AddPositionStateCopyWithImpl<$Res, _$ErrorAddPositionStateImpl>
+    implements _$$ErrorAddPositionStateImplCopyWith<$Res> {
+  __$$ErrorAddPositionStateImplCopyWithImpl(
+      _$ErrorAddPositionStateImpl _value, $Res Function(_$ErrorAddPositionStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1195,7 +1204,7 @@ class __$$_ErrorAddPositionStateCopyWithImpl<$Res>
     Object? message = null,
     Object? recommendedPositions = null,
   }) {
-    return _then(_$_ErrorAddPositionState(
+    return _then(_$ErrorAddPositionStateImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1210,8 +1219,8 @@ class __$$_ErrorAddPositionStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorAddPositionState extends _ErrorAddPositionState {
-  _$_ErrorAddPositionState({required this.message, required final List<RecommendedPositions> recommendedPositions})
+class _$ErrorAddPositionStateImpl extends _ErrorAddPositionState {
+  _$ErrorAddPositionStateImpl({required this.message, required final List<RecommendedPositions> recommendedPositions})
       : _recommendedPositions = recommendedPositions,
         super._();
 
@@ -1234,7 +1243,7 @@ class _$_ErrorAddPositionState extends _ErrorAddPositionState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorAddPositionState &&
+            other is _$ErrorAddPositionStateImpl &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._recommendedPositions, _recommendedPositions));
   }
@@ -1245,8 +1254,8 @@ class _$_ErrorAddPositionState extends _ErrorAddPositionState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorAddPositionStateCopyWith<_$_ErrorAddPositionState> get copyWith =>
-      __$$_ErrorAddPositionStateCopyWithImpl<_$_ErrorAddPositionState>(this, _$identity);
+  _$$ErrorAddPositionStateImplCopyWith<_$ErrorAddPositionStateImpl> get copyWith =>
+      __$$ErrorAddPositionStateImplCopyWithImpl<_$ErrorAddPositionStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1332,7 +1341,7 @@ class _$_ErrorAddPositionState extends _ErrorAddPositionState {
 abstract class _ErrorAddPositionState extends AddPositionState {
   factory _ErrorAddPositionState(
       {required final String message,
-      required final List<RecommendedPositions> recommendedPositions}) = _$_ErrorAddPositionState;
+      required final List<RecommendedPositions> recommendedPositions}) = _$ErrorAddPositionStateImpl;
   _ErrorAddPositionState._() : super._();
 
   String get message;
@@ -1340,5 +1349,5 @@ abstract class _ErrorAddPositionState extends AddPositionState {
   List<RecommendedPositions> get recommendedPositions;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorAddPositionStateCopyWith<_$_ErrorAddPositionState> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorAddPositionStateImplCopyWith<_$ErrorAddPositionStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

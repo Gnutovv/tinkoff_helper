@@ -103,7 +103,7 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
               ),
             ),
             accountId: portfolioResponse.accountId,
-            accountName: _tinkoffApiService.accountName!,
+            accountName: _tinkoffApiService.accountName,
           ),
         ),
       );

@@ -69,18 +69,19 @@ class _$StepsBalancerCopyWithImpl<$Res, $Val extends StepsBalancer> implements $
 }
 
 /// @nodoc
-abstract class _$$_StepBalancerCopyWith<$Res> implements $StepsBalancerCopyWith<$Res> {
-  factory _$$_StepBalancerCopyWith(_$_StepBalancer value, $Res Function(_$_StepBalancer) then) =
-      __$$_StepBalancerCopyWithImpl<$Res>;
+abstract class _$$StepBalancerImplCopyWith<$Res> implements $StepsBalancerCopyWith<$Res> {
+  factory _$$StepBalancerImplCopyWith(_$StepBalancerImpl value, $Res Function(_$StepBalancerImpl) then) =
+      __$$StepBalancerImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@HiveField(0) List<int> stepRateList, @HiveField(1) double tradeBalance, @HiveField(2) int stocksAmount});
 }
 
 /// @nodoc
-class __$$_StepBalancerCopyWithImpl<$Res> extends _$StepsBalancerCopyWithImpl<$Res, _$_StepBalancer>
-    implements _$$_StepBalancerCopyWith<$Res> {
-  __$$_StepBalancerCopyWithImpl(_$_StepBalancer _value, $Res Function(_$_StepBalancer) _then) : super(_value, _then);
+class __$$StepBalancerImplCopyWithImpl<$Res> extends _$StepsBalancerCopyWithImpl<$Res, _$StepBalancerImpl>
+    implements _$$StepBalancerImplCopyWith<$Res> {
+  __$$StepBalancerImplCopyWithImpl(_$StepBalancerImpl _value, $Res Function(_$StepBalancerImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -89,7 +90,7 @@ class __$$_StepBalancerCopyWithImpl<$Res> extends _$StepsBalancerCopyWithImpl<$R
     Object? tradeBalance = null,
     Object? stocksAmount = null,
   }) {
-    return _then(_$_StepBalancer(
+    return _then(_$StepBalancerImpl(
       stepRateList: null == stepRateList
           ? _value._stepRateList
           : stepRateList // ignore: cast_nullable_to_non_nullable
@@ -109,8 +110,8 @@ class __$$_StepBalancerCopyWithImpl<$Res> extends _$StepsBalancerCopyWithImpl<$R
 /// @nodoc
 
 @HiveType(typeId: 0, adapterName: 'StepsBalancerAdapter')
-class _$_StepBalancer extends _StepBalancer {
-  const _$_StepBalancer(
+class _$StepBalancerImpl extends _StepBalancer {
+  const _$StepBalancerImpl(
       {@HiveField(0) required final List<int> stepRateList,
       @HiveField(1) required this.tradeBalance,
       @HiveField(2) required this.stocksAmount})
@@ -142,7 +143,7 @@ class _$_StepBalancer extends _StepBalancer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StepBalancer &&
+            other is _$StepBalancerImpl &&
             const DeepCollectionEquality().equals(other._stepRateList, _stepRateList) &&
             (identical(other.tradeBalance, tradeBalance) || other.tradeBalance == tradeBalance) &&
             (identical(other.stocksAmount, stocksAmount) || other.stocksAmount == stocksAmount));
@@ -155,15 +156,15 @@ class _$_StepBalancer extends _StepBalancer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StepBalancerCopyWith<_$_StepBalancer> get copyWith =>
-      __$$_StepBalancerCopyWithImpl<_$_StepBalancer>(this, _$identity);
+  _$$StepBalancerImplCopyWith<_$StepBalancerImpl> get copyWith =>
+      __$$StepBalancerImplCopyWithImpl<_$StepBalancerImpl>(this, _$identity);
 }
 
 abstract class _StepBalancer extends StepsBalancer {
   const factory _StepBalancer(
       {@HiveField(0) required final List<int> stepRateList,
       @HiveField(1) required final double tradeBalance,
-      @HiveField(2) required final int stocksAmount}) = _$_StepBalancer;
+      @HiveField(2) required final int stocksAmount}) = _$StepBalancerImpl;
   const _StepBalancer._() : super._();
 
   @override
@@ -177,5 +178,5 @@ abstract class _StepBalancer extends StepsBalancer {
   int get stocksAmount;
   @override
   @JsonKey(ignore: true)
-  _$$_StepBalancerCopyWith<_$_StepBalancer> get copyWith => throw _privateConstructorUsedError;
+  _$$StepBalancerImplCopyWith<_$StepBalancerImpl> get copyWith => throw _privateConstructorUsedError;
 }

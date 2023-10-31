@@ -89,9 +89,9 @@ class _$PortfolioCopyWithImpl<$Res, $Val extends Portfolio> implements $Portfoli
 }
 
 /// @nodoc
-abstract class _$$_PortfolioCopyWith<$Res> implements $PortfolioCopyWith<$Res> {
-  factory _$$_PortfolioCopyWith(_$_Portfolio value, $Res Function(_$_Portfolio) then) =
-      __$$_PortfolioCopyWithImpl<$Res>;
+abstract class _$$PortfolioImplCopyWith<$Res> implements $PortfolioCopyWith<$Res> {
+  factory _$$PortfolioImplCopyWith(_$PortfolioImpl value, $Res Function(_$PortfolioImpl) then) =
+      __$$PortfolioImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -104,9 +104,9 @@ abstract class _$$_PortfolioCopyWith<$Res> implements $PortfolioCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, _$_Portfolio>
-    implements _$$_PortfolioCopyWith<$Res> {
-  __$$_PortfolioCopyWithImpl(_$_Portfolio _value, $Res Function(_$_Portfolio) _then) : super(_value, _then);
+class __$$PortfolioImplCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, _$PortfolioImpl>
+    implements _$$PortfolioImplCopyWith<$Res> {
+  __$$PortfolioImplCopyWithImpl(_$PortfolioImpl _value, $Res Function(_$PortfolioImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -118,7 +118,7 @@ class __$$_PortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, _$_
     Object? accountId = null,
     Object? accountName = null,
   }) {
-    return _then(_$_Portfolio(
+    return _then(_$PortfolioImpl(
       totalAmountPortfolio: null == totalAmountPortfolio
           ? _value.totalAmountPortfolio
           : totalAmountPortfolio // ignore: cast_nullable_to_non_nullable
@@ -149,8 +149,8 @@ class __$$_PortfolioCopyWithImpl<$Res> extends _$PortfolioCopyWithImpl<$Res, _$_
 
 /// @nodoc
 
-class _$_Portfolio implements _Portfolio {
-  const _$_Portfolio(
+class _$PortfolioImpl implements _Portfolio {
+  const _$PortfolioImpl(
       {required this.totalAmountPortfolio,
       required this.withdrawLimit,
       required this.expectedYield,
@@ -187,7 +187,7 @@ class _$_Portfolio implements _Portfolio {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Portfolio &&
+            other is _$PortfolioImpl &&
             (identical(other.totalAmountPortfolio, totalAmountPortfolio) ||
                 other.totalAmountPortfolio == totalAmountPortfolio) &&
             (identical(other.withdrawLimit, withdrawLimit) || other.withdrawLimit == withdrawLimit) &&
@@ -204,7 +204,8 @@ class _$_Portfolio implements _Portfolio {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PortfolioCopyWith<_$_Portfolio> get copyWith => __$$_PortfolioCopyWithImpl<_$_Portfolio>(this, _$identity);
+  _$$PortfolioImplCopyWith<_$PortfolioImpl> get copyWith =>
+      __$$PortfolioImplCopyWithImpl<_$PortfolioImpl>(this, _$identity);
 }
 
 abstract class _Portfolio implements Portfolio {
@@ -214,7 +215,7 @@ abstract class _Portfolio implements Portfolio {
       required final double expectedYield,
       required final List<ExpertPortfolioPosition> positions,
       required final String accountId,
-      required final String accountName}) = _$_Portfolio;
+      required final String accountName}) = _$PortfolioImpl;
 
   @override
   double get totalAmountPortfolio;
@@ -230,5 +231,5 @@ abstract class _Portfolio implements Portfolio {
   String get accountName;
   @override
   @JsonKey(ignore: true)
-  _$$_PortfolioCopyWith<_$_Portfolio> get copyWith => throw _privateConstructorUsedError;
+  _$$PortfolioImplCopyWith<_$PortfolioImpl> get copyWith => throw _privateConstructorUsedError;
 }

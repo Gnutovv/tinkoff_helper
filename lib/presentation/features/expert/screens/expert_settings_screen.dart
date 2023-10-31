@@ -51,7 +51,7 @@ class ExpertSettingsScreen extends StatelessWidget {
                   children: [
                     const Text('Торгуемый баланс:'),
                     Text(
-                      state.balancer.tradeBalance.toString().toMoneyFormat,
+                      state.balancer.tradeBalance.toPriceFormat,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -68,7 +68,7 @@ class ExpertSettingsScreen extends StatelessWidget {
                   children: [
                     const Text('Средств на один инструмент: '),
                     Text(
-                      state.balancer.oneStockMoneyVolume.toString().toMoneyFormat,
+                      state.balancer.oneStockMoneyVolume.toPriceFormat,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],

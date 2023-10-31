@@ -67,22 +67,25 @@ class _$PortfolioEventCopyWithImpl<$Res, $Val extends PortfolioEvent> implements
 }
 
 /// @nodoc
-abstract class _$$_UpdatePortfolioEventCopyWith<$Res> {
-  factory _$$_UpdatePortfolioEventCopyWith(_$_UpdatePortfolioEvent value, $Res Function(_$_UpdatePortfolioEvent) then) =
-      __$$_UpdatePortfolioEventCopyWithImpl<$Res>;
+abstract class _$$UpdatePortfolioEventImplCopyWith<$Res> {
+  factory _$$UpdatePortfolioEventImplCopyWith(
+          _$UpdatePortfolioEventImpl value, $Res Function(_$UpdatePortfolioEventImpl) then) =
+      __$$UpdatePortfolioEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UpdatePortfolioEventCopyWithImpl<$Res> extends _$PortfolioEventCopyWithImpl<$Res, _$_UpdatePortfolioEvent>
-    implements _$$_UpdatePortfolioEventCopyWith<$Res> {
-  __$$_UpdatePortfolioEventCopyWithImpl(_$_UpdatePortfolioEvent _value, $Res Function(_$_UpdatePortfolioEvent) _then)
+class __$$UpdatePortfolioEventImplCopyWithImpl<$Res>
+    extends _$PortfolioEventCopyWithImpl<$Res, _$UpdatePortfolioEventImpl>
+    implements _$$UpdatePortfolioEventImplCopyWith<$Res> {
+  __$$UpdatePortfolioEventImplCopyWithImpl(
+      _$UpdatePortfolioEventImpl _value, $Res Function(_$UpdatePortfolioEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
-  const _$_UpdatePortfolioEvent() : super._();
+class _$UpdatePortfolioEventImpl extends _UpdatePortfolioEvent {
+  const _$UpdatePortfolioEventImpl() : super._();
 
   @override
   String toString() {
@@ -91,7 +94,7 @@ class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UpdatePortfolioEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$UpdatePortfolioEventImpl);
   }
 
   @override
@@ -155,7 +158,7 @@ class _$_UpdatePortfolioEvent extends _UpdatePortfolioEvent {
 }
 
 abstract class _UpdatePortfolioEvent extends PortfolioEvent {
-  const factory _UpdatePortfolioEvent() = _$_UpdatePortfolioEvent;
+  const factory _UpdatePortfolioEvent() = _$UpdatePortfolioEventImpl;
   const _UpdatePortfolioEvent._() : super._();
 }
 
@@ -257,10 +260,10 @@ class _$PortfolioStateCopyWithImpl<$Res, $Val extends PortfolioState> implements
 }
 
 /// @nodoc
-abstract class _$$_InitializedPortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWith<$Res> {
-  factory _$$_InitializedPortfolioStateCopyWith(
-          _$_InitializedPortfolioState value, $Res Function(_$_InitializedPortfolioState) then) =
-      __$$_InitializedPortfolioStateCopyWithImpl<$Res>;
+abstract class _$$InitializedPortfolioStateImplCopyWith<$Res> implements $PortfolioStateCopyWith<$Res> {
+  factory _$$InitializedPortfolioStateImplCopyWith(
+          _$InitializedPortfolioStateImpl value, $Res Function(_$InitializedPortfolioStateImpl) then) =
+      __$$InitializedPortfolioStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Portfolio? portfolio});
@@ -270,11 +273,11 @@ abstract class _$$_InitializedPortfolioStateCopyWith<$Res> implements $Portfolio
 }
 
 /// @nodoc
-class __$$_InitializedPortfolioStateCopyWithImpl<$Res>
-    extends _$PortfolioStateCopyWithImpl<$Res, _$_InitializedPortfolioState>
-    implements _$$_InitializedPortfolioStateCopyWith<$Res> {
-  __$$_InitializedPortfolioStateCopyWithImpl(
-      _$_InitializedPortfolioState _value, $Res Function(_$_InitializedPortfolioState) _then)
+class __$$InitializedPortfolioStateImplCopyWithImpl<$Res>
+    extends _$PortfolioStateCopyWithImpl<$Res, _$InitializedPortfolioStateImpl>
+    implements _$$InitializedPortfolioStateImplCopyWith<$Res> {
+  __$$InitializedPortfolioStateImplCopyWithImpl(
+      _$InitializedPortfolioStateImpl _value, $Res Function(_$InitializedPortfolioStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -282,7 +285,7 @@ class __$$_InitializedPortfolioStateCopyWithImpl<$Res>
   $Res call({
     Object? portfolio = freezed,
   }) {
-    return _then(_$_InitializedPortfolioState(
+    return _then(_$InitializedPortfolioStateImpl(
       portfolio: freezed == portfolio
           ? _value.portfolio
           : portfolio // ignore: cast_nullable_to_non_nullable
@@ -293,8 +296,8 @@ class __$$_InitializedPortfolioStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InitializedPortfolioState extends _InitializedPortfolioState {
-  _$_InitializedPortfolioState({this.portfolio}) : super._();
+class _$InitializedPortfolioStateImpl extends _InitializedPortfolioState {
+  _$InitializedPortfolioStateImpl({this.portfolio}) : super._();
 
   @override
   final Portfolio? portfolio;
@@ -308,7 +311,7 @@ class _$_InitializedPortfolioState extends _InitializedPortfolioState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitializedPortfolioState &&
+            other is _$InitializedPortfolioStateImpl &&
             (identical(other.portfolio, portfolio) || other.portfolio == portfolio));
   }
 
@@ -318,8 +321,8 @@ class _$_InitializedPortfolioState extends _InitializedPortfolioState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitializedPortfolioStateCopyWith<_$_InitializedPortfolioState> get copyWith =>
-      __$$_InitializedPortfolioStateCopyWithImpl<_$_InitializedPortfolioState>(this, _$identity);
+  _$$InitializedPortfolioStateImplCopyWith<_$InitializedPortfolioStateImpl> get copyWith =>
+      __$$InitializedPortfolioStateImplCopyWithImpl<_$InitializedPortfolioStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -391,22 +394,22 @@ class _$_InitializedPortfolioState extends _InitializedPortfolioState {
 }
 
 abstract class _InitializedPortfolioState extends PortfolioState {
-  factory _InitializedPortfolioState({final Portfolio? portfolio}) = _$_InitializedPortfolioState;
+  factory _InitializedPortfolioState({final Portfolio? portfolio}) = _$InitializedPortfolioStateImpl;
   _InitializedPortfolioState._() : super._();
 
   @override
   Portfolio? get portfolio;
   @override
   @JsonKey(ignore: true)
-  _$$_InitializedPortfolioStateCopyWith<_$_InitializedPortfolioState> get copyWith =>
+  _$$InitializedPortfolioStateImplCopyWith<_$InitializedPortfolioStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InProgressPortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWith<$Res> {
-  factory _$$_InProgressPortfolioStateCopyWith(
-          _$_InProgressPortfolioState value, $Res Function(_$_InProgressPortfolioState) then) =
-      __$$_InProgressPortfolioStateCopyWithImpl<$Res>;
+abstract class _$$InProgressPortfolioStateImplCopyWith<$Res> implements $PortfolioStateCopyWith<$Res> {
+  factory _$$InProgressPortfolioStateImplCopyWith(
+          _$InProgressPortfolioStateImpl value, $Res Function(_$InProgressPortfolioStateImpl) then) =
+      __$$InProgressPortfolioStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Portfolio? portfolio});
@@ -416,11 +419,11 @@ abstract class _$$_InProgressPortfolioStateCopyWith<$Res> implements $PortfolioS
 }
 
 /// @nodoc
-class __$$_InProgressPortfolioStateCopyWithImpl<$Res>
-    extends _$PortfolioStateCopyWithImpl<$Res, _$_InProgressPortfolioState>
-    implements _$$_InProgressPortfolioStateCopyWith<$Res> {
-  __$$_InProgressPortfolioStateCopyWithImpl(
-      _$_InProgressPortfolioState _value, $Res Function(_$_InProgressPortfolioState) _then)
+class __$$InProgressPortfolioStateImplCopyWithImpl<$Res>
+    extends _$PortfolioStateCopyWithImpl<$Res, _$InProgressPortfolioStateImpl>
+    implements _$$InProgressPortfolioStateImplCopyWith<$Res> {
+  __$$InProgressPortfolioStateImplCopyWithImpl(
+      _$InProgressPortfolioStateImpl _value, $Res Function(_$InProgressPortfolioStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -428,7 +431,7 @@ class __$$_InProgressPortfolioStateCopyWithImpl<$Res>
   $Res call({
     Object? portfolio = freezed,
   }) {
-    return _then(_$_InProgressPortfolioState(
+    return _then(_$InProgressPortfolioStateImpl(
       portfolio: freezed == portfolio
           ? _value.portfolio
           : portfolio // ignore: cast_nullable_to_non_nullable
@@ -439,8 +442,8 @@ class __$$_InProgressPortfolioStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InProgressPortfolioState extends _InProgressPortfolioState {
-  _$_InProgressPortfolioState({this.portfolio}) : super._();
+class _$InProgressPortfolioStateImpl extends _InProgressPortfolioState {
+  _$InProgressPortfolioStateImpl({this.portfolio}) : super._();
 
   @override
   final Portfolio? portfolio;
@@ -454,7 +457,7 @@ class _$_InProgressPortfolioState extends _InProgressPortfolioState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InProgressPortfolioState &&
+            other is _$InProgressPortfolioStateImpl &&
             (identical(other.portfolio, portfolio) || other.portfolio == portfolio));
   }
 
@@ -464,8 +467,8 @@ class _$_InProgressPortfolioState extends _InProgressPortfolioState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InProgressPortfolioStateCopyWith<_$_InProgressPortfolioState> get copyWith =>
-      __$$_InProgressPortfolioStateCopyWithImpl<_$_InProgressPortfolioState>(this, _$identity);
+  _$$InProgressPortfolioStateImplCopyWith<_$InProgressPortfolioStateImpl> get copyWith =>
+      __$$InProgressPortfolioStateImplCopyWithImpl<_$InProgressPortfolioStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -537,20 +540,22 @@ class _$_InProgressPortfolioState extends _InProgressPortfolioState {
 }
 
 abstract class _InProgressPortfolioState extends PortfolioState {
-  factory _InProgressPortfolioState({final Portfolio? portfolio}) = _$_InProgressPortfolioState;
+  factory _InProgressPortfolioState({final Portfolio? portfolio}) = _$InProgressPortfolioStateImpl;
   _InProgressPortfolioState._() : super._();
 
   @override
   Portfolio? get portfolio;
   @override
   @JsonKey(ignore: true)
-  _$$_InProgressPortfolioStateCopyWith<_$_InProgressPortfolioState> get copyWith => throw _privateConstructorUsedError;
+  _$$InProgressPortfolioStateImplCopyWith<_$InProgressPortfolioStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorPortfolioStateCopyWith<$Res> implements $PortfolioStateCopyWith<$Res> {
-  factory _$$_ErrorPortfolioStateCopyWith(_$_ErrorPortfolioState value, $Res Function(_$_ErrorPortfolioState) then) =
-      __$$_ErrorPortfolioStateCopyWithImpl<$Res>;
+abstract class _$$ErrorPortfolioStateImplCopyWith<$Res> implements $PortfolioStateCopyWith<$Res> {
+  factory _$$ErrorPortfolioStateImplCopyWith(
+          _$ErrorPortfolioStateImpl value, $Res Function(_$ErrorPortfolioStateImpl) then) =
+      __$$ErrorPortfolioStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Portfolio? portfolio, String message});
@@ -560,9 +565,11 @@ abstract class _$$_ErrorPortfolioStateCopyWith<$Res> implements $PortfolioStateC
 }
 
 /// @nodoc
-class __$$_ErrorPortfolioStateCopyWithImpl<$Res> extends _$PortfolioStateCopyWithImpl<$Res, _$_ErrorPortfolioState>
-    implements _$$_ErrorPortfolioStateCopyWith<$Res> {
-  __$$_ErrorPortfolioStateCopyWithImpl(_$_ErrorPortfolioState _value, $Res Function(_$_ErrorPortfolioState) _then)
+class __$$ErrorPortfolioStateImplCopyWithImpl<$Res>
+    extends _$PortfolioStateCopyWithImpl<$Res, _$ErrorPortfolioStateImpl>
+    implements _$$ErrorPortfolioStateImplCopyWith<$Res> {
+  __$$ErrorPortfolioStateImplCopyWithImpl(
+      _$ErrorPortfolioStateImpl _value, $Res Function(_$ErrorPortfolioStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -571,7 +578,7 @@ class __$$_ErrorPortfolioStateCopyWithImpl<$Res> extends _$PortfolioStateCopyWit
     Object? portfolio = freezed,
     Object? message = null,
   }) {
-    return _then(_$_ErrorPortfolioState(
+    return _then(_$ErrorPortfolioStateImpl(
       portfolio: freezed == portfolio
           ? _value.portfolio
           : portfolio // ignore: cast_nullable_to_non_nullable
@@ -586,8 +593,8 @@ class __$$_ErrorPortfolioStateCopyWithImpl<$Res> extends _$PortfolioStateCopyWit
 
 /// @nodoc
 
-class _$_ErrorPortfolioState extends _ErrorPortfolioState {
-  _$_ErrorPortfolioState({this.portfolio, required this.message}) : super._();
+class _$ErrorPortfolioStateImpl extends _ErrorPortfolioState {
+  _$ErrorPortfolioStateImpl({this.portfolio, required this.message}) : super._();
 
   @override
   final Portfolio? portfolio;
@@ -603,7 +610,7 @@ class _$_ErrorPortfolioState extends _ErrorPortfolioState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorPortfolioState &&
+            other is _$ErrorPortfolioStateImpl &&
             (identical(other.portfolio, portfolio) || other.portfolio == portfolio) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -614,8 +621,8 @@ class _$_ErrorPortfolioState extends _ErrorPortfolioState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorPortfolioStateCopyWith<_$_ErrorPortfolioState> get copyWith =>
-      __$$_ErrorPortfolioStateCopyWithImpl<_$_ErrorPortfolioState>(this, _$identity);
+  _$$ErrorPortfolioStateImplCopyWith<_$ErrorPortfolioStateImpl> get copyWith =>
+      __$$ErrorPortfolioStateImplCopyWithImpl<_$ErrorPortfolioStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -687,7 +694,7 @@ class _$_ErrorPortfolioState extends _ErrorPortfolioState {
 }
 
 abstract class _ErrorPortfolioState extends PortfolioState {
-  factory _ErrorPortfolioState({final Portfolio? portfolio, required final String message}) = _$_ErrorPortfolioState;
+  factory _ErrorPortfolioState({final Portfolio? portfolio, required final String message}) = _$ErrorPortfolioStateImpl;
   _ErrorPortfolioState._() : super._();
 
   @override
@@ -695,5 +702,5 @@ abstract class _ErrorPortfolioState extends PortfolioState {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorPortfolioStateCopyWith<_$_ErrorPortfolioState> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorPortfolioStateImplCopyWith<_$ErrorPortfolioStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

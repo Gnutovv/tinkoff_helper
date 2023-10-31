@@ -7,7 +7,7 @@ import 'package:tinkoff_helper/network/generated/orders.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/sandbox.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/stoporders.pbgrpc.dart';
 import 'package:tinkoff_helper/network/generated/users.pbgrpc.dart';
-import 'package:tinkoff_helper/storage/hive_storage.dart';
+import 'package:tinkoff_helper/storage/secure_storage.dart';
 
 class TinkoffApiService {
   late ClientChannel _channel;
@@ -23,14 +23,19 @@ class TinkoffApiService {
   String? _accountName;
 
   CallOptions get callOptions => _callOptions;
-  String? get accountId => _accountId;
-  String? get accountName => _accountName;
 
-  void setAccountId(String accountId) => _accountId = accountId;
-  void setAccountName(String accountName) => _accountName = accountName;
+  String get accountId => _accountId ?? '';
+
+  String get accountName => _accountName ?? '';
+
+  void updateAccountData(Account account) {
+    _accountId = account.id;
+    _accountName = account.name;
+  }
 
   void init() {
-    updateCallOptions(getIt<HiveStorage>().apiKey);
+    updateCallOptions(getIt<SecureStorage>().key);
+    _channel = ClientChannel(_TinkoffHosts.prod, port: _TinkoffHosts.port);
     instrumentsServiceClient = InstrumentsServiceClient(_channel);
     marketDataServiceClient = MarketDataServiceClient(_channel);
     operationsServiceClient = OperationsServiceClient(_channel);
@@ -42,15 +47,10 @@ class TinkoffApiService {
 
   void updateCallOptions(String apiKey) {
     _callOptions = CallOptions(metadata: {'Authorization': 'Bearer $apiKey'});
-    _channel = ClientChannel(
-      TinkoffHosts.prod,
-      port: TinkoffHosts.port,
-    );
   }
 }
 
-class TinkoffHosts {
-  static const sandbox = 'sandbox-invest-public-api.tinkoff.ru';
+class _TinkoffHosts {
   static const prod = 'invest-public-api.tinkoff.ru';
   static const port = 443;
 }

@@ -31,26 +31,6 @@ extension IntExtension on int {
   }
 }
 
-extension StringExtension on String {
-  String get toMoneyFormat {
-    final lenAfterDot = split('.').last.length;
-
-    if (length == lenAfterDot + 5) {
-      return '${substring(0, 1)} ${substring(1)} ₽';
-    }
-    if (length == lenAfterDot + 6) {
-      return '${substring(0, 2)} ${substring(2)} ₽';
-    }
-    if (length == lenAfterDot + 7) {
-      return '${substring(0, 3)} ${substring(3)} ₽';
-    }
-    if (length == lenAfterDot + 8) {
-      return '${substring(0, 1)} ${substring(1, 4)} ${substring(4)} ₽';
-    }
-    return ('$this ₽');
-  }
-}
-
 extension MoneyValueExtension on MoneyValue {
   double get toDouble => _unitNanoToDouble(units.toInt(), nano);
 }

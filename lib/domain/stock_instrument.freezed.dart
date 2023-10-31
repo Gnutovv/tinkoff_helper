@@ -90,18 +90,18 @@ class _$StockInstrumentCopyWithImpl<$Res, $Val extends StockInstrument> implemen
 }
 
 /// @nodoc
-abstract class _$$_StockInstrimentCopyWith<$Res> implements $StockInstrumentCopyWith<$Res> {
-  factory _$$_StockInstrimentCopyWith(_$_StockInstriment value, $Res Function(_$_StockInstriment) then) =
-      __$$_StockInstrimentCopyWithImpl<$Res>;
+abstract class _$$StockInstrimentImplCopyWith<$Res> implements $StockInstrumentCopyWith<$Res> {
+  factory _$$StockInstrimentImplCopyWith(_$StockInstrimentImpl value, $Res Function(_$StockInstrimentImpl) then) =
+      __$$StockInstrimentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ticker, String figi, int lot, String currency, String name, String country, double lastPrice});
 }
 
 /// @nodoc
-class __$$_StockInstrimentCopyWithImpl<$Res> extends _$StockInstrumentCopyWithImpl<$Res, _$_StockInstriment>
-    implements _$$_StockInstrimentCopyWith<$Res> {
-  __$$_StockInstrimentCopyWithImpl(_$_StockInstriment _value, $Res Function(_$_StockInstriment) _then)
+class __$$StockInstrimentImplCopyWithImpl<$Res> extends _$StockInstrumentCopyWithImpl<$Res, _$StockInstrimentImpl>
+    implements _$$StockInstrimentImplCopyWith<$Res> {
+  __$$StockInstrimentImplCopyWithImpl(_$StockInstrimentImpl _value, $Res Function(_$StockInstrimentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_StockInstrimentCopyWithImpl<$Res> extends _$StockInstrumentCopyWithIm
     Object? country = null,
     Object? lastPrice = null,
   }) {
-    return _then(_$_StockInstriment(
+    return _then(_$StockInstrimentImpl(
       ticker: null == ticker
           ? _value.ticker
           : ticker // ignore: cast_nullable_to_non_nullable
@@ -150,8 +150,8 @@ class __$$_StockInstrimentCopyWithImpl<$Res> extends _$StockInstrumentCopyWithIm
 
 /// @nodoc
 
-class _$_StockInstriment extends _StockInstriment {
-  const _$_StockInstriment(
+class _$StockInstrimentImpl extends _StockInstriment {
+  const _$StockInstrimentImpl(
       {required this.ticker,
       required this.figi,
       required this.lot,
@@ -185,7 +185,7 @@ class _$_StockInstriment extends _StockInstriment {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StockInstriment &&
+            other is _$StockInstrimentImpl &&
             (identical(other.ticker, ticker) || other.ticker == ticker) &&
             (identical(other.figi, figi) || other.figi == figi) &&
             (identical(other.lot, lot) || other.lot == lot) &&
@@ -201,8 +201,8 @@ class _$_StockInstriment extends _StockInstriment {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StockInstrimentCopyWith<_$_StockInstriment> get copyWith =>
-      __$$_StockInstrimentCopyWithImpl<_$_StockInstriment>(this, _$identity);
+  _$$StockInstrimentImplCopyWith<_$StockInstrimentImpl> get copyWith =>
+      __$$StockInstrimentImplCopyWithImpl<_$StockInstrimentImpl>(this, _$identity);
 }
 
 abstract class _StockInstriment extends StockInstrument {
@@ -213,7 +213,7 @@ abstract class _StockInstriment extends StockInstrument {
       required final String currency,
       required final String name,
       required final String country,
-      required final double lastPrice}) = _$_StockInstriment;
+      required final double lastPrice}) = _$StockInstrimentImpl;
   const _StockInstriment._() : super._();
 
   @override
@@ -232,5 +232,5 @@ abstract class _StockInstriment extends StockInstrument {
   double get lastPrice;
   @override
   @JsonKey(ignore: true)
-  _$$_StockInstrimentCopyWith<_$_StockInstriment> get copyWith => throw _privateConstructorUsedError;
+  _$$StockInstrimentImplCopyWith<_$StockInstrimentImpl> get copyWith => throw _privateConstructorUsedError;
 }

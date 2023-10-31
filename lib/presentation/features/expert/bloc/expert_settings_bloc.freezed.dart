@@ -74,10 +74,10 @@ class _$ExpertSettingsEventCopyWithImpl<$Res, $Val extends ExpertSettingsEvent>
 }
 
 /// @nodoc
-abstract class _$$_InitExpertSettingsEventCopyWith<$Res> {
-  factory _$$_InitExpertSettingsEventCopyWith(
-          _$_InitExpertSettingsEvent value, $Res Function(_$_InitExpertSettingsEvent) then) =
-      __$$_InitExpertSettingsEventCopyWithImpl<$Res>;
+abstract class _$$InitExpertSettingsEventImplCopyWith<$Res> {
+  factory _$$InitExpertSettingsEventImplCopyWith(
+          _$InitExpertSettingsEventImpl value, $Res Function(_$InitExpertSettingsEventImpl) then) =
+      __$$InitExpertSettingsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({StepsBalancer balancer});
 
@@ -85,11 +85,11 @@ abstract class _$$_InitExpertSettingsEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitExpertSettingsEventCopyWithImpl<$Res>
-    extends _$ExpertSettingsEventCopyWithImpl<$Res, _$_InitExpertSettingsEvent>
-    implements _$$_InitExpertSettingsEventCopyWith<$Res> {
-  __$$_InitExpertSettingsEventCopyWithImpl(
-      _$_InitExpertSettingsEvent _value, $Res Function(_$_InitExpertSettingsEvent) _then)
+class __$$InitExpertSettingsEventImplCopyWithImpl<$Res>
+    extends _$ExpertSettingsEventCopyWithImpl<$Res, _$InitExpertSettingsEventImpl>
+    implements _$$InitExpertSettingsEventImplCopyWith<$Res> {
+  __$$InitExpertSettingsEventImplCopyWithImpl(
+      _$InitExpertSettingsEventImpl _value, $Res Function(_$InitExpertSettingsEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +97,7 @@ class __$$_InitExpertSettingsEventCopyWithImpl<$Res>
   $Res call({
     Object? balancer = null,
   }) {
-    return _then(_$_InitExpertSettingsEvent(
+    return _then(_$InitExpertSettingsEventImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -116,8 +116,8 @@ class __$$_InitExpertSettingsEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InitExpertSettingsEvent extends _InitExpertSettingsEvent {
-  const _$_InitExpertSettingsEvent({required this.balancer}) : super._();
+class _$InitExpertSettingsEventImpl extends _InitExpertSettingsEvent {
+  const _$InitExpertSettingsEventImpl({required this.balancer}) : super._();
 
   @override
   final StepsBalancer balancer;
@@ -131,7 +131,7 @@ class _$_InitExpertSettingsEvent extends _InitExpertSettingsEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitExpertSettingsEvent &&
+            other is _$InitExpertSettingsEventImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
@@ -141,8 +141,8 @@ class _$_InitExpertSettingsEvent extends _InitExpertSettingsEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitExpertSettingsEventCopyWith<_$_InitExpertSettingsEvent> get copyWith =>
-      __$$_InitExpertSettingsEventCopyWithImpl<_$_InitExpertSettingsEvent>(this, _$identity);
+  _$$InitExpertSettingsEventImplCopyWith<_$InitExpertSettingsEventImpl> get copyWith =>
+      __$$InitExpertSettingsEventImplCopyWithImpl<_$InitExpertSettingsEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -208,29 +208,30 @@ class _$_InitExpertSettingsEvent extends _InitExpertSettingsEvent {
 }
 
 abstract class _InitExpertSettingsEvent extends ExpertSettingsEvent {
-  const factory _InitExpertSettingsEvent({required final StepsBalancer balancer}) = _$_InitExpertSettingsEvent;
+  const factory _InitExpertSettingsEvent({required final StepsBalancer balancer}) = _$InitExpertSettingsEventImpl;
   const _InitExpertSettingsEvent._() : super._();
 
   StepsBalancer get balancer;
   @JsonKey(ignore: true)
-  _$$_InitExpertSettingsEventCopyWith<_$_InitExpertSettingsEvent> get copyWith => throw _privateConstructorUsedError;
+  _$$InitExpertSettingsEventImplCopyWith<_$InitExpertSettingsEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateBalancerExpertSettingsEventCopyWith<$Res> {
-  factory _$$_UpdateBalancerExpertSettingsEventCopyWith(
-          _$_UpdateBalancerExpertSettingsEvent value, $Res Function(_$_UpdateBalancerExpertSettingsEvent) then) =
-      __$$_UpdateBalancerExpertSettingsEventCopyWithImpl<$Res>;
+abstract class _$$UpdateBalancerExpertSettingsEventImplCopyWith<$Res> {
+  factory _$$UpdateBalancerExpertSettingsEventImplCopyWith(
+          _$UpdateBalancerExpertSettingsEventImpl value, $Res Function(_$UpdateBalancerExpertSettingsEventImpl) then) =
+      __$$UpdateBalancerExpertSettingsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<int>? stepsRateList, int? stocksAmount, double? balance});
 }
 
 /// @nodoc
-class __$$_UpdateBalancerExpertSettingsEventCopyWithImpl<$Res>
-    extends _$ExpertSettingsEventCopyWithImpl<$Res, _$_UpdateBalancerExpertSettingsEvent>
-    implements _$$_UpdateBalancerExpertSettingsEventCopyWith<$Res> {
-  __$$_UpdateBalancerExpertSettingsEventCopyWithImpl(
-      _$_UpdateBalancerExpertSettingsEvent _value, $Res Function(_$_UpdateBalancerExpertSettingsEvent) _then)
+class __$$UpdateBalancerExpertSettingsEventImplCopyWithImpl<$Res>
+    extends _$ExpertSettingsEventCopyWithImpl<$Res, _$UpdateBalancerExpertSettingsEventImpl>
+    implements _$$UpdateBalancerExpertSettingsEventImplCopyWith<$Res> {
+  __$$UpdateBalancerExpertSettingsEventImplCopyWithImpl(
+      _$UpdateBalancerExpertSettingsEventImpl _value, $Res Function(_$UpdateBalancerExpertSettingsEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -240,7 +241,7 @@ class __$$_UpdateBalancerExpertSettingsEventCopyWithImpl<$Res>
     Object? stocksAmount = freezed,
     Object? balance = freezed,
   }) {
-    return _then(_$_UpdateBalancerExpertSettingsEvent(
+    return _then(_$UpdateBalancerExpertSettingsEventImpl(
       stepsRateList: freezed == stepsRateList
           ? _value._stepsRateList
           : stepsRateList // ignore: cast_nullable_to_non_nullable
@@ -259,8 +260,8 @@ class __$$_UpdateBalancerExpertSettingsEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateBalancerExpertSettingsEvent extends _UpdateBalancerExpertSettingsEvent {
-  const _$_UpdateBalancerExpertSettingsEvent({final List<int>? stepsRateList, this.stocksAmount, this.balance})
+class _$UpdateBalancerExpertSettingsEventImpl extends _UpdateBalancerExpertSettingsEvent {
+  const _$UpdateBalancerExpertSettingsEventImpl({final List<int>? stepsRateList, this.stocksAmount, this.balance})
       : _stepsRateList = stepsRateList,
         super._();
 
@@ -288,7 +289,7 @@ class _$_UpdateBalancerExpertSettingsEvent extends _UpdateBalancerExpertSettings
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateBalancerExpertSettingsEvent &&
+            other is _$UpdateBalancerExpertSettingsEventImpl &&
             const DeepCollectionEquality().equals(other._stepsRateList, _stepsRateList) &&
             (identical(other.stocksAmount, stocksAmount) || other.stocksAmount == stocksAmount) &&
             (identical(other.balance, balance) || other.balance == balance));
@@ -301,8 +302,8 @@ class _$_UpdateBalancerExpertSettingsEvent extends _UpdateBalancerExpertSettings
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateBalancerExpertSettingsEventCopyWith<_$_UpdateBalancerExpertSettingsEvent> get copyWith =>
-      __$$_UpdateBalancerExpertSettingsEventCopyWithImpl<_$_UpdateBalancerExpertSettingsEvent>(this, _$identity);
+  _$$UpdateBalancerExpertSettingsEventImplCopyWith<_$UpdateBalancerExpertSettingsEventImpl> get copyWith =>
+      __$$UpdateBalancerExpertSettingsEventImplCopyWithImpl<_$UpdateBalancerExpertSettingsEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -371,14 +372,14 @@ abstract class _UpdateBalancerExpertSettingsEvent extends ExpertSettingsEvent {
   const factory _UpdateBalancerExpertSettingsEvent(
       {final List<int>? stepsRateList,
       final int? stocksAmount,
-      final double? balance}) = _$_UpdateBalancerExpertSettingsEvent;
+      final double? balance}) = _$UpdateBalancerExpertSettingsEventImpl;
   const _UpdateBalancerExpertSettingsEvent._() : super._();
 
   List<int>? get stepsRateList;
   int? get stocksAmount;
   double? get balance;
   @JsonKey(ignore: true)
-  _$$_UpdateBalancerExpertSettingsEventCopyWith<_$_UpdateBalancerExpertSettingsEvent> get copyWith =>
+  _$$UpdateBalancerExpertSettingsEventImplCopyWith<_$UpdateBalancerExpertSettingsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -477,10 +478,10 @@ class _$ExpertSettingsStateCopyWithImpl<$Res, $Val extends ExpertSettingsState>
 }
 
 /// @nodoc
-abstract class _$$_InitializedExpertSettingsStateCopyWith<$Res> implements $ExpertSettingsStateCopyWith<$Res> {
-  factory _$$_InitializedExpertSettingsStateCopyWith(
-          _$_InitializedExpertSettingsState value, $Res Function(_$_InitializedExpertSettingsState) then) =
-      __$$_InitializedExpertSettingsStateCopyWithImpl<$Res>;
+abstract class _$$InitializedExpertSettingsStateImplCopyWith<$Res> implements $ExpertSettingsStateCopyWith<$Res> {
+  factory _$$InitializedExpertSettingsStateImplCopyWith(
+          _$InitializedExpertSettingsStateImpl value, $Res Function(_$InitializedExpertSettingsStateImpl) then) =
+      __$$InitializedExpertSettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer});
@@ -490,11 +491,11 @@ abstract class _$$_InitializedExpertSettingsStateCopyWith<$Res> implements $Expe
 }
 
 /// @nodoc
-class __$$_InitializedExpertSettingsStateCopyWithImpl<$Res>
-    extends _$ExpertSettingsStateCopyWithImpl<$Res, _$_InitializedExpertSettingsState>
-    implements _$$_InitializedExpertSettingsStateCopyWith<$Res> {
-  __$$_InitializedExpertSettingsStateCopyWithImpl(
-      _$_InitializedExpertSettingsState _value, $Res Function(_$_InitializedExpertSettingsState) _then)
+class __$$InitializedExpertSettingsStateImplCopyWithImpl<$Res>
+    extends _$ExpertSettingsStateCopyWithImpl<$Res, _$InitializedExpertSettingsStateImpl>
+    implements _$$InitializedExpertSettingsStateImplCopyWith<$Res> {
+  __$$InitializedExpertSettingsStateImplCopyWithImpl(
+      _$InitializedExpertSettingsStateImpl _value, $Res Function(_$InitializedExpertSettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -502,7 +503,7 @@ class __$$_InitializedExpertSettingsStateCopyWithImpl<$Res>
   $Res call({
     Object? balancer = null,
   }) {
-    return _then(_$_InitializedExpertSettingsState(
+    return _then(_$InitializedExpertSettingsStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -513,8 +514,8 @@ class __$$_InitializedExpertSettingsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InitializedExpertSettingsState extends _InitializedExpertSettingsState {
-  _$_InitializedExpertSettingsState({required this.balancer}) : super._();
+class _$InitializedExpertSettingsStateImpl extends _InitializedExpertSettingsState {
+  _$InitializedExpertSettingsStateImpl({required this.balancer}) : super._();
 
   @override
   final StepsBalancer balancer;
@@ -528,7 +529,7 @@ class _$_InitializedExpertSettingsState extends _InitializedExpertSettingsState 
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitializedExpertSettingsState &&
+            other is _$InitializedExpertSettingsStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
@@ -538,8 +539,8 @@ class _$_InitializedExpertSettingsState extends _InitializedExpertSettingsState 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitializedExpertSettingsStateCopyWith<_$_InitializedExpertSettingsState> get copyWith =>
-      __$$_InitializedExpertSettingsStateCopyWithImpl<_$_InitializedExpertSettingsState>(this, _$identity);
+  _$$InitializedExpertSettingsStateImplCopyWith<_$InitializedExpertSettingsStateImpl> get copyWith =>
+      __$$InitializedExpertSettingsStateImplCopyWithImpl<_$InitializedExpertSettingsStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -611,22 +612,23 @@ class _$_InitializedExpertSettingsState extends _InitializedExpertSettingsState 
 }
 
 abstract class _InitializedExpertSettingsState extends ExpertSettingsState {
-  factory _InitializedExpertSettingsState({required final StepsBalancer balancer}) = _$_InitializedExpertSettingsState;
+  factory _InitializedExpertSettingsState({required final StepsBalancer balancer}) =
+      _$InitializedExpertSettingsStateImpl;
   _InitializedExpertSettingsState._() : super._();
 
   @override
   StepsBalancer get balancer;
   @override
   @JsonKey(ignore: true)
-  _$$_InitializedExpertSettingsStateCopyWith<_$_InitializedExpertSettingsState> get copyWith =>
+  _$$InitializedExpertSettingsStateImplCopyWith<_$InitializedExpertSettingsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InProgressExpertSettingsStateCopyWith<$Res> implements $ExpertSettingsStateCopyWith<$Res> {
-  factory _$$_InProgressExpertSettingsStateCopyWith(
-          _$_InProgressExpertSettingsState value, $Res Function(_$_InProgressExpertSettingsState) then) =
-      __$$_InProgressExpertSettingsStateCopyWithImpl<$Res>;
+abstract class _$$InProgressExpertSettingsStateImplCopyWith<$Res> implements $ExpertSettingsStateCopyWith<$Res> {
+  factory _$$InProgressExpertSettingsStateImplCopyWith(
+          _$InProgressExpertSettingsStateImpl value, $Res Function(_$InProgressExpertSettingsStateImpl) then) =
+      __$$InProgressExpertSettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer});
@@ -636,11 +638,11 @@ abstract class _$$_InProgressExpertSettingsStateCopyWith<$Res> implements $Exper
 }
 
 /// @nodoc
-class __$$_InProgressExpertSettingsStateCopyWithImpl<$Res>
-    extends _$ExpertSettingsStateCopyWithImpl<$Res, _$_InProgressExpertSettingsState>
-    implements _$$_InProgressExpertSettingsStateCopyWith<$Res> {
-  __$$_InProgressExpertSettingsStateCopyWithImpl(
-      _$_InProgressExpertSettingsState _value, $Res Function(_$_InProgressExpertSettingsState) _then)
+class __$$InProgressExpertSettingsStateImplCopyWithImpl<$Res>
+    extends _$ExpertSettingsStateCopyWithImpl<$Res, _$InProgressExpertSettingsStateImpl>
+    implements _$$InProgressExpertSettingsStateImplCopyWith<$Res> {
+  __$$InProgressExpertSettingsStateImplCopyWithImpl(
+      _$InProgressExpertSettingsStateImpl _value, $Res Function(_$InProgressExpertSettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -648,7 +650,7 @@ class __$$_InProgressExpertSettingsStateCopyWithImpl<$Res>
   $Res call({
     Object? balancer = null,
   }) {
-    return _then(_$_InProgressExpertSettingsState(
+    return _then(_$InProgressExpertSettingsStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -659,8 +661,8 @@ class __$$_InProgressExpertSettingsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InProgressExpertSettingsState extends _InProgressExpertSettingsState {
-  _$_InProgressExpertSettingsState({required this.balancer}) : super._();
+class _$InProgressExpertSettingsStateImpl extends _InProgressExpertSettingsState {
+  _$InProgressExpertSettingsStateImpl({required this.balancer}) : super._();
 
   @override
   final StepsBalancer balancer;
@@ -674,7 +676,7 @@ class _$_InProgressExpertSettingsState extends _InProgressExpertSettingsState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InProgressExpertSettingsState &&
+            other is _$InProgressExpertSettingsStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
@@ -684,8 +686,8 @@ class _$_InProgressExpertSettingsState extends _InProgressExpertSettingsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InProgressExpertSettingsStateCopyWith<_$_InProgressExpertSettingsState> get copyWith =>
-      __$$_InProgressExpertSettingsStateCopyWithImpl<_$_InProgressExpertSettingsState>(this, _$identity);
+  _$$InProgressExpertSettingsStateImplCopyWith<_$InProgressExpertSettingsStateImpl> get copyWith =>
+      __$$InProgressExpertSettingsStateImplCopyWithImpl<_$InProgressExpertSettingsStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -757,22 +759,22 @@ class _$_InProgressExpertSettingsState extends _InProgressExpertSettingsState {
 }
 
 abstract class _InProgressExpertSettingsState extends ExpertSettingsState {
-  factory _InProgressExpertSettingsState({required final StepsBalancer balancer}) = _$_InProgressExpertSettingsState;
+  factory _InProgressExpertSettingsState({required final StepsBalancer balancer}) = _$InProgressExpertSettingsStateImpl;
   _InProgressExpertSettingsState._() : super._();
 
   @override
   StepsBalancer get balancer;
   @override
   @JsonKey(ignore: true)
-  _$$_InProgressExpertSettingsStateCopyWith<_$_InProgressExpertSettingsState> get copyWith =>
+  _$$InProgressExpertSettingsStateImplCopyWith<_$InProgressExpertSettingsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorExpertSettingsStateCopyWith<$Res> implements $ExpertSettingsStateCopyWith<$Res> {
-  factory _$$_ErrorExpertSettingsStateCopyWith(
-          _$_ErrorExpertSettingsState value, $Res Function(_$_ErrorExpertSettingsState) then) =
-      __$$_ErrorExpertSettingsStateCopyWithImpl<$Res>;
+abstract class _$$ErrorExpertSettingsStateImplCopyWith<$Res> implements $ExpertSettingsStateCopyWith<$Res> {
+  factory _$$ErrorExpertSettingsStateImplCopyWith(
+          _$ErrorExpertSettingsStateImpl value, $Res Function(_$ErrorExpertSettingsStateImpl) then) =
+      __$$ErrorExpertSettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer, String message});
@@ -782,11 +784,11 @@ abstract class _$$_ErrorExpertSettingsStateCopyWith<$Res> implements $ExpertSett
 }
 
 /// @nodoc
-class __$$_ErrorExpertSettingsStateCopyWithImpl<$Res>
-    extends _$ExpertSettingsStateCopyWithImpl<$Res, _$_ErrorExpertSettingsState>
-    implements _$$_ErrorExpertSettingsStateCopyWith<$Res> {
-  __$$_ErrorExpertSettingsStateCopyWithImpl(
-      _$_ErrorExpertSettingsState _value, $Res Function(_$_ErrorExpertSettingsState) _then)
+class __$$ErrorExpertSettingsStateImplCopyWithImpl<$Res>
+    extends _$ExpertSettingsStateCopyWithImpl<$Res, _$ErrorExpertSettingsStateImpl>
+    implements _$$ErrorExpertSettingsStateImplCopyWith<$Res> {
+  __$$ErrorExpertSettingsStateImplCopyWithImpl(
+      _$ErrorExpertSettingsStateImpl _value, $Res Function(_$ErrorExpertSettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -795,7 +797,7 @@ class __$$_ErrorExpertSettingsStateCopyWithImpl<$Res>
     Object? balancer = null,
     Object? message = null,
   }) {
-    return _then(_$_ErrorExpertSettingsState(
+    return _then(_$ErrorExpertSettingsStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -810,8 +812,8 @@ class __$$_ErrorExpertSettingsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorExpertSettingsState extends _ErrorExpertSettingsState {
-  _$_ErrorExpertSettingsState({required this.balancer, required this.message}) : super._();
+class _$ErrorExpertSettingsStateImpl extends _ErrorExpertSettingsState {
+  _$ErrorExpertSettingsStateImpl({required this.balancer, required this.message}) : super._();
 
   @override
   final StepsBalancer balancer;
@@ -827,7 +829,7 @@ class _$_ErrorExpertSettingsState extends _ErrorExpertSettingsState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorExpertSettingsState &&
+            other is _$ErrorExpertSettingsStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -838,8 +840,8 @@ class _$_ErrorExpertSettingsState extends _ErrorExpertSettingsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorExpertSettingsStateCopyWith<_$_ErrorExpertSettingsState> get copyWith =>
-      __$$_ErrorExpertSettingsStateCopyWithImpl<_$_ErrorExpertSettingsState>(this, _$identity);
+  _$$ErrorExpertSettingsStateImplCopyWith<_$ErrorExpertSettingsStateImpl> get copyWith =>
+      __$$ErrorExpertSettingsStateImplCopyWithImpl<_$ErrorExpertSettingsStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -912,7 +914,7 @@ class _$_ErrorExpertSettingsState extends _ErrorExpertSettingsState {
 
 abstract class _ErrorExpertSettingsState extends ExpertSettingsState {
   factory _ErrorExpertSettingsState({required final StepsBalancer balancer, required final String message}) =
-      _$_ErrorExpertSettingsState;
+      _$ErrorExpertSettingsStateImpl;
   _ErrorExpertSettingsState._() : super._();
 
   @override
@@ -920,5 +922,6 @@ abstract class _ErrorExpertSettingsState extends ExpertSettingsState {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorExpertSettingsStateCopyWith<_$_ErrorExpertSettingsState> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorExpertSettingsStateImplCopyWith<_$ErrorExpertSettingsStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

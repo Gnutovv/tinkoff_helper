@@ -5,8 +5,6 @@ import 'package:tinkoff_helper/network/generated/marketdata.pb.dart';
 
 part 'steps_balancer.freezed.dart';
 
-part 'steps_balancer.g.dart';
-
 @freezed
 class StepsBalancer with _$StepsBalancer {
   @HiveType(typeId: 0, adapterName: 'StepsBalancerAdapter')

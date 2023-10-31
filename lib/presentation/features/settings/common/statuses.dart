@@ -1,1 +1,1 @@
-enum CheckApiKeyStatuses { readyToCheck, ok, failed }
+enum CheckApiKeyStatuses { readyToCheck, failed }

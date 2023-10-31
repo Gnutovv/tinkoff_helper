@@ -16,91 +16,81 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SettingsEvent {
-  String get apiKey => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String apiKey) checkToken,
+    required TResult Function(Account account) switchAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String apiKey)? checkToken,
+    TResult? Function(Account account)? switchAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String apiKey)? checkToken,
+    TResult Function(Account account)? switchAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckTokenSettingsEvent value) checkToken,
+    required TResult Function(_SwitchAccountsSettingsEvent value) switchAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckTokenSettingsEvent value)? checkToken,
+    TResult? Function(_SwitchAccountsSettingsEvent value)? switchAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckTokenSettingsEvent value)? checkToken,
+    TResult Function(_SwitchAccountsSettingsEvent value)? switchAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $SettingsEventCopyWith<SettingsEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SettingsEventCopyWith<$Res> {
-  factory $SettingsEventCopyWith(SettingsEvent value, $Res Function(SettingsEvent) then) =
+  factory $SettingsEventCopyWith(
+          SettingsEvent value, $Res Function(SettingsEvent) then) =
       _$SettingsEventCopyWithImpl<$Res, SettingsEvent>;
-  @useResult
-  $Res call({String apiKey});
 }
 
 /// @nodoc
-class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent> implements $SettingsEventCopyWith<$Res> {
+class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent>
+    implements $SettingsEventCopyWith<$Res> {
   _$SettingsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? apiKey = null,
-  }) {
-    return _then(_value.copyWith(
-      apiKey: null == apiKey
-          ? _value.apiKey
-          : apiKey // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_CheckTokenSettingsEventCopyWith<$Res> implements $SettingsEventCopyWith<$Res> {
-  factory _$$_CheckTokenSettingsEventCopyWith(
-          _$_CheckTokenSettingsEvent value, $Res Function(_$_CheckTokenSettingsEvent) then) =
-      __$$_CheckTokenSettingsEventCopyWithImpl<$Res>;
-  @override
+abstract class _$$CheckTokenSettingsEventImplCopyWith<$Res> {
+  factory _$$CheckTokenSettingsEventImplCopyWith(
+          _$CheckTokenSettingsEventImpl value,
+          $Res Function(_$CheckTokenSettingsEventImpl) then) =
+      __$$CheckTokenSettingsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String apiKey});
 }
 
 /// @nodoc
-class __$$_CheckTokenSettingsEventCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res, _$_CheckTokenSettingsEvent>
-    implements _$$_CheckTokenSettingsEventCopyWith<$Res> {
-  __$$_CheckTokenSettingsEventCopyWithImpl(
-      _$_CheckTokenSettingsEvent _value, $Res Function(_$_CheckTokenSettingsEvent) _then)
+class __$$CheckTokenSettingsEventImplCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$CheckTokenSettingsEventImpl>
+    implements _$$CheckTokenSettingsEventImplCopyWith<$Res> {
+  __$$CheckTokenSettingsEventImplCopyWithImpl(
+      _$CheckTokenSettingsEventImpl _value,
+      $Res Function(_$CheckTokenSettingsEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +98,7 @@ class __$$_CheckTokenSettingsEventCopyWithImpl<$Res>
   $Res call({
     Object? apiKey = null,
   }) {
-    return _then(_$_CheckTokenSettingsEvent(
+    return _then(_$CheckTokenSettingsEventImpl(
       apiKey: null == apiKey
           ? _value.apiKey
           : apiKey // ignore: cast_nullable_to_non_nullable
@@ -119,8 +109,8 @@ class __$$_CheckTokenSettingsEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
-  const _$_CheckTokenSettingsEvent({required this.apiKey}) : super._();
+class _$CheckTokenSettingsEventImpl extends _CheckTokenSettingsEvent {
+  const _$CheckTokenSettingsEventImpl({required this.apiKey}) : super._();
 
   @override
   final String apiKey;
@@ -134,7 +124,7 @@ class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CheckTokenSettingsEvent &&
+            other is _$CheckTokenSettingsEventImpl &&
             (identical(other.apiKey, apiKey) || other.apiKey == apiKey));
   }
 
@@ -144,13 +134,15 @@ class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CheckTokenSettingsEventCopyWith<_$_CheckTokenSettingsEvent> get copyWith =>
-      __$$_CheckTokenSettingsEventCopyWithImpl<_$_CheckTokenSettingsEvent>(this, _$identity);
+  _$$CheckTokenSettingsEventImplCopyWith<_$CheckTokenSettingsEventImpl>
+      get copyWith => __$$CheckTokenSettingsEventImplCopyWithImpl<
+          _$CheckTokenSettingsEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String apiKey) checkToken,
+    required TResult Function(Account account) switchAccount,
   }) {
     return checkToken(apiKey);
   }
@@ -159,6 +151,7 @@ class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String apiKey)? checkToken,
+    TResult? Function(Account account)? switchAccount,
   }) {
     return checkToken?.call(apiKey);
   }
@@ -167,6 +160,7 @@ class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String apiKey)? checkToken,
+    TResult Function(Account account)? switchAccount,
     required TResult orElse(),
   }) {
     if (checkToken != null) {
@@ -179,6 +173,7 @@ class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckTokenSettingsEvent value) checkToken,
+    required TResult Function(_SwitchAccountsSettingsEvent value) switchAccount,
   }) {
     return checkToken(this);
   }
@@ -187,6 +182,7 @@ class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckTokenSettingsEvent value)? checkToken,
+    TResult? Function(_SwitchAccountsSettingsEvent value)? switchAccount,
   }) {
     return checkToken?.call(this);
   }
@@ -195,6 +191,7 @@ class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckTokenSettingsEvent value)? checkToken,
+    TResult Function(_SwitchAccountsSettingsEvent value)? switchAccount,
     required TResult orElse(),
   }) {
     if (checkToken != null) {
@@ -205,206 +202,296 @@ class _$_CheckTokenSettingsEvent extends _CheckTokenSettingsEvent {
 }
 
 abstract class _CheckTokenSettingsEvent extends SettingsEvent {
-  const factory _CheckTokenSettingsEvent({required final String apiKey}) = _$_CheckTokenSettingsEvent;
+  const factory _CheckTokenSettingsEvent({required final String apiKey}) =
+      _$CheckTokenSettingsEventImpl;
   const _CheckTokenSettingsEvent._() : super._();
 
-  @override
   String get apiKey;
-  @override
   @JsonKey(ignore: true)
-  _$$_CheckTokenSettingsEventCopyWith<_$_CheckTokenSettingsEvent> get copyWith => throw _privateConstructorUsedError;
+  _$$CheckTokenSettingsEventImplCopyWith<_$CheckTokenSettingsEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SwitchAccountsSettingsEventImplCopyWith<$Res> {
+  factory _$$SwitchAccountsSettingsEventImplCopyWith(
+          _$SwitchAccountsSettingsEventImpl value,
+          $Res Function(_$SwitchAccountsSettingsEventImpl) then) =
+      __$$SwitchAccountsSettingsEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Account account});
+}
+
+/// @nodoc
+class __$$SwitchAccountsSettingsEventImplCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$SwitchAccountsSettingsEventImpl>
+    implements _$$SwitchAccountsSettingsEventImplCopyWith<$Res> {
+  __$$SwitchAccountsSettingsEventImplCopyWithImpl(
+      _$SwitchAccountsSettingsEventImpl _value,
+      $Res Function(_$SwitchAccountsSettingsEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? account = null,
+  }) {
+    return _then(_$SwitchAccountsSettingsEventImpl(
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SwitchAccountsSettingsEventImpl extends _SwitchAccountsSettingsEvent {
+  const _$SwitchAccountsSettingsEventImpl({required this.account}) : super._();
+
+  @override
+  final Account account;
+
+  @override
+  String toString() {
+    return 'SettingsEvent.switchAccount(account: $account)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SwitchAccountsSettingsEventImpl &&
+            (identical(other.account, account) || other.account == account));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, account);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SwitchAccountsSettingsEventImplCopyWith<_$SwitchAccountsSettingsEventImpl>
+      get copyWith => __$$SwitchAccountsSettingsEventImplCopyWithImpl<
+          _$SwitchAccountsSettingsEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String apiKey) checkToken,
+    required TResult Function(Account account) switchAccount,
+  }) {
+    return switchAccount(account);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String apiKey)? checkToken,
+    TResult? Function(Account account)? switchAccount,
+  }) {
+    return switchAccount?.call(account);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String apiKey)? checkToken,
+    TResult Function(Account account)? switchAccount,
+    required TResult orElse(),
+  }) {
+    if (switchAccount != null) {
+      return switchAccount(account);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckTokenSettingsEvent value) checkToken,
+    required TResult Function(_SwitchAccountsSettingsEvent value) switchAccount,
+  }) {
+    return switchAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckTokenSettingsEvent value)? checkToken,
+    TResult? Function(_SwitchAccountsSettingsEvent value)? switchAccount,
+  }) {
+    return switchAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckTokenSettingsEvent value)? checkToken,
+    TResult Function(_SwitchAccountsSettingsEvent value)? switchAccount,
+    required TResult orElse(),
+  }) {
+    if (switchAccount != null) {
+      return switchAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SwitchAccountsSettingsEvent extends SettingsEvent {
+  const factory _SwitchAccountsSettingsEvent({required final Account account}) =
+      _$SwitchAccountsSettingsEventImpl;
+  const _SwitchAccountsSettingsEvent._() : super._();
+
+  Account get account;
+  @JsonKey(ignore: true)
+  _$$SwitchAccountsSettingsEventImplCopyWith<_$SwitchAccountsSettingsEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$SettingsState {
-  String get apiKey => throw _privateConstructorUsedError;
-  CheckApiKeyStatuses get checkStatus => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) initialized,
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) inProgress,
-    required TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus) error,
+    required TResult Function() noApiKey,
+    required TResult Function(String apiKey) inProgress,
+    required TResult Function(String apiKey, List<Account> accounts) success,
+    required TResult Function(String message, String apiKey) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
-    TResult? Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
+    TResult? Function()? noApiKey,
+    TResult? Function(String apiKey)? inProgress,
+    TResult? Function(String apiKey, List<Account> accounts)? success,
+    TResult? Function(String message, String apiKey)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
-    TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
+    TResult Function()? noApiKey,
+    TResult Function(String apiKey)? inProgress,
+    TResult Function(String apiKey, List<Account> accounts)? success,
+    TResult Function(String message, String apiKey)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitializedSettingsState value) initialized,
+    required TResult Function(_NoApiKyeSettingsState value) noApiKey,
     required TResult Function(_InProgressSettingsState value) inProgress,
-    required TResult Function(_ErrorSettingsState value) error,
+    required TResult Function(_SuccessSettingsState value) success,
+    required TResult Function(_FailedSettingsState value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitializedSettingsState value)? initialized,
+    TResult? Function(_NoApiKyeSettingsState value)? noApiKey,
     TResult? Function(_InProgressSettingsState value)? inProgress,
-    TResult? Function(_ErrorSettingsState value)? error,
+    TResult? Function(_SuccessSettingsState value)? success,
+    TResult? Function(_FailedSettingsState value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitializedSettingsState value)? initialized,
+    TResult Function(_NoApiKyeSettingsState value)? noApiKey,
     TResult Function(_InProgressSettingsState value)? inProgress,
-    TResult Function(_ErrorSettingsState value)? error,
+    TResult Function(_SuccessSettingsState value)? success,
+    TResult Function(_FailedSettingsState value)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $SettingsStateCopyWith<SettingsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SettingsStateCopyWith<$Res> {
-  factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) then) =
+  factory $SettingsStateCopyWith(
+          SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
-  @useResult
-  $Res call({String apiKey, CheckApiKeyStatuses checkStatus});
 }
 
 /// @nodoc
-class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState> implements $SettingsStateCopyWith<$Res> {
+class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
+    implements $SettingsStateCopyWith<$Res> {
   _$SettingsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? apiKey = null,
-    Object? checkStatus = null,
-  }) {
-    return _then(_value.copyWith(
-      apiKey: null == apiKey
-          ? _value.apiKey
-          : apiKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      checkStatus: null == checkStatus
-          ? _value.checkStatus
-          : checkStatus // ignore: cast_nullable_to_non_nullable
-              as CheckApiKeyStatuses,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_InitializedSettingsStateCopyWith<$Res> implements $SettingsStateCopyWith<$Res> {
-  factory _$$_InitializedSettingsStateCopyWith(
-          _$_InitializedSettingsState value, $Res Function(_$_InitializedSettingsState) then) =
-      __$$_InitializedSettingsStateCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String apiKey, CheckApiKeyStatuses checkStatus});
+abstract class _$$NoApiKyeSettingsStateImplCopyWith<$Res> {
+  factory _$$NoApiKyeSettingsStateImplCopyWith(
+          _$NoApiKyeSettingsStateImpl value,
+          $Res Function(_$NoApiKyeSettingsStateImpl) then) =
+      __$$NoApiKyeSettingsStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitializedSettingsStateCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$_InitializedSettingsState>
-    implements _$$_InitializedSettingsStateCopyWith<$Res> {
-  __$$_InitializedSettingsStateCopyWithImpl(
-      _$_InitializedSettingsState _value, $Res Function(_$_InitializedSettingsState) _then)
+class __$$NoApiKyeSettingsStateImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$NoApiKyeSettingsStateImpl>
+    implements _$$NoApiKyeSettingsStateImplCopyWith<$Res> {
+  __$$NoApiKyeSettingsStateImplCopyWithImpl(_$NoApiKyeSettingsStateImpl _value,
+      $Res Function(_$NoApiKyeSettingsStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? apiKey = null,
-    Object? checkStatus = null,
-  }) {
-    return _then(_$_InitializedSettingsState(
-      apiKey: null == apiKey
-          ? _value.apiKey
-          : apiKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      checkStatus: null == checkStatus
-          ? _value.checkStatus
-          : checkStatus // ignore: cast_nullable_to_non_nullable
-              as CheckApiKeyStatuses,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_InitializedSettingsState extends _InitializedSettingsState {
-  _$_InitializedSettingsState({required this.apiKey, this.checkStatus = CheckApiKeyStatuses.readyToCheck}) : super._();
-
-  @override
-  final String apiKey;
-  @override
-  @JsonKey()
-  final CheckApiKeyStatuses checkStatus;
+class _$NoApiKyeSettingsStateImpl extends _NoApiKyeSettingsState {
+  _$NoApiKyeSettingsStateImpl() : super._();
 
   @override
   String toString() {
-    return 'SettingsState.initialized(apiKey: $apiKey, checkStatus: $checkStatus)';
+    return 'SettingsState.noApiKey()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitializedSettingsState &&
-            (identical(other.apiKey, apiKey) || other.apiKey == apiKey) &&
-            (identical(other.checkStatus, checkStatus) || other.checkStatus == checkStatus));
+            other is _$NoApiKyeSettingsStateImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, apiKey, checkStatus);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_InitializedSettingsStateCopyWith<_$_InitializedSettingsState> get copyWith =>
-      __$$_InitializedSettingsStateCopyWithImpl<_$_InitializedSettingsState>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) initialized,
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) inProgress,
-    required TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus) error,
+    required TResult Function() noApiKey,
+    required TResult Function(String apiKey) inProgress,
+    required TResult Function(String apiKey, List<Account> accounts) success,
+    required TResult Function(String message, String apiKey) failed,
   }) {
-    return initialized(apiKey, checkStatus);
+    return noApiKey();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
-    TResult? Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
+    TResult? Function()? noApiKey,
+    TResult? Function(String apiKey)? inProgress,
+    TResult? Function(String apiKey, List<Account> accounts)? success,
+    TResult? Function(String message, String apiKey)? failed,
   }) {
-    return initialized?.call(apiKey, checkStatus);
+    return noApiKey?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
-    TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
+    TResult Function()? noApiKey,
+    TResult Function(String apiKey)? inProgress,
+    TResult Function(String apiKey, List<Account> accounts)? success,
+    TResult Function(String message, String apiKey)? failed,
     required TResult orElse(),
   }) {
-    if (initialized != null) {
-      return initialized(apiKey, checkStatus);
+    if (noApiKey != null) {
+      return noApiKey();
     }
     return orElse();
   }
@@ -412,153 +499,143 @@ class _$_InitializedSettingsState extends _InitializedSettingsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitializedSettingsState value) initialized,
+    required TResult Function(_NoApiKyeSettingsState value) noApiKey,
     required TResult Function(_InProgressSettingsState value) inProgress,
-    required TResult Function(_ErrorSettingsState value) error,
+    required TResult Function(_SuccessSettingsState value) success,
+    required TResult Function(_FailedSettingsState value) failed,
   }) {
-    return initialized(this);
+    return noApiKey(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitializedSettingsState value)? initialized,
+    TResult? Function(_NoApiKyeSettingsState value)? noApiKey,
     TResult? Function(_InProgressSettingsState value)? inProgress,
-    TResult? Function(_ErrorSettingsState value)? error,
+    TResult? Function(_SuccessSettingsState value)? success,
+    TResult? Function(_FailedSettingsState value)? failed,
   }) {
-    return initialized?.call(this);
+    return noApiKey?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitializedSettingsState value)? initialized,
+    TResult Function(_NoApiKyeSettingsState value)? noApiKey,
     TResult Function(_InProgressSettingsState value)? inProgress,
-    TResult Function(_ErrorSettingsState value)? error,
+    TResult Function(_SuccessSettingsState value)? success,
+    TResult Function(_FailedSettingsState value)? failed,
     required TResult orElse(),
   }) {
-    if (initialized != null) {
-      return initialized(this);
+    if (noApiKey != null) {
+      return noApiKey(this);
     }
     return orElse();
   }
 }
 
-abstract class _InitializedSettingsState extends SettingsState {
-  factory _InitializedSettingsState({required final String apiKey, final CheckApiKeyStatuses checkStatus}) =
-      _$_InitializedSettingsState;
-  _InitializedSettingsState._() : super._();
-
-  @override
-  String get apiKey;
-  @override
-  CheckApiKeyStatuses get checkStatus;
-  @override
-  @JsonKey(ignore: true)
-  _$$_InitializedSettingsStateCopyWith<_$_InitializedSettingsState> get copyWith => throw _privateConstructorUsedError;
+abstract class _NoApiKyeSettingsState extends SettingsState {
+  factory _NoApiKyeSettingsState() = _$NoApiKyeSettingsStateImpl;
+  _NoApiKyeSettingsState._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_InProgressSettingsStateCopyWith<$Res> implements $SettingsStateCopyWith<$Res> {
-  factory _$$_InProgressSettingsStateCopyWith(
-          _$_InProgressSettingsState value, $Res Function(_$_InProgressSettingsState) then) =
-      __$$_InProgressSettingsStateCopyWithImpl<$Res>;
-  @override
+abstract class _$$InProgressSettingsStateImplCopyWith<$Res> {
+  factory _$$InProgressSettingsStateImplCopyWith(
+          _$InProgressSettingsStateImpl value,
+          $Res Function(_$InProgressSettingsStateImpl) then) =
+      __$$InProgressSettingsStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String apiKey, CheckApiKeyStatuses checkStatus});
+  $Res call({String apiKey});
 }
 
 /// @nodoc
-class __$$_InProgressSettingsStateCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$_InProgressSettingsState>
-    implements _$$_InProgressSettingsStateCopyWith<$Res> {
-  __$$_InProgressSettingsStateCopyWithImpl(
-      _$_InProgressSettingsState _value, $Res Function(_$_InProgressSettingsState) _then)
+class __$$InProgressSettingsStateImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$InProgressSettingsStateImpl>
+    implements _$$InProgressSettingsStateImplCopyWith<$Res> {
+  __$$InProgressSettingsStateImplCopyWithImpl(
+      _$InProgressSettingsStateImpl _value,
+      $Res Function(_$InProgressSettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? apiKey = null,
-    Object? checkStatus = null,
   }) {
-    return _then(_$_InProgressSettingsState(
+    return _then(_$InProgressSettingsStateImpl(
       apiKey: null == apiKey
           ? _value.apiKey
           : apiKey // ignore: cast_nullable_to_non_nullable
               as String,
-      checkStatus: null == checkStatus
-          ? _value.checkStatus
-          : checkStatus // ignore: cast_nullable_to_non_nullable
-              as CheckApiKeyStatuses,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_InProgressSettingsState extends _InProgressSettingsState {
-  _$_InProgressSettingsState({required this.apiKey, this.checkStatus = CheckApiKeyStatuses.readyToCheck}) : super._();
+class _$InProgressSettingsStateImpl extends _InProgressSettingsState {
+  _$InProgressSettingsStateImpl({required this.apiKey}) : super._();
 
   @override
   final String apiKey;
-  @override
-  @JsonKey()
-  final CheckApiKeyStatuses checkStatus;
 
   @override
   String toString() {
-    return 'SettingsState.inProgress(apiKey: $apiKey, checkStatus: $checkStatus)';
+    return 'SettingsState.inProgress(apiKey: $apiKey)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InProgressSettingsState &&
-            (identical(other.apiKey, apiKey) || other.apiKey == apiKey) &&
-            (identical(other.checkStatus, checkStatus) || other.checkStatus == checkStatus));
+            other is _$InProgressSettingsStateImpl &&
+            (identical(other.apiKey, apiKey) || other.apiKey == apiKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, apiKey, checkStatus);
+  int get hashCode => Object.hash(runtimeType, apiKey);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InProgressSettingsStateCopyWith<_$_InProgressSettingsState> get copyWith =>
-      __$$_InProgressSettingsStateCopyWithImpl<_$_InProgressSettingsState>(this, _$identity);
+  _$$InProgressSettingsStateImplCopyWith<_$InProgressSettingsStateImpl>
+      get copyWith => __$$InProgressSettingsStateImplCopyWithImpl<
+          _$InProgressSettingsStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) initialized,
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) inProgress,
-    required TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus) error,
+    required TResult Function() noApiKey,
+    required TResult Function(String apiKey) inProgress,
+    required TResult Function(String apiKey, List<Account> accounts) success,
+    required TResult Function(String message, String apiKey) failed,
   }) {
-    return inProgress(apiKey, checkStatus);
+    return inProgress(apiKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
-    TResult? Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
+    TResult? Function()? noApiKey,
+    TResult? Function(String apiKey)? inProgress,
+    TResult? Function(String apiKey, List<Account> accounts)? success,
+    TResult? Function(String message, String apiKey)? failed,
   }) {
-    return inProgress?.call(apiKey, checkStatus);
+    return inProgress?.call(apiKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
-    TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
+    TResult Function()? noApiKey,
+    TResult Function(String apiKey)? inProgress,
+    TResult Function(String apiKey, List<Account> accounts)? success,
+    TResult Function(String message, String apiKey)? failed,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
-      return inProgress(apiKey, checkStatus);
+      return inProgress(apiKey);
     }
     return orElse();
   }
@@ -566,9 +643,10 @@ class _$_InProgressSettingsState extends _InProgressSettingsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitializedSettingsState value) initialized,
+    required TResult Function(_NoApiKyeSettingsState value) noApiKey,
     required TResult Function(_InProgressSettingsState value) inProgress,
-    required TResult Function(_ErrorSettingsState value) error,
+    required TResult Function(_SuccessSettingsState value) success,
+    required TResult Function(_FailedSettingsState value) failed,
   }) {
     return inProgress(this);
   }
@@ -576,9 +654,10 @@ class _$_InProgressSettingsState extends _InProgressSettingsState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitializedSettingsState value)? initialized,
+    TResult? Function(_NoApiKyeSettingsState value)? noApiKey,
     TResult? Function(_InProgressSettingsState value)? inProgress,
-    TResult? Function(_ErrorSettingsState value)? error,
+    TResult? Function(_SuccessSettingsState value)? success,
+    TResult? Function(_FailedSettingsState value)? failed,
   }) {
     return inProgress?.call(this);
   }
@@ -586,9 +665,10 @@ class _$_InProgressSettingsState extends _InProgressSettingsState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitializedSettingsState value)? initialized,
+    TResult Function(_NoApiKyeSettingsState value)? noApiKey,
     TResult Function(_InProgressSettingsState value)? inProgress,
-    TResult Function(_ErrorSettingsState value)? error,
+    TResult Function(_SuccessSettingsState value)? success,
+    TResult Function(_FailedSettingsState value)? failed,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -599,32 +679,199 @@ class _$_InProgressSettingsState extends _InProgressSettingsState {
 }
 
 abstract class _InProgressSettingsState extends SettingsState {
-  factory _InProgressSettingsState({required final String apiKey, final CheckApiKeyStatuses checkStatus}) =
-      _$_InProgressSettingsState;
+  factory _InProgressSettingsState({required final String apiKey}) =
+      _$InProgressSettingsStateImpl;
   _InProgressSettingsState._() : super._();
 
-  @override
   String get apiKey;
-  @override
-  CheckApiKeyStatuses get checkStatus;
-  @override
   @JsonKey(ignore: true)
-  _$$_InProgressSettingsStateCopyWith<_$_InProgressSettingsState> get copyWith => throw _privateConstructorUsedError;
+  _$$InProgressSettingsStateImplCopyWith<_$InProgressSettingsStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorSettingsStateCopyWith<$Res> implements $SettingsStateCopyWith<$Res> {
-  factory _$$_ErrorSettingsStateCopyWith(_$_ErrorSettingsState value, $Res Function(_$_ErrorSettingsState) then) =
-      __$$_ErrorSettingsStateCopyWithImpl<$Res>;
-  @override
+abstract class _$$SuccessSettingsStateImplCopyWith<$Res> {
+  factory _$$SuccessSettingsStateImplCopyWith(_$SuccessSettingsStateImpl value,
+          $Res Function(_$SuccessSettingsStateImpl) then) =
+      __$$SuccessSettingsStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message, String apiKey, CheckApiKeyStatuses checkStatus});
+  $Res call({String apiKey, List<Account> accounts});
 }
 
 /// @nodoc
-class __$$_ErrorSettingsStateCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res, _$_ErrorSettingsState>
-    implements _$$_ErrorSettingsStateCopyWith<$Res> {
-  __$$_ErrorSettingsStateCopyWithImpl(_$_ErrorSettingsState _value, $Res Function(_$_ErrorSettingsState) _then)
+class __$$SuccessSettingsStateImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$SuccessSettingsStateImpl>
+    implements _$$SuccessSettingsStateImplCopyWith<$Res> {
+  __$$SuccessSettingsStateImplCopyWithImpl(_$SuccessSettingsStateImpl _value,
+      $Res Function(_$SuccessSettingsStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiKey = null,
+    Object? accounts = null,
+  }) {
+    return _then(_$SuccessSettingsStateImpl(
+      apiKey: null == apiKey
+          ? _value.apiKey
+          : apiKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      accounts: null == accounts
+          ? _value._accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<Account>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SuccessSettingsStateImpl extends _SuccessSettingsState {
+  _$SuccessSettingsStateImpl(
+      {required this.apiKey, required final List<Account> accounts})
+      : _accounts = accounts,
+        super._();
+
+  @override
+  final String apiKey;
+  final List<Account> _accounts;
+  @override
+  List<Account> get accounts {
+    if (_accounts is EqualUnmodifiableListView) return _accounts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_accounts);
+  }
+
+  @override
+  String toString() {
+    return 'SettingsState.success(apiKey: $apiKey, accounts: $accounts)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessSettingsStateImpl &&
+            (identical(other.apiKey, apiKey) || other.apiKey == apiKey) &&
+            const DeepCollectionEquality().equals(other._accounts, _accounts));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, apiKey, const DeepCollectionEquality().hash(_accounts));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessSettingsStateImplCopyWith<_$SuccessSettingsStateImpl>
+      get copyWith =>
+          __$$SuccessSettingsStateImplCopyWithImpl<_$SuccessSettingsStateImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noApiKey,
+    required TResult Function(String apiKey) inProgress,
+    required TResult Function(String apiKey, List<Account> accounts) success,
+    required TResult Function(String message, String apiKey) failed,
+  }) {
+    return success(apiKey, accounts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? noApiKey,
+    TResult? Function(String apiKey)? inProgress,
+    TResult? Function(String apiKey, List<Account> accounts)? success,
+    TResult? Function(String message, String apiKey)? failed,
+  }) {
+    return success?.call(apiKey, accounts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noApiKey,
+    TResult Function(String apiKey)? inProgress,
+    TResult Function(String apiKey, List<Account> accounts)? success,
+    TResult Function(String message, String apiKey)? failed,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(apiKey, accounts);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NoApiKyeSettingsState value) noApiKey,
+    required TResult Function(_InProgressSettingsState value) inProgress,
+    required TResult Function(_SuccessSettingsState value) success,
+    required TResult Function(_FailedSettingsState value) failed,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NoApiKyeSettingsState value)? noApiKey,
+    TResult? Function(_InProgressSettingsState value)? inProgress,
+    TResult? Function(_SuccessSettingsState value)? success,
+    TResult? Function(_FailedSettingsState value)? failed,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NoApiKyeSettingsState value)? noApiKey,
+    TResult Function(_InProgressSettingsState value)? inProgress,
+    TResult Function(_SuccessSettingsState value)? success,
+    TResult Function(_FailedSettingsState value)? failed,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessSettingsState extends SettingsState {
+  factory _SuccessSettingsState(
+      {required final String apiKey,
+      required final List<Account> accounts}) = _$SuccessSettingsStateImpl;
+  _SuccessSettingsState._() : super._();
+
+  String get apiKey;
+  List<Account> get accounts;
+  @JsonKey(ignore: true)
+  _$$SuccessSettingsStateImplCopyWith<_$SuccessSettingsStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FailedSettingsStateImplCopyWith<$Res> {
+  factory _$$FailedSettingsStateImplCopyWith(_$FailedSettingsStateImpl value,
+          $Res Function(_$FailedSettingsStateImpl) then) =
+      __$$FailedSettingsStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message, String apiKey});
+}
+
+/// @nodoc
+class __$$FailedSettingsStateImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$FailedSettingsStateImpl>
+    implements _$$FailedSettingsStateImplCopyWith<$Res> {
+  __$$FailedSettingsStateImplCopyWithImpl(_$FailedSettingsStateImpl _value,
+      $Res Function(_$FailedSettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -632,9 +879,8 @@ class __$$_ErrorSettingsStateCopyWithImpl<$Res> extends _$SettingsStateCopyWithI
   $Res call({
     Object? message = null,
     Object? apiKey = null,
-    Object? checkStatus = null,
   }) {
-    return _then(_$_ErrorSettingsState(
+    return _then(_$FailedSettingsStateImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -643,82 +889,78 @@ class __$$_ErrorSettingsStateCopyWithImpl<$Res> extends _$SettingsStateCopyWithI
           ? _value.apiKey
           : apiKey // ignore: cast_nullable_to_non_nullable
               as String,
-      checkStatus: null == checkStatus
-          ? _value.checkStatus
-          : checkStatus // ignore: cast_nullable_to_non_nullable
-              as CheckApiKeyStatuses,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ErrorSettingsState extends _ErrorSettingsState {
-  _$_ErrorSettingsState({required this.message, required this.apiKey, this.checkStatus = CheckApiKeyStatuses.failed})
+class _$FailedSettingsStateImpl extends _FailedSettingsState {
+  _$FailedSettingsStateImpl({required this.message, required this.apiKey})
       : super._();
 
   @override
   final String message;
   @override
   final String apiKey;
-  @override
-  @JsonKey()
-  final CheckApiKeyStatuses checkStatus;
 
   @override
   String toString() {
-    return 'SettingsState.error(message: $message, apiKey: $apiKey, checkStatus: $checkStatus)';
+    return 'SettingsState.failed(message: $message, apiKey: $apiKey)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorSettingsState &&
+            other is _$FailedSettingsStateImpl &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.apiKey, apiKey) || other.apiKey == apiKey) &&
-            (identical(other.checkStatus, checkStatus) || other.checkStatus == checkStatus));
+            (identical(other.apiKey, apiKey) || other.apiKey == apiKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message, apiKey, checkStatus);
+  int get hashCode => Object.hash(runtimeType, message, apiKey);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorSettingsStateCopyWith<_$_ErrorSettingsState> get copyWith =>
-      __$$_ErrorSettingsStateCopyWithImpl<_$_ErrorSettingsState>(this, _$identity);
+  _$$FailedSettingsStateImplCopyWith<_$FailedSettingsStateImpl> get copyWith =>
+      __$$FailedSettingsStateImplCopyWithImpl<_$FailedSettingsStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) initialized,
-    required TResult Function(String apiKey, CheckApiKeyStatuses checkStatus) inProgress,
-    required TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus) error,
+    required TResult Function() noApiKey,
+    required TResult Function(String apiKey) inProgress,
+    required TResult Function(String apiKey, List<Account> accounts) success,
+    required TResult Function(String message, String apiKey) failed,
   }) {
-    return error(message, apiKey, checkStatus);
+    return failed(message, apiKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
-    TResult? Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
-    TResult? Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
+    TResult? Function()? noApiKey,
+    TResult? Function(String apiKey)? inProgress,
+    TResult? Function(String apiKey, List<Account> accounts)? success,
+    TResult? Function(String message, String apiKey)? failed,
   }) {
-    return error?.call(message, apiKey, checkStatus);
+    return failed?.call(message, apiKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? initialized,
-    TResult Function(String apiKey, CheckApiKeyStatuses checkStatus)? inProgress,
-    TResult Function(String message, String apiKey, CheckApiKeyStatuses checkStatus)? error,
+    TResult Function()? noApiKey,
+    TResult Function(String apiKey)? inProgress,
+    TResult Function(String apiKey, List<Account> accounts)? success,
+    TResult Function(String message, String apiKey)? failed,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(message, apiKey, checkStatus);
+    if (failed != null) {
+      return failed(message, apiKey);
     }
     return orElse();
   }
@@ -726,51 +968,50 @@ class _$_ErrorSettingsState extends _ErrorSettingsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitializedSettingsState value) initialized,
+    required TResult Function(_NoApiKyeSettingsState value) noApiKey,
     required TResult Function(_InProgressSettingsState value) inProgress,
-    required TResult Function(_ErrorSettingsState value) error,
+    required TResult Function(_SuccessSettingsState value) success,
+    required TResult Function(_FailedSettingsState value) failed,
   }) {
-    return error(this);
+    return failed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitializedSettingsState value)? initialized,
+    TResult? Function(_NoApiKyeSettingsState value)? noApiKey,
     TResult? Function(_InProgressSettingsState value)? inProgress,
-    TResult? Function(_ErrorSettingsState value)? error,
+    TResult? Function(_SuccessSettingsState value)? success,
+    TResult? Function(_FailedSettingsState value)? failed,
   }) {
-    return error?.call(this);
+    return failed?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitializedSettingsState value)? initialized,
+    TResult Function(_NoApiKyeSettingsState value)? noApiKey,
     TResult Function(_InProgressSettingsState value)? inProgress,
-    TResult Function(_ErrorSettingsState value)? error,
+    TResult Function(_SuccessSettingsState value)? success,
+    TResult Function(_FailedSettingsState value)? failed,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (failed != null) {
+      return failed(this);
     }
     return orElse();
   }
 }
 
-abstract class _ErrorSettingsState extends SettingsState {
-  factory _ErrorSettingsState(
+abstract class _FailedSettingsState extends SettingsState {
+  factory _FailedSettingsState(
       {required final String message,
-      required final String apiKey,
-      final CheckApiKeyStatuses checkStatus}) = _$_ErrorSettingsState;
-  _ErrorSettingsState._() : super._();
+      required final String apiKey}) = _$FailedSettingsStateImpl;
+  _FailedSettingsState._() : super._();
 
   String get message;
-  @override
   String get apiKey;
-  @override
-  CheckApiKeyStatuses get checkStatus;
-  @override
   @JsonKey(ignore: true)
-  _$$_ErrorSettingsStateCopyWith<_$_ErrorSettingsState> get copyWith => throw _privateConstructorUsedError;
+  _$$FailedSettingsStateImplCopyWith<_$FailedSettingsStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

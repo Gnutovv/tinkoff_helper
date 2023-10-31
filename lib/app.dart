@@ -7,6 +7,7 @@ import 'package:tinkoff_helper/presentation/features/expert/bloc/expert_settings
 import 'package:tinkoff_helper/presentation/features/portfolio/bloc/portfolio_bloc.dart';
 import 'package:tinkoff_helper/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:tinkoff_helper/storage/hive_storage.dart';
+import 'package:tinkoff_helper/storage/secure_storage.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -17,11 +18,11 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<SettingsBloc>(
           create: (context) {
-            String apiKey = getIt<HiveStorage>().apiKey;
-            if (getIt<HiveStorage>().apiKey != '') {
-              return SettingsBloc(apiKey: apiKey)..add(SettingsEvent.checkToken(apiKey: apiKey));
+            String apiKey = getIt<SecureStorage>().key;
+            if (apiKey != '-1') {
+              return SettingsBloc()..add(SettingsEvent.checkToken(apiKey: apiKey));
             } else {
-              return SettingsBloc(apiKey: '');
+              return SettingsBloc();
             }
           },
         ),

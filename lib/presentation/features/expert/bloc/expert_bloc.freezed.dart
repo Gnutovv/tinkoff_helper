@@ -103,22 +103,22 @@ class _$ExpertEventCopyWithImpl<$Res, $Val extends ExpertEvent> implements $Expe
 }
 
 /// @nodoc
-abstract class _$$_InitExpertEventCopyWith<$Res> {
-  factory _$$_InitExpertEventCopyWith(_$_InitExpertEvent value, $Res Function(_$_InitExpertEvent) then) =
-      __$$_InitExpertEventCopyWithImpl<$Res>;
+abstract class _$$InitExpertEventImplCopyWith<$Res> {
+  factory _$$InitExpertEventImplCopyWith(_$InitExpertEventImpl value, $Res Function(_$InitExpertEventImpl) then) =
+      __$$InitExpertEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitExpertEventCopyWithImpl<$Res> extends _$ExpertEventCopyWithImpl<$Res, _$_InitExpertEvent>
-    implements _$$_InitExpertEventCopyWith<$Res> {
-  __$$_InitExpertEventCopyWithImpl(_$_InitExpertEvent _value, $Res Function(_$_InitExpertEvent) _then)
+class __$$InitExpertEventImplCopyWithImpl<$Res> extends _$ExpertEventCopyWithImpl<$Res, _$InitExpertEventImpl>
+    implements _$$InitExpertEventImplCopyWith<$Res> {
+  __$$InitExpertEventImplCopyWithImpl(_$InitExpertEventImpl _value, $Res Function(_$InitExpertEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitExpertEvent extends _InitExpertEvent {
-  const _$_InitExpertEvent() : super._();
+class _$InitExpertEventImpl extends _InitExpertEvent {
+  const _$InitExpertEventImpl() : super._();
 
   @override
   String toString() {
@@ -127,7 +127,7 @@ class _$_InitExpertEvent extends _InitExpertEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_InitExpertEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$InitExpertEventImpl);
   }
 
   @override
@@ -227,15 +227,15 @@ class _$_InitExpertEvent extends _InitExpertEvent {
 }
 
 abstract class _InitExpertEvent extends ExpertEvent {
-  const factory _InitExpertEvent() = _$_InitExpertEvent;
+  const factory _InitExpertEvent() = _$InitExpertEventImpl;
   const _InitExpertEvent._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_UpdateBalancerExpertEventCopyWith<$Res> {
-  factory _$$_UpdateBalancerExpertEventCopyWith(
-          _$_UpdateBalancerExpertEvent value, $Res Function(_$_UpdateBalancerExpertEvent) then) =
-      __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>;
+abstract class _$$UpdateBalancerExpertEventImplCopyWith<$Res> {
+  factory _$$UpdateBalancerExpertEventImplCopyWith(
+          _$UpdateBalancerExpertEventImpl value, $Res Function(_$UpdateBalancerExpertEventImpl) then) =
+      __$$UpdateBalancerExpertEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({StepsBalancer balancer});
 
@@ -243,11 +243,11 @@ abstract class _$$_UpdateBalancerExpertEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>
-    extends _$ExpertEventCopyWithImpl<$Res, _$_UpdateBalancerExpertEvent>
-    implements _$$_UpdateBalancerExpertEventCopyWith<$Res> {
-  __$$_UpdateBalancerExpertEventCopyWithImpl(
-      _$_UpdateBalancerExpertEvent _value, $Res Function(_$_UpdateBalancerExpertEvent) _then)
+class __$$UpdateBalancerExpertEventImplCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$UpdateBalancerExpertEventImpl>
+    implements _$$UpdateBalancerExpertEventImplCopyWith<$Res> {
+  __$$UpdateBalancerExpertEventImplCopyWithImpl(
+      _$UpdateBalancerExpertEventImpl _value, $Res Function(_$UpdateBalancerExpertEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -255,7 +255,7 @@ class __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>
   $Res call({
     Object? balancer = null,
   }) {
-    return _then(_$_UpdateBalancerExpertEvent(
+    return _then(_$UpdateBalancerExpertEventImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -274,8 +274,8 @@ class __$$_UpdateBalancerExpertEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
-  const _$_UpdateBalancerExpertEvent({required this.balancer}) : super._();
+class _$UpdateBalancerExpertEventImpl extends _UpdateBalancerExpertEvent {
+  const _$UpdateBalancerExpertEventImpl({required this.balancer}) : super._();
 
   @override
   final StepsBalancer balancer;
@@ -289,7 +289,7 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateBalancerExpertEvent &&
+            other is _$UpdateBalancerExpertEventImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer));
   }
 
@@ -299,8 +299,8 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateBalancerExpertEventCopyWith<_$_UpdateBalancerExpertEvent> get copyWith =>
-      __$$_UpdateBalancerExpertEventCopyWithImpl<_$_UpdateBalancerExpertEvent>(this, _$identity);
+  _$$UpdateBalancerExpertEventImplCopyWith<_$UpdateBalancerExpertEventImpl> get copyWith =>
+      __$$UpdateBalancerExpertEventImplCopyWithImpl<_$UpdateBalancerExpertEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -396,35 +396,35 @@ class _$_UpdateBalancerExpertEvent extends _UpdateBalancerExpertEvent {
 }
 
 abstract class _UpdateBalancerExpertEvent extends ExpertEvent {
-  const factory _UpdateBalancerExpertEvent({required final StepsBalancer balancer}) = _$_UpdateBalancerExpertEvent;
+  const factory _UpdateBalancerExpertEvent({required final StepsBalancer balancer}) = _$UpdateBalancerExpertEventImpl;
   const _UpdateBalancerExpertEvent._() : super._();
 
   StepsBalancer get balancer;
   @JsonKey(ignore: true)
-  _$$_UpdateBalancerExpertEventCopyWith<_$_UpdateBalancerExpertEvent> get copyWith =>
+  _$$UpdateBalancerExpertEventImplCopyWith<_$UpdateBalancerExpertEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateExpertPositionsExpertEventCopyWith<$Res> {
-  factory _$$_UpdateExpertPositionsExpertEventCopyWith(
-          _$_UpdateExpertPositionsExpertEvent value, $Res Function(_$_UpdateExpertPositionsExpertEvent) then) =
-      __$$_UpdateExpertPositionsExpertEventCopyWithImpl<$Res>;
+abstract class _$$UpdateExpertPositionsExpertEventImplCopyWith<$Res> {
+  factory _$$UpdateExpertPositionsExpertEventImplCopyWith(
+          _$UpdateExpertPositionsExpertEventImpl value, $Res Function(_$UpdateExpertPositionsExpertEventImpl) then) =
+      __$$UpdateExpertPositionsExpertEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UpdateExpertPositionsExpertEventCopyWithImpl<$Res>
-    extends _$ExpertEventCopyWithImpl<$Res, _$_UpdateExpertPositionsExpertEvent>
-    implements _$$_UpdateExpertPositionsExpertEventCopyWith<$Res> {
-  __$$_UpdateExpertPositionsExpertEventCopyWithImpl(
-      _$_UpdateExpertPositionsExpertEvent _value, $Res Function(_$_UpdateExpertPositionsExpertEvent) _then)
+class __$$UpdateExpertPositionsExpertEventImplCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$UpdateExpertPositionsExpertEventImpl>
+    implements _$$UpdateExpertPositionsExpertEventImplCopyWith<$Res> {
+  __$$UpdateExpertPositionsExpertEventImplCopyWithImpl(
+      _$UpdateExpertPositionsExpertEventImpl _value, $Res Function(_$UpdateExpertPositionsExpertEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEvent {
-  const _$_UpdateExpertPositionsExpertEvent() : super._();
+class _$UpdateExpertPositionsExpertEventImpl extends _UpdateExpertPositionsExpertEvent {
+  const _$UpdateExpertPositionsExpertEventImpl() : super._();
 
   @override
   String toString() {
@@ -433,7 +433,8 @@ class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEv
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UpdateExpertPositionsExpertEvent);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateExpertPositionsExpertEventImpl);
   }
 
   @override
@@ -533,15 +534,15 @@ class _$_UpdateExpertPositionsExpertEvent extends _UpdateExpertPositionsExpertEv
 }
 
 abstract class _UpdateExpertPositionsExpertEvent extends ExpertEvent {
-  const factory _UpdateExpertPositionsExpertEvent() = _$_UpdateExpertPositionsExpertEvent;
+  const factory _UpdateExpertPositionsExpertEvent() = _$UpdateExpertPositionsExpertEventImpl;
   const _UpdateExpertPositionsExpertEvent._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_AddExpertPositionsExpertEventCopyWith<$Res> {
-  factory _$$_AddExpertPositionsExpertEventCopyWith(
-          _$_AddExpertPositionsExpertEvent value, $Res Function(_$_AddExpertPositionsExpertEvent) then) =
-      __$$_AddExpertPositionsExpertEventCopyWithImpl<$Res>;
+abstract class _$$AddExpertPositionsExpertEventImplCopyWith<$Res> {
+  factory _$$AddExpertPositionsExpertEventImplCopyWith(
+          _$AddExpertPositionsExpertEventImpl value, $Res Function(_$AddExpertPositionsExpertEventImpl) then) =
+      __$$AddExpertPositionsExpertEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ExpertPosition expertPosition});
 
@@ -549,11 +550,11 @@ abstract class _$$_AddExpertPositionsExpertEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddExpertPositionsExpertEventCopyWithImpl<$Res>
-    extends _$ExpertEventCopyWithImpl<$Res, _$_AddExpertPositionsExpertEvent>
-    implements _$$_AddExpertPositionsExpertEventCopyWith<$Res> {
-  __$$_AddExpertPositionsExpertEventCopyWithImpl(
-      _$_AddExpertPositionsExpertEvent _value, $Res Function(_$_AddExpertPositionsExpertEvent) _then)
+class __$$AddExpertPositionsExpertEventImplCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$AddExpertPositionsExpertEventImpl>
+    implements _$$AddExpertPositionsExpertEventImplCopyWith<$Res> {
+  __$$AddExpertPositionsExpertEventImplCopyWithImpl(
+      _$AddExpertPositionsExpertEventImpl _value, $Res Function(_$AddExpertPositionsExpertEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -561,7 +562,7 @@ class __$$_AddExpertPositionsExpertEventCopyWithImpl<$Res>
   $Res call({
     Object? expertPosition = null,
   }) {
-    return _then(_$_AddExpertPositionsExpertEvent(
+    return _then(_$AddExpertPositionsExpertEventImpl(
       null == expertPosition
           ? _value.expertPosition
           : expertPosition // ignore: cast_nullable_to_non_nullable
@@ -580,8 +581,8 @@ class __$$_AddExpertPositionsExpertEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
-  const _$_AddExpertPositionsExpertEvent(this.expertPosition) : super._();
+class _$AddExpertPositionsExpertEventImpl extends _AddExpertPositionsExpertEvent {
+  const _$AddExpertPositionsExpertEventImpl(this.expertPosition) : super._();
 
   @override
   final ExpertPosition expertPosition;
@@ -595,7 +596,7 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddExpertPositionsExpertEvent &&
+            other is _$AddExpertPositionsExpertEventImpl &&
             (identical(other.expertPosition, expertPosition) || other.expertPosition == expertPosition));
   }
 
@@ -605,8 +606,8 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddExpertPositionsExpertEventCopyWith<_$_AddExpertPositionsExpertEvent> get copyWith =>
-      __$$_AddExpertPositionsExpertEventCopyWithImpl<_$_AddExpertPositionsExpertEvent>(this, _$identity);
+  _$$AddExpertPositionsExpertEventImplCopyWith<_$AddExpertPositionsExpertEventImpl> get copyWith =>
+      __$$AddExpertPositionsExpertEventImplCopyWithImpl<_$AddExpertPositionsExpertEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -702,20 +703,21 @@ class _$_AddExpertPositionsExpertEvent extends _AddExpertPositionsExpertEvent {
 }
 
 abstract class _AddExpertPositionsExpertEvent extends ExpertEvent {
-  const factory _AddExpertPositionsExpertEvent(final ExpertPosition expertPosition) = _$_AddExpertPositionsExpertEvent;
+  const factory _AddExpertPositionsExpertEvent(final ExpertPosition expertPosition) =
+      _$AddExpertPositionsExpertEventImpl;
   const _AddExpertPositionsExpertEvent._() : super._();
 
   ExpertPosition get expertPosition;
   @JsonKey(ignore: true)
-  _$$_AddExpertPositionsExpertEventCopyWith<_$_AddExpertPositionsExpertEvent> get copyWith =>
+  _$$AddExpertPositionsExpertEventImplCopyWith<_$AddExpertPositionsExpertEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RemoveExpertPositionsExpertEventCopyWith<$Res> {
-  factory _$$_RemoveExpertPositionsExpertEventCopyWith(
-          _$_RemoveExpertPositionsExpertEvent value, $Res Function(_$_RemoveExpertPositionsExpertEvent) then) =
-      __$$_RemoveExpertPositionsExpertEventCopyWithImpl<$Res>;
+abstract class _$$RemoveExpertPositionsExpertEventImplCopyWith<$Res> {
+  factory _$$RemoveExpertPositionsExpertEventImplCopyWith(
+          _$RemoveExpertPositionsExpertEventImpl value, $Res Function(_$RemoveExpertPositionsExpertEventImpl) then) =
+      __$$RemoveExpertPositionsExpertEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ExpertPosition expertPosition, bool sell});
 
@@ -723,11 +725,11 @@ abstract class _$$_RemoveExpertPositionsExpertEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RemoveExpertPositionsExpertEventCopyWithImpl<$Res>
-    extends _$ExpertEventCopyWithImpl<$Res, _$_RemoveExpertPositionsExpertEvent>
-    implements _$$_RemoveExpertPositionsExpertEventCopyWith<$Res> {
-  __$$_RemoveExpertPositionsExpertEventCopyWithImpl(
-      _$_RemoveExpertPositionsExpertEvent _value, $Res Function(_$_RemoveExpertPositionsExpertEvent) _then)
+class __$$RemoveExpertPositionsExpertEventImplCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$RemoveExpertPositionsExpertEventImpl>
+    implements _$$RemoveExpertPositionsExpertEventImplCopyWith<$Res> {
+  __$$RemoveExpertPositionsExpertEventImplCopyWithImpl(
+      _$RemoveExpertPositionsExpertEventImpl _value, $Res Function(_$RemoveExpertPositionsExpertEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -736,7 +738,7 @@ class __$$_RemoveExpertPositionsExpertEventCopyWithImpl<$Res>
     Object? expertPosition = null,
     Object? sell = null,
   }) {
-    return _then(_$_RemoveExpertPositionsExpertEvent(
+    return _then(_$RemoveExpertPositionsExpertEventImpl(
       null == expertPosition
           ? _value.expertPosition
           : expertPosition // ignore: cast_nullable_to_non_nullable
@@ -759,8 +761,8 @@ class __$$_RemoveExpertPositionsExpertEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RemoveExpertPositionsExpertEvent extends _RemoveExpertPositionsExpertEvent {
-  const _$_RemoveExpertPositionsExpertEvent(this.expertPosition, this.sell) : super._();
+class _$RemoveExpertPositionsExpertEventImpl extends _RemoveExpertPositionsExpertEvent {
+  const _$RemoveExpertPositionsExpertEventImpl(this.expertPosition, this.sell) : super._();
 
   @override
   final ExpertPosition expertPosition;
@@ -776,7 +778,7 @@ class _$_RemoveExpertPositionsExpertEvent extends _RemoveExpertPositionsExpertEv
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RemoveExpertPositionsExpertEvent &&
+            other is _$RemoveExpertPositionsExpertEventImpl &&
             (identical(other.expertPosition, expertPosition) || other.expertPosition == expertPosition) &&
             (identical(other.sell, sell) || other.sell == sell));
   }
@@ -787,8 +789,8 @@ class _$_RemoveExpertPositionsExpertEvent extends _RemoveExpertPositionsExpertEv
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RemoveExpertPositionsExpertEventCopyWith<_$_RemoveExpertPositionsExpertEvent> get copyWith =>
-      __$$_RemoveExpertPositionsExpertEventCopyWithImpl<_$_RemoveExpertPositionsExpertEvent>(this, _$identity);
+  _$$RemoveExpertPositionsExpertEventImplCopyWith<_$RemoveExpertPositionsExpertEventImpl> get copyWith =>
+      __$$RemoveExpertPositionsExpertEventImplCopyWithImpl<_$RemoveExpertPositionsExpertEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -885,21 +887,21 @@ class _$_RemoveExpertPositionsExpertEvent extends _RemoveExpertPositionsExpertEv
 
 abstract class _RemoveExpertPositionsExpertEvent extends ExpertEvent {
   const factory _RemoveExpertPositionsExpertEvent(final ExpertPosition expertPosition, final bool sell) =
-      _$_RemoveExpertPositionsExpertEvent;
+      _$RemoveExpertPositionsExpertEventImpl;
   const _RemoveExpertPositionsExpertEvent._() : super._();
 
   ExpertPosition get expertPosition;
   bool get sell;
   @JsonKey(ignore: true)
-  _$$_RemoveExpertPositionsExpertEventCopyWith<_$_RemoveExpertPositionsExpertEvent> get copyWith =>
+  _$$RemoveExpertPositionsExpertEventImplCopyWith<_$RemoveExpertPositionsExpertEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DoRecommendExpertEventCopyWith<$Res> {
-  factory _$$_DoRecommendExpertEventCopyWith(
-          _$_DoRecommendExpertEvent value, $Res Function(_$_DoRecommendExpertEvent) then) =
-      __$$_DoRecommendExpertEventCopyWithImpl<$Res>;
+abstract class _$$DoRecommendExpertEventImplCopyWith<$Res> {
+  factory _$$DoRecommendExpertEventImplCopyWith(
+          _$DoRecommendExpertEventImpl value, $Res Function(_$DoRecommendExpertEventImpl) then) =
+      __$$DoRecommendExpertEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ExpertPosition expertPosition});
 
@@ -907,10 +909,11 @@ abstract class _$$_DoRecommendExpertEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DoRecommendExpertEventCopyWithImpl<$Res> extends _$ExpertEventCopyWithImpl<$Res, _$_DoRecommendExpertEvent>
-    implements _$$_DoRecommendExpertEventCopyWith<$Res> {
-  __$$_DoRecommendExpertEventCopyWithImpl(
-      _$_DoRecommendExpertEvent _value, $Res Function(_$_DoRecommendExpertEvent) _then)
+class __$$DoRecommendExpertEventImplCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$DoRecommendExpertEventImpl>
+    implements _$$DoRecommendExpertEventImplCopyWith<$Res> {
+  __$$DoRecommendExpertEventImplCopyWithImpl(
+      _$DoRecommendExpertEventImpl _value, $Res Function(_$DoRecommendExpertEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -918,7 +921,7 @@ class __$$_DoRecommendExpertEventCopyWithImpl<$Res> extends _$ExpertEventCopyWit
   $Res call({
     Object? expertPosition = null,
   }) {
-    return _then(_$_DoRecommendExpertEvent(
+    return _then(_$DoRecommendExpertEventImpl(
       null == expertPosition
           ? _value.expertPosition
           : expertPosition // ignore: cast_nullable_to_non_nullable
@@ -937,8 +940,8 @@ class __$$_DoRecommendExpertEventCopyWithImpl<$Res> extends _$ExpertEventCopyWit
 
 /// @nodoc
 
-class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
-  const _$_DoRecommendExpertEvent(this.expertPosition) : super._();
+class _$DoRecommendExpertEventImpl extends _DoRecommendExpertEvent {
+  const _$DoRecommendExpertEventImpl(this.expertPosition) : super._();
 
   @override
   final ExpertPosition expertPosition;
@@ -952,7 +955,7 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DoRecommendExpertEvent &&
+            other is _$DoRecommendExpertEventImpl &&
             (identical(other.expertPosition, expertPosition) || other.expertPosition == expertPosition));
   }
 
@@ -962,8 +965,8 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DoRecommendExpertEventCopyWith<_$_DoRecommendExpertEvent> get copyWith =>
-      __$$_DoRecommendExpertEventCopyWithImpl<_$_DoRecommendExpertEvent>(this, _$identity);
+  _$$DoRecommendExpertEventImplCopyWith<_$DoRecommendExpertEventImpl> get copyWith =>
+      __$$DoRecommendExpertEventImplCopyWithImpl<_$DoRecommendExpertEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1059,34 +1062,35 @@ class _$_DoRecommendExpertEvent extends _DoRecommendExpertEvent {
 }
 
 abstract class _DoRecommendExpertEvent extends ExpertEvent {
-  const factory _DoRecommendExpertEvent(final ExpertPosition expertPosition) = _$_DoRecommendExpertEvent;
+  const factory _DoRecommendExpertEvent(final ExpertPosition expertPosition) = _$DoRecommendExpertEventImpl;
   const _DoRecommendExpertEvent._() : super._();
 
   ExpertPosition get expertPosition;
   @JsonKey(ignore: true)
-  _$$_DoRecommendExpertEventCopyWith<_$_DoRecommendExpertEvent> get copyWith => throw _privateConstructorUsedError;
+  _$$DoRecommendExpertEventImplCopyWith<_$DoRecommendExpertEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DoAllRecommendsExpertEventCopyWith<$Res> {
-  factory _$$_DoAllRecommendsExpertEventCopyWith(
-          _$_DoAllRecommendsExpertEvent value, $Res Function(_$_DoAllRecommendsExpertEvent) then) =
-      __$$_DoAllRecommendsExpertEventCopyWithImpl<$Res>;
+abstract class _$$DoAllRecommendsExpertEventImplCopyWith<$Res> {
+  factory _$$DoAllRecommendsExpertEventImplCopyWith(
+          _$DoAllRecommendsExpertEventImpl value, $Res Function(_$DoAllRecommendsExpertEventImpl) then) =
+      __$$DoAllRecommendsExpertEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DoAllRecommendsExpertEventCopyWithImpl<$Res>
-    extends _$ExpertEventCopyWithImpl<$Res, _$_DoAllRecommendsExpertEvent>
-    implements _$$_DoAllRecommendsExpertEventCopyWith<$Res> {
-  __$$_DoAllRecommendsExpertEventCopyWithImpl(
-      _$_DoAllRecommendsExpertEvent _value, $Res Function(_$_DoAllRecommendsExpertEvent) _then)
+class __$$DoAllRecommendsExpertEventImplCopyWithImpl<$Res>
+    extends _$ExpertEventCopyWithImpl<$Res, _$DoAllRecommendsExpertEventImpl>
+    implements _$$DoAllRecommendsExpertEventImplCopyWith<$Res> {
+  __$$DoAllRecommendsExpertEventImplCopyWithImpl(
+      _$DoAllRecommendsExpertEventImpl _value, $Res Function(_$DoAllRecommendsExpertEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
-  const _$_DoAllRecommendsExpertEvent() : super._();
+class _$DoAllRecommendsExpertEventImpl extends _DoAllRecommendsExpertEvent {
+  const _$DoAllRecommendsExpertEventImpl() : super._();
 
   @override
   String toString() {
@@ -1095,7 +1099,7 @@ class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_DoAllRecommendsExpertEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$DoAllRecommendsExpertEventImpl);
   }
 
   @override
@@ -1195,7 +1199,7 @@ class _$_DoAllRecommendsExpertEvent extends _DoAllRecommendsExpertEvent {
 }
 
 abstract class _DoAllRecommendsExpertEvent extends ExpertEvent {
-  const factory _DoAllRecommendsExpertEvent() = _$_DoAllRecommendsExpertEvent;
+  const factory _DoAllRecommendsExpertEvent() = _$DoAllRecommendsExpertEventImpl;
   const _DoAllRecommendsExpertEvent._() : super._();
 }
 
@@ -1328,10 +1332,10 @@ class _$ExpertStateCopyWithImpl<$Res, $Val extends ExpertState> implements $Expe
 }
 
 /// @nodoc
-abstract class _$$_NotInitializedExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
-  factory _$$_NotInitializedExpertStateCopyWith(
-          _$_NotInitializedExpertState value, $Res Function(_$_NotInitializedExpertState) then) =
-      __$$_NotInitializedExpertStateCopyWithImpl<$Res>;
+abstract class _$$NotInitializedExpertStateImplCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$NotInitializedExpertStateImplCopyWith(
+          _$NotInitializedExpertStateImpl value, $Res Function(_$NotInitializedExpertStateImpl) then) =
+      __$$NotInitializedExpertStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, List<String> initPositions});
@@ -1341,11 +1345,11 @@ abstract class _$$_NotInitializedExpertStateCopyWith<$Res> implements $ExpertSta
 }
 
 /// @nodoc
-class __$$_NotInitializedExpertStateCopyWithImpl<$Res>
-    extends _$ExpertStateCopyWithImpl<$Res, _$_NotInitializedExpertState>
-    implements _$$_NotInitializedExpertStateCopyWith<$Res> {
-  __$$_NotInitializedExpertStateCopyWithImpl(
-      _$_NotInitializedExpertState _value, $Res Function(_$_NotInitializedExpertState) _then)
+class __$$NotInitializedExpertStateImplCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$NotInitializedExpertStateImpl>
+    implements _$$NotInitializedExpertStateImplCopyWith<$Res> {
+  __$$NotInitializedExpertStateImplCopyWithImpl(
+      _$NotInitializedExpertStateImpl _value, $Res Function(_$NotInitializedExpertStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1355,7 +1359,7 @@ class __$$_NotInitializedExpertStateCopyWithImpl<$Res>
     Object? expertPositions = null,
     Object? initPositions = null,
   }) {
-    return _then(_$_NotInitializedExpertState(
+    return _then(_$NotInitializedExpertStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -1374,8 +1378,8 @@ class __$$_NotInitializedExpertStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NotInitializedExpertState extends _NotInitializedExpertState {
-  _$_NotInitializedExpertState(
+class _$NotInitializedExpertStateImpl extends _NotInitializedExpertState {
+  _$NotInitializedExpertStateImpl(
       {required this.balancer,
       required final List<ExpertPosition?> expertPositions,
       required final List<String> initPositions})
@@ -1410,7 +1414,7 @@ class _$_NotInitializedExpertState extends _NotInitializedExpertState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NotInitializedExpertState &&
+            other is _$NotInitializedExpertStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
             const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
             const DeepCollectionEquality().equals(other._initPositions, _initPositions));
@@ -1423,8 +1427,8 @@ class _$_NotInitializedExpertState extends _NotInitializedExpertState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NotInitializedExpertStateCopyWith<_$_NotInitializedExpertState> get copyWith =>
-      __$$_NotInitializedExpertStateCopyWithImpl<_$_NotInitializedExpertState>(this, _$identity);
+  _$$NotInitializedExpertStateImplCopyWith<_$NotInitializedExpertStateImpl> get copyWith =>
+      __$$NotInitializedExpertStateImplCopyWithImpl<_$NotInitializedExpertStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1528,7 +1532,7 @@ abstract class _NotInitializedExpertState extends ExpertState {
   factory _NotInitializedExpertState(
       {required final StepsBalancer balancer,
       required final List<ExpertPosition?> expertPositions,
-      required final List<String> initPositions}) = _$_NotInitializedExpertState;
+      required final List<String> initPositions}) = _$NotInitializedExpertStateImpl;
   _NotInitializedExpertState._() : super._();
 
   @override
@@ -1538,15 +1542,15 @@ abstract class _NotInitializedExpertState extends ExpertState {
   List<String> get initPositions;
   @override
   @JsonKey(ignore: true)
-  _$$_NotInitializedExpertStateCopyWith<_$_NotInitializedExpertState> get copyWith =>
+  _$$NotInitializedExpertStateImplCopyWith<_$NotInitializedExpertStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InitializedExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
-  factory _$$_InitializedExpertStateCopyWith(
-          _$_InitializedExpertState value, $Res Function(_$_InitializedExpertState) then) =
-      __$$_InitializedExpertStateCopyWithImpl<$Res>;
+abstract class _$$InitializedExpertStateImplCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$InitializedExpertStateImplCopyWith(
+          _$InitializedExpertStateImpl value, $Res Function(_$InitializedExpertStateImpl) then) =
+      __$$InitializedExpertStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions});
@@ -1556,10 +1560,11 @@ abstract class _$$_InitializedExpertStateCopyWith<$Res> implements $ExpertStateC
 }
 
 /// @nodoc
-class __$$_InitializedExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<$Res, _$_InitializedExpertState>
-    implements _$$_InitializedExpertStateCopyWith<$Res> {
-  __$$_InitializedExpertStateCopyWithImpl(
-      _$_InitializedExpertState _value, $Res Function(_$_InitializedExpertState) _then)
+class __$$InitializedExpertStateImplCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$InitializedExpertStateImpl>
+    implements _$$InitializedExpertStateImplCopyWith<$Res> {
+  __$$InitializedExpertStateImplCopyWithImpl(
+      _$InitializedExpertStateImpl _value, $Res Function(_$InitializedExpertStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1568,7 +1573,7 @@ class __$$_InitializedExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWit
     Object? balancer = null,
     Object? expertPositions = null,
   }) {
-    return _then(_$_InitializedExpertState(
+    return _then(_$InitializedExpertStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -1583,8 +1588,8 @@ class __$$_InitializedExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWit
 
 /// @nodoc
 
-class _$_InitializedExpertState extends _InitializedExpertState {
-  _$_InitializedExpertState({required this.balancer, required final List<ExpertPosition?> expertPositions})
+class _$InitializedExpertStateImpl extends _InitializedExpertState {
+  _$InitializedExpertStateImpl({required this.balancer, required final List<ExpertPosition?> expertPositions})
       : _expertPositions = expertPositions,
         super._();
 
@@ -1607,7 +1612,7 @@ class _$_InitializedExpertState extends _InitializedExpertState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitializedExpertState &&
+            other is _$InitializedExpertStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
             const DeepCollectionEquality().equals(other._expertPositions, _expertPositions));
   }
@@ -1618,8 +1623,8 @@ class _$_InitializedExpertState extends _InitializedExpertState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitializedExpertStateCopyWith<_$_InitializedExpertState> get copyWith =>
-      __$$_InitializedExpertStateCopyWithImpl<_$_InitializedExpertState>(this, _$identity);
+  _$$InitializedExpertStateImplCopyWith<_$InitializedExpertStateImpl> get copyWith =>
+      __$$InitializedExpertStateImplCopyWithImpl<_$InitializedExpertStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1722,7 +1727,7 @@ class _$_InitializedExpertState extends _InitializedExpertState {
 abstract class _InitializedExpertState extends ExpertState {
   factory _InitializedExpertState(
       {required final StepsBalancer balancer,
-      required final List<ExpertPosition?> expertPositions}) = _$_InitializedExpertState;
+      required final List<ExpertPosition?> expertPositions}) = _$InitializedExpertStateImpl;
   _InitializedExpertState._() : super._();
 
   @override
@@ -1731,14 +1736,15 @@ abstract class _InitializedExpertState extends ExpertState {
   List<ExpertPosition?> get expertPositions;
   @override
   @JsonKey(ignore: true)
-  _$$_InitializedExpertStateCopyWith<_$_InitializedExpertState> get copyWith => throw _privateConstructorUsedError;
+  _$$InitializedExpertStateImplCopyWith<_$InitializedExpertStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InProgressExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
-  factory _$$_InProgressExpertStateCopyWith(
-          _$_InProgressExpertState value, $Res Function(_$_InProgressExpertState) then) =
-      __$$_InProgressExpertStateCopyWithImpl<$Res>;
+abstract class _$$InProgressExpertStateImplCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$InProgressExpertStateImplCopyWith(
+          _$InProgressExpertStateImpl value, $Res Function(_$InProgressExpertStateImpl) then) =
+      __$$InProgressExpertStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions});
@@ -1748,9 +1754,11 @@ abstract class _$$_InProgressExpertStateCopyWith<$Res> implements $ExpertStateCo
 }
 
 /// @nodoc
-class __$$_InProgressExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<$Res, _$_InProgressExpertState>
-    implements _$$_InProgressExpertStateCopyWith<$Res> {
-  __$$_InProgressExpertStateCopyWithImpl(_$_InProgressExpertState _value, $Res Function(_$_InProgressExpertState) _then)
+class __$$InProgressExpertStateImplCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$InProgressExpertStateImpl>
+    implements _$$InProgressExpertStateImplCopyWith<$Res> {
+  __$$InProgressExpertStateImplCopyWithImpl(
+      _$InProgressExpertStateImpl _value, $Res Function(_$InProgressExpertStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1759,7 +1767,7 @@ class __$$_InProgressExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWith
     Object? balancer = null,
     Object? expertPositions = null,
   }) {
-    return _then(_$_InProgressExpertState(
+    return _then(_$InProgressExpertStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -1774,8 +1782,8 @@ class __$$_InProgressExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWith
 
 /// @nodoc
 
-class _$_InProgressExpertState extends _InProgressExpertState {
-  _$_InProgressExpertState({required this.balancer, required final List<ExpertPosition?> expertPositions})
+class _$InProgressExpertStateImpl extends _InProgressExpertState {
+  _$InProgressExpertStateImpl({required this.balancer, required final List<ExpertPosition?> expertPositions})
       : _expertPositions = expertPositions,
         super._();
 
@@ -1798,7 +1806,7 @@ class _$_InProgressExpertState extends _InProgressExpertState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InProgressExpertState &&
+            other is _$InProgressExpertStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
             const DeepCollectionEquality().equals(other._expertPositions, _expertPositions));
   }
@@ -1809,8 +1817,8 @@ class _$_InProgressExpertState extends _InProgressExpertState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InProgressExpertStateCopyWith<_$_InProgressExpertState> get copyWith =>
-      __$$_InProgressExpertStateCopyWithImpl<_$_InProgressExpertState>(this, _$identity);
+  _$$InProgressExpertStateImplCopyWith<_$InProgressExpertStateImpl> get copyWith =>
+      __$$InProgressExpertStateImplCopyWithImpl<_$InProgressExpertStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1913,7 +1921,7 @@ class _$_InProgressExpertState extends _InProgressExpertState {
 abstract class _InProgressExpertState extends ExpertState {
   factory _InProgressExpertState(
       {required final StepsBalancer balancer,
-      required final List<ExpertPosition?> expertPositions}) = _$_InProgressExpertState;
+      required final List<ExpertPosition?> expertPositions}) = _$InProgressExpertStateImpl;
   _InProgressExpertState._() : super._();
 
   @override
@@ -1922,13 +1930,13 @@ abstract class _InProgressExpertState extends ExpertState {
   List<ExpertPosition?> get expertPositions;
   @override
   @JsonKey(ignore: true)
-  _$$_InProgressExpertStateCopyWith<_$_InProgressExpertState> get copyWith => throw _privateConstructorUsedError;
+  _$$InProgressExpertStateImplCopyWith<_$InProgressExpertStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
-  factory _$$_ErrorExpertStateCopyWith(_$_ErrorExpertState value, $Res Function(_$_ErrorExpertState) then) =
-      __$$_ErrorExpertStateCopyWithImpl<$Res>;
+abstract class _$$ErrorExpertStateImplCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$ErrorExpertStateImplCopyWith(_$ErrorExpertStateImpl value, $Res Function(_$ErrorExpertStateImpl) then) =
+      __$$ErrorExpertStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, String message});
@@ -1938,9 +1946,9 @@ abstract class _$$_ErrorExpertStateCopyWith<$Res> implements $ExpertStateCopyWit
 }
 
 /// @nodoc
-class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<$Res, _$_ErrorExpertState>
-    implements _$$_ErrorExpertStateCopyWith<$Res> {
-  __$$_ErrorExpertStateCopyWithImpl(_$_ErrorExpertState _value, $Res Function(_$_ErrorExpertState) _then)
+class __$$ErrorExpertStateImplCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<$Res, _$ErrorExpertStateImpl>
+    implements _$$ErrorExpertStateImplCopyWith<$Res> {
+  __$$ErrorExpertStateImplCopyWithImpl(_$ErrorExpertStateImpl _value, $Res Function(_$ErrorExpertStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1950,7 +1958,7 @@ class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<
     Object? expertPositions = null,
     Object? message = null,
   }) {
-    return _then(_$_ErrorExpertState(
+    return _then(_$ErrorExpertStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -1969,8 +1977,8 @@ class __$$_ErrorExpertStateCopyWithImpl<$Res> extends _$ExpertStateCopyWithImpl<
 
 /// @nodoc
 
-class _$_ErrorExpertState extends _ErrorExpertState {
-  _$_ErrorExpertState(
+class _$ErrorExpertStateImpl extends _ErrorExpertState {
+  _$ErrorExpertStateImpl(
       {required this.balancer, required final List<ExpertPosition?> expertPositions, required this.message})
       : _expertPositions = expertPositions,
         super._();
@@ -1997,7 +2005,7 @@ class _$_ErrorExpertState extends _ErrorExpertState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorExpertState &&
+            other is _$ErrorExpertStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
             const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
             (identical(other.message, message) || other.message == message));
@@ -2010,8 +2018,8 @@ class _$_ErrorExpertState extends _ErrorExpertState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorExpertStateCopyWith<_$_ErrorExpertState> get copyWith =>
-      __$$_ErrorExpertStateCopyWithImpl<_$_ErrorExpertState>(this, _$identity);
+  _$$ErrorExpertStateImplCopyWith<_$ErrorExpertStateImpl> get copyWith =>
+      __$$ErrorExpertStateImplCopyWithImpl<_$ErrorExpertStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2115,7 +2123,7 @@ abstract class _ErrorExpertState extends ExpertState {
   factory _ErrorExpertState(
       {required final StepsBalancer balancer,
       required final List<ExpertPosition?> expertPositions,
-      required final String message}) = _$_ErrorExpertState;
+      required final String message}) = _$ErrorExpertStateImpl;
   _ErrorExpertState._() : super._();
 
   @override
@@ -2125,14 +2133,14 @@ abstract class _ErrorExpertState extends ExpertState {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorExpertStateCopyWith<_$_ErrorExpertState> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorExpertStateImplCopyWith<_$ErrorExpertStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ExpertPositionRemovedExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
-  factory _$$_ExpertPositionRemovedExpertStateCopyWith(
-          _$_ExpertPositionRemovedExpertState value, $Res Function(_$_ExpertPositionRemovedExpertState) then) =
-      __$$_ExpertPositionRemovedExpertStateCopyWithImpl<$Res>;
+abstract class _$$ExpertPositionRemovedExpertStateImplCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$ExpertPositionRemovedExpertStateImplCopyWith(
+          _$ExpertPositionRemovedExpertStateImpl value, $Res Function(_$ExpertPositionRemovedExpertStateImpl) then) =
+      __$$ExpertPositionRemovedExpertStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition removedPosition});
@@ -2143,11 +2151,11 @@ abstract class _$$_ExpertPositionRemovedExpertStateCopyWith<$Res> implements $Ex
 }
 
 /// @nodoc
-class __$$_ExpertPositionRemovedExpertStateCopyWithImpl<$Res>
-    extends _$ExpertStateCopyWithImpl<$Res, _$_ExpertPositionRemovedExpertState>
-    implements _$$_ExpertPositionRemovedExpertStateCopyWith<$Res> {
-  __$$_ExpertPositionRemovedExpertStateCopyWithImpl(
-      _$_ExpertPositionRemovedExpertState _value, $Res Function(_$_ExpertPositionRemovedExpertState) _then)
+class __$$ExpertPositionRemovedExpertStateImplCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$ExpertPositionRemovedExpertStateImpl>
+    implements _$$ExpertPositionRemovedExpertStateImplCopyWith<$Res> {
+  __$$ExpertPositionRemovedExpertStateImplCopyWithImpl(
+      _$ExpertPositionRemovedExpertStateImpl _value, $Res Function(_$ExpertPositionRemovedExpertStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2157,7 +2165,7 @@ class __$$_ExpertPositionRemovedExpertStateCopyWithImpl<$Res>
     Object? expertPositions = null,
     Object? removedPosition = null,
   }) {
-    return _then(_$_ExpertPositionRemovedExpertState(
+    return _then(_$ExpertPositionRemovedExpertStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -2184,8 +2192,8 @@ class __$$_ExpertPositionRemovedExpertStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ExpertPositionRemovedExpertState extends _ExpertPositionRemovedExpertState {
-  _$_ExpertPositionRemovedExpertState(
+class _$ExpertPositionRemovedExpertStateImpl extends _ExpertPositionRemovedExpertState {
+  _$ExpertPositionRemovedExpertStateImpl(
       {required this.balancer, required final List<ExpertPosition?> expertPositions, required this.removedPosition})
       : _expertPositions = expertPositions,
         super._();
@@ -2212,7 +2220,7 @@ class _$_ExpertPositionRemovedExpertState extends _ExpertPositionRemovedExpertSt
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ExpertPositionRemovedExpertState &&
+            other is _$ExpertPositionRemovedExpertStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
             const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
             (identical(other.removedPosition, removedPosition) || other.removedPosition == removedPosition));
@@ -2225,8 +2233,8 @@ class _$_ExpertPositionRemovedExpertState extends _ExpertPositionRemovedExpertSt
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ExpertPositionRemovedExpertStateCopyWith<_$_ExpertPositionRemovedExpertState> get copyWith =>
-      __$$_ExpertPositionRemovedExpertStateCopyWithImpl<_$_ExpertPositionRemovedExpertState>(this, _$identity);
+  _$$ExpertPositionRemovedExpertStateImplCopyWith<_$ExpertPositionRemovedExpertStateImpl> get copyWith =>
+      __$$ExpertPositionRemovedExpertStateImplCopyWithImpl<_$ExpertPositionRemovedExpertStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2330,7 +2338,7 @@ abstract class _ExpertPositionRemovedExpertState extends ExpertState {
   factory _ExpertPositionRemovedExpertState(
       {required final StepsBalancer balancer,
       required final List<ExpertPosition?> expertPositions,
-      required final ExpertPosition removedPosition}) = _$_ExpertPositionRemovedExpertState;
+      required final ExpertPosition removedPosition}) = _$ExpertPositionRemovedExpertStateImpl;
   _ExpertPositionRemovedExpertState._() : super._();
 
   @override
@@ -2340,15 +2348,15 @@ abstract class _ExpertPositionRemovedExpertState extends ExpertState {
   ExpertPosition get removedPosition;
   @override
   @JsonKey(ignore: true)
-  _$$_ExpertPositionRemovedExpertStateCopyWith<_$_ExpertPositionRemovedExpertState> get copyWith =>
+  _$$ExpertPositionRemovedExpertStateImplCopyWith<_$ExpertPositionRemovedExpertStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NoRecommendationExpertStateCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
-  factory _$$_NoRecommendationExpertStateCopyWith(
-          _$_NoRecommendationExpertState value, $Res Function(_$_NoRecommendationExpertState) then) =
-      __$$_NoRecommendationExpertStateCopyWithImpl<$Res>;
+abstract class _$$NoRecommendationExpertStateImplCopyWith<$Res> implements $ExpertStateCopyWith<$Res> {
+  factory _$$NoRecommendationExpertStateImplCopyWith(
+          _$NoRecommendationExpertStateImpl value, $Res Function(_$NoRecommendationExpertStateImpl) then) =
+      __$$NoRecommendationExpertStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({StepsBalancer balancer, List<ExpertPosition?> expertPositions, ExpertPosition currentPosition});
@@ -2359,11 +2367,11 @@ abstract class _$$_NoRecommendationExpertStateCopyWith<$Res> implements $ExpertS
 }
 
 /// @nodoc
-class __$$_NoRecommendationExpertStateCopyWithImpl<$Res>
-    extends _$ExpertStateCopyWithImpl<$Res, _$_NoRecommendationExpertState>
-    implements _$$_NoRecommendationExpertStateCopyWith<$Res> {
-  __$$_NoRecommendationExpertStateCopyWithImpl(
-      _$_NoRecommendationExpertState _value, $Res Function(_$_NoRecommendationExpertState) _then)
+class __$$NoRecommendationExpertStateImplCopyWithImpl<$Res>
+    extends _$ExpertStateCopyWithImpl<$Res, _$NoRecommendationExpertStateImpl>
+    implements _$$NoRecommendationExpertStateImplCopyWith<$Res> {
+  __$$NoRecommendationExpertStateImplCopyWithImpl(
+      _$NoRecommendationExpertStateImpl _value, $Res Function(_$NoRecommendationExpertStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2373,7 +2381,7 @@ class __$$_NoRecommendationExpertStateCopyWithImpl<$Res>
     Object? expertPositions = null,
     Object? currentPosition = null,
   }) {
-    return _then(_$_NoRecommendationExpertState(
+    return _then(_$NoRecommendationExpertStateImpl(
       balancer: null == balancer
           ? _value.balancer
           : balancer // ignore: cast_nullable_to_non_nullable
@@ -2400,8 +2408,8 @@ class __$$_NoRecommendationExpertStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NoRecommendationExpertState extends _NoRecommendationExpertState {
-  _$_NoRecommendationExpertState(
+class _$NoRecommendationExpertStateImpl extends _NoRecommendationExpertState {
+  _$NoRecommendationExpertStateImpl(
       {required this.balancer, required final List<ExpertPosition?> expertPositions, required this.currentPosition})
       : _expertPositions = expertPositions,
         super._();
@@ -2428,7 +2436,7 @@ class _$_NoRecommendationExpertState extends _NoRecommendationExpertState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NoRecommendationExpertState &&
+            other is _$NoRecommendationExpertStateImpl &&
             (identical(other.balancer, balancer) || other.balancer == balancer) &&
             const DeepCollectionEquality().equals(other._expertPositions, _expertPositions) &&
             (identical(other.currentPosition, currentPosition) || other.currentPosition == currentPosition));
@@ -2441,8 +2449,8 @@ class _$_NoRecommendationExpertState extends _NoRecommendationExpertState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoRecommendationExpertStateCopyWith<_$_NoRecommendationExpertState> get copyWith =>
-      __$$_NoRecommendationExpertStateCopyWithImpl<_$_NoRecommendationExpertState>(this, _$identity);
+  _$$NoRecommendationExpertStateImplCopyWith<_$NoRecommendationExpertStateImpl> get copyWith =>
+      __$$NoRecommendationExpertStateImplCopyWithImpl<_$NoRecommendationExpertStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2546,7 +2554,7 @@ abstract class _NoRecommendationExpertState extends ExpertState {
   factory _NoRecommendationExpertState(
       {required final StepsBalancer balancer,
       required final List<ExpertPosition?> expertPositions,
-      required final ExpertPosition currentPosition}) = _$_NoRecommendationExpertState;
+      required final ExpertPosition currentPosition}) = _$NoRecommendationExpertStateImpl;
   _NoRecommendationExpertState._() : super._();
 
   @override
@@ -2556,6 +2564,6 @@ abstract class _NoRecommendationExpertState extends ExpertState {
   ExpertPosition get currentPosition;
   @override
   @JsonKey(ignore: true)
-  _$$_NoRecommendationExpertStateCopyWith<_$_NoRecommendationExpertState> get copyWith =>
+  _$$NoRecommendationExpertStateImplCopyWith<_$NoRecommendationExpertStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -112,10 +112,10 @@ class _$ExpertPortfolioPositionCopyWithImpl<$Res, $Val extends ExpertPortfolioPo
 }
 
 /// @nodoc
-abstract class _$$_ExpertPortfolioPositionCopyWith<$Res> implements $ExpertPortfolioPositionCopyWith<$Res> {
-  factory _$$_ExpertPortfolioPositionCopyWith(
-          _$_ExpertPortfolioPosition value, $Res Function(_$_ExpertPortfolioPosition) then) =
-      __$$_ExpertPortfolioPositionCopyWithImpl<$Res>;
+abstract class _$$ExpertPortfolioPositionImplCopyWith<$Res> implements $ExpertPortfolioPositionCopyWith<$Res> {
+  factory _$$ExpertPortfolioPositionImplCopyWith(
+          _$ExpertPortfolioPositionImpl value, $Res Function(_$ExpertPortfolioPositionImpl) then) =
+      __$$ExpertPortfolioPositionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -131,11 +131,11 @@ abstract class _$$_ExpertPortfolioPositionCopyWith<$Res> implements $ExpertPortf
 }
 
 /// @nodoc
-class __$$_ExpertPortfolioPositionCopyWithImpl<$Res>
-    extends _$ExpertPortfolioPositionCopyWithImpl<$Res, _$_ExpertPortfolioPosition>
-    implements _$$_ExpertPortfolioPositionCopyWith<$Res> {
-  __$$_ExpertPortfolioPositionCopyWithImpl(
-      _$_ExpertPortfolioPosition _value, $Res Function(_$_ExpertPortfolioPosition) _then)
+class __$$ExpertPortfolioPositionImplCopyWithImpl<$Res>
+    extends _$ExpertPortfolioPositionCopyWithImpl<$Res, _$ExpertPortfolioPositionImpl>
+    implements _$$ExpertPortfolioPositionImplCopyWith<$Res> {
+  __$$ExpertPortfolioPositionImplCopyWithImpl(
+      _$ExpertPortfolioPositionImpl _value, $Res Function(_$ExpertPortfolioPositionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -151,7 +151,7 @@ class __$$_ExpertPortfolioPositionCopyWithImpl<$Res>
     Object? expectedYield = null,
     Object? currentPrice = null,
   }) {
-    return _then(_$_ExpertPortfolioPosition(
+    return _then(_$ExpertPortfolioPositionImpl(
       figi: null == figi
           ? _value.figi
           : figi // ignore: cast_nullable_to_non_nullable
@@ -194,8 +194,8 @@ class __$$_ExpertPortfolioPositionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ExpertPortfolioPosition extends _ExpertPortfolioPosition {
-  const _$_ExpertPortfolioPosition(
+class _$ExpertPortfolioPositionImpl extends _ExpertPortfolioPosition {
+  const _$ExpertPortfolioPositionImpl(
       {required this.figi,
       required this.instrumentId,
       required this.ticker,
@@ -235,7 +235,7 @@ class _$_ExpertPortfolioPosition extends _ExpertPortfolioPosition {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ExpertPortfolioPosition &&
+            other is _$ExpertPortfolioPositionImpl &&
             (identical(other.figi, figi) || other.figi == figi) &&
             (identical(other.instrumentId, instrumentId) || other.instrumentId == instrumentId) &&
             (identical(other.ticker, ticker) || other.ticker == ticker) &&
@@ -255,8 +255,8 @@ class _$_ExpertPortfolioPosition extends _ExpertPortfolioPosition {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ExpertPortfolioPositionCopyWith<_$_ExpertPortfolioPosition> get copyWith =>
-      __$$_ExpertPortfolioPositionCopyWithImpl<_$_ExpertPortfolioPosition>(this, _$identity);
+  _$$ExpertPortfolioPositionImplCopyWith<_$ExpertPortfolioPositionImpl> get copyWith =>
+      __$$ExpertPortfolioPositionImplCopyWithImpl<_$ExpertPortfolioPositionImpl>(this, _$identity);
 }
 
 abstract class _ExpertPortfolioPosition extends ExpertPortfolioPosition {
@@ -269,7 +269,7 @@ abstract class _ExpertPortfolioPosition extends ExpertPortfolioPosition {
       required final int lot,
       required final double averagePositionPrice,
       required final double expectedYield,
-      required final double currentPrice}) = _$_ExpertPortfolioPosition;
+      required final double currentPrice}) = _$ExpertPortfolioPositionImpl;
   const _ExpertPortfolioPosition._() : super._();
 
   @override
@@ -292,5 +292,6 @@ abstract class _ExpertPortfolioPosition extends ExpertPortfolioPosition {
   double get currentPrice;
   @override
   @JsonKey(ignore: true)
-  _$$_ExpertPortfolioPositionCopyWith<_$_ExpertPortfolioPosition> get copyWith => throw _privateConstructorUsedError;
+  _$$ExpertPortfolioPositionImplCopyWith<_$ExpertPortfolioPositionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
