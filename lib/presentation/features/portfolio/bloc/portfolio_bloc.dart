@@ -70,43 +70,62 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
         ),
         options: _tinkoffApiService.callOptions,
       );
-      final positions = portfolioResponse.positions.where((element) => element.instrumentType == 'share').toList();
       final withdrawResponse = await _tinkoffApiService.operationsServiceClient.getWithdrawLimits(
         WithdrawLimitsRequest(accountId: _tinkoffApiService.accountId),
         options: _tinkoffApiService.callOptions,
       );
-      final instrumentsResponse = await _tinkoffApiService.instrumentsServiceClient.shares(
-        inst.InstrumentsRequest(),
-        options: _tinkoffApiService.callOptions,
-      );
-      emitter(
-        PortfolioState.initialized(
-          portfolio: Portfolio(
-            totalAmountPortfolio: portfolioResponse.totalAmountPortfolio.toDouble,
-            withdrawLimit: withdrawResponse.money.first.toDouble,
-            expectedYield: portfolioResponse.expectedYield.toDouble,
-            positions: List.generate(
-              positions.length,
-              (index) => ExpertPortfolioPosition(
-                figi: positions[index].figi,
-                instrumentId: positions[index].instrumentUid,
-                ticker: instrumentsResponse.instruments
-                    .firstWhere((element) => element.figi == positions[index].figi)
-                    .ticker,
-                title:
-                    instrumentsResponse.instruments.firstWhere((element) => element.figi == positions[index].figi).name,
-                quantity: positions[index].quantity.toDouble,
-                lot: instrumentsResponse.instruments.firstWhere((element) => element.figi == positions[index].figi).lot,
-                averagePositionPrice: positions[index].averagePositionPrice.toDouble,
-                expectedYield: positions[index].expectedYield.toDouble,
-                currentPrice: positions[index].currentPrice.toDouble,
-              ),
+      if (portfolioResponse.positions.where((element) => element.instrumentType == 'share').isEmpty) {
+        emitter(
+          PortfolioState.initialized(
+            portfolio: Portfolio(
+              totalAmountPortfolio: portfolioResponse.totalAmountPortfolio.toDouble,
+              withdrawLimit: 0,
+              expectedYield: portfolioResponse.expectedYield.toDouble,
+              positions: [],
+              accountId: portfolioResponse.accountId,
+              accountName: _tinkoffApiService.accountName!,
             ),
-            accountId: portfolioResponse.accountId,
-            accountName: _tinkoffApiService.accountName!,
           ),
-        ),
-      );
+        );
+      }
+      else {
+        final positions = portfolioResponse.positions.where((element) => element.instrumentType == 'share').toList();
+        final instrumentsResponse = await _tinkoffApiService.instrumentsServiceClient.shares(
+          inst.InstrumentsRequest(),
+          options: _tinkoffApiService.callOptions,
+        );
+        emitter(
+          PortfolioState.initialized(
+            portfolio: Portfolio(
+              totalAmountPortfolio: portfolioResponse.totalAmountPortfolio.toDouble,
+              withdrawLimit: withdrawResponse.money.first.toDouble,
+              expectedYield: portfolioResponse.expectedYield.toDouble,
+              positions: List.generate(
+                positions.length,
+                (index) => ExpertPortfolioPosition(
+                  figi: positions[index].figi,
+                  instrumentId: positions[index].instrumentUid,
+                  ticker: instrumentsResponse.instruments
+                      .firstWhere((element) => element.figi == positions[index].figi)
+                      .ticker,
+                  title: instrumentsResponse.instruments
+                      .firstWhere((element) => element.figi == positions[index].figi)
+                      .name,
+                  quantity: positions[index].quantity.toDouble,
+                  lot: instrumentsResponse.instruments
+                      .firstWhere((element) => element.figi == positions[index].figi)
+                      .lot,
+                  averagePositionPrice: positions[index].averagePositionPrice.toDouble,
+                  expectedYield: positions[index].expectedYield.toDouble,
+                  currentPrice: positions[index].currentPrice.toDouble,
+                ),
+              ),
+              accountId: portfolioResponse.accountId,
+              accountName: _tinkoffApiService.accountName!,
+            ),
+          ),
+        );
+      }
     } catch (error) {
       emitter(PortfolioState.error(message: error.toString(), portfolio: state.portfolio));
       emitter(PortfolioState.initialized(portfolio: state.portfolio));
